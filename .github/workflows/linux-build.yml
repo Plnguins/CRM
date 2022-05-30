@@ -1,0 +1,61 @@
+# Github action script for building linux executables of this project
+# Copyright (C) 2022  VadVergasov as part of Plnguins
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published
+# by the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+name: Linux build
+
+on:
+  push:
+    # branches:
+    #   - master
+    # paths-ignore:
+    #   - "docs/**"
+    #   - "**.md"
+    #   - "LICENSE"
+    #   - ".github/**"
+    #   - "!.github/workflows/win.yml"
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  linux:
+    name: Linux
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        arch: [x64]
+    steps:
+      - uses: actions/checkout@v3
+        name: Clone.
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2
+        with:
+          version: "6.3.0"
+          host: "linux"
+          arch: "linux-gcc"
+          target: "desktop"
+          setup-python: "false"
+      - name: Install PostgreSQL and cmake
+        run: sudo apt-get install -y cmake postgresql libpq-dev g++ build-essential
+      - name: Install boost
+        uses: MarkusJx/install-boost@v2.3.0
+        with:
+          boost_version: 1.79.0
+          platform_version: 20.04
+          toolset: gcc
+      - name: Configure CMake
+        run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+      - name: Build
+        run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
