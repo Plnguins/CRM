@@ -17,14 +17,12 @@ name: Linux build
 
 on:
   push:
-    # branches:
-    #   - master
-    # paths-ignore:
-    #   - "docs/**"
-    #   - "**.md"
-    #   - "LICENSE"
-    #   - ".github/**"
-    #   - "!.github/workflows/win.yml"
+    paths-ignore:
+      - "**.md"
+      - "LICENSE"
+      - "README.md"
+      - ".github/**"
+      - "!.github/workflows/linux-build.yml"
 
 env:
   BUILD_TYPE: Release
