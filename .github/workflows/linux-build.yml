@@ -48,7 +48,7 @@ jobs:
           target: "desktop"
           setup-python: "false"
       - name: Install PostgreSQL and cmake
-        run: sudo apt-get install -y cmake postgresql libpq-dev g++ build-essential
+        run: sudo apt-get install -y cmake postgresql libpq-dev g++ build-essential libxkbcommon-dev
       - name: Install boost
         uses: MarkusJx/install-boost@v2.3.0
         with:
