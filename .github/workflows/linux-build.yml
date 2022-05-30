@@ -28,6 +28,8 @@ on:
 
 env:
   BUILD_TYPE: Release
+  QT_VERSION: "6.3.0"
+  BOOST_VERSION: "1.79.0"
 
 jobs:
   linux:
@@ -41,10 +43,18 @@ jobs:
         name: Clone
         with:
           submodules: recursive
+      - name: Cache multiple paths
+        uses: actions/cache@v3
+        with:
+          path: |
+            ../Qt
+            ${{github.workspace}}/boost/boost
+          key: ${{ runner.os }}-${{env.BOOST_VERSION}}-${{env.QT_VERSION}}
       - name: Install Qt
         uses: jurplel/install-qt-action@v2
         with:
-          version: "6.3.0"
+          cached: ${{ steps.cache-qt.outputs.cache-hit }}
+          version: ${{env.QT_VERSION}}
           host: "linux"
           arch: "linux-gcc"
           target: "desktop"
@@ -53,10 +63,11 @@ jobs:
         run: sudo apt-get install -y cmake postgresql libpq-dev g++ build-essential libxkbcommon-dev
       - name: Install boost
         id: install-boost
+        if: steps.cache-boost.outputs.cache-hit != 'true'
         uses: MarkusJx/install-boost@v2.3.0
         with:
-          boost_version: 1.79.0
-          platform_version: 20.04
+          boost_version: ${{env.BOOST_VERSION}}
+          platform_version: 22.04
           toolset: gcc
       - name: Configure CMake
         run: |
