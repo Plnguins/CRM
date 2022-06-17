@@ -13,12 +13,22 @@
 
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
+#include <soci/postgresql/soci-postgresql.h>
+#include <soci/soci.h>
+
 #include <QMainWindow>
 #include <QtWidgets/QApplication>
 
+#include "Login/ui_Login.h"
+
 int main(int argc, char* argv[]) {
+    Ui::Login ui;
     QApplication a(argc, argv);
     QMainWindow windows;
+    QWidget login;
+    ui.setupUi(&login);
+    windows.setCentralWidget(&login);
+    windows.setWindowTitle(login.windowTitle());
     windows.show();
     return a.exec();
 }
