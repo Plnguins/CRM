@@ -34,7 +34,7 @@ env:
 jobs:
   windows:
     name: Windows
-    runs-on: windows-latest
+    runs-on: windows-2019
     strategy:
       matrix:
         arch: [x64]
@@ -43,6 +43,8 @@ jobs:
         name: Clone
         with:
           submodules: recursive
+      - name: Setup PostgreSQL paths
+        run: echo 'C:\Program Files\PostgreSQL\14\bin;C:\Program Files\PostgreSQL\14;C:\Program Files\PostgreSQL\14\include' | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
       - name: Cache multiple paths
         id: cache
         uses: actions/cache@v3
@@ -71,7 +73,8 @@ jobs:
           toolset: msvc
           boost_install_dir: ${{ env.BOOST_DIR }}
       - name: Configure CMake
-        run: cmake -B ${{ github.workspace }}\build -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -DBoost_INCLUDE_DIR=${{ env.BOOST_DIR }}\boost\boost\include -DBoost_LIBRARY_DIRS=${{ env.BOOST_DIR }}\boost\boost\lib
+        run: |
+          cmake -B ${{ github.workspace }}\build -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -DBoost_INCLUDE_DIR=${{ env.BOOST_DIR }}/boost/boost/include -DBoost_LIBRARY_DIRS=${{ env.BOOST_DIR }}/boost/boost/lib -DPostgreSQL_ADDITIONAL_VERSIONS=14 -DPOSTGRESQL_INCLUDE_DIR='C:\Program Files\PostgreSQL\14\include'
       - name: Build
         run: cmake --build ${{ github.workspace }}/build --parallel --config ${{ env.BUILD_TYPE }}
       - uses: actions/upload-artifact@v3
