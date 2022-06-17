@@ -26,7 +26,7 @@ on:
 
 env:
   BUILD_TYPE: Release
-  QT_VERSION: "6.3.0"
+  QT_VERSION: "6.2.4"
   BOOST_VERSION: "1.79.0"
   QT_DIR: ${{ github.workspace }}
   BOOST_DIR: ${{ github.workspace }}
