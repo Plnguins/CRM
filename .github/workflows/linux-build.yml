@@ -1,0 +1,91 @@
+# Github action script for building linux executables of this project
+# Copyright (C) 2022  VadVergasov as part of Plnguins
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published
+# by the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+name: Linux build
+
+on:
+  push:
+    paths-ignore:
+      - "**.md"
+      - "LICENSE"
+      - "README.md"
+      - ".github/**"
+      - "!.github/workflows/linux-build.yml"
+
+env:
+  BUILD_TYPE: Release
+  QT_VERSION: "6.2.4"
+  BOOST_VERSION: "1.79.0"
+  QT_DIR: ${{ github.workspace }}
+  BOOST_DIR: ${{ github.workspace }}
+
+jobs:
+  linux:
+    name: Linux
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        arch: [x64]
+    steps:
+      - uses: actions/checkout@v3
+        name: Clone
+        with:
+          submodules: recursive
+      - name: Cache Qt
+        id: cache-qt
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.QT_DIR }}/Qt
+          key: ${{ runner.os }}-Qt-${{ env.QT_VERSION }}-${{ env.QT_DIR }}
+      - name: Cache Boost
+        id: cache-boost
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.BOOST_DIR }}/boost/boost
+          key: ${{ runner.os }}-Boost-${{ env.BOOST_VERSION }}-${{ env.BOOST_DIR }}
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2
+        with:
+          cached: ${{ steps.cache-qt.outputs.cache-hit }}
+          version: ${{ env.QT_VERSION }}
+          dir: ${{ env.QT_DIR }}
+          host: "linux"
+          arch: "linux-gcc"
+          target: "desktop"
+          setup-python: "false"
+      - name: Install PostgreSQL and cmake
+        run: sudo apt-get install -y cmake postgresql libpq-dev g++ build-essential libxkbcommon-dev
+      - name: Install boost
+        id: install-boost
+        if: steps.cache-boost.outputs.cache-hit != 'true'
+        uses: MarkusJx/install-boost@v2.3.0
+        with:
+          boost_version: ${{ env.BOOST_VERSION }}
+          platform_version: 20.04
+          toolset: gcc
+          boost_install_dir: ${{ env.BOOST_DIR }}
+      - name: Configure CMake
+        run: |
+          cmake -B ${{ github.workspace }}/build \
+          -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
+          -DBoost_INCLUDE_DIR=${{ env.BOOST_DIR }}/boost/boost/include \
+          -DBoost_LIBRARY_DIRS=${{ env.BOOST_DIR }}/boost/boost/lib
+      - name: Build
+        run: cmake --build ${{ github.workspace }}/build --parallel --config ${{ env.BUILD_TYPE }}
+      - uses: actions/upload-artifact@v3
+        name: Upload binary
+        with:
+          name: CRM
+          path: ${{ github.workspace }}/build/CRM/CRM

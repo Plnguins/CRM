@@ -13,9 +13,9 @@
 
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-cmake_minimum_required (VERSION 3.22)
+cmake_minimum_required(VERSION 3.16)
 
-project ("CRM")
+project("CRM")
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -24,6 +24,11 @@ message(STATUS "Boost version: ${Boost_VERSION}")
 
 find_package(PostgreSQL REQUIRED)
 include_directories(SYSTEM ${PostgreSQL_INCLUDE_DIRS})
+
+find_package(Qt6 REQUIRED COMPONENTS Core Widgets Gui)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
 
 include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 
@@ -45,4 +50,9 @@ option(SOCI_EMPTY "" OFF)
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/libs/soci ${SOCI_BINARY_DIR})
 
-add_subdirectory ("CRM")
+add_subdirectory("CRM")
+
+set_target_properties(CRM PROPERTIES
+    WIN32_EXECUTABLE ON
+    MACOSX_BUNDLE ON
+)

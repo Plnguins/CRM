@@ -13,14 +13,11 @@
 
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-cmake_minimum_required(VERSION 3.22)
+cmake_minimum_required(VERSION 3.16)
 
 set(CMAKE_CXX_STANDARD 17)
 
-find_package(Qt6 REQUIRED COMPONENTS Core Widgets Gui)
-qt_standard_project_setup()
-
-add_executable(CRM "main.cpp")
+add_executable(CRM main.cpp Login/Login.ui)
 
 target_link_libraries(CRM ${Boost_LIBRARIES})
 
