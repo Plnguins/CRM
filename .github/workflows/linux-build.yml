@@ -43,18 +43,22 @@ jobs:
         name: Clone
         with:
           submodules: recursive
-      - name: Cache multiple paths
-        id: cache
+      - name: Cache Qt
+        id: cache-qt
         uses: actions/cache@v3
         with:
-          path: |
-            ${{ env.QT_DIR }}/Qt
-            ${{ env.BOOST_DIR }}/boost/boost
-          key: ${{ runner.os }}-Boost-${{ env.BOOST_VERSION }}-${{ env.BOOST_DIR }}-Qt-${{ env.QT_VERSION }}-${{ env.QT_DIR }}
+          path: ${{ env.QT_DIR }}/Qt
+          key: ${{ runner.os }}-Qt-${{ env.QT_VERSION }}-${{ env.QT_DIR }}
+      - name: Cache Boost
+        id: cache-boost
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.BOOST_DIR }}/boost/boost
+          key: ${{ runner.os }}-Boost-${{ env.BOOST_VERSION }}-${{ env.BOOST_DIR }}
       - name: Install Qt
         uses: jurplel/install-qt-action@v2
         with:
-          cached: ${{ steps.cache.outputs.cache-hit }}
+          cached: ${{ steps.cache-qt.outputs.cache-hit }}
           version: ${{ env.QT_VERSION }}
           dir: ${{ env.QT_DIR }}
           host: "linux"
@@ -65,7 +69,7 @@ jobs:
         run: sudo apt-get install -y cmake postgresql libpq-dev g++ build-essential libxkbcommon-dev
       - name: Install boost
         id: install-boost
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.cache-boost.outputs.cache-hit != 'true'
         uses: MarkusJx/install-boost@v2.3.0
         with:
           boost_version: ${{ env.BOOST_VERSION }}
