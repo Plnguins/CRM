@@ -83,4 +83,4 @@ jobs:
         name: Upload binary
         with:
           name: CRM.exe
-          path: ${{ github.workspace }}/build/CRM/CRM.exe
+          path: ${{ github.workspace }}/build/CRM\Release\CRM.exe
