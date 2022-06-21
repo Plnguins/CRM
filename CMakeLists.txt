@@ -16,6 +16,9 @@
 cmake_minimum_required(VERSION 3.16)
 
 project("CRM")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -38,6 +41,8 @@ option(SOCI_CXX11 "Build to the C++11 standard" ON)
 option(SOCI_ASAN "" ON)
 option(WITH_BOOST "" ON)
 option(SOCI_TESTS "" OFF)
+option(SOCI_SHARED "" ON)
+option(SOCI_STATIC "" OFF)
 
 option(WITH_POSTGRESQL "Build PostgreSQL backend" ON)
 option(WITH_ORACLE "" OFF)
@@ -50,7 +55,29 @@ option(SOCI_EMPTY "" OFF)
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/libs/soci ${SOCI_BINARY_DIR})
 
-add_subdirectory("CRM")
+add_executable(CRM CRM/main.cpp CRM/Login/Login.ui)
+
+target_link_libraries(CRM ${Boost_LIBRARIES})
+
+target_include_directories(CRM PRIVATE ${SOCI_BINARY_DIR}/include)
+
+target_link_libraries(CRM PRIVATE soci_core soci_postgresql)
+
+target_link_libraries(CRM PRIVATE Qt6::Core Qt6::Widgets Qt::Gui)
+
+set_target_properties(CRM PROPERTIES WIN32_EXECUTABLE ON MACOSX_BUNDLE ON)
+
+get_target_property(QtCore_LOCATION Qt6::Core LOCATION)
+get_filename_component(QT_DLL_DIR ${QtCore_LOCATION} PATH)
+
+IF(WIN32)
+    add_custom_command(TARGET CRM POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:Qt6::Core> $<TARGET_FILE_DIR:CRM>
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:Qt6::Gui> $<TARGET_FILE_DIR:CRM>
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:Qt6::Widgets> $<TARGET_FILE_DIR:CRM>
+        COMMAND ${CMAKE_COMMAND} -E copy_directory ${QT6_INSTALL_PREFIX}/plugins/platforms $<TARGET_FILE_DIR:CRM>/platforms
+    )
+ENDIF()
 
 set_target_properties(CRM PROPERTIES
     WIN32_EXECUTABLE ON
