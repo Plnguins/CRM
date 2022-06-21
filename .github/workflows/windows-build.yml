@@ -78,7 +78,7 @@ jobs:
       - name: Build
         run: cmake --build ${{ github.workspace }}/build --parallel --config ${{ env.BUILD_TYPE }}
       - uses: actions/upload-artifact@v3
-        name: Upload binary
+        name: Upload builded app
         with:
-          name: CRM.exe
-          path: ${{ github.workspace }}/build/CRM\Release\CRM.exe
+          name: CRM
+          path: ${{ github.workspace }}/build/bin/Release
