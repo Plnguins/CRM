@@ -1,4 +1,4 @@
-# CMake script for building project
+﻿# CMake script for building project
 # Copyright (C) 2022  VadVergasov as part of Plnguins
 
 # This program is free software: you can redistribute it and/or modify
@@ -52,7 +52,11 @@ option(SOCI_EMPTY "" OFF)
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/libs/soci ${SOCI_BINARY_DIR})
 
-add_executable(CRM CRM/main.cpp CRM/Login/Login.ui)
+IF(WIN32)
+    set(resources "${CMAKE_CURRENT_SOURCE_DIR}/resources/resources.rc")
+ENDIF()
+
+add_executable(CRM CRM/main.cpp CRM/Login/Login.ui ${resources})
 set_target_properties(CRM PROPERTIES AUTOMOC TRUE AUTOUIC TRUE AUTORCC TRUE)
 
 target_link_libraries(CRM ${Boost_LIBRARIES})
