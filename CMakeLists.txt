@@ -1,4 +1,4 @@
-﻿# CMake script for building project
+# CMake script for building project
 # Copyright (C) 2022  VadVergasov as part of Plnguins
 
 # This program is free software: you can redistribute it and/or modify
@@ -29,9 +29,6 @@ find_package(PostgreSQL REQUIRED)
 include_directories(SYSTEM ${PostgreSQL_INCLUDE_DIRS})
 
 find_package(Qt6 REQUIRED COMPONENTS Core Widgets Gui)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-set(CMAKE_AUTOUIC ON)
 
 include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 
@@ -56,6 +53,7 @@ option(SOCI_EMPTY "" OFF)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/libs/soci ${SOCI_BINARY_DIR})
 
 add_executable(CRM CRM/main.cpp CRM/Login/Login.ui)
+set_target_properties(CRM PROPERTIES AUTOMOC TRUE AUTOUIC TRUE AUTORCC TRUE)
 
 target_link_libraries(CRM ${Boost_LIBRARIES})
 
