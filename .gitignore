@@ -13,6 +13,9 @@
 
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
+packages/com.pinguins.crm/data
+packages/com.pinguins.crm/meta/LICENSE.txt
+
 # User-specific files
 *.rsuser
 *.suo

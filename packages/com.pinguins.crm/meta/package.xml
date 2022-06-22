@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package>
+    <DisplayName>CRM</DisplayName>
+    <Description>Установка самой CRM</Description>
+    <ReleaseDate></ReleaseDate>
+    <Version>1.0.0</Version>
+    <Licenses>
+        <License name="AGPL-3.0" file="LICENSE.txt" />
+    </Licenses>
+    <ForcedInstallation>true</ForcedInstallation>
+</Package>

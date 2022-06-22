@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Installer>
+    <Name>CRM</Name>
+    <Version>1.0.0</Version>
+    <Title>CRM</Title>
+    <Publisher>Pinguins</Publisher>
+    <ProductUrl>https://github.com/Plnguins/CRM</ProductUrl>
+    <TargetDir>@HomeDir@/CRM</TargetDir>
+    <InstallerApplicationIcon>../resources/main</InstallerApplicationIcon>
+    <!-- <InstallerWindowIcon>main</InstallerWindowIcon> -->
+    <WizardStyle>modern</WizardStyle>
+    <MaintenanceToolName>uninstall</MaintenanceToolName>
+</Installer>
