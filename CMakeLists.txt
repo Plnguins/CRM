@@ -29,16 +29,13 @@ find_package(PostgreSQL REQUIRED)
 include_directories(SYSTEM ${PostgreSQL_INCLUDE_DIRS})
 
 find_package(Qt6 REQUIRED COMPONENTS Core Widgets Gui)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-set(CMAKE_AUTOUIC ON)
 
 include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 
 set(SOCI_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/soci)
 
 option(SOCI_CXX11 "Build to the C++11 standard" ON)
-option(SOCI_ASAN "" ON)
+option(SOCI_ASAN "" OFF)
 option(WITH_BOOST "" ON)
 option(SOCI_TESTS "" OFF)
 option(SOCI_SHARED "" ON)
@@ -55,7 +52,12 @@ option(SOCI_EMPTY "" OFF)
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/libs/soci ${SOCI_BINARY_DIR})
 
-add_executable(CRM CRM/main.cpp CRM/Login/Login.ui)
+IF(WIN32)
+    set(resources "${CMAKE_CURRENT_SOURCE_DIR}/resources/resources.rc")
+ENDIF()
+
+add_executable(CRM CRM/main.cpp CRM/Login/Login.ui ${resources})
+set_target_properties(CRM PROPERTIES AUTOMOC TRUE AUTOUIC TRUE AUTORCC TRUE)
 
 target_link_libraries(CRM ${Boost_LIBRARIES})
 
