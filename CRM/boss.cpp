@@ -38,7 +38,7 @@ bosInterface::bosInterface(QWidget *parent) :
 
     ui->textEdit->clear();
 
-    QPixmap pixmap("G:\\CRM\\files\\main.ico");
+    QPixmap pixmap(path + "files/main.ico");
     ui->label_2->setPixmap(pixmap);
 }
 
