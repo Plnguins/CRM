@@ -34,7 +34,7 @@ class MainWindow : public QMainWindow {
     void setBossInterface();
     void setLoginInterface();
     void setManagerInterface();
-    void setMarketologistInterface();
+    void setMarketerInterface();
     void setSellerInterface();
 
    private:

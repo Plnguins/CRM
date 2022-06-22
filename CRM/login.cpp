@@ -67,7 +67,7 @@ void login::on_LoginButton_clicked() {
             ui->Login->clear();
             ui->Password->clear();
         } else if (role == 3) {
-            parent->setMarketologistInterface();
+            parent->setMarketerInterface();
             ui->Login->clear();
             ui->Password->clear();
         } else if (role == 4) {

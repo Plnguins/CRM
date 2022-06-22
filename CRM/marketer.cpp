@@ -1,4 +1,4 @@
-// Marketologist source code for CRM application
+// Marketer source code for CRM application
 // Copyright(C) 2022 Plnguins
 
 // This program is free software : you can redistribute it and / or modify
@@ -13,10 +13,10 @@
 
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
-#include "marketologist.h"
+#include "marketer.h"
 
-marketologist::marketologist(QWidget *parent)
-    : parent(dynamic_cast<MainWindow *>(parent)), ui(new Ui::marketologistUi) {
+marketer::marketer(QWidget *parent)
+    : parent(dynamic_cast<MainWindow *>(parent)), ui(new Ui::marketerUi) {
     ui->setupUi(this);
 
     ui->pushButton_4->setIcon(QIcon(":/images/ad-white.png"));
@@ -43,9 +43,9 @@ marketologist::marketologist(QWidget *parent)
     ui->label_2->setPixmap(pixmap);
 }
 
-marketologist::~marketologist() { delete ui; }
+marketer::~marketer() { delete ui; }
 
-void marketologist::on_pushButton_4_clicked() {
+void marketer::on_pushButton_4_clicked() {
     ui->tableWidget->show();
     ui->pushButton_8->show();
     ui->pushButton_9->show();
@@ -92,7 +92,7 @@ void marketologist::on_pushButton_4_clicked() {
     // connect(ui->pushButton_11, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void marketologist::on_pushButton_6_clicked() {
+void marketer::on_pushButton_6_clicked() {
     ui->tableWidget->hide();
     ui->pushButton_8->hide();
     ui->pushButton_9->hide();
@@ -112,7 +112,7 @@ void marketologist::on_pushButton_6_clicked() {
     ui->pushButton_12->setText("Отправить");
 }
 
-void marketologist::on_pushButton_7_clicked() {
+void marketer::on_pushButton_7_clicked() {
     ui->label_2->show();
     ui->label_3->show();
     ui->label_4->show();
@@ -131,6 +131,6 @@ void marketologist::on_pushButton_7_clicked() {
     parent->setLoginInterface();
 }
 
-void marketologist::tableAdUpdate() {
+void marketer::tableAdUpdate() {
     //
 }

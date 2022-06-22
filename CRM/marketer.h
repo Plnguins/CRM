@@ -1,4 +1,4 @@
-// Marketologist window header for CRM application
+// Marketer window header for CRM application
 // Copyright(C) 2022 Plnguins
 
 // This program is free software : you can redistribute it and / or modify
@@ -19,18 +19,18 @@
 #include <QWidget>
 
 #include "mainwindow.h"
-#include "ui_marketologist.h"
+#include "ui_marketer.h"
 
 namespace Ui {
-class marketologistUi;
+class marketerUi;
 }
 
-class marketologist : public QWidget {
+class marketer : public QWidget {
     Q_OBJECT
 
    public:
-    explicit marketologist(QWidget *parent = nullptr);
-    ~marketologist();
+    explicit marketer(QWidget *parent = nullptr);
+    ~marketer();
 
    private slots:
     void on_pushButton_4_clicked();
@@ -46,5 +46,5 @@ class marketologist : public QWidget {
 
    private:
     MainWindow *parent;
-    Ui::marketologistUi *ui;
+    Ui::marketerUi *ui;
 };

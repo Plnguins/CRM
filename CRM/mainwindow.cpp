@@ -18,7 +18,7 @@
 #include "boss.h"
 #include "login.h"
 #include "manager.h"
-#include "marketologist.h"
+#include "marketer.h"
 #include "seller.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -35,8 +35,8 @@ void MainWindow::setSellerInterface() {
     setFixedSize({821, 511});
 }
 
-void MainWindow::setMarketologistInterface() {
-    setCentralWidget(new marketologist(this));
+void MainWindow::setMarketerInterface() {
+    setCentralWidget(new marketer(this));
     setFixedSize({821, 511});
 }
 
