@@ -25,39 +25,39 @@ bosInterface::bosInterface(QWidget *parent)
     ui->Logout->setIconSize({28, 28});
 
     ui->tableWidget->hide();
-    ui->label_9->hide();
+    ui->RoundedBlue->hide();
     ui->Update->hide();
     ui->Edit->hide();
     ui->Add->hide();
     ui->Delete->hide();
-    ui->label_10->hide();
+    ui->ProviderLabel->hide();
     ui->Send->hide();
-    ui->textBrowser->hide();
+    ui->Help->hide();
     ui->textEdit->hide();
 
     ui->textEdit->clear();
 
     QPixmap pixmap(":/main.ico");
-    ui->label_2->setPixmap(pixmap);
+    ui->Icon->setPixmap(pixmap);
 }
 
 bosInterface::~bosInterface() { delete ui; }
 
 void bosInterface::on_Logout_clicked() {
     emit logout();
-    ui->label_2->show();
-    ui->label_3->show();
-    ui->label_4->show();
-    ui->label_5->show();
+    ui->Icon->show();
+    ui->Title->show();
+    ui->Company->show();
+    ui->Greeting->show();
     ui->tableWidget->hide();
-    ui->label_9->hide();
+    ui->RoundedBlue->hide();
     ui->Update->hide();
     ui->Edit->hide();
     ui->Add->hide();
     ui->Delete->hide();
-    ui->label_10->hide();
+    ui->ProviderLabel->hide();
     ui->Send->hide();
-    ui->textBrowser->hide();
+    ui->Help->hide();
     ui->textEdit->hide();
     ui->textEdit->clear();
 }
@@ -68,17 +68,17 @@ void bosInterface::on_Provider_clicked() {
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
-    ui->label_9->show();
-    ui->label_10->show();
-    ui->label_2->hide();
-    ui->label_3->hide();
-    ui->label_4->hide();
-    ui->label_5->hide();
+    ui->RoundedBlue->show();
+    ui->ProviderLabel->show();
+    ui->Icon->hide();
+    ui->Title->hide();
+    ui->Company->hide();
+    ui->Greeting->hide();
     ui->Send->hide();
-    ui->textBrowser->hide();
+    ui->Help->hide();
     ui->textEdit->hide();
 
-    ui->label_10->setText("Поставщики");
+    ui->ProviderLabel->setText("Поставщики");
     ui->Update->setText("Update");
 
     // TODO: fill table with db
@@ -115,17 +115,17 @@ void bosInterface::on_Deal_clicked() {
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
-    ui->label_9->show();
-    ui->label_10->show();
-    ui->label_2->hide();
-    ui->label_3->hide();
-    ui->label_4->hide();
-    ui->label_5->hide();
+    ui->RoundedBlue->show();
+    ui->ProviderLabel->show();
+    ui->Icon->hide();
+    ui->Title->hide();
+    ui->Company->hide();
+    ui->Greeting->hide();
     ui->Send->hide();
-    ui->textBrowser->hide();
+    ui->Help->hide();
     ui->textEdit->hide();
 
-    ui->label_10->setText("Сделки");
+    ui->ProviderLabel->setText("Сделки");
     ui->Update->setText("Update");
 
     // TODO: fill table with db
@@ -171,17 +171,17 @@ void bosInterface::on_Stock_clicked() {
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
-    ui->label_9->show();
-    ui->label_10->show();
-    ui->label_2->hide();
-    ui->label_3->hide();
-    ui->label_4->hide();
-    ui->label_5->hide();
+    ui->RoundedBlue->show();
+    ui->ProviderLabel->show();
+    ui->Icon->hide();
+    ui->Title->hide();
+    ui->Company->hide();
+    ui->Greeting->hide();
     ui->Send->hide();
-    ui->textBrowser->hide();
+    ui->Help->hide();
     ui->textEdit->hide();
 
-    ui->label_10->setText("Склад");
+    ui->ProviderLabel->setText("Склад");
     ui->Update->setText("Update");
 
     // TODO: fill table with db
@@ -224,17 +224,17 @@ void bosInterface::on_Ads_clicked() {
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
-    ui->label_9->show();
-    ui->label_10->show();
-    ui->label_2->hide();
-    ui->label_3->hide();
-    ui->label_4->hide();
-    ui->label_5->hide();
+    ui->RoundedBlue->show();
+    ui->ProviderLabel->show();
+    ui->Icon->hide();
+    ui->Title->hide();
+    ui->Company->hide();
+    ui->Greeting->hide();
     ui->Send->hide();
-    ui->textBrowser->hide();
+    ui->Help->hide();
     ui->textEdit->hide();
 
-    ui->label_10->setText("Реклама");
+    ui->ProviderLabel->setText("Реклама");
     ui->Update->setText("Update");
 
     // TODO: fill table with db
@@ -271,17 +271,17 @@ void bosInterface::on_Employee_clicked() {
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
-    ui->label_9->show();
-    ui->label_10->show();
-    ui->label_2->hide();
-    ui->label_3->hide();
-    ui->label_4->hide();
-    ui->label_5->hide();
+    ui->RoundedBlue->show();
+    ui->ProviderLabel->show();
+    ui->Icon->hide();
+    ui->Title->hide();
+    ui->Company->hide();
+    ui->Greeting->hide();
     ui->Send->hide();
-    ui->textBrowser->hide();
+    ui->Help->hide();
     ui->textEdit->hide();
 
-    ui->label_10->setText("Работники");
+    ui->ProviderLabel->setText("Работники");
     ui->Update->setText("Update");
 
     // TODO: fill table with db
@@ -321,17 +321,17 @@ void bosInterface::on_Support_clicked() {
     ui->Edit->hide();
     ui->Add->hide();
     ui->Delete->hide();
-    ui->label_9->hide();
-    ui->label_10->show();
-    ui->label_2->hide();
-    ui->label_3->hide();
-    ui->label_4->hide();
-    ui->label_5->hide();
+    ui->RoundedBlue->hide();
+    ui->ProviderLabel->show();
+    ui->Icon->hide();
+    ui->Title->hide();
+    ui->Company->hide();
+    ui->Greeting->hide();
     ui->Send->show();
-    ui->textBrowser->show();
+    ui->Help->show();
     ui->textEdit->show();
 
-    ui->label_10->setText("ТехПод");
+    ui->ProviderLabel->setText("ТехПод");
     ui->Send->setText("Отправить");
 }
 

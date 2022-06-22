@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="Company">
    <property name="geometry">
     <rect>
      <x>420</x>
@@ -30,7 +30,7 @@ color: rgb(56, 84, 102);</string>
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Pinguins.Inc&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="Icon">
    <property name="geometry">
     <rect>
      <x>340</x>
@@ -43,7 +43,7 @@ color: rgb(56, 84, 102);</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="Title">
    <property name="geometry">
     <rect>
      <x>320</x>
@@ -60,7 +60,7 @@ color: rgb(56, 84, 102);</string>
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;Pinguin CRM&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_5">
+  <widget class="QLabel" name="Greeting">
    <property name="geometry">
     <rect>
      <x>320</x>
@@ -77,7 +77,7 @@ color: rgb(56, 84, 102);</string>
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Welcome FIO(из БД брать)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_6">
+  <widget class="QLabel" name="RoundedBackground">
    <property name="geometry">
     <rect>
      <x>160</x>
@@ -151,7 +151,7 @@ QTableWidget::item:selection {
 </string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_9">
+  <widget class="QLabel" name="RoundedBlue">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -421,7 +421,7 @@ QPushButton#Delete:pressed {
     <string>Delete</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_10">
+  <widget class="QLabel" name="ProviderLabel">
    <property name="geometry">
     <rect>
      <x>360</x>
@@ -449,7 +449,7 @@ border-bottom-left-radius: 5px;
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QTextBrowser" name="textBrowser">
+  <widget class="QTextBrowser" name="Help">
    <property name="geometry">
     <rect>
      <x>310</x>
@@ -805,6 +805,19 @@ QPushButton#Support:pressed {
      </widget>
     </item>
     <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
      <widget class="QPushButton" name="Logout">
       <property name="styleSheet">
        <string notr="true">QPushButton#Logout:!pressed {
@@ -848,19 +861,6 @@ QPushButton#Logout:pressed {
        <string>Log out</string>
       </property>
      </widget>
-    </item>
-    <item>
-     <spacer name="verticalSpacer">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
-      </property>
-     </spacer>
     </item>
     <item>
      <widget class="QLabel" name="label">
@@ -927,24 +927,24 @@ QPushButton#pushButton_12:pressed {
  }</string>
    </property>
    <property name="text">
-    <string>PushButton</string>
+    <string>Send</string>
    </property>
   </widget>
   <zorder>Send</zorder>
   <zorder>label_8</zorder>
-  <zorder>label_6</zorder>
-  <zorder>label_3</zorder>
-  <zorder>label_4</zorder>
-  <zorder>label_5</zorder>
-  <zorder>label_2</zorder>
-  <zorder>label_9</zorder>
+  <zorder>RoundedBackground</zorder>
+  <zorder>Title</zorder>
+  <zorder>Company</zorder>
+  <zorder>Greeting</zorder>
+  <zorder>Icon</zorder>
+  <zorder>RoundedBlue</zorder>
   <zorder>tableWidget</zorder>
   <zorder>Update</zorder>
   <zorder>Edit</zorder>
   <zorder>Add</zorder>
   <zorder>Delete</zorder>
-  <zorder>label_10</zorder>
-  <zorder>textBrowser</zorder>
+  <zorder>ProviderLabel</zorder>
+  <zorder>Help</zorder>
   <zorder>textEdit</zorder>
   <zorder>LeftButtons</zorder>
  </widget>
