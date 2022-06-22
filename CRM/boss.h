@@ -4,7 +4,6 @@
 #include <QTranslator>
 #include <QWidget>
 #include <QtDebug>
-#include <iostream>
 
 namespace Ui {
 class bosInterface;

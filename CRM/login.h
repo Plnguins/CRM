@@ -1,12 +1,10 @@
-#ifndef LOGIN_H
-#define LOGIN_H
+#pragma once
 
 #include <QFile>
 #include <QFontDatabase>
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QWidget>
-#include <iostream>
 
 namespace Ui {
 class login;
@@ -21,7 +19,7 @@ class login : public QWidget {
     QPushButton *getLoginButton();
 
    private slots:
-    void on_pushButton_clicked();
+    void on_LoginButton_clicked();
 
    signals:
     void bossLogin();
@@ -36,5 +34,3 @@ class login : public QWidget {
     QMessageBox msgBoxEmptyInput;
     QMessageBox msgBoxIncorrectInput;
 };
-
-#endif  // LOGIN_H
