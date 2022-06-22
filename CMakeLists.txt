@@ -56,7 +56,10 @@ IF(WIN32)
     set(resources "${CMAKE_CURRENT_SOURCE_DIR}/resources/resources.rc")
 ENDIF()
 
-add_executable(CRM CRM/main.cpp CRM/Login/Login.ui ${resources})
+file(GLOB SRC "CRM/*.h" "CRM/*.cpp" "CRM/*.ui" "resources/*.qrc")
+
+set(AUTO_RCC ON)
+add_executable(CRM ${SRC} ${resources})
 set_target_properties(CRM PROPERTIES AUTOMOC TRUE AUTOUIC TRUE AUTORCC TRUE)
 
 target_link_libraries(CRM ${Boost_LIBRARIES})

@@ -1,22 +1,20 @@
 #include "seller.h"
+
 #include "ui_seller.h"
 
-seller::seller(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::seller)
-{
+seller::seller(QWidget *parent) : QWidget(parent), ui(new Ui::seller) {
     ui->setupUi(this);
 
-    ui->pushButton->setIcon(QIcon("G:\\CRM\\files\\client-white.png"));
-    ui->pushButton->setIconSize({30,30});
-    ui->pushButton_2->setIcon(QIcon("G:\\CRM\\files\\dollar.png"));
+    ui->pushButton->setIcon(QIcon(":/images/client-white.png"));
+    ui->pushButton->setIconSize({30, 30});
+    ui->pushButton_2->setIcon(QIcon(":/images/dollar.png"));
     ui->pushButton_2->setIconSize({27, 27});
-    ui->pushButton_3->setIcon(QIcon("G:\\CRM\\files\\sklad-white.png"));
+    ui->pushButton_3->setIcon(QIcon(":/images/sklad-white.png"));
     ui->pushButton_3->setIconSize({30, 30});
-    ui->pushButton_6->setIcon(QIcon("G:\\CRM\\files\\t-white.png"));
+    ui->pushButton_6->setIcon(QIcon(":/images/t-white.png"));
     ui->pushButton_6->setIconSize({28, 28});
-    ui->pushButton_7->setIcon(QIcon("G:\\CRM\\files\\logout.png"));
-    ui->pushButton_7->setIconSize({28,28});
+    ui->pushButton_7->setIcon(QIcon(":/images/logout.png"));
+    ui->pushButton_7->setIconSize({28, 28});
 
     ui->tableWidget->hide();
     ui->label_9->hide();
@@ -31,17 +29,13 @@ seller::seller(QWidget *parent) :
 
     ui->textEdit->clear();
 
-    QPixmap pixmap("G:\\CRM\\files\\main.ico");
+    QPixmap pixmap(":/main.ico");
     ui->label_2->setPixmap(pixmap);
 }
 
-seller::~seller()
-{
-    delete ui;
-}
+seller::~seller() { delete ui; }
 
-void seller::on_pushButton_clicked()
-{
+void seller::on_pushButton_clicked() {
     ui->tableWidget->show();
     ui->pushButton_8->show();
     ui->pushButton_9->show();
@@ -60,11 +54,10 @@ void seller::on_pushButton_clicked()
     ui->label_10->setText("Клиенты");
     ui->pushButton_8->setText("Update");
 
-    //TODO: fill table with db
-    //tableVendorUpdate();
+    // TODO: fill table with db
+    // tableVendorUpdate();
 
-
-    //get from db
+    // get from db
     ui->tableWidget->setRowCount(5);
     ui->tableWidget->setColumnCount(7);
     ui->tableWidget->setColumnWidth(0, 65);
@@ -77,25 +70,25 @@ void seller::on_pushButton_clicked()
     QStringList Labels = {"id", "FIO", "Date", "City", "Sex", "e-mail", "tel"};
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
-    //temporary
+    // temporary
     QTableWidgetItem *item = new QTableWidgetItem("123");
     for (size_t i = 0; i < 5; i++) {
         for (size_t j = 0; j < 7; j++) {
             QTableWidgetItem *item = new QTableWidgetItem("123");
             ui->tableWidget->setItem(i, j, item);
-            ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled|Qt::ItemIsSelectable);
+            ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
+                                                  Qt::ItemIsSelectable);
         }
     }
 
-    connect(ui->pushButton_8, SIGNAL(clicked()), this, SLOT(tableClientUpdate()));
-    //connect(ui->pushButton_9, SIGNAL(clicked()), this, SLOT(doSmth()));
-    //connect(ui->pushButton_10, SIGNAL(clicked()), this, SLOT(doSmth()));
-    //connect(ui->pushButton_11, SIGNAL(clicked()), this, SLOT(doSmth()));
+    connect(ui->pushButton_8, SIGNAL(clicked()), this,
+            SLOT(tableClientUpdate()));
+    // connect(ui->pushButton_9, SIGNAL(clicked()), this, SLOT(doSmth()));
+    // connect(ui->pushButton_10, SIGNAL(clicked()), this, SLOT(doSmth()));
+    // connect(ui->pushButton_11, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-
-void seller::on_pushButton_2_clicked()
-{
+void seller::on_pushButton_2_clicked() {
     ui->tableWidget->show();
     ui->pushButton_8->show();
     ui->pushButton_9->show();
@@ -114,13 +107,14 @@ void seller::on_pushButton_2_clicked()
     ui->label_10->setText("Сделки");
     ui->pushButton_8->setText("Update");
 
-    //TODO: fill table with db
-    //tableDealUpdate();
+    // TODO: fill table with db
+    // tableDealUpdate();
 
-    //get from db
+    // get from db
     ui->tableWidget->setRowCount(5);
     ui->tableWidget->setColumnCount(9);
-    QStringList Labels = {"id", "id laptop", "price", "customer", "status", "source", "date", "seller", "mark?"};
+    QStringList Labels = {"id",     "id laptop", "price",  "customer", "status",
+                          "source", "date",      "seller", "mark?"};
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
     ui->tableWidget->setColumnWidth(0, 52);
@@ -133,27 +127,24 @@ void seller::on_pushButton_2_clicked()
     ui->tableWidget->setColumnWidth(7, 52);
     ui->tableWidget->setColumnWidth(8, 51);
 
-    //temporary
+    // temporary
     QTableWidgetItem *item = new QTableWidgetItem("123");
     for (size_t i = 0; i < 5; i++) {
         for (size_t j = 0; j < 9; j++) {
             QTableWidgetItem *item = new QTableWidgetItem("123");
             ui->tableWidget->setItem(i, j, item);
-            ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled|Qt::ItemIsSelectable);
+            ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
+                                                  Qt::ItemIsSelectable);
         }
     }
 
     connect(ui->pushButton_8, SIGNAL(clicked()), this, SLOT(tableDealUpdate()));
-    //connect(ui->pushButton_9, SIGNAL(clicked()), this, SLOT(doSmth()));
-    //connect(ui->pushButton_10, SIGNAL(clicked()), this, SLOT(doSmth()));
-    //connect(ui->pushButton_11, SIGNAL(clicked()), this, SLOT(doSmth()));
+    // connect(ui->pushButton_9, SIGNAL(clicked()), this, SLOT(doSmth()));
+    // connect(ui->pushButton_10, SIGNAL(clicked()), this, SLOT(doSmth()));
+    // connect(ui->pushButton_11, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-
-
-
-void seller::on_pushButton_3_clicked()
-{
+void seller::on_pushButton_3_clicked() {
     ui->tableWidget->show();
     ui->pushButton_8->show();
     ui->pushButton_9->show();
@@ -172,13 +163,14 @@ void seller::on_pushButton_3_clicked()
     ui->label_10->setText("Склад");
     ui->pushButton_8->setText("Update");
 
-    //TODO: fill table with db
-    //tableStorageUpdate();
+    // TODO: fill table with db
+    // tableStorageUpdate();
 
-    //get from db
+    // get from db
     ui->tableWidget->setRowCount(5);
     ui->tableWidget->setColumnCount(6);
-    QStringList Labels = {"id", "id laptop", "price", "number", "available", "source"};
+    QStringList Labels = {"id",     "id laptop", "price",
+                          "number", "available", "source"};
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
     ui->tableWidget->setColumnWidth(0, 78);
@@ -188,25 +180,25 @@ void seller::on_pushButton_3_clicked()
     ui->tableWidget->setColumnWidth(4, 77);
     ui->tableWidget->setColumnWidth(5, 78);
 
-    //temporary
+    // temporary
     QTableWidgetItem *item = new QTableWidgetItem("123");
     for (size_t i = 0; i < 5; i++) {
         for (size_t j = 0; j < 6; j++) {
             QTableWidgetItem *item = new QTableWidgetItem("123");
             ui->tableWidget->setItem(i, j, item);
-            ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled|Qt::ItemIsSelectable);
+            ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
+                                                  Qt::ItemIsSelectable);
         }
     }
 
-    connect(ui->pushButton_8, SIGNAL(clicked()), this, SLOT(tableStorageUpdate()));
-    //connect(ui->pushButton_9, SIGNAL(clicked()), this, SLOT(doSmth()));
-    //connect(ui->pushButton_10, SIGNAL(clicked()), this, SLOT(doSmth()));
-    //connect(ui->pushButton_11, SIGNAL(clicked()), this, SLOT(doSmth()));
+    connect(ui->pushButton_8, SIGNAL(clicked()), this,
+            SLOT(tableStorageUpdate()));
+    // connect(ui->pushButton_9, SIGNAL(clicked()), this, SLOT(doSmth()));
+    // connect(ui->pushButton_10, SIGNAL(clicked()), this, SLOT(doSmth()));
+    // connect(ui->pushButton_11, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-
-void seller::on_pushButton_6_clicked()
-{
+void seller::on_pushButton_6_clicked() {
     ui->tableWidget->hide();
     ui->pushButton_8->hide();
     ui->pushButton_9->hide();
@@ -226,11 +218,7 @@ void seller::on_pushButton_6_clicked()
     ui->pushButton_12->setText("Отправить");
 }
 
-
-
-
-void seller::on_pushButton_7_clicked()
-{
+void seller::on_pushButton_7_clicked() {
     emit logout();
     ui->label_2->show();
     ui->label_3->show();
@@ -249,18 +237,10 @@ void seller::on_pushButton_7_clicked()
     ui->textEdit->clear();
 }
 
-void seller::tableClientUpdate()
-{
+void seller::tableClientUpdate() {
     //
 }
 
-void seller::tableStorageUpdate()
-{
+void seller::tableStorageUpdate() {}
 
-}
-
-void seller::tableDealUpdate()
-{
-
-}
-
+void seller::tableDealUpdate() {}

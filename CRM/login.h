@@ -1,41 +1,40 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 
-#include <QWidget>
-#include <iostream>
+#include <QFile>
+#include <QFontDatabase>
 #include <QMainWindow>
 #include <QMessageBox>
-#include <QFontDatabase>
-#include <QFile>
+#include <QWidget>
+#include <iostream>
 
 namespace Ui {
 class login;
 }
 
-class login : public QWidget
-{
+class login : public QWidget {
     Q_OBJECT
 
-public:
+   public:
     explicit login(QWidget *parent = nullptr);
     ~login();
     QPushButton *getLoginButton();
 
-private slots:
+   private slots:
     void on_pushButton_clicked();
 
-signals:
+   signals:
     void bossLogin();
     void managerLogin();
     void marketologistLogin();
     void sellerLogin();
 
-private:
+   private:
     Ui::login *ui;
-    QIcon closeEye = QIcon(QPixmap("G:\\CRM\\files\\closeEye.png"));
-    QIcon openEye = QIcon(QPixmap("G:\\CRM\\files\\openEye.png"));
+    QIcon closeEye = QIcon(QPixmap(":/images/closeEye.png"));
+    QIcon openEye = QIcon(QPixmap(":/images/openEye.png"));
     QMessageBox msgBoxEmptyInput;
     QMessageBox msgBoxIncorrectInput;
 };
 
-#endif // LOGIN_H
+#endif  // LOGIN_H

@@ -1,16 +1,12 @@
-#include "mainwindow.h"
-#include <login.h>
-#include <boss.h>
-
 #include <QApplication>
 
-void setBossInterface(MainWindow &w, bosInterface *b)
-{
-    w.setCentralWidget(b);
-}
+#include "boss.h"
+#include "login.h"
+#include "mainwindow.h"
 
-int main(int argc, char *argv[])
-{
+void setBossInterface(MainWindow &w, bosInterface *b) { w.setCentralWidget(b); }
+
+int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
 
     QTranslator translator;

@@ -1,10 +1,8 @@
 #include "login.h"
+
 #include "ui_login.h"
 
-login::login(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::login)
-{
+login::login(QWidget *parent) : QWidget(parent), ui(new Ui::login) {
     ui->setupUi(this);
 
     ui->lineEdit->clear();
@@ -18,30 +16,24 @@ login::login(QWidget *parent) :
     msgBoxEmptyInput.setIcon(QMessageBox::Warning);
     msgBoxEmptyInput.setWindowTitle("Empty input");
 
-    msgBoxIncorrectInput.setText("Incorrect Login or Password. Please, try again.");
-    msgBoxIncorrectInput.setInformativeText("Chech if your CapsLock is off and you use correct keyboard layout.");
+    msgBoxIncorrectInput.setText(
+        "Incorrect Login or Password. Please, try again.");
+    msgBoxIncorrectInput.setInformativeText(
+        "Chech if your CapsLock is off and you use correct keyboard layout.");
     msgBoxIncorrectInput.setStandardButtons(QMessageBox::Close);
     msgBoxIncorrectInput.setIcon(QMessageBox::Warning);
     msgBoxIncorrectInput.setWindowTitle("Incorrect data");
 
-    int id = QFontDatabase::addApplicationFont("‪G:\\CRM\\files\\Comfortaa.ttf");
+    int id = QFontDatabase::addApplicationFont(":/Comfortaa.ttf");
 }
 
-login::~login()
-{
-    delete ui;
-}
+login::~login() { delete ui; }
 
-QPushButton *login::getLoginButton()
-{
-    return ui->pushButton;
-}
+QPushButton *login::getLoginButton() { return ui->pushButton; }
 
-
-void login::on_pushButton_clicked()
-{
+void login::on_pushButton_clicked() {
     QString Login, Password;
-    //bossInterface *w = new bossInterface(this);
+    // bossInterface *w = new bossInterface(this);
     bool isInputCorrect = true, isOk = true;
     size_t role;
     Login = ui->lineEdit->text();
@@ -52,7 +44,7 @@ void login::on_pushButton_clicked()
         isOk = false;
     }
 
-    //TODO: checking Login and Password
+    // TODO: checking Login and Password
     if (!isInputCorrect) {
         msgBoxIncorrectInput.show();
         isOk = false;
@@ -67,22 +59,18 @@ void login::on_pushButton_clicked()
             emit bossLogin();
             ui->lineEdit->clear();
             ui->lineEdit_2->clear();
-        }
-        else if(role == 2) {
+        } else if (role == 2) {
             emit managerLogin();
             ui->lineEdit->clear();
             ui->lineEdit_2->clear();
-        }
-        else if (role == 3) {
+        } else if (role == 3) {
             emit marketologistLogin();
             ui->lineEdit->clear();
             ui->lineEdit_2->clear();
-        }
-        else if (role == 4) {
+        } else if (role == 4) {
             emit sellerLogin();
             ui->lineEdit->clear();
             ui->lineEdit_2->clear();
         }
     }
 }
-

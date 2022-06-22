@@ -1,18 +1,17 @@
 #include "marketologist.h"
+
 #include "ui_marketologist.h"
 
-marketologist::marketologist(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::marketologist)
-{
+marketologist::marketologist(QWidget *parent)
+    : QWidget(parent), ui(new Ui::marketologist) {
     ui->setupUi(this);
 
-    ui->pushButton_4->setIcon(QIcon("G:\\CRM\\files\\ad-white.png"));
+    ui->pushButton_4->setIcon(QIcon(":/images/ad-white.png"));
     ui->pushButton_4->setIconSize({27, 27});
-    ui->pushButton_6->setIcon(QIcon("G:\\CRM\\files\\t-white.png"));
+    ui->pushButton_6->setIcon(QIcon(":/images/t-white.png"));
     ui->pushButton_6->setIconSize({28, 28});
-    ui->pushButton_7->setIcon(QIcon("G:\\CRM\\files\\logout.png"));
-    ui->pushButton_7->setIconSize({28,28});
+    ui->pushButton_7->setIcon(QIcon(":/images/logout.png"));
+    ui->pushButton_7->setIconSize({28, 28});
 
     ui->tableWidget->hide();
     ui->label_9->hide();
@@ -31,13 +30,9 @@ marketologist::marketologist(QWidget *parent) :
     ui->label_2->setPixmap(pixmap);
 }
 
-marketologist::~marketologist()
-{
-    delete ui;
-}
+marketologist::~marketologist() { delete ui; }
 
-void marketologist::on_pushButton_4_clicked()
-{
+void marketologist::on_pushButton_4_clicked() {
     ui->tableWidget->show();
     ui->pushButton_8->show();
     ui->pushButton_9->show();
@@ -56,11 +51,10 @@ void marketologist::on_pushButton_4_clicked()
     ui->label_10->setText("Реклама");
     ui->pushButton_8->setText("Update");
 
-    //TODO: fill table with db
-    //tableVendorUpdate();
+    // TODO: fill table with db
+    // tableVendorUpdate();
 
-
-    //get from db
+    // get from db
     ui->tableWidget->setRowCount(5);
     ui->tableWidget->setColumnCount(2);
     ui->tableWidget->setColumnWidth(0, 91);
@@ -68,25 +62,24 @@ void marketologist::on_pushButton_4_clicked()
     QStringList Labels = {"id", "Place"};
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
-    //temporary
+    // temporary
     QTableWidgetItem *item = new QTableWidgetItem("123");
     for (size_t i = 0; i < 5; i++) {
         for (size_t j = 0; j < 2; j++) {
             QTableWidgetItem *item = new QTableWidgetItem("123");
             ui->tableWidget->setItem(i, j, item);
-            ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled|Qt::ItemIsSelectable);
+            ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
+                                                  Qt::ItemIsSelectable);
         }
     }
 
     connect(ui->pushButton_8, SIGNAL(clicked()), this, SLOT(tableAdUpdate()));
-    //connect(ui->pushButton_9, SIGNAL(clicked()), this, SLOT(doSmth()));
-    //connect(ui->pushButton_10, SIGNAL(clicked()), this, SLOT(doSmth()));
-    //connect(ui->pushButton_11, SIGNAL(clicked()), this, SLOT(doSmth()));
+    // connect(ui->pushButton_9, SIGNAL(clicked()), this, SLOT(doSmth()));
+    // connect(ui->pushButton_10, SIGNAL(clicked()), this, SLOT(doSmth()));
+    // connect(ui->pushButton_11, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-
-void marketologist::on_pushButton_6_clicked()
-{
+void marketologist::on_pushButton_6_clicked() {
     ui->tableWidget->hide();
     ui->pushButton_8->hide();
     ui->pushButton_9->hide();
@@ -106,9 +99,7 @@ void marketologist::on_pushButton_6_clicked()
     ui->pushButton_12->setText("Отправить");
 }
 
-
-void marketologist::on_pushButton_7_clicked()
-{
+void marketologist::on_pushButton_7_clicked() {
     emit logout();
     ui->label_2->show();
     ui->label_3->show();
@@ -127,8 +118,6 @@ void marketologist::on_pushButton_7_clicked()
     ui->textEdit->clear();
 }
 
-void marketologist::tableAdUpdate()
-{
+void marketologist::tableAdUpdate() {
     //
 }
-

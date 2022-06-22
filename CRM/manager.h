@@ -7,18 +7,17 @@ namespace Ui {
 class manager;
 }
 
-class manager : public QWidget
-{
+class manager : public QWidget {
     Q_OBJECT
 
-public:
+   public:
     explicit manager(QWidget *parent = nullptr);
     ~manager();
 
-signals:
+   signals:
     void logout();
 
-private slots:
+   private slots:
     void tableVendorUpdate();
     void tableDealUpdate();
     void tableStorageUpdate();
@@ -33,8 +32,8 @@ private slots:
 
     void on_pushButton_6_clicked();
 
-private:
+   private:
     Ui::manager *ui;
 };
 
-#endif // MANAGER_H
+#endif  // MANAGER_H

@@ -1,52 +1,45 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <iostream>
+#include <QDebug>
+#include <QFontDatabase>
 #include <QMainWindow>
 #include <QMessageBox>
-#include <boss.h>
-#include <manager.h>
-#include <marketologist.h>
-#include <seller.h>
-#include <QFontDatabase>
-#include <login.h>
 #include <QPushButton>
-#include <QDebug>
 #include <QStackedWidget>
+#include <iostream>
+
+#include "boss.h"
+#include "login.h"
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui {
+class MainWindow;
+}
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow {
     Q_OBJECT
 
-public:
+   public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-
-
-private slots:
+   private slots:
     void setBossInterface();
     void setLoginInterface();
     void setManagerInterface();
     void setMarketologistInterface();
     void setSellerInterface();
 
-private:
+   private:
     Ui::MainWindow *ui;
-    QIcon closeEye = QIcon(QPixmap("G:\\CRM\\files\\closeEye.png"));
-    QIcon openEye = QIcon(QPixmap("G:\\CRM\\files\\openEye.png"));
+    QIcon closeEye = QIcon(QPixmap(":/images/closeEye.png"));
+    QIcon openEye = QIcon(QPixmap(":/images/openEye.png"));
     QMessageBox msgBoxEmptyInput;
     QMessageBox msgBoxIncorrectInput;
     bosInterface *bos = new bosInterface();
     login *loginInterface = new login();
-    manager *mngr = new manager();
-    marketologist *mrktlg = new marketologist();
-    seller *slr = new seller();
     QStackedWidget stack;
-
 };
-#endif // MAINWINDOW_H
+#endif  // MAINWINDOW_H
