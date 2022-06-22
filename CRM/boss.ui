@@ -109,22 +109,6 @@ border-radius: 20px;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_8">
-   <property name="geometry">
-    <rect>
-     <x>-110</x>
-     <y>-80</y>
-     <width>1091</width>
-     <height>741</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color:rgb(221, 235, 255);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
@@ -946,7 +930,6 @@ QPushButton#pushButton_12:pressed {
    </property>
   </widget>
   <zorder>Send</zorder>
-  <zorder>label_8</zorder>
   <zorder>RoundedBackground</zorder>
   <zorder>Title</zorder>
   <zorder>Company</zorder>

@@ -17,7 +17,6 @@
 
 #include <QTranslator>
 #include <QWidget>
-#include <QtDebug>
 
 #include "mainwindow.h"
 #include "ui_boss.h"

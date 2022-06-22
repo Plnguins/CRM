@@ -171,22 +171,6 @@ border-radius:20px;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_8">
-   <property name="geometry">
-    <rect>
-     <x>-110</x>
-     <y>-82</y>
-     <width>1091</width>
-     <height>741</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color:rgb(221, 235, 255);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QPushButton" name="Edit">
    <property name="geometry">
     <rect>
@@ -283,22 +267,6 @@ color: rgb(56, 84, 102);</string>
    </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Pinguins.Inc&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_11">
-   <property name="geometry">
-    <rect>
-     <x>400</x>
-     <y>368</y>
-     <width>1091</width>
-     <height>741</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color:rgb(221, 235, 255);</string>
-   </property>
-   <property name="text">
-    <string/>
    </property>
   </widget>
   <widget class="QTextBrowser" name="Help">
@@ -865,8 +833,6 @@ background-color: rgb(56, 84, 102);</string>
     </item>
    </layout>
   </widget>
-  <zorder>label_8</zorder>
-  <zorder>label_11</zorder>
   <zorder>RoundedBackground</zorder>
   <zorder>Icon</zorder>
   <zorder>Title</zorder>

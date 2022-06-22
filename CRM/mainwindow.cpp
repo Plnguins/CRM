@@ -15,8 +15,6 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #include "mainwindow.h"
 
-#include <QFile>
-
 #include "boss.h"
 #include "login.h"
 #include "manager.h"
