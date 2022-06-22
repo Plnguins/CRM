@@ -1,50 +1,46 @@
-#ifndef BOSS_H
-#define BOSS_H
+#pragma once
 
-#include <QWidget>
-#include <QTranslator>
 #include <QDir>
-#include <iostream>
+#include <QTranslator>
+#include <QWidget>
 #include <QtDebug>
+#include <iostream>
 
 namespace Ui {
 class bosInterface;
 }
 
-class bosInterface : public QWidget
-{
+class bosInterface : public QWidget {
     Q_OBJECT
 
-public:
+   public:
     explicit bosInterface(QWidget *parent = nullptr);
     ~bosInterface();
 
-signals:
+   signals:
     void logout();
 
-private slots:
-    void on_pushButton_7_clicked();
-    void on_pushButton_clicked();
+   private slots:
+    void on_Provider_clicked();
     void tableVendorUpdate();
     void tableDealUpdate();
     void tableStorageUpdate();
     void tableAdUpdate();
     void tableEmployeesUpdate();
 
+    void on_Employee_clicked();
 
-    void on_pushButton_2_clicked();
+    void on_Stock_clicked();
 
-    void on_pushButton_3_clicked();
+    void on_Ads_clicked();
 
-    void on_pushButton_4_clicked();
+    void on_Logout_clicked();
 
-    void on_pushButton_5_clicked();
+    void on_Deal_clicked();
 
-    void on_pushButton_6_clicked();
+    void on_Support_clicked();
 
-private:
+   private:
     Ui::bosInterface *ui;
     QTranslator translator;
 };
-
-#endif // BOSS_H

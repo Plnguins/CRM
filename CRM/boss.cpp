@@ -9,29 +9,29 @@ bosInterface::bosInterface(QWidget *parent)
     QString path = QDir::currentPath();
     int pos = path.toStdString().rfind('/');
     path.remove(pos + 1, path.size() - pos - 1);
-    ui->pushButton->setIcon(QIcon(":/images/vendor-white.png"));
-    ui->pushButton->setIconSize({30, 30});
-    ui->pushButton_2->setIcon(QIcon(":/images/dollar.png"));
-    ui->pushButton_2->setIconSize({27, 27});
-    ui->pushButton_4->setIcon(QIcon(":/images/ad-white.png"));
-    ui->pushButton_4->setIconSize({27, 27});
-    ui->pushButton_5->setIcon(QIcon(":/images/worker-white.png"));
-    ui->pushButton_5->setIconSize({30, 30});
-    ui->pushButton_3->setIcon(QIcon(":/images/sklad-white.png"));
-    ui->pushButton_3->setIconSize({30, 30});
-    ui->pushButton_6->setIcon(QIcon(":/images/t-white.png"));
-    ui->pushButton_6->setIconSize({28, 28});
-    ui->pushButton_7->setIcon(QIcon(":/images/logout.png"));
-    ui->pushButton_7->setIconSize({28, 28});
+    ui->Provider->setIcon(QIcon(":/images/vendor-white.png"));
+    ui->Provider->setIconSize({30, 30});
+    ui->Deal->setIcon(QIcon(":/images/dollar.png"));
+    ui->Deal->setIconSize({27, 27});
+    ui->Ads->setIcon(QIcon(":/images/ad-white.png"));
+    ui->Ads->setIconSize({27, 27});
+    ui->Employee->setIcon(QIcon(":/images/worker-white.png"));
+    ui->Employee->setIconSize({30, 30});
+    ui->Stock->setIcon(QIcon(":/images/sklad-white.png"));
+    ui->Stock->setIconSize({30, 30});
+    ui->Support->setIcon(QIcon(":/images/t-white.png"));
+    ui->Support->setIconSize({28, 28});
+    ui->Logout->setIcon(QIcon(":/images/logout.png"));
+    ui->Logout->setIconSize({28, 28});
 
     ui->tableWidget->hide();
     ui->label_9->hide();
-    ui->pushButton_8->hide();
-    ui->pushButton_9->hide();
-    ui->pushButton_10->hide();
-    ui->pushButton_11->hide();
+    ui->Update->hide();
+    ui->Edit->hide();
+    ui->Add->hide();
+    ui->Delete->hide();
     ui->label_10->hide();
-    ui->pushButton_12->hide();
+    ui->Send->hide();
     ui->textBrowser->hide();
     ui->textEdit->hide();
 
@@ -43,7 +43,7 @@ bosInterface::bosInterface(QWidget *parent)
 
 bosInterface::~bosInterface() { delete ui; }
 
-void bosInterface::on_pushButton_7_clicked() {
+void bosInterface::on_Logout_clicked() {
     emit logout();
     ui->label_2->show();
     ui->label_3->show();
@@ -51,35 +51,35 @@ void bosInterface::on_pushButton_7_clicked() {
     ui->label_5->show();
     ui->tableWidget->hide();
     ui->label_9->hide();
-    ui->pushButton_8->hide();
-    ui->pushButton_9->hide();
-    ui->pushButton_10->hide();
-    ui->pushButton_11->hide();
+    ui->Update->hide();
+    ui->Edit->hide();
+    ui->Add->hide();
+    ui->Delete->hide();
     ui->label_10->hide();
-    ui->pushButton_12->hide();
+    ui->Send->hide();
     ui->textBrowser->hide();
     ui->textEdit->hide();
     ui->textEdit->clear();
 }
 
-void bosInterface::on_pushButton_clicked() {
+void bosInterface::on_Provider_clicked() {
     ui->tableWidget->show();
-    ui->pushButton_8->show();
-    ui->pushButton_9->show();
-    ui->pushButton_10->show();
-    ui->pushButton_11->show();
+    ui->Update->show();
+    ui->Edit->show();
+    ui->Add->show();
+    ui->Delete->show();
     ui->label_9->show();
     ui->label_10->show();
     ui->label_2->hide();
     ui->label_3->hide();
     ui->label_4->hide();
     ui->label_5->hide();
-    ui->pushButton_12->hide();
+    ui->Send->hide();
     ui->textBrowser->hide();
     ui->textEdit->hide();
 
     ui->label_10->setText("Поставщики");
-    ui->pushButton_8->setText("Update");
+    ui->Update->setText("Update");
 
     // TODO: fill table with db
     // tableVendorUpdate();
@@ -103,31 +103,30 @@ void bosInterface::on_pushButton_clicked() {
         }
     }
 
-    connect(ui->pushButton_8, SIGNAL(clicked()), this,
-            SLOT(tableVendorUpdate()));
-    // connect(ui->pushButton_9, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->pushButton_10, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->pushButton_11, SIGNAL(clicked()), this, SLOT(doSmth()));
+    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableVendorUpdate()));
+    // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
+    // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
+    // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void bosInterface::on_pushButton_2_clicked() {
+void bosInterface::on_Deal_clicked() {
     ui->tableWidget->show();
-    ui->pushButton_8->show();
-    ui->pushButton_9->show();
-    ui->pushButton_10->show();
-    ui->pushButton_11->show();
+    ui->Update->show();
+    ui->Edit->show();
+    ui->Add->show();
+    ui->Delete->show();
     ui->label_9->show();
     ui->label_10->show();
     ui->label_2->hide();
     ui->label_3->hide();
     ui->label_4->hide();
     ui->label_5->hide();
-    ui->pushButton_12->hide();
+    ui->Send->hide();
     ui->textBrowser->hide();
     ui->textEdit->hide();
 
     ui->label_10->setText("Сделки");
-    ui->pushButton_8->setText("Update");
+    ui->Update->setText("Update");
 
     // TODO: fill table with db
     // tableDealUpdate();
@@ -160,30 +159,30 @@ void bosInterface::on_pushButton_2_clicked() {
         }
     }
 
-    connect(ui->pushButton_8, SIGNAL(clicked()), this, SLOT(tableDealUpdate()));
-    // connect(ui->pushButton_9, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->pushButton_10, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->pushButton_11, SIGNAL(clicked()), this, SLOT(doSmth()));
+    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableDealUpdate()));
+    // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
+    // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
+    // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void bosInterface::on_pushButton_3_clicked() {
+void bosInterface::on_Stock_clicked() {
     ui->tableWidget->show();
-    ui->pushButton_8->show();
-    ui->pushButton_9->show();
-    ui->pushButton_10->show();
-    ui->pushButton_11->show();
+    ui->Update->show();
+    ui->Edit->show();
+    ui->Add->show();
+    ui->Delete->show();
     ui->label_9->show();
     ui->label_10->show();
     ui->label_2->hide();
     ui->label_3->hide();
     ui->label_4->hide();
     ui->label_5->hide();
-    ui->pushButton_12->hide();
+    ui->Send->hide();
     ui->textBrowser->hide();
     ui->textEdit->hide();
 
     ui->label_10->setText("Склад");
-    ui->pushButton_8->setText("Update");
+    ui->Update->setText("Update");
 
     // TODO: fill table with db
     // tableStorageUpdate();
@@ -213,31 +212,30 @@ void bosInterface::on_pushButton_3_clicked() {
         }
     }
 
-    connect(ui->pushButton_8, SIGNAL(clicked()), this,
-            SLOT(tableStorageUpdate()));
-    // connect(ui->pushButton_9, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->pushButton_10, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->pushButton_11, SIGNAL(clicked()), this, SLOT(doSmth()));
+    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableStorageUpdate()));
+    // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
+    // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
+    // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void bosInterface::on_pushButton_4_clicked() {
+void bosInterface::on_Ads_clicked() {
     ui->tableWidget->show();
-    ui->pushButton_8->show();
-    ui->pushButton_9->show();
-    ui->pushButton_10->show();
-    ui->pushButton_11->show();
+    ui->Update->show();
+    ui->Edit->show();
+    ui->Add->show();
+    ui->Delete->show();
     ui->label_9->show();
     ui->label_10->show();
     ui->label_2->hide();
     ui->label_3->hide();
     ui->label_4->hide();
     ui->label_5->hide();
-    ui->pushButton_12->hide();
+    ui->Send->hide();
     ui->textBrowser->hide();
     ui->textEdit->hide();
 
     ui->label_10->setText("Реклама");
-    ui->pushButton_8->setText("Update");
+    ui->Update->setText("Update");
 
     // TODO: fill table with db
     // tableVendorUpdate();
@@ -261,30 +259,30 @@ void bosInterface::on_pushButton_4_clicked() {
         }
     }
 
-    connect(ui->pushButton_8, SIGNAL(clicked()), this, SLOT(tableAdUpdate()));
-    // connect(ui->pushButton_9, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->pushButton_10, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->pushButton_11, SIGNAL(clicked()), this, SLOT(doSmth()));
+    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableAdUpdate()));
+    // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
+    // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
+    // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void bosInterface::on_pushButton_5_clicked() {
+void bosInterface::on_Employee_clicked() {
     ui->tableWidget->show();
-    ui->pushButton_8->show();
-    ui->pushButton_9->show();
-    ui->pushButton_10->show();
-    ui->pushButton_11->show();
+    ui->Update->show();
+    ui->Edit->show();
+    ui->Add->show();
+    ui->Delete->show();
     ui->label_9->show();
     ui->label_10->show();
     ui->label_2->hide();
     ui->label_3->hide();
     ui->label_4->hide();
     ui->label_5->hide();
-    ui->pushButton_12->hide();
+    ui->Send->hide();
     ui->textBrowser->hide();
     ui->textEdit->hide();
 
     ui->label_10->setText("Работники");
-    ui->pushButton_8->setText("Update");
+    ui->Update->setText("Update");
 
     // TODO: fill table with db
     // tableVendorUpdate();
@@ -311,31 +309,30 @@ void bosInterface::on_pushButton_5_clicked() {
         }
     }
 
-    connect(ui->pushButton_8, SIGNAL(clicked()), this,
-            SLOT(tableVendorUpdate()));
-    // connect(ui->pushButton_9, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->pushButton_10, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->pushButton_11, SIGNAL(clicked()), this, SLOT(doSmth()));
+    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableVendorUpdate()));
+    // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
+    // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
+    // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void bosInterface::on_pushButton_6_clicked() {
+void bosInterface::on_Support_clicked() {
     ui->tableWidget->hide();
-    ui->pushButton_8->hide();
-    ui->pushButton_9->hide();
-    ui->pushButton_10->hide();
-    ui->pushButton_11->hide();
+    ui->Update->hide();
+    ui->Edit->hide();
+    ui->Add->hide();
+    ui->Delete->hide();
     ui->label_9->hide();
     ui->label_10->show();
     ui->label_2->hide();
     ui->label_3->hide();
     ui->label_4->hide();
     ui->label_5->hide();
-    ui->pushButton_12->show();
+    ui->Send->show();
     ui->textBrowser->show();
     ui->textEdit->show();
 
     ui->label_10->setText("ТехПод");
-    ui->pushButton_12->setText("Отправить");
+    ui->Send->setText("Отправить");
 }
 
 //----------table update functions---------------
