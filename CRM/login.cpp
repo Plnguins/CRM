@@ -19,7 +19,7 @@ login::login(QWidget *parent) : QWidget(parent), ui(new Ui::login) {
     msgBoxIncorrectInput.setText(
         "Incorrect Login or Password. Please, try again.");
     msgBoxIncorrectInput.setInformativeText(
-        "Chech if your CapsLock is off and you use correct keyboard layout.");
+        "Check if your CapsLock is off and you use correct keyboard layout.");
     msgBoxIncorrectInput.setStandardButtons(QMessageBox::Close);
     msgBoxIncorrectInput.setIcon(QMessageBox::Warning);
     msgBoxIncorrectInput.setWindowTitle("Incorrect data");
