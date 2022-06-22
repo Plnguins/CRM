@@ -1,4 +1,4 @@
-﻿# CMake script for building project
+# CMake script for building project
 # Copyright (C) 2022  VadVergasov as part of Plnguins
 
 # This program is free software: you can redistribute it and/or modify
@@ -88,3 +88,8 @@ set_target_properties(CRM PROPERTIES
     WIN32_EXECUTABLE ON
     MACOSX_BUNDLE ON
 )
+
+add_custom_command(TARGET CRM POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_BINARY_DIR}/bin ${CMAKE_SOURCE_DIR}/packages/com.pinguins.crm/data)
+add_custom_command(TARGET CRM POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_SOURCE_DIR}/LICENSE.txt ${CMAKE_SOURCE_DIR}/packages/com.pinguins.crm/meta/LICENSE.txt)
