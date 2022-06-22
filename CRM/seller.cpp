@@ -1,8 +1,7 @@
 #include "seller.h"
 
-#include "ui_seller.h"
-
-seller::seller(QWidget *parent) : QWidget(parent), ui(new Ui::seller) {
+seller::seller(QMainWindow *parent)
+    : parent(dynamic_cast<MainWindow *>(parent)), ui(new Ui::sellerUi) {
     ui->setupUi(this);
 
     ui->pushButton->setIcon(QIcon(":/images/client-white.png"));
@@ -219,7 +218,6 @@ void seller::on_pushButton_6_clicked() {
 }
 
 void seller::on_pushButton_7_clicked() {
-    emit logout();
     ui->label_2->show();
     ui->label_3->show();
     ui->label_4->show();
@@ -235,6 +233,7 @@ void seller::on_pushButton_7_clicked() {
     ui->textBrowser->hide();
     ui->textEdit->hide();
     ui->textEdit->clear();
+    parent->setLoginInterface();
 }
 
 void seller::tableClientUpdate() {

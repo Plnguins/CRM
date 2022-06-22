@@ -1,9 +1,7 @@
 #include "marketologist.h"
 
-#include "ui_marketologist.h"
-
 marketologist::marketologist(QWidget *parent)
-    : QWidget(parent), ui(new Ui::marketologist) {
+    : parent(dynamic_cast<MainWindow *>(parent)), ui(new Ui::marketologistUi) {
     ui->setupUi(this);
 
     ui->pushButton_4->setIcon(QIcon(":/images/ad-white.png"));
@@ -26,7 +24,7 @@ marketologist::marketologist(QWidget *parent)
 
     ui->textEdit->clear();
 
-    QPixmap pixmap("G:\\CRM\\files\\main.ico");
+    QPixmap pixmap(":/main.ico");
     ui->label_2->setPixmap(pixmap);
 }
 
@@ -100,7 +98,6 @@ void marketologist::on_pushButton_6_clicked() {
 }
 
 void marketologist::on_pushButton_7_clicked() {
-    emit logout();
     ui->label_2->show();
     ui->label_3->show();
     ui->label_4->show();
@@ -116,6 +113,7 @@ void marketologist::on_pushButton_7_clicked() {
     ui->textBrowser->hide();
     ui->textEdit->hide();
     ui->textEdit->clear();
+    parent->setLoginInterface();
 }
 
 void marketologist::tableAdUpdate() {

@@ -1,21 +1,23 @@
-#ifndef MARKETOLOGIST_H
-#define MARKETOLOGIST_H
+#pragma once
 
+#include <QMainWindow>
 #include <QWidget>
 
+#include "mainwindow.h"
+#include "ui_marketologist.h"
+
 namespace Ui {
-class marketologist;
+class marketologistUi;
 }
 
-class marketologist : public QWidget
-{
+class marketologist : public QWidget {
     Q_OBJECT
 
-public:
+   public:
     explicit marketologist(QWidget *parent = nullptr);
     ~marketologist();
 
-private slots:
+   private slots:
     void on_pushButton_4_clicked();
 
     void on_pushButton_6_clicked();
@@ -24,11 +26,10 @@ private slots:
 
     void tableAdUpdate();
 
-signals:
+   signals:
     void logout();
 
-private:
-    Ui::marketologist *ui;
+   private:
+    MainWindow *parent;
+    Ui::marketologistUi *ui;
 };
-
-#endif // MARKETOLOGIST_H

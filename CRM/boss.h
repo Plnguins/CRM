@@ -1,20 +1,22 @@
 #pragma once
 
-#include <QDir>
 #include <QTranslator>
 #include <QWidget>
 #include <QtDebug>
 
+#include "mainwindow.h"
+#include "ui_boss.h"
+
 namespace Ui {
-class bosInterface;
+class bossUi;
 }
 
-class bosInterface : public QWidget {
+class boss : public QWidget {
     Q_OBJECT
 
    public:
-    explicit bosInterface(QWidget *parent = nullptr);
-    ~bosInterface();
+    explicit boss(QMainWindow *parent = nullptr);
+    ~boss();
 
    signals:
     void logout();
@@ -40,6 +42,7 @@ class bosInterface : public QWidget {
     void on_Support_clicked();
 
    private:
-    Ui::bosInterface *ui;
+    MainWindow *parent;
+    Ui::bossUi *ui;
     QTranslator translator;
 };

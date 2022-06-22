@@ -1,24 +1,26 @@
-#ifndef SELLER_H
-#define SELLER_H
+#pragma once
 
+#include <QMainWindow>
 #include <QWidget>
 
+#include "mainwindow.h"
+#include "ui_seller.h"
+
 namespace Ui {
-class seller;
+class sellerUi;
 }
 
-class seller : public QWidget
-{
+class seller : public QWidget {
     Q_OBJECT
 
-public:
-    explicit seller(QWidget *parent = nullptr);
+   public:
+    explicit seller(QMainWindow *parent = nullptr);
     ~seller();
 
-signals:
+   signals:
     void logout();
 
-private slots:
+   private slots:
     void on_pushButton_clicked();
 
     void on_pushButton_2_clicked();
@@ -33,8 +35,7 @@ private slots:
     void tableStorageUpdate();
     void tableDealUpdate();
 
-private:
-    Ui::seller *ui;
+   private:
+    MainWindow *parent;
+    Ui::sellerUi *ui;
 };
-
-#endif // SELLER_H

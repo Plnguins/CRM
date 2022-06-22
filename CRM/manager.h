@@ -1,17 +1,19 @@
-#ifndef MANAGER_H
-#define MANAGER_H
+#pragma once
 
+#include <QMainWindow>
 #include <QWidget>
 
+#include "mainwindow.h"
+#include "ui_manager.h"
 namespace Ui {
-class manager;
+class managerUi;
 }
 
 class manager : public QWidget {
     Q_OBJECT
 
    public:
-    explicit manager(QWidget *parent = nullptr);
+    explicit manager(QMainWindow *parent = nullptr);
     ~manager();
 
    signals:
@@ -22,18 +24,17 @@ class manager : public QWidget {
     void tableDealUpdate();
     void tableStorageUpdate();
 
-    void on_pushButton_7_clicked();
+    void on_Logout_clicked();
 
-    void on_pushButton_clicked();
+    void on_Provider_clicked();
 
-    void on_pushButton_2_clicked();
+    void on_Deal_clicked();
 
-    void on_pushButton_3_clicked();
+    void on_Stock_clicked();
 
-    void on_pushButton_6_clicked();
+    void on_Support_clicked();
 
    private:
-    Ui::manager *ui;
+    MainWindow *parent;
+    Ui::managerUi *ui;
 };
-
-#endif  // MANAGER_H

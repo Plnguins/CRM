@@ -1,8 +1,7 @@
 #include "manager.h"
 
-#include "ui_manager.h"
-
-manager::manager(QWidget *parent) : QWidget(parent), ui(new Ui::manager) {
+manager::manager(QMainWindow *parent)
+    : parent(dynamic_cast<MainWindow *>(parent)), ui(new Ui::managerUi) {
     ui->setupUi(this);
 
     ui->pushButton->setIcon(QIcon(":/images/vendor-white.png"));
@@ -29,14 +28,14 @@ manager::manager(QWidget *parent) : QWidget(parent), ui(new Ui::manager) {
 
     ui->textEdit->clear();
 
-    QPixmap pixmap("G:\\CRM\\files\\main.ico");
+    QPixmap pixmap(":/main.ico");
     ui->label_2->setPixmap(pixmap);
 }
 
 manager::~manager() { delete ui; }
 
 void manager::on_pushButton_7_clicked() {
-    emit logout();
+    ui->Icon->show();
     ui->label_2->show();
     ui->label_3->show();
     ui->label_4->show();
@@ -52,6 +51,7 @@ void manager::on_pushButton_7_clicked() {
     ui->textBrowser->hide();
     ui->textEdit->hide();
     ui->textEdit->clear();
+    parent->setLoginInterface();
 }
 
 void manager::on_pushButton_clicked() {

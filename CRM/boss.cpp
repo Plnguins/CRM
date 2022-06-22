@@ -1,14 +1,9 @@
 #include "boss.h"
 
-#include "ui_boss.h"
-
-bosInterface::bosInterface(QWidget *parent)
-    : QWidget(parent), ui(new Ui::bosInterface) {
+boss::boss(QMainWindow *parent)
+    : parent(dynamic_cast<MainWindow *>(parent)), ui(new Ui::bossUi) {
     ui->setupUi(this);
 
-    QString path = QDir::currentPath();
-    int pos = path.toStdString().rfind('/');
-    path.remove(pos + 1, path.size() - pos - 1);
     ui->Provider->setIcon(QIcon(":/images/vendor-white.png"));
     ui->Provider->setIconSize({30, 30});
     ui->Deal->setIcon(QIcon(":/images/dollar.png"));
@@ -41,10 +36,9 @@ bosInterface::bosInterface(QWidget *parent)
     ui->Icon->setPixmap(pixmap);
 }
 
-bosInterface::~bosInterface() { delete ui; }
+boss::~boss() { delete ui; }
 
-void bosInterface::on_Logout_clicked() {
-    emit logout();
+void boss::on_Logout_clicked() {
     ui->Icon->show();
     ui->Title->show();
     ui->Company->show();
@@ -60,9 +54,10 @@ void bosInterface::on_Logout_clicked() {
     ui->Help->hide();
     ui->textEdit->hide();
     ui->textEdit->clear();
+    parent->setLoginInterface();
 }
 
-void bosInterface::on_Provider_clicked() {
+void boss::on_Provider_clicked() {
     ui->tableWidget->show();
     ui->Update->show();
     ui->Edit->show();
@@ -109,7 +104,7 @@ void bosInterface::on_Provider_clicked() {
     // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void bosInterface::on_Deal_clicked() {
+void boss::on_Deal_clicked() {
     ui->tableWidget->show();
     ui->Update->show();
     ui->Edit->show();
@@ -165,7 +160,7 @@ void bosInterface::on_Deal_clicked() {
     // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void bosInterface::on_Stock_clicked() {
+void boss::on_Stock_clicked() {
     ui->tableWidget->show();
     ui->Update->show();
     ui->Edit->show();
@@ -218,7 +213,7 @@ void bosInterface::on_Stock_clicked() {
     // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void bosInterface::on_Ads_clicked() {
+void boss::on_Ads_clicked() {
     ui->tableWidget->show();
     ui->Update->show();
     ui->Edit->show();
@@ -265,7 +260,7 @@ void bosInterface::on_Ads_clicked() {
     // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void bosInterface::on_Employee_clicked() {
+void boss::on_Employee_clicked() {
     ui->tableWidget->show();
     ui->Update->show();
     ui->Edit->show();
@@ -315,7 +310,7 @@ void bosInterface::on_Employee_clicked() {
     // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void bosInterface::on_Support_clicked() {
+void boss::on_Support_clicked() {
     ui->tableWidget->hide();
     ui->Update->hide();
     ui->Edit->hide();
@@ -337,22 +332,22 @@ void bosInterface::on_Support_clicked() {
 
 //----------table update functions---------------
 
-void bosInterface::tableVendorUpdate() {
+void boss::tableVendorUpdate() {
     //
 }
 
-void bosInterface::tableDealUpdate() {
+void boss::tableDealUpdate() {
     //
 }
 
-void bosInterface::tableStorageUpdate() {
+void boss::tableStorageUpdate() {
     //
 }
 
-void bosInterface::tableAdUpdate() {
+void boss::tableAdUpdate() {
     //
 }
 
-void bosInterface::tableEmployeesUpdate() {
+void boss::tableEmployeesUpdate() {
     //
 }

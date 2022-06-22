@@ -1,8 +1,7 @@
 #include "login.h"
 
-#include "ui_login.h"
-
-login::login(QWidget *parent) : QWidget(parent), ui(new Ui::login) {
+login::login(QMainWindow *parent)
+    : parent(dynamic_cast<MainWindow *>(parent)), ui(new Ui::loginUi) {
     ui->setupUi(this);
     ui->Login->clear();
     ui->Password->clear();
@@ -45,19 +44,19 @@ void login::on_LoginButton_clicked() {
     role = Login.toInt();
     if (isOk) {
         if (role == 1) {
-            emit bossLogin();
+            parent->setBossInterface();
             ui->Login->clear();
             ui->Password->clear();
         } else if (role == 2) {
-            emit managerLogin();
+            parent->setManagerInterface();
             ui->Login->clear();
             ui->Password->clear();
         } else if (role == 3) {
-            emit marketologistLogin();
+            parent->setMarketologistInterface();
             ui->Login->clear();
             ui->Password->clear();
         } else if (role == 4) {
-            emit sellerLogin();
+            parent->setSellerInterface();
             ui->Login->clear();
             ui->Password->clear();
         }

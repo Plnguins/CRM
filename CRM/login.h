@@ -6,29 +6,26 @@
 #include <QMessageBox>
 #include <QWidget>
 
+#include "mainwindow.h"
+#include "ui_login.h"
 namespace Ui {
-class login;
+class loginUi;
 }
 
 class login : public QWidget {
     Q_OBJECT
 
    public:
-    explicit login(QWidget *parent = nullptr);
+    explicit login(QMainWindow *parent = nullptr);
     ~login();
     QPushButton *getLoginButton();
 
    private slots:
     void on_LoginButton_clicked();
 
-   signals:
-    void bossLogin();
-    void managerLogin();
-    void marketologistLogin();
-    void sellerLogin();
-
    private:
-    Ui::login *ui;
+    MainWindow *parent;
+    Ui::loginUi *ui;
     QIcon closeEye = QIcon(QPixmap(":/images/closeEye.png"));
     QIcon openEye = QIcon(QPixmap(":/images/openEye.png"));
     QMessageBox msgBoxEmptyInput;

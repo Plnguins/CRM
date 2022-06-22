@@ -4,8 +4,6 @@
 #include "login.h"
 #include "mainwindow.h"
 
-void setBossInterface(MainWindow &w, bosInterface *b) { w.setCentralWidget(b); }
-
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
 
