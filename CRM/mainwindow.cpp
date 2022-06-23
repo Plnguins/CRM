@@ -38,7 +38,7 @@ void MainWindow::setSellerInterface() {
 
 void MainWindow::setMarketerInterface() {
     setCentralWidget(new marketer(this));
-    setFixedSize({821, 511});
+    setFixedSize({832, 503});
 }
 
 void MainWindow::setManagerInterface() {

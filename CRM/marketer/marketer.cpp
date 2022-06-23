@@ -19,50 +19,50 @@ marketer::marketer(QWidget *parent)
     : parent(dynamic_cast<MainWindow *>(parent)), ui(new Ui::marketerUi) {
     ui->setupUi(this);
 
-    ui->pushButton_4->setIcon(QIcon(":/images/ad-white.png"));
-    ui->pushButton_4->setIconSize({27, 27});
-    ui->pushButton_6->setIcon(QIcon(":/images/t-white.png"));
-    ui->pushButton_6->setIconSize({28, 28});
-    ui->pushButton_7->setIcon(QIcon(":/images/logout.png"));
-    ui->pushButton_7->setIconSize({28, 28});
+    ui->Ads->setIcon(QIcon(":/images/ad-white.png"));
+    ui->Ads->setIconSize({27, 27});
+    ui->Support->setIcon(QIcon(":/images/t-white.png"));
+    ui->Support->setIconSize({28, 28});
+    ui->Logout->setIcon(QIcon(":/images/logout.png"));
+    ui->Logout->setIconSize({28, 28});
 
     ui->tableWidget->hide();
-    ui->label_9->hide();
-    ui->pushButton_8->hide();
-    ui->pushButton_9->hide();
-    ui->pushButton_10->hide();
-    ui->pushButton_11->hide();
-    ui->label_10->hide();
-    ui->pushButton_12->hide();
-    ui->textBrowser->hide();
+    ui->RoundedBlue->hide();
+    ui->Update->hide();
+    ui->Edit->hide();
+    ui->Add->hide();
+    ui->Delete->hide();
+    ui->Title->hide();
+    ui->Send->hide();
+    ui->Help->hide();
     ui->textEdit->hide();
 
     ui->textEdit->clear();
 
     QPixmap pixmap(":/main.ico");
-    ui->label_2->setPixmap(pixmap);
+    ui->Icon->setPixmap(pixmap);
 }
 
 marketer::~marketer() { delete ui; }
 
-void marketer::on_pushButton_4_clicked() {
+void marketer::on_Ads_clicked() {
     ui->tableWidget->show();
-    ui->pushButton_8->show();
-    ui->pushButton_9->show();
-    ui->pushButton_10->show();
-    ui->pushButton_11->show();
-    ui->label_9->show();
-    ui->label_10->show();
-    ui->label_2->hide();
-    ui->label_3->hide();
-    ui->label_4->hide();
-    ui->label_5->hide();
-    ui->pushButton_12->hide();
-    ui->textBrowser->hide();
+    ui->Update->show();
+    ui->Edit->show();
+    ui->Add->show();
+    ui->Delete->show();
+    ui->RoundedBlue->show();
+    ui->Title->show();
+    ui->Icon->hide();
+    ui->Name->hide();
+    ui->Company->hide();
+    ui->Greeting->hide();
+    ui->Send->hide();
+    ui->Help->hide();
     ui->textEdit->hide();
 
-    ui->label_10->setText("Реклама");
-    ui->pushButton_8->setText("Update");
+    ui->Title->setText("Реклама");
+    ui->Update->setText("Update");
 
     // TODO: fill table with db
     // tableVendorUpdate();
@@ -86,46 +86,46 @@ void marketer::on_pushButton_4_clicked() {
         }
     }
 
-    connect(ui->pushButton_8, SIGNAL(clicked()), this, SLOT(tableAdUpdate()));
-    // connect(ui->pushButton_9, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->pushButton_10, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->pushButton_11, SIGNAL(clicked()), this, SLOT(doSmth()));
+    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableAdUpdate()));
+    // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
+    // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
+    // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void marketer::on_pushButton_6_clicked() {
+void marketer::on_Support_clicked() {
     ui->tableWidget->hide();
-    ui->pushButton_8->hide();
-    ui->pushButton_9->hide();
-    ui->pushButton_10->hide();
-    ui->pushButton_11->hide();
-    ui->label_9->hide();
-    ui->label_10->show();
-    ui->label_2->hide();
-    ui->label_3->hide();
-    ui->label_4->hide();
-    ui->label_5->hide();
-    ui->pushButton_12->show();
-    ui->textBrowser->show();
+    ui->Update->hide();
+    ui->Edit->hide();
+    ui->Add->hide();
+    ui->Delete->hide();
+    ui->RoundedBlue->hide();
+    ui->Title->show();
+    ui->Icon->hide();
+    ui->Name->hide();
+    ui->Company->hide();
+    ui->Greeting->hide();
+    ui->Send->show();
+    ui->Help->show();
     ui->textEdit->show();
 
-    ui->label_10->setText("ТехПод");
-    ui->pushButton_12->setText("Отправить");
+    ui->Title->setText("ТехПод");
+    ui->Send->setText("Отправить");
 }
 
-void marketer::on_pushButton_7_clicked() {
-    ui->label_2->show();
-    ui->label_3->show();
-    ui->label_4->show();
-    ui->label_5->show();
+void marketer::on_Logout_clicked() {
+    ui->Icon->show();
+    ui->Name->show();
+    ui->Company->show();
+    ui->Greeting->show();
     ui->tableWidget->hide();
-    ui->label_9->hide();
-    ui->pushButton_8->hide();
-    ui->pushButton_9->hide();
-    ui->pushButton_10->hide();
-    ui->pushButton_11->hide();
-    ui->label_10->hide();
-    ui->pushButton_12->hide();
-    ui->textBrowser->hide();
+    ui->RoundedBlue->hide();
+    ui->Update->hide();
+    ui->Edit->hide();
+    ui->Add->hide();
+    ui->Delete->hide();
+    ui->Title->hide();
+    ui->Send->hide();
+    ui->Help->hide();
     ui->textEdit->hide();
     ui->textEdit->clear();
     parent->setLoginInterface();

@@ -33,11 +33,11 @@ class marketer : public QWidget {
     ~marketer();
 
    private slots:
-    void on_pushButton_4_clicked();
+    void on_Ads_clicked();
 
-    void on_pushButton_6_clicked();
+    void on_Support_clicked();
 
-    void on_pushButton_7_clicked();
+    void on_Logout_clicked();
 
     void tableAdUpdate();
 
