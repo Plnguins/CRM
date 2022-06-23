@@ -42,7 +42,7 @@ QPushButton *login::getLoginButton() { return ui->LoginButton; }
 
 void login::on_LoginButton_clicked() {
     QString Login, Password;
-    // bossInterface *w = new bossInterface(this);
+    // leaderInterface *w = new leaderInterface(this);
     bool isInputCorrect = true, isOk = true;
     size_t role;
     Login = ui->Login->text();
@@ -59,7 +59,7 @@ void login::on_LoginButton_clicked() {
     role = Login.toInt();
     if (isOk) {
         if (role == 1) {
-            parent->setBossInterface();
+            parent->setLeaderInterface();
             ui->Login->clear();
             ui->Password->clear();
         } else if (role == 2) {

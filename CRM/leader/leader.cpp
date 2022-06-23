@@ -1,4 +1,4 @@
-// Boss source code for CRM application
+// Leader source code for CRM application
 // Copyright(C) 2022 Plnguins
 
 // This program is free software : you can redistribute it and / or modify
@@ -13,10 +13,10 @@
 
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
-#include "boss.h"
+#include "leader.h"
 
-boss::boss(QMainWindow *parent)
-    : parent(dynamic_cast<MainWindow *>(parent)), ui(new Ui::bossUi) {
+leader::leader(QMainWindow *parent)
+    : parent(dynamic_cast<MainWindow *>(parent)), ui(new Ui::leaderUi) {
     ui->setupUi(this);
 
     ui->Provider->setIcon(QIcon(":/images/vendor-white.png"));
@@ -51,9 +51,9 @@ boss::boss(QMainWindow *parent)
     ui->Icon->setPixmap(pixmap);
 }
 
-boss::~boss() { delete ui; }
+leader::~leader() { delete ui; }
 
-void boss::on_Logout_clicked() {
+void leader::on_Logout_clicked() {
     ui->Icon->show();
     ui->Title->show();
     ui->Company->show();
@@ -72,7 +72,7 @@ void boss::on_Logout_clicked() {
     parent->setLoginInterface();
 }
 
-void boss::on_Provider_clicked() {
+void leader::on_Provider_clicked() {
     ui->tableWidget->show();
     ui->Update->show();
     ui->Edit->show();
@@ -119,7 +119,7 @@ void boss::on_Provider_clicked() {
     // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void boss::on_Deal_clicked() {
+void leader::on_Deal_clicked() {
     ui->tableWidget->show();
     ui->Update->show();
     ui->Edit->show();
@@ -175,7 +175,7 @@ void boss::on_Deal_clicked() {
     // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void boss::on_Stock_clicked() {
+void leader::on_Stock_clicked() {
     ui->tableWidget->show();
     ui->Update->show();
     ui->Edit->show();
@@ -228,7 +228,7 @@ void boss::on_Stock_clicked() {
     // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void boss::on_Ads_clicked() {
+void leader::on_Ads_clicked() {
     ui->tableWidget->show();
     ui->Update->show();
     ui->Edit->show();
@@ -275,7 +275,7 @@ void boss::on_Ads_clicked() {
     // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void boss::on_Employee_clicked() {
+void leader::on_Employee_clicked() {
     ui->tableWidget->show();
     ui->Update->show();
     ui->Edit->show();
@@ -325,7 +325,7 @@ void boss::on_Employee_clicked() {
     // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void boss::on_Support_clicked() {
+void leader::on_Support_clicked() {
     ui->tableWidget->hide();
     ui->Update->hide();
     ui->Edit->hide();
@@ -347,22 +347,22 @@ void boss::on_Support_clicked() {
 
 //----------table update functions---------------
 
-void boss::tableVendorUpdate() {
+void leader::tableVendorUpdate() {
     //
 }
 
-void boss::tableDealUpdate() {
+void leader::tableDealUpdate() {
     //
 }
 
-void boss::tableStorageUpdate() {
+void leader::tableStorageUpdate() {
     //
 }
 
-void boss::tableAdUpdate() {
+void leader::tableAdUpdate() {
     //
 }
 
-void boss::tableEmployeesUpdate() {
+void leader::tableEmployeesUpdate() {
     //
 }

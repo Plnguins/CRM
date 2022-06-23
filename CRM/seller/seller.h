@@ -18,7 +18,7 @@
 #include <QMainWindow>
 #include <QWidget>
 
-#include "mainwindow.h"
+#include "../mainwindow.h"
 #include "ui_seller.h"
 
 namespace Ui {

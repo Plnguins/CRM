@@ -19,8 +19,6 @@
 #include <QMainWindow>
 #include <QMessageBox>
 
-#include "ui_mainwindow.h"
-
 namespace Ui {
 class MainWindowUi;
 }
@@ -31,7 +29,7 @@ class MainWindow : public QMainWindow {
    public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void setBossInterface();
+    void setLeaderInterface();
     void setLoginInterface();
     void setManagerInterface();
     void setMarketerInterface();

@@ -1,4 +1,4 @@
-// Manager window header for CRM application
+// Marketer window header for CRM application
 // Copyright(C) 2022 Plnguins
 
 // This program is free software : you can redistribute it and / or modify
@@ -18,38 +18,33 @@
 #include <QMainWindow>
 #include <QWidget>
 
-#include "mainwindow.h"
-#include "ui_manager.h"
+#include "../mainwindow.h"
+#include "ui_marketer.h"
+
 namespace Ui {
-class managerUi;
+class marketerUi;
 }
 
-class manager : public QWidget {
+class marketer : public QWidget {
     Q_OBJECT
 
    public:
-    explicit manager(QMainWindow *parent = nullptr);
-    ~manager();
+    explicit marketer(QWidget *parent = nullptr);
+    ~marketer();
+
+   private slots:
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_6_clicked();
+
+    void on_pushButton_7_clicked();
+
+    void tableAdUpdate();
 
    signals:
     void logout();
 
-   private slots:
-    void tableVendorUpdate();
-    void tableDealUpdate();
-    void tableStorageUpdate();
-
-    void on_Logout_clicked();
-
-    void on_Provider_clicked();
-
-    void on_Deal_clicked();
-
-    void on_Stock_clicked();
-
-    void on_Support_clicked();
-
    private:
     MainWindow *parent;
-    Ui::managerUi *ui;
+    Ui::marketerUi *ui;
 };

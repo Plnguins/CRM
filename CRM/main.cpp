@@ -14,11 +14,11 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #include <QApplication>
+#include <QTranslator>
 
-#include "boss.h"
 #include "mainwindow.h"
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
     QApplication a(argc, argv);
     QTranslator translator;
     translator.load(QString("QtLanguage_") + QString("ru_RU"));

@@ -1,4 +1,4 @@
-// Login window header for CRM application
+// Manager window header for CRM application
 // Copyright(C) 2022 Plnguins
 
 // This program is free software : you can redistribute it and / or modify
@@ -15,33 +15,42 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #pragma once
 
-#include <QFontDatabase>
 #include <QMainWindow>
-#include <QMessageBox>
 #include <QWidget>
 
-#include "mainwindow.h"
-#include "ui_login.h"
+#include "../mainwindow.h"
+#include "ui_manager.h"
+
 namespace Ui {
-class loginUi;
+class managerUi;
 }
 
-class login : public QWidget {
+class manager : public QWidget {
     Q_OBJECT
 
    public:
-    explicit login(QMainWindow *parent = nullptr);
-    ~login();
-    QPushButton *getLoginButton();
+    explicit manager(QMainWindow *parent = nullptr);
+    ~manager();
+
+   signals:
+    void logout();
 
    private slots:
-    void on_LoginButton_clicked();
+    void tableVendorUpdate();
+    void tableDealUpdate();
+    void tableStorageUpdate();
+
+    void on_Logout_clicked();
+
+    void on_Provider_clicked();
+
+    void on_Deal_clicked();
+
+    void on_Stock_clicked();
+
+    void on_Support_clicked();
 
    private:
     MainWindow *parent;
-    Ui::loginUi *ui;
-    QIcon closeEye = QIcon(QPixmap(":/images/closeEye.png"));
-    QIcon openEye = QIcon(QPixmap(":/images/openEye.png"));
-    QMessageBox msgBoxEmptyInput;
-    QMessageBox msgBoxIncorrectInput;
+    Ui::managerUi *ui;
 };

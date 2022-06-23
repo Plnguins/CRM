@@ -56,9 +56,8 @@ IF(WIN32)
     set(resources "${CMAKE_CURRENT_SOURCE_DIR}/resources/resources.rc")
 ENDIF()
 
-file(GLOB SRC "CRM/*.h" "CRM/*.cpp" "CRM/*.ui" "resources/*.qrc")
+file(GLOB_RECURSE SRC "CRM/*.h" "CRM/*.cpp" "CRM/*.ui" "resources/*.qrc")
 
-set(AUTO_RCC ON)
 add_executable(CRM ${SRC} ${resources})
 set_target_properties(CRM PROPERTIES AUTOMOC TRUE AUTOUIC TRUE AUTORCC TRUE)
 

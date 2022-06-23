@@ -15,11 +15,12 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #include "mainwindow.h"
 
-#include "boss.h"
-#include "login.h"
-#include "manager.h"
-#include "marketer.h"
-#include "seller.h"
+#include "leader/leader.h"
+#include "login/login.h"
+#include "manager/manager.h"
+#include "marketer/marketer.h"
+#include "seller/seller.h"
+#include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindowUi) {
@@ -45,8 +46,8 @@ void MainWindow::setManagerInterface() {
     setFixedSize({821, 511});
 }
 
-void MainWindow::setBossInterface() {
-    setCentralWidget(new boss(this));
+void MainWindow::setLeaderInterface() {
+    setCentralWidget(new leader(this));
     setFixedSize({821, 511});
 }
 
