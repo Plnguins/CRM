@@ -22,7 +22,7 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
     <ProductUrl>https://github.com/Plnguins/CRM</ProductUrl>
     <TargetDir>@HomeDir@/CRM</TargetDir>
     <InstallerApplicationIcon>../resources/main</InstallerApplicationIcon>
-    <!-- <InstallerWindowIcon>main</InstallerWindowIcon> -->
+    <InstallerWindowIcon>../resources/images/main</InstallerWindowIcon>
     <WizardStyle>modern</WizardStyle>
     <MaintenanceToolName>uninstall</MaintenanceToolName>
 </Installer>
