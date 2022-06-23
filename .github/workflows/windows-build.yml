@@ -81,8 +81,10 @@ jobs:
           cmake -B ${{ github.workspace }}\build -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -DBoost_INCLUDE_DIR=${{ env.BOOST_DIR }}/boost/boost/include -DBoost_LIBRARY_DIRS=${{ env.BOOST_DIR }}/boost/boost/lib -DPostgreSQL_ADDITIONAL_VERSIONS=14 -DPOSTGRESQL_INCLUDE_DIR='C:\Program Files\PostgreSQL\14\include'
       - name: Build
         run: cmake --build ${{ github.workspace }}/build --parallel --config ${{ env.BUILD_TYPE }}
+      - name: Create Setup
+        run: ${{ env.QT_DIR }}\Qt\Tools\QtInstallerFramework\4.3\bin\binarycreator.exe -c config\config.xml -p packages Setup.exe -v
       - uses: actions/upload-artifact@v3
         name: Upload builded app
         with:
           name: CRM
-          path: ${{ github.workspace }}/build/bin/Release
+          path: ${{ github.workspace }}/Setup.exe
