@@ -1,5 +1,5 @@
 # Github action script for building windows executables of this project
-# Copyright (C) 2022  VadVergasov as part of Plnguins
+# Copyright (C) 2022 Plnguins
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published
@@ -83,8 +83,7 @@ jobs:
       - name: Setup PATH
         run: echo 'C:\Program Files\PostgreSQL\14\bin;C:\Program Files\PostgreSQL\14;C:\Program Files\PostgreSQL\14\include;${{ env.BOOST_DIR}}/boost/boost' | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
       - name: Configure CMake
-        run: |
-          cmake -B ${{ github.workspace }}\build -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -DBoost_INCLUDE_DIR=${{ env.BOOST_DIR }}/boost/boost/include -DBoost_LIBRARY_DIRS=${{ env.BOOST_DIR }}/boost/boost/lib -DPostgreSQL_ADDITIONAL_VERSIONS=14 -DPOSTGRESQL_INCLUDE_DIR='C:\Program Files\PostgreSQL\14\include'
+        run: cmake -B ${{ github.workspace }}\build -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} -DBoost_INCLUDE_DIR=${{ env.BOOST_DIR }}/boost/boost/include -DBoost_LIBRARY_DIRS=${{ env.BOOST_DIR }}/boost/boost/lib -DPostgreSQL_ADDITIONAL_VERSIONS=14 -DPOSTGRESQL_INCLUDE_DIR='C:\Program Files\PostgreSQL\14\include'
       - name: Build
         run: cmake --build ${{ github.workspace }}/build --parallel --config ${{ env.BUILD_TYPE }}
       - name: Create Setup
