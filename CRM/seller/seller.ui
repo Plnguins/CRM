@@ -21,14 +21,14 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1027</width>
-    <height>685</height>
+    <width>832</width>
+    <height>502</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label_6">
+  <widget class="QLabel" name="RoundedBackground">
    <property name="geometry">
     <rect>
      <x>160</x>
@@ -45,105 +45,7 @@ border-radius: 20px;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>450</y>
-     <width>91</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(222, 222, 222);
-font:light &quot;Comfortaa&quot; 16px;
-background-color: rgb(56, 84, 102);</string>
-   </property>
-   <property name="text">
-    <string>© Pinguins.Inc</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_2">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>60</y>
-     <width>161</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton#pushButton_2:!pressed {
-    font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	background-color: rgb(56, 84, 102);
-	border-radius:20px;
- }
-
-QPushButton#pushButton_2 {
-    font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	background-color: rgb(56, 84, 102);
-	border-radius:20px;
- }
-
-QPushButton#pushButton_2:hover {
-     background-color: rgb(54, 69, 80);
-	font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	border-radius:20px;
- }
-
-
-QPushButton#pushButton_2:pressed {
-     background-color: rgb(45, 58, 66);
-	font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	border-radius:20px;
- }</string>
-   </property>
-   <property name="text">
-    <string>Сделки</string>
-   </property>
-   <property name="flat">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_7">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>161</width>
-     <height>491</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	background-color: rgb(56, 84, 102);
-	border-radius:20px;</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_5">
+  <widget class="QLabel" name="Greeting">
    <property name="geometry">
     <rect>
      <x>320</x>
@@ -160,61 +62,7 @@ color: rgb(56, 84, 102);</string>
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Welcome FIO(из БД брать)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>110</y>
-     <width>161</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton#pushButton_3:!pressed {
-    font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	background-color: rgb(56, 84, 102);
-	border-radius:20px;
- }
-
-QPushButton#pushButton_3 {
-    font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	background-color: rgb(56, 84, 102);
-	border-radius:20px;
- }
-
-QPushButton#pushButton_3:hover {
-     background-color: rgb(54, 69, 80);
-	font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	border-radius:20px;
- }
-
-
-QPushButton#pushButton_3:pressed {
-     background-color: rgb(45, 58, 66);
-	font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	border-radius:20px;
- }</string>
-   </property>
-   <property name="text">
-    <string>Склад</string>
-   </property>
-   <property name="flat">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_8">
+  <widget class="QPushButton" name="Update">
    <property name="geometry">
     <rect>
      <x>670</x>
@@ -277,7 +125,7 @@ QPushButton#pushButton_8:pressed {
     <string>Update</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_10">
+  <widget class="QLabel" name="Title">
    <property name="geometry">
     <rect>
      <x>360</x>
@@ -305,7 +153,7 @@ border-bottom-left-radius: 5px;
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_9">
+  <widget class="QLabel" name="RoundedBlue">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -323,13 +171,13 @@ border-radius:20px;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_8">
+  <widget class="QLabel" name="Background">
    <property name="geometry">
     <rect>
      <x>-110</x>
      <y>-80</y>
-     <width>1091</width>
-     <height>741</height>
+     <width>941</width>
+     <height>581</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -339,7 +187,7 @@ border-radius:20px;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_9">
+  <widget class="QPushButton" name="Edit">
    <property name="geometry">
     <rect>
      <x>670</x>
@@ -402,63 +250,6 @@ QPushButton#pushButton_9:pressed {
     <string>Edit</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>10</y>
-     <width>161</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">
-
-QPushButton#pushButton {
-    font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	background-color: rgb(56, 84, 102);
-	border-radius:20px;
- }
-
-
-
-QPushButton#pushButton:hover:!pressed {
-     background-color: rgb(54, 69, 80);
-	font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	border-radius:20px;
- }
-
-QPushButton#pushButton:pressed {
-     background-color: rgb(54, 69, 80);
-	font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	border-radius:20px;
- }
-
-QPushButton#pushButton:checked {
-     background-color: rgb(54, 69, 80);
-	font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	border-radius:20px;
- }</string>
-   </property>
-   <property name="text">
-    <string>Клиенты</string>
-   </property>
-   <property name="flat">
-    <bool>false</bool>
-   </property>
-  </widget>
   <widget class="QTextEdit" name="textEdit">
    <property name="geometry">
     <rect>
@@ -477,7 +268,7 @@ QPushButton#pushButton:checked {
 	border-radius: 20px;</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="Company">
    <property name="geometry">
     <rect>
      <x>420</x>
@@ -494,7 +285,7 @@ color: rgb(56, 84, 102);</string>
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Pinguins.Inc&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QTextBrowser" name="textBrowser">
+  <widget class="QTextBrowser" name="Help">
    <property name="geometry">
     <rect>
      <x>310</x>
@@ -513,10 +304,11 @@ color: rgb(56, 84, 102);</string>
    </property>
    <property name="html">
     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Comfortaa'; font-size:12pt; font-weight:600; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2';&quot;&gt;Опишите свою проблему и в ближайшее время с Вами свяжется работник нашей службы поддержки.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+hr { height: 1px; border-width: 0; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Comfortaa'; font-size:12pt; font-weight:700; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-weight:600;&quot;&gt;Опишите свою проблему и в ближайшее время с Вами свяжется работник нашей службы поддержки.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QTableWidget" name="tableWidget">
@@ -560,7 +352,7 @@ QTableWidget::item:selection {
 </string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_11">
+  <widget class="QPushButton" name="Delete">
    <property name="geometry">
     <rect>
      <x>670</x>
@@ -623,7 +415,7 @@ QPushButton#pushButton_11:pressed {
     <string>Delete</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="Name">
    <property name="geometry">
     <rect>
      <x>320</x>
@@ -640,112 +432,7 @@ color: rgb(56, 84, 102);</string>
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;Pinguin CRM&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_7">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>402</y>
-     <width>161</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton#pushButton_7:!pressed {
-    font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	background-color: rgb(56, 84, 102);
-	border-radius:20px;
- }
-
-QPushButton#pushButton_7 {
-    font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	background-color: rgb(56, 84, 102);
-	border-radius:20px;
- }
-
-QPushButton#pushButton_7:hover {
-     background-color: rgb(54, 69, 80);
-	font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	border-radius:20px;
- }
-
-
-QPushButton#pushButton_7:pressed {
-     background-color: rgb(45, 58, 66);
-	font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	border-radius:20px;
- }</string>
-   </property>
-   <property name="text">
-    <string>Log out</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_6">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>160</y>
-     <width>161</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton#pushButton_6:!pressed {
-    font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	background-color: rgb(56, 84, 102);
-	border-radius:20px;
- }
-
-QPushButton#pushButton_6 {
-    font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	background-color: rgb(56, 84, 102);
-	border-radius:20px;
- }
-
-QPushButton#pushButton_6:hover {
-     background-color: rgb(54, 69, 80);
-	font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	border-radius:20px;
- }
-
-
-QPushButton#pushButton_6:pressed {
-     background-color: rgb(45, 58, 66);
-	font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	border-radius:20px;
- }</string>
-   </property>
-   <property name="text">
-    <string>Техпод</string>
-   </property>
-   <property name="flat">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_12">
+  <widget class="QPushButton" name="Send">
    <property name="geometry">
     <rect>
      <x>420</x>
@@ -793,10 +480,10 @@ QPushButton#pushButton_12:pressed {
  }</string>
    </property>
    <property name="text">
-    <string>PushButton</string>
+    <string>Send</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_10">
+  <widget class="QPushButton" name="Add">
    <property name="geometry">
     <rect>
      <x>670</x>
@@ -859,7 +546,7 @@ QPushButton#pushButton_10:pressed {
     <string>Add</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="Icon">
    <property name="geometry">
     <rect>
      <x>340</x>
@@ -872,29 +559,308 @@ QPushButton#pushButton_10:pressed {
     <string/>
    </property>
   </widget>
-  <zorder>label_8</zorder>
-  <zorder>label_7</zorder>
-  <zorder>pushButton</zorder>
-  <zorder>pushButton_2</zorder>
-  <zorder>pushButton_3</zorder>
-  <zorder>pushButton_6</zorder>
-  <zorder>label</zorder>
-  <zorder>pushButton_7</zorder>
-  <zorder>label_6</zorder>
-  <zorder>label_2</zorder>
-  <zorder>label_3</zorder>
-  <zorder>label_4</zorder>
-  <zorder>label_5</zorder>
-  <zorder>label_9</zorder>
-  <zorder>label_10</zorder>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>-1</x>
+     <y>5</y>
+     <width>161</width>
+     <height>481</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	background-color: rgb(56, 84, 102);
+	border-radius:20px;</string>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QPushButton" name="Client">
+      <property name="styleSheet">
+       <string notr="true">QPushButton#Client {
+    font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	background-color: rgb(56, 84, 102);
+	border-radius:20px;
+ }
+
+QPushButton#Client:hover:!pressed {
+     background-color: rgb(54, 69, 80);
+	font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	border-radius:20px;
+ }
+
+QPushButton#pushButton:pressed {
+     background-color: rgb(54, 69, 80);
+	font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	border-radius:20px;
+ }
+
+QPushButton#Client:checked {
+     background-color: rgb(54, 69, 80);
+	font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	border-radius:20px;
+ }</string>
+      </property>
+      <property name="text">
+       <string>Клиенты</string>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="Deal">
+      <property name="styleSheet">
+       <string notr="true">QPushButton#Deal:!pressed {
+    font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	background-color: rgb(56, 84, 102);
+	border-radius:20px;
+ }
+
+QPushButton#Deal {
+    font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	background-color: rgb(56, 84, 102);
+	border-radius:20px;
+ }
+
+QPushButton#Deal:hover {
+     background-color: rgb(54, 69, 80);
+	font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	border-radius:20px;
+ }
+
+
+QPushButton#pushButton_2:pressed {
+     background-color: rgb(45, 58, 66);
+	font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	border-radius:20px;
+ }</string>
+      </property>
+      <property name="text">
+       <string>Сделки</string>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="Stock">
+      <property name="styleSheet">
+       <string notr="true">QPushButton#Stock:!pressed {
+    font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	background-color: rgb(56, 84, 102);
+	border-radius:20px;
+ }
+
+QPushButton#Stock {
+    font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	background-color: rgb(56, 84, 102);
+	border-radius:20px;
+ }
+
+QPushButton#Stock:hover {
+     background-color: rgb(54, 69, 80);
+	font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	border-radius:20px;
+ }
+
+
+QPushButton#pushButton_3:pressed {
+     background-color: rgb(45, 58, 66);
+	font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	border-radius:20px;
+ }</string>
+      </property>
+      <property name="text">
+       <string>Склад</string>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="Support">
+      <property name="styleSheet">
+       <string notr="true">QPushButton#Support:!pressed {
+    font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	background-color: rgb(56, 84, 102);
+	border-radius:20px;
+ }
+
+QPushButton#Support {
+    font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	background-color: rgb(56, 84, 102);
+	border-radius:20px;
+ }
+
+QPushButton#pushButton_6:hover {
+     background-color: rgb(54, 69, 80);
+	font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	border-radius:20px;
+ }
+
+QPushButton#Support:pressed {
+     background-color: rgb(45, 58, 66);
+	font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	border-radius:20px;
+ }</string>
+      </property>
+      <property name="text">
+       <string>Техпод</string>
+      </property>
+      <property name="flat">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QPushButton" name="Logout">
+      <property name="styleSheet">
+       <string notr="true">QPushButton#Logout:!pressed {
+    font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	background-color: rgb(56, 84, 102);
+	border-radius:20px;
+ }
+
+QPushButton#Logout {
+    font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	background-color: rgb(56, 84, 102);
+	border-radius:20px;
+ }
+
+QPushButton#Logout:hover {
+     background-color: rgb(54, 69, 80);
+	font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	border-radius:20px;
+ }
+
+
+QPushButton#Logout:pressed {
+     background-color: rgb(45, 58, 66);
+	font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	border-radius:20px;
+ }</string>
+      </property>
+      <property name="text">
+       <string>Log out</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(222, 222, 222);
+font:light &quot;Comfortaa&quot; 16px;
+background-color: rgb(56, 84, 102);</string>
+      </property>
+      <property name="text">
+       <string>© Pinguins.Inc</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <zorder>Background</zorder>
+  <zorder>RoundedBackground</zorder>
+  <zorder>Icon</zorder>
+  <zorder>Name</zorder>
+  <zorder>Company</zorder>
+  <zorder>Greeting</zorder>
+  <zorder>RoundedBlue</zorder>
+  <zorder>Title</zorder>
   <zorder>tableWidget</zorder>
-  <zorder>textBrowser</zorder>
+  <zorder>Help</zorder>
   <zorder>textEdit</zorder>
-  <zorder>pushButton_8</zorder>
-  <zorder>pushButton_9</zorder>
-  <zorder>pushButton_10</zorder>
-  <zorder>pushButton_11</zorder>
-  <zorder>pushButton_12</zorder>
+  <zorder>Update</zorder>
+  <zorder>Edit</zorder>
+  <zorder>Add</zorder>
+  <zorder>Delete</zorder>
+  <zorder>Send</zorder>
+  <zorder>groupBox</zorder>
  </widget>
  <resources/>
  <connections/>

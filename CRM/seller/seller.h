@@ -36,15 +36,15 @@ class seller : public QWidget {
     void logout();
 
    private slots:
-    void on_pushButton_clicked();
+    void on_Client_clicked();
 
-    void on_pushButton_2_clicked();
+    void on_Deal_clicked();
 
-    void on_pushButton_3_clicked();
+    void on_Stock_clicked();
 
-    void on_pushButton_6_clicked();
+    void on_Support_clicked();
 
-    void on_pushButton_7_clicked();
+    void on_Logout_clicked();
 
     void tableClientUpdate();
     void tableStorageUpdate();
