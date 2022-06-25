@@ -29,6 +29,7 @@ env:
   QT_VERSION: "6.2.4"
   QT_DIR: ${{ github.workspace }}
   QT_ARCH: "win64_msvc2019_64"
+  QT_TOOLS: "tools_ifw"
   BOOST_PLATFORM: 2019
   BOOST_VERSION: "1.79.0"
   BOOST_DIR: ${{ github.workspace }}
@@ -50,7 +51,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ env.QT_DIR }}/Qt
-          key: ${{ runner.os }}-Qt-${{ env.QT_VERSION }}-${{ env.QT_DIR }}-${{ env.QT_ARCH }}
+          key: ${{ runner.os }}-Qt-${{ env.QT_VERSION }}-${{ env.QT_DIR }}-${{ env.QT_ARCH }}-${{ env.QT_TOOLS }}
       - name: Cache Boost
         id: cache-boost
         uses: actions/cache@v3
@@ -58,7 +59,7 @@ jobs:
           path: ${{ env.BOOST_DIR }}/boost/boost
           key: ${{ runner.os }}-Boost-${{ env.BOOST_VERSION }}-${{ env.BOOST_DIR }}-${{ env.BOOST_PLATFORM }}
       - name: Install Qt
-        uses: jurplel/install-qt-action@v2
+        uses: jurplel/install-qt-action@v3
         with:
           cached: ${{ steps.cache-qt.outputs.cache-hit }}
           version: ${{ env.QT_VERSION }}
@@ -67,6 +68,9 @@ jobs:
           arch: ${{ env.QT_ARCH }}
           target: "desktop"
           setup-python: "false"
+          tools: ${{ env.QT_TOOLS }}
+          aqtversion: "==2.1.*"
+          py7zrversion: ">=0.18.9"
       - name: Install boost
         id: install-boost
         if: steps.cache-boost.outputs.cache-hit != 'true'
@@ -84,7 +88,7 @@ jobs:
       - name: Build
         run: cmake --build ${{ github.workspace }}/build --parallel --config ${{ env.BUILD_TYPE }}
       - name: Create Setup
-        run: ${{ env.QT_DIR }}\Qt\Tools\QtInstallerFramework\4.3\bin\binarycreator.exe -c config\config.xml -p packages Setup.exe -v
+        run: ${{ env.IQTA_TOOLS }}\QtInstallerFramework\4.4\bin\binarycreator.exe -c config\config.xml -p packages Setup.exe -v
       - uses: actions/upload-artifact@v3
         name: Upload builded app
         with:
