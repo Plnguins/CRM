@@ -1,4 +1,4 @@
-// Main source code for CRM application
+// Seller window header for CRM application
 // Copyright(C) 2022 Plnguins
 
 // This program is free software : you can redistribute it and / or modify
@@ -13,17 +13,44 @@
 
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
-#include <QApplication>
-#include <QTranslator>
+#pragma once
 
-#include "mainwindow.h"
+#include <QMainWindow>
+#include <QWidget>
 
-int main(int argc, char* argv[]) {
-    QApplication a(argc, argv);
-    QTranslator translator;
-    translator.load(QString("QtLanguage_") + QString("ru_RU"));
-    qApp->installTranslator(&translator);
-    MainWindow w;
-    w.show();
-    return a.exec();
+#include "../mainwindow.h"
+#include "ui_seller.h"
+
+namespace Ui {
+class sellerUi;
 }
+
+class seller : public QWidget {
+    Q_OBJECT
+
+   public:
+    explicit seller(QMainWindow *parent = nullptr);
+    ~seller();
+
+   signals:
+    void logout();
+
+   private slots:
+    void on_Client_clicked();
+
+    void on_Deal_clicked();
+
+    void on_Stock_clicked();
+
+    void on_Support_clicked();
+
+    void on_Logout_clicked();
+
+    void tableClientUpdate();
+    void tableStorageUpdate();
+    void tableDealUpdate();
+
+   private:
+    MainWindow *parent;
+    Ui::sellerUi *ui;
+};

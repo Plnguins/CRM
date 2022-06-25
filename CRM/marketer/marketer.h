@@ -1,4 +1,4 @@
-// Main source code for CRM application
+// Marketer window header for CRM application
 // Copyright(C) 2022 Plnguins
 
 // This program is free software : you can redistribute it and / or modify
@@ -13,17 +13,38 @@
 
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
-#include <QApplication>
-#include <QTranslator>
+#pragma once
 
-#include "mainwindow.h"
+#include <QMainWindow>
+#include <QWidget>
 
-int main(int argc, char* argv[]) {
-    QApplication a(argc, argv);
-    QTranslator translator;
-    translator.load(QString("QtLanguage_") + QString("ru_RU"));
-    qApp->installTranslator(&translator);
-    MainWindow w;
-    w.show();
-    return a.exec();
+#include "../mainwindow.h"
+#include "ui_marketer.h"
+
+namespace Ui {
+class marketerUi;
 }
+
+class marketer : public QWidget {
+    Q_OBJECT
+
+   public:
+    explicit marketer(QWidget *parent = nullptr);
+    ~marketer();
+
+   private slots:
+    void on_Ads_clicked();
+
+    void on_Support_clicked();
+
+    void on_Logout_clicked();
+
+    void tableAdUpdate();
+
+   signals:
+    void logout();
+
+   private:
+    MainWindow *parent;
+    Ui::marketerUi *ui;
+};
