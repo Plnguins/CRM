@@ -27,8 +27,10 @@ on:
 env:
   BUILD_TYPE: Release
   QT_VERSION: "6.2.4"
-  BOOST_VERSION: "1.79.0"
   QT_DIR: ${{ github.workspace }}
+  QT_ARCH: "win64_msvc2019_64"
+  BOOST_PLATFORM: 2019
+  BOOST_VERSION: "1.79.0"
   BOOST_DIR: ${{ github.workspace }}
 
 jobs:
@@ -48,13 +50,13 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ env.QT_DIR }}/Qt
-          key: ${{ runner.os }}-Qt-${{ env.QT_VERSION }}-${{ env.QT_DIR }}
+          key: ${{ runner.os }}-Qt-${{ env.QT_VERSION }}-${{ env.QT_DIR }}-${{ env.QT_ARCH }}
       - name: Cache Boost
         id: cache-boost
         uses: actions/cache@v3
         with:
           path: ${{ env.BOOST_DIR }}/boost/boost
-          key: ${{ runner.os }}-Boost-${{ env.BOOST_VERSION }}-${{ env.BOOST_DIR }}
+          key: ${{ runner.os }}-Boost-${{ env.BOOST_VERSION }}-${{ env.BOOST_DIR }}-${{ env.BOOST_PLATFORM }}
       - name: Install Qt
         uses: jurplel/install-qt-action@v2
         with:
@@ -62,7 +64,7 @@ jobs:
           version: ${{ env.QT_VERSION }}
           dir: ${{ env.QT_DIR }}
           host: "windows"
-          arch: "win64_msvc2019_64"
+          arch: ${{ env.QT_ARCH }}
           target: "desktop"
           setup-python: "false"
       - name: Install boost
@@ -71,7 +73,7 @@ jobs:
         uses: MarkusJx/install-boost@v2.3.0
         with:
           boost_version: ${{ env.BOOST_VERSION }}
-          platform_version: 2019
+          platform_version: ${{ env.BOOST_PLATFORM }}
           toolset: msvc
           boost_install_dir: ${{ env.BOOST_DIR }}
       - name: Setup PATH
