@@ -66,9 +66,6 @@
         <file>images/worker.png</file>
     </qresource>
     <qresource prefix="/">
-        <file>main.ico</file>
-    </qresource>
-    <qresource prefix="/">
         <file>Comfortaa.ttf</file>
     </qresource>
 </RCC>

@@ -43,8 +43,8 @@ manager::manager(QMainWindow *parent)
 
     ui->textEdit->clear();
 
-    QPixmap pixmap(":/main.ico");
-    ui->Icon->setPixmap(pixmap);
+    QPixmap icon(":/images/main.png");
+    ui->Icon->setPixmap(icon.scaled(ui->Icon->size(), Qt::KeepAspectRatio));
 }
 
 manager::~manager() { delete ui; }
