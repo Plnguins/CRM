@@ -1,4 +1,4 @@
-// Main source code for CRM application
+// Login window header for CRM application
 // Copyright(C) 2022 Plnguins
 
 // This program is free software : you can redistribute it and / or modify
@@ -13,14 +13,36 @@
 
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
-#include <QApplication>
-#include <QTranslator>
+#pragma once
 
-#include "mainwindow.h"
+#include <QFontDatabase>
+#include <QMainWindow>
+#include <QMessageBox>
+#include <QWidget>
 
-int main(int argc, char* argv[]) {
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
-    return a.exec();
+#include "../mainwindow.h"
+#include "ui_login.h"
+
+namespace Ui {
+class loginUi;
 }
+
+class login : public QWidget {
+    Q_OBJECT
+
+   public:
+    explicit login(QMainWindow *parent = nullptr);
+    ~login();
+    QPushButton *getLoginButton();
+
+   private slots:
+    void on_LoginButton_clicked();
+
+   private:
+    MainWindow *parent;
+    Ui::loginUi *ui;
+    QIcon closeEye = QIcon(QPixmap(":/images/closeEye.png"));
+    QIcon openEye = QIcon(QPixmap(":/images/openEye.png"));
+    QMessageBox msgBoxEmptyInput;
+    QMessageBox msgBoxIncorrectInput;
+};

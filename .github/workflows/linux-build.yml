@@ -1,5 +1,5 @@
 # Github action script for building linux executables of this project
-# Copyright (C) 2022  VadVergasov as part of Plnguins
+# Copyright (C) 2022 Plnguins
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published
@@ -27,9 +27,12 @@ on:
 env:
   BUILD_TYPE: Release
   QT_VERSION: "6.2.4"
-  BOOST_VERSION: "1.79.0"
   QT_DIR: ${{ github.workspace }}
+  QT_ARCH: "linux-gcc"
+  QT_TOOLS: "tools_ifw"
+  BOOST_PLATFORM: 20.04
   BOOST_DIR: ${{ github.workspace }}
+  BOOST_VERSION: "1.79.0"
 
 jobs:
   linux:
@@ -48,23 +51,26 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ env.QT_DIR }}/Qt
-          key: ${{ runner.os }}-Qt-${{ env.QT_VERSION }}-${{ env.QT_DIR }}
+          key: ${{ runner.os }}-Qt-${{ env.QT_VERSION }}-${{ env.QT_DIR }}-${{ env.QT_ARCH }}-${{ env.QT_TOOLS }}
       - name: Cache Boost
         id: cache-boost
         uses: actions/cache@v3
         with:
           path: ${{ env.BOOST_DIR }}/boost/boost
-          key: ${{ runner.os }}-Boost-${{ env.BOOST_VERSION }}-${{ env.BOOST_DIR }}
+          key: ${{ runner.os }}-Boost-${{ env.BOOST_VERSION }}-${{ env.BOOST_DIR }}-${{ env.BOOST_PLATFORM }}
       - name: Install Qt
-        uses: jurplel/install-qt-action@v2
+        uses: jurplel/install-qt-action@v3
         with:
           cached: ${{ steps.cache-qt.outputs.cache-hit }}
           version: ${{ env.QT_VERSION }}
           dir: ${{ env.QT_DIR }}
           host: "linux"
-          arch: "linux-gcc"
+          arch: ${{ env.QT_ARCH }}
           target: "desktop"
           setup-python: "false"
+          tools: ${{ env.QT_TOOLS }}
+          aqtversion: "==2.1.*"
+          py7zrversion: ">=0.18.9"
       - name: Install PostgreSQL and cmake
         run: sudo apt-get install -y cmake postgresql libpq-dev g++ build-essential libxkbcommon-dev
       - name: Install boost
@@ -73,7 +79,7 @@ jobs:
         uses: MarkusJx/install-boost@v2.3.0
         with:
           boost_version: ${{ env.BOOST_VERSION }}
-          platform_version: 20.04
+          platform_version: ${{ env.BOOST_PLATFORM }}
           toolset: gcc
           boost_install_dir: ${{ env.BOOST_DIR }}
       - name: Configure CMake

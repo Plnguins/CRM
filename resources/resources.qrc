@@ -1,0 +1,71 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/ad.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/ad-white.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/bitmap1.bmp</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/book-white.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/book.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/client-white.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/closeEye.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/deal-white.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/dollar.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/history-white.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/history.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/logout.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/main.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/openEye.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/sklad-white.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/sklad.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/t-white.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/tp-white.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/vendor-white.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/vendor.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/worker-white.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>images/worker.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>Comfortaa.ttf</file>
+    </qresource>
+</RCC>
