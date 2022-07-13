@@ -84,6 +84,8 @@ IF(WIN32)
         COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:Qt6::Widgets> $<TARGET_FILE_DIR:CRM>
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${QT6_INSTALL_PREFIX}/plugins/platforms $<TARGET_FILE_DIR:CRM>/platforms
     )
+    add_custom_command(TARGET CRM POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_BINARY_DIR}/bin ${CMAKE_SOURCE_DIR}/packages/com.pinguins.crm/data)
 ENDIF()
 
 set_target_properties(CRM PROPERTIES
@@ -91,7 +93,5 @@ set_target_properties(CRM PROPERTIES
     MACOSX_BUNDLE ON
 )
 
-add_custom_command(TARGET CRM POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_BINARY_DIR}/bin ${CMAKE_SOURCE_DIR}/packages/com.pinguins.crm/data)
 add_custom_command(TARGET CRM POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_SOURCE_DIR}/LICENSE.txt ${CMAKE_SOURCE_DIR}/packages/com.pinguins.crm/meta/LICENSE.txt)
