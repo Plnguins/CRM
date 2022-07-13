@@ -90,8 +90,18 @@ jobs:
           -DBoost_LIBRARY_DIRS=${{ env.BOOST_DIR }}/boost/boost/lib
       - name: Build
         run: cmake --build ${{ github.workspace }}/build --parallel --config ${{ env.BUILD_TYPE }}
+      - name: Download linuxdeploy
+        run: |
+          wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage -O ${{ github.workspace }}/linuxdeploy.AppImage -q
+          wget https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage -O ${{ github.workspace }}/linuxdeploy-plugin-qt.AppImage -q
+          chmod +x ${{ github.workspace }}/linuxdeploy.AppImage
+          chmod +x ${{ github.workspace }}/linuxdeploy-plugin-qt.AppImage
+      - name: Create app folder
+        run: |
+          mkdir -p ${{ github.workspace }}/app
+          ${{ github.workspace }}/linuxdeploy.AppImage --appdir ${{ github.workspace }}/build/bin/app -e ${{ github.workspace }}/build/bin/CRM --plugin qt
       - uses: actions/upload-artifact@v3
         name: Upload builded app
         with:
           name: CRM
-          path: ${{ github.workspace }}/build/bin
+          path: ${{ github.workspace }}/build/bin/app
