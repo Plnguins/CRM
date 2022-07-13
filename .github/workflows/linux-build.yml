@@ -104,4 +104,4 @@ jobs:
         name: Upload builded app
         with:
           name: CRM
-          path: ${{ github.workspace }}/build/bin/app
+          path: ${{ github.workspace }}/build/bin/app/usr
