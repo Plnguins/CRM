@@ -100,8 +100,11 @@ jobs:
         run: |
           mkdir -p ${{ github.workspace }}/app
           ${{ github.workspace }}/linuxdeploy.AppImage --appdir ${{ github.workspace }}/build/bin/app -e ${{ github.workspace }}/build/bin/CRM --plugin qt
+          cp -R ${{ github.workspace }}/build/bin/app/usr ${{ github.workspace }}/packages/com.pinguins.crm/data
+      - name: Create installer
+        run: ${{ env.IQTA_TOOLS }}/QtInstallerFramework/4.4/bin/binarycreator -c ${{ github.workspace }}/config/config.xml -p ${{ github.workspace }}/packages ${{ github.workspace }}/Setup -v
       - uses: actions/upload-artifact@v3
         name: Upload builded app
         with:
-          name: CRM
-          path: ${{ github.workspace }}/build/bin/app/usr
+          name: Setup
+          path: ${{ github.workspace }}/Setup
