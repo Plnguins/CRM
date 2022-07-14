@@ -1,5 +1,5 @@
 # Github action script for building linux executables of this project
-# Copyright (C) 2022 Plnguins
+# Copyright (C) 2022  Plnguins
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published
@@ -17,6 +17,8 @@ name: Linux build
 
 on:
   push:
+    tags:
+      - "*"
     paths-ignore:
       - "**.md"
       - "LICENSE"
@@ -102,9 +104,29 @@ jobs:
           ${{ github.workspace }}/linuxdeploy.AppImage --appdir ${{ github.workspace }}/build/bin/app -e ${{ github.workspace }}/build/bin/CRM --plugin qt
           cp -R ${{ github.workspace }}/build/bin/app/usr ${{ github.workspace }}/packages/com.pinguins.crm/data
       - name: Create installer
-        run: ${{ env.IQTA_TOOLS }}/QtInstallerFramework/4.4/bin/binarycreator -c ${{ github.workspace }}/config/config.xml -p ${{ github.workspace }}/packages ${{ github.workspace }}/Setup -v
+        run: ${{ env.IQTA_TOOLS }}/QtInstallerFramework/4.4/bin/binarycreator -c ${{ github.workspace }}/config/config.xml -p ${{ github.workspace }}/packages ${{ github.workspace }}/Linux-Setup -v
       - uses: actions/upload-artifact@v3
         name: Upload builded app
         with:
-          name: Setup
-          path: ${{ github.workspace }}/Setup
+          name: Linux
+          path: ${{ github.workspace }}/Linux-Setup
+  release:
+    needs: linux
+    name: Create\Update release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: Linux
+          path: ${{ github.workspace }}/Linux
+      - name: Create Release
+        id: create_release
+        uses: ncipollo/release-action@v1.10.0
+        with:
+          allowUpdates: true
+          artifactErrorsFailBuild: true
+          artifacts: "${{ github.workspace }}/Linux/Linux-Setup"
+          name: ${{ github.event.head_commit.message }}
+          draft: false
+          prerelease: ${{ github.ref != 'refs/heads/master' }}

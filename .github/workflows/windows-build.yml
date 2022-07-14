@@ -1,5 +1,5 @@
 # Github action script for building windows executables of this project
-# Copyright (C) 2022 Plnguins
+# Copyright (C) 2022  Plnguins
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published
@@ -17,6 +17,8 @@ name: Windows build
 
 on:
   push:
+    tags:
+      - "*"
     paths-ignore:
       - "docs/**"
       - "**.md"
@@ -87,9 +89,29 @@ jobs:
       - name: Build
         run: cmake --build ${{ github.workspace }}/build --parallel --config ${{ env.BUILD_TYPE }}
       - name: Create Setup
-        run: ${{ env.IQTA_TOOLS }}\QtInstallerFramework\4.4\bin\binarycreator.exe -c config\config.xml -p packages Setup.exe -v
+        run: ${{ env.IQTA_TOOLS }}\QtInstallerFramework\4.4\bin\binarycreator.exe -c config\config.xml -p packages Windows-Setup.exe -v
       - uses: actions/upload-artifact@v3
         name: Upload builded app
         with:
-          name: CRM
-          path: ${{ github.workspace }}/Setup.exe
+          name: Windows
+          path: ${{ github.workspace }}/Windows-Setup.exe
+  release:
+    needs: windows
+    name: Create\Update release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: Windows
+          path: ${{ github.workspace }}/Windows
+      - name: Create Release
+        id: create_release
+        uses: ncipollo/release-action@v1.10.0
+        with:
+          allowUpdates: true
+          artifactErrorsFailBuild: true
+          artifacts: "${{ github.workspace }}/Windows/Windows-Setup.exe"
+          name: ${{ github.event.head_commit.message }}
+          draft: false
+          prerelease: ${{ github.ref != 'refs/heads/master' }}
