@@ -17,6 +17,9 @@ name: MacOS build
 
 on:
   push:
+    tags:
+      - "*"
+  pull_request:
     paths-ignore:
       - "**.md"
       - "LICENSE.txt"
