@@ -22,7 +22,7 @@ on:
     paths-ignore:
       - "docs/**"
       - "**.md"
-      - "LICENSE"
+      - "LICENSE.txt"
       - ".github/**"
       - "!.github/workflows/windows-build.yml"
 

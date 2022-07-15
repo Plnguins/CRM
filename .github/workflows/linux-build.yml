@@ -21,7 +21,7 @@ on:
       - "*"
     paths-ignore:
       - "**.md"
-      - "LICENSE"
+      - "LICENSE.txt"
       - "README.md"
       - ".github/**"
       - "!.github/workflows/linux-build.yml"

@@ -19,7 +19,7 @@ on:
   push:
     paths-ignore:
       - "**.md"
-      - "LICENSE"
+      - "LICENSE.txt"
       - "README.md"
       - ".github/**"
       - "!.github/workflows/macos-build.yml"
