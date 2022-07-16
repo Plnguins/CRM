@@ -1,5 +1,5 @@
 # Gitignore for this project, based on https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
-# Copyright (C) 2022  VadVergasov as part of Plnguins
+# Copyright (C) 2022 Plnguins
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published
@@ -13,6 +13,9 @@
 
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
+packages/com.pinguins.crm/data
+packages/com.pinguins.crm/meta/LICENSE.txt
+
 # User-specific files
 *.rsuser
 *.suo

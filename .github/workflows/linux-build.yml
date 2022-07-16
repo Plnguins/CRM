@@ -1,0 +1,136 @@
+# Github action script for building linux executables of this project
+# Copyright (C) 2022  Plnguins
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published
+# by the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+name: Linux build
+
+on:
+  push:
+    tags:
+      - "*"
+  pull_request:
+    paths-ignore:
+      - "**.md"
+      - "LICENSE.txt"
+      - "README.md"
+      - ".github/**"
+      - "!.github/workflows/linux-build.yml"
+
+env:
+  BUILD_TYPE: Release
+  QT_VERSION: "6.2.4"
+  QT_DIR: ${{ github.workspace }}
+  QT_ARCH: "linux-gcc"
+  QT_TOOLS: "tools_ifw"
+  BOOST_PLATFORM: 20.04
+  BOOST_DIR: ${{ github.workspace }}
+  BOOST_VERSION: "1.79.0"
+
+jobs:
+  linux:
+    name: Linux
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        arch: [x64]
+    steps:
+      - uses: actions/checkout@v3
+        name: Clone
+        with:
+          submodules: recursive
+      - name: Cache Qt
+        id: cache-qt
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.QT_DIR }}/Qt
+          key: ${{ runner.os }}-Qt-${{ env.QT_VERSION }}-${{ env.QT_DIR }}-${{ env.QT_ARCH }}-${{ env.QT_TOOLS }}
+      - name: Cache Boost
+        id: cache-boost
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.BOOST_DIR }}/boost/boost
+          key: ${{ runner.os }}-Boost-${{ env.BOOST_VERSION }}-${{ env.BOOST_DIR }}-${{ env.BOOST_PLATFORM }}
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          cached: ${{ steps.cache-qt.outputs.cache-hit }}
+          version: ${{ env.QT_VERSION }}
+          dir: ${{ env.QT_DIR }}
+          host: "linux"
+          arch: ${{ env.QT_ARCH }}
+          target: "desktop"
+          setup-python: "false"
+          tools: ${{ env.QT_TOOLS }}
+          aqtversion: "==2.1.*"
+          py7zrversion: ">=0.18.9"
+      - name: Install PostgreSQL and cmake
+        run: sudo apt-get install -y cmake postgresql libpq-dev g++ build-essential libxkbcommon-dev
+      - name: Install boost
+        id: install-boost
+        if: steps.cache-boost.outputs.cache-hit != 'true'
+        uses: MarkusJx/install-boost@v2.3.0
+        with:
+          boost_version: ${{ env.BOOST_VERSION }}
+          platform_version: ${{ env.BOOST_PLATFORM }}
+          toolset: gcc
+          boost_install_dir: ${{ env.BOOST_DIR }}
+      - name: Configure CMake
+        run: |
+          cmake -B ${{ github.workspace }}/build \
+          -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
+          -DBoost_INCLUDE_DIR=${{ env.BOOST_DIR }}/boost/boost/include \
+          -DBoost_LIBRARY_DIRS=${{ env.BOOST_DIR }}/boost/boost/lib
+      - name: Build
+        run: cmake --build ${{ github.workspace }}/build --parallel --config ${{ env.BUILD_TYPE }}
+      - name: Download linuxdeploy
+        run: |
+          wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage -O ${{ github.workspace }}/linuxdeploy.AppImage -q
+          wget https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage -O ${{ github.workspace }}/linuxdeploy-plugin-qt.AppImage -q
+          chmod +x ${{ github.workspace }}/linuxdeploy.AppImage
+          chmod +x ${{ github.workspace }}/linuxdeploy-plugin-qt.AppImage
+      - name: Create app folder
+        run: |
+          mkdir -p ${{ github.workspace }}/app
+          ${{ github.workspace }}/linuxdeploy.AppImage --appdir ${{ github.workspace }}/build/bin/app -e ${{ github.workspace }}/build/bin/CRM --plugin qt
+          cp -R ${{ github.workspace }}/build/bin/app/usr ${{ github.workspace }}/packages/com.pinguins.crm/data
+      - name: Create installer
+        run: ${{ env.IQTA_TOOLS }}/QtInstallerFramework/4.4/bin/binarycreator -c ${{ github.workspace }}/config/config.xml -p ${{ github.workspace }}/packages ${{ github.workspace }}/Linux-Setup -v
+      - uses: actions/upload-artifact@v3
+        name: Upload builded app
+        with:
+          name: Linux
+          path: ${{ github.workspace }}/Linux-Setup
+  release:
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: linux
+    name: Create\Update release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: Linux
+          path: ${{ github.workspace }}/Linux
+      - name: Get branch name
+        uses: EthanSK/git-branch-name-action@v1
+      - name: Create Release
+        id: create_release
+        uses: ncipollo/release-action@v1.10.0
+        with:
+          allowUpdates: true
+          artifactErrorsFailBuild: true
+          artifacts: "${{ github.workspace }}/Linux/Linux-Setup"
+          name: ${{ github.event.head_commit.message }}
+          draft: false
+          prerelease: ${{ env.GIT_BRANCH_NAME != 'master' }}
