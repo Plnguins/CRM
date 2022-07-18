@@ -251,9 +251,10 @@ CREATE TABLE public.deal (
     cost integer NOT NULL,
     client integer NOT NULL,
     status text DEFAULT 'Создан'::text,
-    date date DEFAULT now(),
+    created date DEFAULT now(),
     seller integer NOT NULL,
-    rate integer
+    rate integer,
+    last_update date DEFAULT now() NOT NULL
 );
 
 
@@ -295,17 +296,17 @@ COMMENT ON COLUMN public.deal.client IS 'ID клиента';
 
 
 --
--- Name: COLUMN deal.date; Type: COMMENT; Schema: public; Owner: practice
+-- Name: COLUMN deal.created; Type: COMMENT; Schema: public; Owner: practice
 --
 
-COMMENT ON COLUMN public.deal.date IS 'Дата создания сделки';
+COMMENT ON COLUMN public.deal.created IS 'Дата создания сделки';
 
 
 --
 -- Name: COLUMN deal.seller; Type: COMMENT; Schema: public; Owner: practice
 --
 
-COMMENT ON COLUMN public.deal.seller IS 'ID отвественного сотрудника';
+COMMENT ON COLUMN public.deal.seller IS 'ID ответственного сотрудника';
 
 
 --
@@ -313,6 +314,13 @@ COMMENT ON COLUMN public.deal.seller IS 'ID отвественного сотр�
 --
 
 COMMENT ON COLUMN public.deal.rate IS 'Оценка покупателя';
+
+
+--
+-- Name: COLUMN deal.last_update; Type: COMMENT; Schema: public; Owner: practice
+--
+
+COMMENT ON COLUMN public.deal.last_update IS 'Дата последнего обновления сделки';
 
 
 --
