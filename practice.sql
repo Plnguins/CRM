@@ -91,7 +91,7 @@ CREATE TABLE public.client (
     id integer NOT NULL,
     surname character varying,
     name character varying NOT NULL,
-    second_name character varying NOT NULL,
+    patronymic character varying NOT NULL,
     email character varying NOT NULL,
     phone character varying NOT NULL,
     sex character varying,
@@ -130,10 +130,10 @@ COMMENT ON COLUMN public.client.name IS 'Имя клиента';
 
 
 --
--- Name: COLUMN client.second_name; Type: COMMENT; Schema: public; Owner: practice
+-- Name: COLUMN client.patronymic; Type: COMMENT; Schema: public; Owner: practice
 --
 
-COMMENT ON COLUMN public.client.second_name IS 'Отчество клиента';
+COMMENT ON COLUMN public.client.patronymic IS 'Отчество клиента';
 
 
 --
