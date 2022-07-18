@@ -345,7 +345,7 @@ CREATE TABLE public.employee (
     id integer NOT NULL,
     surname character varying NOT NULL,
     name character varying NOT NULL,
-    second_name character varying NOT NULL,
+    patronymic character varying NOT NULL,
     login character varying NOT NULL,
     passworrd character varying NOT NULL
 );
@@ -382,10 +382,10 @@ COMMENT ON COLUMN public.employee.name IS 'Имя работника';
 
 
 --
--- Name: COLUMN employee.second_name; Type: COMMENT; Schema: public; Owner: practice
+-- Name: COLUMN employee.patronymic; Type: COMMENT; Schema: public; Owner: practice
 --
 
-COMMENT ON COLUMN public.employee.second_name IS 'Отчество работника';
+COMMENT ON COLUMN public.employee.patronymic IS 'Отчество работника';
 
 
 --
