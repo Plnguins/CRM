@@ -185,7 +185,8 @@ ALTER TABLE public.client ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 CREATE TABLE public.comments (
     id integer NOT NULL,
     deal integer NOT NULL,
-    date date DEFAULT now() NOT NULL
+    date date DEFAULT now() NOT NULL,
+    content text NOT NULL
 );
 
 
@@ -217,6 +218,13 @@ COMMENT ON COLUMN public.comments.deal IS 'ID сделки, к которому 
 --
 
 COMMENT ON COLUMN public.comments.date IS 'Дата комментария';
+
+
+--
+-- Name: COLUMN comments.content; Type: COMMENT; Schema: public; Owner: practice
+--
+
+COMMENT ON COLUMN public.comments.content IS 'Содержимое комментария';
 
 
 --
