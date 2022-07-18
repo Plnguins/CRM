@@ -347,7 +347,7 @@ CREATE TABLE public.employee (
     name character varying NOT NULL,
     patronymic character varying NOT NULL,
     login character varying NOT NULL,
-    passworrd character varying NOT NULL
+    password character varying NOT NULL
 );
 
 
@@ -396,10 +396,10 @@ COMMENT ON COLUMN public.employee.login IS 'Логин работника';
 
 
 --
--- Name: COLUMN employee.passworrd; Type: COMMENT; Schema: public; Owner: practice
+-- Name: COLUMN employee.password; Type: COMMENT; Schema: public; Owner: practice
 --
 
-COMMENT ON COLUMN public.employee.passworrd IS 'Хеш пароля работника';
+COMMENT ON COLUMN public.employee.password IS 'Хеш пароля работника';
 
 
 --
