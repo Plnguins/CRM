@@ -24,8 +24,10 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/bin)
 
 set(CMAKE_CXX_STANDARD 17)
+set(Boost_NO_WARN_NEW_VERSIONS 1)
 
 find_package(Boost 1.79.0)
+find_package(Boost REQUIRED)
 message(STATUS "Boost version: ${Boost_VERSION}")
 
 find_package(PostgreSQL REQUIRED)
