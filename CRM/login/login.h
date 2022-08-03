@@ -43,6 +43,4 @@ class login : public QWidget {
     Ui::loginUi *ui;
     QIcon closeEye = QIcon(QPixmap(":/images/closeEye.png"));
     QIcon openEye = QIcon(QPixmap(":/images/openEye.png"));
-    QMessageBox msgBoxEmptyInput;
-    QMessageBox msgBoxIncorrectInput;
 };

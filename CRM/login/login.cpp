@@ -22,17 +22,6 @@ login::login(QMainWindow *parent)
     ui->Password->clear();
     ui->Password->setEchoMode(QLineEdit::Password);
     ui->ShowPassword->setIcon(openEye);
-    msgBoxEmptyInput.setText("Empty Login or Password");
-    msgBoxEmptyInput.setStandardButtons(QMessageBox::Close);
-    msgBoxEmptyInput.setIcon(QMessageBox::Warning);
-    msgBoxEmptyInput.setWindowTitle("Empty input");
-    msgBoxIncorrectInput.setText(
-        "Incorrect Login or Password. Please, try again.");
-    msgBoxIncorrectInput.setInformativeText(
-        "Check if your CapsLock is off and you use correct keyboard layout.");
-    msgBoxIncorrectInput.setStandardButtons(QMessageBox::Close);
-    msgBoxIncorrectInput.setIcon(QMessageBox::Warning);
-    msgBoxIncorrectInput.setWindowTitle("Incorrect data");
     int id = QFontDatabase::addApplicationFont(":/Comfortaa.ttf");
 }
 
@@ -48,12 +37,12 @@ void login::on_LoginButton_clicked() {
     Login = ui->Login->text();
     Password = ui->Password->text();
     if (Login.isEmpty() || Password.isEmpty()) {
-        msgBoxEmptyInput.show();
+        QMessageBox::critical(this, "Ошибка", "Не все поля заполнены");
         isOk = false;
     }
     // TODO: checking Login and Password
     if (!isInputCorrect) {
-        msgBoxIncorrectInput.show();
+        QMessageBox::critical(this, "Ошибка", "Неверный логин или пароль");
         isOk = false;
     }
     role = Login.toInt();
