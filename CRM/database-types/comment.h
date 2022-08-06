@@ -17,12 +17,13 @@
 #include <memory>
 
 #include "../db_pool.h"
+#include "boost/date_time/gregorian/gregorian.hpp"
 
 struct comment {
-    int id;               // ID комментария
-    int deal;             // ID сделки комментария
-    std::tm date;         // Дата комментария
-    std::string content;  // Содержимое комментария
+    int id;                       // ID комментария
+    int deal;                     // ID сделки комментария
+    boost::gregorian::date date;  // Дата комментария
+    std::string content;          // Содержимое комментария
 
     comment() = default;
 
@@ -55,7 +56,8 @@ struct type_conversion<comment> {
         try {
             c.id = v.get<int>("id", 0);
             c.deal = v.get<int>("deal", 0);
-            c.date = v.get<std::tm>("date", std::tm());
+            c.date =
+                v.get<boost::gregorian::date>("date", boost::gregorian::date());
             c.content = v.get<std::string>("content", "");
         } catch (soci_error const& e) {
             // Logging

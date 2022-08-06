@@ -19,14 +19,14 @@
 #include "../db_pool.h"
 
 struct deal {
-    int id;              // ID сделки
-    int laptop;          // ID ноутбука
-    int cost;            // Сумма сделки
-    std::string status;  // Статус сделки
-    std::tm created;     // Дата создания
-    int seller;          // ID ответственного сотрудника
-    int rate;            // Оценка покупателя
-    std::tm last_update;  // Дата последнего обновления
+    int id;                          // ID сделки
+    int laptop;                      // ID ноутбука
+    int cost;                        // Сумма сделки
+    std::string status;              // Статус сделки
+    boost::gregorian::date created;  // Дата создания
+    int seller;  // ID ответственного сотрудника
+    int rate;    // Оценка покупателя
+    boost::gregorian::date last_update;  // Дата последнего обновления
 
     deal() = default;
 
@@ -69,10 +69,10 @@ struct type_conversion<deal> {
             d.laptop = v.get<int>("laptop");
             d.cost = v.get<int>("cost");
             d.status = v.get<std::string>("status");
-            d.created = v.get<std::tm>("created");
+            d.created = v.get<boost::gregorian::date>("created");
             d.seller = v.get<int>("seller");
             d.rate = v.get<int>("rate");
-            d.last_update = v.get<std::tm>("last_update");
+            d.last_update = v.get<boost::gregorian::date>("last_update");
         } catch (std::exception const &e) {
             // Logging
         }

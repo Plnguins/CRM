@@ -14,9 +14,12 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #pragma once
+#include <soci/boost-gregorian-date.h>
+#include <soci/boost-optional.h>
 #include <soci/connection-pool.h>
 #include <soci/soci.h>
 
+#include <boost/optional.hpp>
 #include <boost/smart_ptr.hpp>
 
 class db_pool {
