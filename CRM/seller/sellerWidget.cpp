@@ -1,4 +1,4 @@
-// Manager source code for CRM application
+// Seller source code for CRM application
 // Copyright(C) 2022 Plnguins
 
 // This program is free software : you can redistribute it and / or modify
@@ -13,14 +13,14 @@
 
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
-#include "manager.h"
+#include "sellerWidget.h"
 
-manager::manager(QMainWindow *parent)
-    : parent(dynamic_cast<MainWindow *>(parent)), ui(new Ui::managerUi) {
+sellerWidget::sellerWidget(QMainWindow *parent)
+    : parent(dynamic_cast<MainWindow *>(parent)), ui(new Ui::sellerUi) {
     ui->setupUi(this);
 
-    ui->Provider->setIcon(QIcon(":/images/vendor-white.png"));
-    ui->Provider->setIconSize({30, 30});
+    ui->Client->setIcon(QIcon(":/images/client-white.png"));
+    ui->Client->setIconSize({30, 30});
     ui->Deal->setIcon(QIcon(":/images/dollar.png"));
     ui->Deal->setIconSize({27, 27});
     ui->Stock->setIcon(QIcon(":/images/sklad-white.png"));
@@ -36,7 +36,7 @@ manager::manager(QMainWindow *parent)
     ui->Edit->hide();
     ui->Add->hide();
     ui->Delete->hide();
-    ui->ProviderLabel->hide();
+    ui->Title->hide();
     ui->Send->hide();
     ui->Help->hide();
     ui->textEdit->hide();
@@ -47,44 +47,25 @@ manager::manager(QMainWindow *parent)
     ui->Icon->setPixmap(icon.scaled(ui->Icon->size(), Qt::KeepAspectRatio));
 }
 
-manager::~manager() { delete ui; }
+sellerWidget::~sellerWidget() { delete ui; }
 
-void manager::on_Logout_clicked() {
-    ui->Icon->show();
-    ui->Title->show();
-    ui->Company->show();
-    ui->Greeting->show();
-    ui->tableWidget->hide();
-    ui->RoundedBlue->hide();
-    ui->Update->hide();
-    ui->Edit->hide();
-    ui->Add->hide();
-    ui->Delete->hide();
-    ui->ProviderLabel->hide();
-    ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
-    ui->textEdit->clear();
-    parent->setLoginInterface();
-}
-
-void manager::on_Provider_clicked() {
+void sellerWidget::on_Client_clicked() {
     ui->tableWidget->show();
     ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
     ui->RoundedBlue->show();
-    ui->ProviderLabel->show();
+    ui->Title->show();
     ui->Icon->hide();
-    ui->Title->hide();
+    ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
     ui->Send->hide();
     ui->Help->hide();
     ui->textEdit->hide();
 
-    ui->ProviderLabel->setText("Поставщики");
+    ui->Title->setText("Клиенты");
     ui->Update->setText("Update");
 
     // TODO: fill table with db
@@ -92,16 +73,21 @@ void manager::on_Provider_clicked() {
 
     // get from db
     ui->tableWidget->setRowCount(5);
-    ui->tableWidget->setColumnCount(2);
-    ui->tableWidget->setColumnWidth(0, 91);
-    ui->tableWidget->setColumnWidth(1, 375);
-    QStringList Labels = {"id", "Name"};
+    ui->tableWidget->setColumnCount(7);
+    ui->tableWidget->setColumnWidth(0, 65);
+    ui->tableWidget->setColumnWidth(1, 96);
+    ui->tableWidget->setColumnWidth(2, 65);
+    ui->tableWidget->setColumnWidth(3, 65);
+    ui->tableWidget->setColumnWidth(4, 45);
+    ui->tableWidget->setColumnWidth(5, 65);
+    ui->tableWidget->setColumnWidth(6, 65);
+    QStringList Labels = {"id", "FIO", "Date", "City", "Sex", "e-mail", "tel"};
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
     // temporary
     QTableWidgetItem *item = new QTableWidgetItem("123");
     for (size_t i = 0; i < 5; i++) {
-        for (size_t j = 0; j < 2; j++) {
+        for (size_t j = 0; j < 7; j++) {
             QTableWidgetItem *item = new QTableWidgetItem("123");
             ui->tableWidget->setItem(i, j, item);
             ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
@@ -109,29 +95,29 @@ void manager::on_Provider_clicked() {
         }
     }
 
-    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableVendorUpdate()));
+    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableClientUpdate()));
     // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
     // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
     // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void manager::on_Deal_clicked() {
+void sellerWidget::on_Deal_clicked() {
     ui->tableWidget->show();
     ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
     ui->RoundedBlue->show();
-    ui->ProviderLabel->show();
+    ui->Title->show();
     ui->Icon->hide();
-    ui->Title->hide();
+    ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
     ui->Send->hide();
     ui->Help->hide();
     ui->textEdit->hide();
 
-    ui->ProviderLabel->setText("Сделки");
+    ui->Title->setText("Сделки");
     ui->Update->setText("Update");
 
     // TODO: fill table with db
@@ -140,8 +126,9 @@ void manager::on_Deal_clicked() {
     // get from db
     ui->tableWidget->setRowCount(5);
     ui->tableWidget->setColumnCount(9);
-    QStringList Labels = {"id",     "id laptop", "price",  "customer", "status",
-                          "source", "date",      "seller", "mark?"};
+    QStringList Labels = {"id",       "id laptop",    "price",
+                          "customer", "status",       "source",
+                          "date",     "sellerWidget", "mark?"};
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
     ui->tableWidget->setColumnWidth(0, 52);
@@ -171,23 +158,23 @@ void manager::on_Deal_clicked() {
     // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void manager::on_Stock_clicked() {
+void sellerWidget::on_Stock_clicked() {
     ui->tableWidget->show();
     ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
     ui->RoundedBlue->show();
-    ui->ProviderLabel->show();
+    ui->Title->show();
     ui->Icon->hide();
-    ui->Title->hide();
+    ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
     ui->Send->hide();
     ui->Help->hide();
     ui->textEdit->hide();
 
-    ui->ProviderLabel->setText("Склад");
+    ui->Title->setText("Склад");
     ui->Update->setText("Update");
 
     // TODO: fill table with db
@@ -224,34 +211,49 @@ void manager::on_Stock_clicked() {
     // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void manager::on_Support_clicked() {
+void sellerWidget::on_Support_clicked() {
     ui->tableWidget->hide();
     ui->Update->hide();
     ui->Edit->hide();
     ui->Add->hide();
     ui->Delete->hide();
     ui->RoundedBlue->hide();
-    ui->ProviderLabel->show();
+    ui->Title->show();
     ui->Icon->hide();
-    ui->Title->hide();
+    ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
     ui->Send->show();
     ui->Help->show();
     ui->textEdit->show();
 
-    ui->ProviderLabel->setText("ТехПод");
+    ui->Title->setText("ТехПод");
     ui->Send->setText("Отправить");
 }
 
-void manager::tableVendorUpdate() {
+void sellerWidget::on_Logout_clicked() {
+    ui->Icon->show();
+    ui->Name->show();
+    ui->Company->show();
+    ui->Greeting->show();
+    ui->tableWidget->hide();
+    ui->RoundedBlue->hide();
+    ui->Update->hide();
+    ui->Edit->hide();
+    ui->Add->hide();
+    ui->Delete->hide();
+    ui->Title->hide();
+    ui->Send->hide();
+    ui->Help->hide();
+    ui->textEdit->hide();
+    ui->textEdit->clear();
+    parent->setLoginInterface();
+}
+
+void sellerWidget::tableClientUpdate() {
     //
 }
 
-void manager::tableDealUpdate() {
-    //
-}
+void sellerWidget::tableStorageUpdate() {}
 
-void manager::tableStorageUpdate() {
-    //
-}
+void sellerWidget::tableDealUpdate() {}

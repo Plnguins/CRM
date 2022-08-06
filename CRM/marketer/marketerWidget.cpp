@@ -13,9 +13,9 @@
 
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
-#include "marketer.h"
+#include "marketerWidget.h"
 
-marketer::marketer(QWidget *parent)
+marketerWidget::marketerWidget(QWidget *parent)
     : parent(dynamic_cast<MainWindow *>(parent)), ui(new Ui::marketerUi) {
     ui->setupUi(this);
 
@@ -43,9 +43,9 @@ marketer::marketer(QWidget *parent)
     ui->Icon->setPixmap(icon.scaled(ui->Icon->size(), Qt::KeepAspectRatio));
 }
 
-marketer::~marketer() { delete ui; }
+marketerWidget::~marketerWidget() { delete ui; }
 
-void marketer::on_Ads_clicked() {
+void marketerWidget::on_Ads_clicked() {
     ui->tableWidget->show();
     ui->Update->show();
     ui->Edit->show();
@@ -92,7 +92,7 @@ void marketer::on_Ads_clicked() {
     // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void marketer::on_Support_clicked() {
+void marketerWidget::on_Support_clicked() {
     ui->tableWidget->hide();
     ui->Update->hide();
     ui->Edit->hide();
@@ -112,7 +112,7 @@ void marketer::on_Support_clicked() {
     ui->Send->setText("Отправить");
 }
 
-void marketer::on_Logout_clicked() {
+void marketerWidget::on_Logout_clicked() {
     ui->Icon->show();
     ui->Name->show();
     ui->Company->show();
@@ -131,6 +131,6 @@ void marketer::on_Logout_clicked() {
     parent->setLoginInterface();
 }
 
-void marketer::tableAdUpdate() {
+void marketerWidget::tableAdUpdate() {
     //
 }
