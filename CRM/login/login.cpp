@@ -23,6 +23,16 @@ login::login(QMainWindow *parent)
     ui->Password->setEchoMode(QLineEdit::Password);
     ui->ShowPassword->setIcon(openEye);
     int id = QFontDatabase::addApplicationFont(":/Comfortaa.ttf");
+    if (!this->parent->database.connect(
+            "postgresql://host='" + this->parent->database_ip + "' dbname='" +
+            this->parent->database_name +
+            "' port=" + std::to_string(this->parent->database_port) +
+            " user='" + this->parent->database_login +
+            "' "
+            "password='" +
+            this->parent->database_password + "'")) {
+        QMessageBox::critical(this, "Ошибка", "Невозможно подключиться к БД");
+    }
 }
 
 login::~login() { delete ui; }

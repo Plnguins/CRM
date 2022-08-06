@@ -19,6 +19,8 @@
 #include <QMainWindow>
 #include <QMessageBox>
 
+#include "db_pool.h"
+
 namespace Ui {
 class MainWindowUi;
 }
@@ -34,6 +36,12 @@ class MainWindow : public QMainWindow {
     void setManagerInterface();
     void setMarketerInterface();
     void setSellerInterface();
+    db_pool database;
+    std::string database_ip = "localhost";
+    unsigned short int database_port = 5432;
+    std::string database_login = "practice";
+    std::string database_password = "root";
+    std::string database_name = "Practice";
 
    private:
     Ui::MainWindowUi *ui;

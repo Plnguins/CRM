@@ -25,7 +25,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindowUi) {
     ui->setupUi(this);
-
+    database = db_pool();
     setLoginInterface();
 }
 
