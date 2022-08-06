@@ -24,6 +24,7 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindowUi) {
+    QFontDatabase::addApplicationFont(":/Comfortaa.ttf");
     ui->setupUi(this);
     database = db_pool();
     setLoginInterface();

@@ -34,11 +34,6 @@ std::string hashPassword(const std::string &password) {
 login::login(QMainWindow *parent)
     : parent(dynamic_cast<MainWindow *>(parent)), ui(new Ui::loginUi) {
     ui->setupUi(this);
-    ui->Login->clear();
-    ui->Password->clear();
-    ui->Password->setEchoMode(QLineEdit::Password);
-    ui->ShowPassword->setIcon(openEye);
-    int id = QFontDatabase::addApplicationFont(":/Comfortaa.ttf");
     if (!this->parent->database.connect(
             "postgresql://host='" + this->parent->database_ip + "' dbname='" +
             this->parent->database_name +
@@ -54,6 +49,14 @@ login::login(QMainWindow *parent)
 login::~login() { delete ui; }
 
 QPushButton *login::getLoginButton() { return ui->LoginButton; }
+
+void login::on_ShowPassword_clicked(bool checked){
+    if (checked) {
+        ui->Password->setEchoMode(QLineEdit::Normal);
+    } else {
+        ui->Password->setEchoMode(QLineEdit::Password);
+    }
+}
 
 void login::on_LoginButton_clicked() {
     std::string Login, Password;

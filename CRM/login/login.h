@@ -18,7 +18,6 @@
 #include <openssl/evp.h>
 #include <openssl/sha.h>
 
-#include <QFontDatabase>
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QWidget>
@@ -48,10 +47,9 @@ class login : public QWidget {
 
    private slots:
     void on_LoginButton_clicked();
+    void on_ShowPassword_clicked(bool checked);
 
    private:
     MainWindow *parent;
     Ui::loginUi *ui;
-    QIcon closeEye = QIcon(QPixmap(":/images/closeEye.png"));
-    QIcon openEye = QIcon(QPixmap(":/images/openEye.png"));
 };
