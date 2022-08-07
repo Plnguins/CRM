@@ -23,3 +23,10 @@ updates:
     target-branch: master
     assignees:
       - "VadVergasov"
+  - package-ecosystem: gitsubmodule
+    directory: "/"
+    schedule:
+      interval: daily
+    target-branch: master
+    assignees:
+      - "VadVergasov"

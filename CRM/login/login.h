@@ -15,13 +15,23 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #pragma once
 
-#include <QFontDatabase>
+#include <openssl/evp.h>
+#include <openssl/sha.h>
+
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QWidget>
+#include <sstream>
 
+#include "../database-types/employee.h"
+#include "../database-types/leader.h"
+#include "../database-types/marketer.h"
+#include "../database-types/seller.h"
+#include "../database-types/stock_manager.h"
 #include "../mainwindow.h"
 #include "ui_login.h"
+
+enum Role { Leader, Manager, Marketer, Seller, Unknown };
 
 namespace Ui {
 class loginUi;
@@ -37,12 +47,9 @@ class login : public QWidget {
 
    private slots:
     void on_LoginButton_clicked();
+    void on_ShowPassword_clicked(bool checked);
 
    private:
     MainWindow *parent;
     Ui::loginUi *ui;
-    QIcon closeEye = QIcon(QPixmap(":/images/closeEye.png"));
-    QIcon openEye = QIcon(QPixmap(":/images/openEye.png"));
-    QMessageBox msgBoxEmptyInput;
-    QMessageBox msgBoxIncorrectInput;
 };

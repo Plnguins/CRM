@@ -19,9 +19,10 @@ on:
   push:
     tags:
       - "*"
+  pull_request:
     paths-ignore:
       - "**.md"
-      - "LICENSE"
+      - "LICENSE.txt"
       - "README.md"
       - ".github/**"
       - "!.github/workflows/linux-build.yml"
@@ -111,6 +112,7 @@ jobs:
           name: Linux
           path: ${{ github.workspace }}/Linux-Setup
   release:
+    if: startsWith(github.ref, 'refs/tags/')
     needs: linux
     name: Create\Update release
     runs-on: ubuntu-latest
@@ -120,6 +122,8 @@ jobs:
         with:
           name: Linux
           path: ${{ github.workspace }}/Linux
+      - name: Get branch name
+        uses: EthanSK/git-branch-name-action@v1
       - name: Create Release
         id: create_release
         uses: ncipollo/release-action@v1.10.0
@@ -129,4 +133,4 @@ jobs:
           artifacts: "${{ github.workspace }}/Linux/Linux-Setup"
           name: ${{ github.event.head_commit.message }}
           draft: false
-          prerelease: ${{ github.ref != 'refs/heads/master' }}
+          prerelease: ${{ env.GIT_BRANCH_NAME != 'master' }}

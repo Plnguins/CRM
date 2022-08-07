@@ -24,8 +24,11 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/bin)
 
 set(CMAKE_CXX_STANDARD 17)
+set(Boost_NO_WARN_NEW_VERSIONS 1)
 
-find_package(Boost 1.79.0)
+find_package(OpenSSL REQUIRED)
+
+find_package(Boost REQUIRED)
 message(STATUS "Boost version: ${Boost_VERSION}")
 
 find_package(PostgreSQL REQUIRED)
@@ -72,18 +75,19 @@ target_link_libraries(CRM PRIVATE soci_core soci_postgresql)
 
 target_link_libraries(CRM PRIVATE Qt6::Core Qt6::Widgets Qt::Gui)
 
+target_link_libraries(CRM PRIVATE OpenSSL::SSL)
+
 set_target_properties(CRM PROPERTIES WIN32_EXECUTABLE ON MACOSX_BUNDLE ON)
 
 get_target_property(QtCore_LOCATION Qt6::Core LOCATION)
 get_filename_component(QT_DLL_DIR ${QtCore_LOCATION} PATH)
 
 IF(WIN32)
+    string(TOLOWER ${CMAKE_BUILD_TYPE} BUILD_TYPE)
     add_custom_command(TARGET CRM POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:Qt6::Core> $<TARGET_FILE_DIR:CRM>
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:Qt6::Gui> $<TARGET_FILE_DIR:CRM>
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different $<TARGET_FILE:Qt6::Widgets> $<TARGET_FILE_DIR:CRM>
-        COMMAND ${CMAKE_COMMAND} -E copy_directory ${QT6_INSTALL_PREFIX}/plugins/platforms $<TARGET_FILE_DIR:CRM>/platforms
-    )
+        COMMAND ${QT_DLL_DIR}/windeployqt.exe ${CMAKE_BINARY_DIR}/bin/CRM.exe --${BUILD_TYPE}
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+        COMMENT "Copying libraries")
     add_custom_command(TARGET CRM POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_BINARY_DIR}/bin ${CMAKE_SOURCE_DIR}/packages/com.pinguins.crm/data)
 ENDIF()

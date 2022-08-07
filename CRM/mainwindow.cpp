@@ -15,39 +15,40 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #include "mainwindow.h"
 
-#include "leader/leader.h"
+#include "leader/leaderWidget.h"
 #include "login/login.h"
-#include "manager/manager.h"
-#include "marketer/marketer.h"
-#include "seller/seller.h"
+#include "manager/managerWidget.h"
+#include "marketer/marketerWidget.h"
+#include "seller/sellerWidget.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindowUi) {
+    QFontDatabase::addApplicationFont(":/Comfortaa.ttf");
     ui->setupUi(this);
-
+    database = db_pool();
     setLoginInterface();
 }
 
 MainWindow::~MainWindow() { delete ui; }
 
 void MainWindow::setSellerInterface() {
-    setCentralWidget(new seller(this));
+    setCentralWidget(new sellerWidget(this));
     setFixedSize({821, 511});
 }
 
 void MainWindow::setMarketerInterface() {
-    setCentralWidget(new marketer(this));
+    setCentralWidget(new marketerWidget(this));
     setFixedSize({832, 503});
 }
 
 void MainWindow::setManagerInterface() {
-    setCentralWidget(new manager(this));
+    setCentralWidget(new managerWidget(this));
     setFixedSize({821, 511});
 }
 
 void MainWindow::setLeaderInterface() {
-    setCentralWidget(new leader(this));
+    setCentralWidget(new leaderWidget(this));
     setFixedSize({821, 511});
 }
 
