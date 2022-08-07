@@ -77,7 +77,9 @@ jobs:
           aqtversion: "==2.1.*"
           py7zrversion: ">=0.18.9"
       - name: Install PostgreSQL and cmake
-        run: sudo apt-get install -y cmake postgresql libpq-dev g++ build-essential libxkbcommon-dev
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: cmake postgresql libpq-dev g++ build-essential libxkbcommon-dev
       - name: Install boost
         id: install-boost
         if: steps.cache-boost.outputs.cache-hit != 'true'
