@@ -19,6 +19,14 @@ on:
   push:
     tags:
       - "*"
+    branches-ignore:
+      - "dependabot/**"
+    paths-ignore:
+      - "**.md"
+      - "LICENSE.txt"
+      - "README.md"
+      - ".github/**"
+      - "!.github/workflows/linux-build.yml"
   pull_request:
     paths-ignore:
       - "**.md"
@@ -62,7 +70,7 @@ jobs:
           path: ${{ env.BOOST_DIR }}/boost/boost
           key: ${{ runner.os }}-Boost-${{ env.BOOST_VERSION }}-${{ env.BOOST_DIR }}-${{ env.BOOST_PLATFORM }}
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@910f37ee23653fd4b243fe5c7f81ff26a8a6a64e
         with:
           cached: ${{ steps.cache-qt.outputs.cache-hit }}
           version: ${{ env.QT_VERSION }}
@@ -75,7 +83,9 @@ jobs:
           aqtversion: "==2.1.*"
           py7zrversion: ">=0.18.9"
       - name: Install PostgreSQL and cmake
-        run: sudo apt-get install -y cmake postgresql libpq-dev g++ build-essential libxkbcommon-dev
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: cmake postgresql libpq-dev g++ build-essential libxkbcommon-dev
       - name: Install boost
         id: install-boost
         if: steps.cache-boost.outputs.cache-hit != 'true'

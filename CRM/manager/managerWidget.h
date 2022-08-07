@@ -1,4 +1,4 @@
-// Seller window header for CRM application
+// Manager window header for CRM application
 // Copyright(C) 2022 Plnguins
 
 // This program is free software : you can redistribute it and / or modify
@@ -19,24 +19,30 @@
 #include <QWidget>
 
 #include "../mainwindow.h"
-#include "ui_seller.h"
+#include "ui_manager.h"
 
 namespace Ui {
-class sellerUi;
+class managerUi;
 }
 
-class seller : public QWidget {
+class managerWidget : public QWidget {
     Q_OBJECT
 
    public:
-    explicit seller(QMainWindow *parent = nullptr);
-    ~seller();
+    explicit managerWidget(QMainWindow *parent = nullptr);
+    ~managerWidget();
 
    signals:
     void logout();
 
    private slots:
-    void on_Client_clicked();
+    void tableVendorUpdate();
+    void tableDealUpdate();
+    void tableStorageUpdate();
+
+    void on_Logout_clicked();
+
+    void on_Provider_clicked();
 
     void on_Deal_clicked();
 
@@ -44,13 +50,7 @@ class seller : public QWidget {
 
     void on_Support_clicked();
 
-    void on_Logout_clicked();
-
-    void tableClientUpdate();
-    void tableStorageUpdate();
-    void tableDealUpdate();
-
    private:
     MainWindow *parent;
-    Ui::sellerUi *ui;
+    Ui::managerUi *ui;
 };

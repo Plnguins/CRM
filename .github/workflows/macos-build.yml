@@ -19,6 +19,14 @@ on:
   push:
     tags:
       - "*"
+    branches-ignore:
+      - "dependabot/**"
+    paths-ignore:
+      - "**.md"
+      - "LICENSE.txt"
+      - "README.md"
+      - ".github/**"
+      - "!.github/workflows/macos-build.yml"
   pull_request:
     paths-ignore:
       - "**.md"
@@ -30,12 +38,14 @@ on:
 env:
   BUILD_TYPE: Release
   QT_VERSION: "6.2.4"
-  BOOST_VERSION: "1.79.0"
   QT_DIR: ${{ github.workspace }}
+  QT_TOOLS: "tools_ifw"
+  BOOST_PLATFORM: 11
+  BOOST_VERSION: "1.79.0"
   BOOST_DIR: ${{ github.workspace }}
 
 jobs:
-  linux:
+  macos:
     name: MacOS
     runs-on: macos-latest
     strategy:
@@ -51,15 +61,15 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ env.QT_DIR }}/Qt
-          key: ${{ runner.os }}-Qt-${{ env.QT_VERSION }}-${{ env.QT_DIR }}
+          key: ${{ runner.os }}-Qt-${{ env.QT_VERSION }}-${{ env.QT_DIR }}-${{ env.QT_TOOLS }}
       - name: Cache Boost
         id: cache-boost
         uses: actions/cache@v3
         with:
           path: ${{ env.BOOST_DIR }}/boost/boost
-          key: ${{ runner.os }}-Boost-${{ env.BOOST_VERSION }}-${{ env.BOOST_DIR }}
+          key: ${{ runner.os }}-Boost-${{ env.BOOST_VERSION }}-${{ env.BOOST_DIR }}-${{ env.BOOST_PLATFORM }}
       - name: Install Qt
-        uses: jurplel/install-qt-action@v2
+        uses: jurplel/install-qt-action@910f37ee23653fd4b243fe5c7f81ff26a8a6a64e
         with:
           cached: ${{ steps.cache-qt.outputs.cache-hit }}
           version: ${{ env.QT_VERSION }}
@@ -67,13 +77,16 @@ jobs:
           host: "mac"
           target: "desktop"
           setup-python: "false"
+          tools: ${{ env.QT_TOOLS }}
+          aqtversion: "==2.1.*"
+          py7zrversion: ">=0.18.9"
       - name: Install boost
         id: install-boost
         if: steps.cache-boost.outputs.cache-hit != 'true'
         uses: MarkusJx/install-boost@v2.3.0
         with:
           boost_version: ${{ env.BOOST_VERSION }}
-          platform_version: 11
+          platform_version: ${{ env.BOOST_PLATFORM }}
           toolset: clang
           boost_install_dir: ${{ env.BOOST_DIR }}
       - name: Configure CMake
@@ -81,11 +94,36 @@ jobs:
           cmake -B ${{ github.workspace }}/build \
           -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
           -DBoost_INCLUDE_DIR=${{ env.BOOST_DIR }}/boost/boost/include \
-          -DBoost_LIBRARY_DIRS=${{ env.BOOST_DIR }}/boost/boost/lib
+          -DBoost_LIBRARY_DIRS=${{ env.BOOST_DIR }}/boost/boost/lib \
+          -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl@1.1 \
+          -DOPENSSL_LIBRARIES=/usr/local/opt/openssl@1.1/lib
       - name: Build
         run: cmake --build ${{ github.workspace }}/build --parallel --config ${{ env.BUILD_TYPE }}
       - uses: actions/upload-artifact@v3
         name: Upload builded app
         with:
-          name: CRM
-          path: ${{ github.workspace }}/build/bin
+          name: MacOS
+          path: ${{ github.workspace }}/build/bin/CRM.dmg
+  release:
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: macos
+    name: Create\Update release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: MacOS
+          path: ${{ github.workspace }}/MacOS
+      - name: Get branch name
+        uses: EthanSK/git-branch-name-action@v1
+      - name: Create Release
+        id: create_release
+        uses: ncipollo/release-action@v1.10.0
+        with:
+          allowUpdates: true
+          artifactErrorsFailBuild: true
+          artifacts: "${{ github.workspace }}/MacOS/CRM.dmg"
+          name: ${{ github.event.head_commit.message }}
+          draft: false
+          prerelease: ${{ env.GIT_BRANCH_NAME == 'master' }}

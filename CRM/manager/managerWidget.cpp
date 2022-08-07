@@ -1,4 +1,4 @@
-// Leader source code for CRM application
+// Manager source code for CRM application
 // Copyright(C) 2022 Plnguins
 
 // This program is free software : you can redistribute it and / or modify
@@ -13,20 +13,16 @@
 
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
-#include "leader.h"
+#include "managerWidget.h"
 
-leader::leader(QMainWindow *parent)
-    : parent(dynamic_cast<MainWindow *>(parent)), ui(new Ui::leaderUi) {
+managerWidget::managerWidget(QMainWindow *parent)
+    : parent(dynamic_cast<MainWindow *>(parent)), ui(new Ui::managerUi) {
     ui->setupUi(this);
 
     ui->Provider->setIcon(QIcon(":/images/vendor-white.png"));
     ui->Provider->setIconSize({30, 30});
     ui->Deal->setIcon(QIcon(":/images/dollar.png"));
     ui->Deal->setIconSize({27, 27});
-    ui->Ads->setIcon(QIcon(":/images/ad-white.png"));
-    ui->Ads->setIconSize({27, 27});
-    ui->Employee->setIcon(QIcon(":/images/worker-white.png"));
-    ui->Employee->setIconSize({30, 30});
     ui->Stock->setIcon(QIcon(":/images/sklad-white.png"));
     ui->Stock->setIconSize({30, 30});
     ui->Support->setIcon(QIcon(":/images/t-white.png"));
@@ -51,9 +47,9 @@ leader::leader(QMainWindow *parent)
     ui->Icon->setPixmap(icon.scaled(ui->Icon->size(), Qt::KeepAspectRatio));
 }
 
-leader::~leader() { delete ui; }
+managerWidget::~managerWidget() { delete ui; }
 
-void leader::on_Logout_clicked() {
+void managerWidget::on_Logout_clicked() {
     ui->Icon->show();
     ui->Title->show();
     ui->Company->show();
@@ -72,7 +68,7 @@ void leader::on_Logout_clicked() {
     parent->setLoginInterface();
 }
 
-void leader::on_Provider_clicked() {
+void managerWidget::on_Provider_clicked() {
     ui->tableWidget->show();
     ui->Update->show();
     ui->Edit->show();
@@ -119,7 +115,7 @@ void leader::on_Provider_clicked() {
     // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void leader::on_Deal_clicked() {
+void managerWidget::on_Deal_clicked() {
     ui->tableWidget->show();
     ui->Update->show();
     ui->Edit->show();
@@ -175,7 +171,7 @@ void leader::on_Deal_clicked() {
     // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void leader::on_Stock_clicked() {
+void managerWidget::on_Stock_clicked() {
     ui->tableWidget->show();
     ui->Update->show();
     ui->Edit->show();
@@ -228,104 +224,7 @@ void leader::on_Stock_clicked() {
     // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void leader::on_Ads_clicked() {
-    ui->tableWidget->show();
-    ui->Update->show();
-    ui->Edit->show();
-    ui->Add->show();
-    ui->Delete->show();
-    ui->RoundedBlue->show();
-    ui->ProviderLabel->show();
-    ui->Icon->hide();
-    ui->Title->hide();
-    ui->Company->hide();
-    ui->Greeting->hide();
-    ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
-
-    ui->ProviderLabel->setText("Реклама");
-    ui->Update->setText("Update");
-
-    // TODO: fill table with db
-    // tableVendorUpdate();
-
-    // get from db
-    ui->tableWidget->setRowCount(5);
-    ui->tableWidget->setColumnCount(2);
-    ui->tableWidget->setColumnWidth(0, 91);
-    ui->tableWidget->setColumnWidth(1, 375);
-    QStringList Labels = {"id", "Place"};
-    ui->tableWidget->setHorizontalHeaderLabels(Labels);
-
-    // temporary
-    QTableWidgetItem *item = new QTableWidgetItem("123");
-    for (size_t i = 0; i < 5; i++) {
-        for (size_t j = 0; j < 2; j++) {
-            QTableWidgetItem *item = new QTableWidgetItem("123");
-            ui->tableWidget->setItem(i, j, item);
-            ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
-                                                  Qt::ItemIsSelectable);
-        }
-    }
-
-    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableAdUpdate()));
-    // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
-}
-
-void leader::on_Employee_clicked() {
-    ui->tableWidget->show();
-    ui->Update->show();
-    ui->Edit->show();
-    ui->Add->show();
-    ui->Delete->show();
-    ui->RoundedBlue->show();
-    ui->ProviderLabel->show();
-    ui->Icon->hide();
-    ui->Title->hide();
-    ui->Company->hide();
-    ui->Greeting->hide();
-    ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
-
-    ui->ProviderLabel->setText("Работники");
-    ui->Update->setText("Update");
-
-    // TODO: fill table with db
-    // tableVendorUpdate();
-
-    // get from db
-    ui->tableWidget->setRowCount(5);
-    ui->tableWidget->setColumnCount(5);
-    ui->tableWidget->setColumnWidth(0, 90);
-    ui->tableWidget->setColumnWidth(1, 136);
-    ui->tableWidget->setColumnWidth(2, 90);
-    ui->tableWidget->setColumnWidth(3, 90);
-    ui->tableWidget->setColumnWidth(4, 60);
-    QStringList Labels = {"id", "FIO", "Login", "Password", "Number"};
-    ui->tableWidget->setHorizontalHeaderLabels(Labels);
-
-    // temporary
-    QTableWidgetItem *item = new QTableWidgetItem("123");
-    for (size_t i = 0; i < 5; i++) {
-        for (size_t j = 0; j < 5; j++) {
-            QTableWidgetItem *item = new QTableWidgetItem("123");
-            ui->tableWidget->setItem(i, j, item);
-            ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
-                                                  Qt::ItemIsSelectable);
-        }
-    }
-
-    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableVendorUpdate()));
-    // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
-}
-
-void leader::on_Support_clicked() {
+void managerWidget::on_Support_clicked() {
     ui->tableWidget->hide();
     ui->Update->hide();
     ui->Edit->hide();
@@ -345,24 +244,14 @@ void leader::on_Support_clicked() {
     ui->Send->setText("Отправить");
 }
 
-//----------table update functions---------------
-
-void leader::tableVendorUpdate() {
+void managerWidget::tableVendorUpdate() {
     //
 }
 
-void leader::tableDealUpdate() {
+void managerWidget::tableDealUpdate() {
     //
 }
 
-void leader::tableStorageUpdate() {
-    //
-}
-
-void leader::tableAdUpdate() {
-    //
-}
-
-void leader::tableEmployeesUpdate() {
+void managerWidget::tableStorageUpdate() {
     //
 }

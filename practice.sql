@@ -91,7 +91,7 @@ CREATE TABLE public.client (
     id integer NOT NULL,
     surname character varying,
     name character varying NOT NULL,
-    second_name character varying NOT NULL,
+    patronymic character varying NOT NULL,
     email character varying NOT NULL,
     phone character varying NOT NULL,
     sex character varying,
@@ -130,10 +130,10 @@ COMMENT ON COLUMN public.client.name IS 'Имя клиента';
 
 
 --
--- Name: COLUMN client.second_name; Type: COMMENT; Schema: public; Owner: practice
+-- Name: COLUMN client.patronymic; Type: COMMENT; Schema: public; Owner: practice
 --
 
-COMMENT ON COLUMN public.client.second_name IS 'Отчество клиента';
+COMMENT ON COLUMN public.client.patronymic IS 'Отчество клиента';
 
 
 --
@@ -185,7 +185,8 @@ ALTER TABLE public.client ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 CREATE TABLE public.comments (
     id integer NOT NULL,
     deal integer NOT NULL,
-    date date DEFAULT now() NOT NULL
+    date date DEFAULT now() NOT NULL,
+    content text NOT NULL
 );
 
 
@@ -220,6 +221,13 @@ COMMENT ON COLUMN public.comments.date IS 'Дата комментария';
 
 
 --
+-- Name: COLUMN comments.content; Type: COMMENT; Schema: public; Owner: practice
+--
+
+COMMENT ON COLUMN public.comments.content IS 'Содержимое комментария';
+
+
+--
 -- Name: comments_id_seq; Type: SEQUENCE; Schema: public; Owner: practice
 --
 
@@ -243,9 +251,10 @@ CREATE TABLE public.deal (
     cost integer NOT NULL,
     client integer NOT NULL,
     status text DEFAULT 'Создан'::text,
-    date date DEFAULT now(),
+    created date DEFAULT now(),
     seller integer NOT NULL,
-    rate integer
+    rate integer,
+    last_update date DEFAULT now() NOT NULL
 );
 
 
@@ -287,17 +296,17 @@ COMMENT ON COLUMN public.deal.client IS 'ID клиента';
 
 
 --
--- Name: COLUMN deal.date; Type: COMMENT; Schema: public; Owner: practice
+-- Name: COLUMN deal.created; Type: COMMENT; Schema: public; Owner: practice
 --
 
-COMMENT ON COLUMN public.deal.date IS 'Дата создания сделки';
+COMMENT ON COLUMN public.deal.created IS 'Дата создания сделки';
 
 
 --
 -- Name: COLUMN deal.seller; Type: COMMENT; Schema: public; Owner: practice
 --
 
-COMMENT ON COLUMN public.deal.seller IS 'ID отвественного сотрудника';
+COMMENT ON COLUMN public.deal.seller IS 'ID ответственного сотрудника';
 
 
 --
@@ -305,6 +314,13 @@ COMMENT ON COLUMN public.deal.seller IS 'ID отвественного сотр�
 --
 
 COMMENT ON COLUMN public.deal.rate IS 'Оценка покупателя';
+
+
+--
+-- Name: COLUMN deal.last_update; Type: COMMENT; Schema: public; Owner: practice
+--
+
+COMMENT ON COLUMN public.deal.last_update IS 'Дата последнего обновления сделки';
 
 
 --
@@ -329,9 +345,9 @@ CREATE TABLE public.employee (
     id integer NOT NULL,
     surname character varying NOT NULL,
     name character varying NOT NULL,
-    second_name character varying NOT NULL,
+    patronymic character varying NOT NULL,
     login character varying NOT NULL,
-    passworrd character varying NOT NULL
+    password character varying NOT NULL
 );
 
 
@@ -366,10 +382,10 @@ COMMENT ON COLUMN public.employee.name IS 'Имя работника';
 
 
 --
--- Name: COLUMN employee.second_name; Type: COMMENT; Schema: public; Owner: practice
+-- Name: COLUMN employee.patronymic; Type: COMMENT; Schema: public; Owner: practice
 --
 
-COMMENT ON COLUMN public.employee.second_name IS 'Отчество работника';
+COMMENT ON COLUMN public.employee.patronymic IS 'Отчество работника';
 
 
 --
@@ -380,10 +396,10 @@ COMMENT ON COLUMN public.employee.login IS 'Логин работника';
 
 
 --
--- Name: COLUMN employee.passworrd; Type: COMMENT; Schema: public; Owner: practice
+-- Name: COLUMN employee.password; Type: COMMENT; Schema: public; Owner: practice
 --
 
-COMMENT ON COLUMN public.employee.passworrd IS 'Хеш пароля работника';
+COMMENT ON COLUMN public.employee.password IS 'Хеш пароля работника';
 
 
 --
