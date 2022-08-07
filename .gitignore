@@ -15,6 +15,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 packages/com.pinguins.crm/data
 packages/com.pinguins.crm/meta/LICENSE.txt
+CMakePresets.json
 
 # User-specific files
 *.rsuser
