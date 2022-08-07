@@ -21,6 +21,12 @@ on:
       - "*"
     branches-ignore:
       - "dependabot/**"
+    paths-ignore:
+      - "docs/**"
+      - "**.md"
+      - "LICENSE.txt"
+      - ".github/**"
+      - "!.github/workflows/windows-build.yml"
   pull_request:
     paths-ignore:
       - "docs/**"

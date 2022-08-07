@@ -21,6 +21,12 @@ on:
       - "*"
     branches-ignore:
       - "dependabot/**"
+    paths-ignore:
+      - "**.md"
+      - "LICENSE.txt"
+      - "README.md"
+      - ".github/**"
+      - "!.github/workflows/macos-build.yml"
   pull_request:
     paths-ignore:
       - "**.md"
