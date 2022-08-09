@@ -22,7 +22,7 @@
 #include "seller/sellerWidget.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent), ui(new Ui::MainWindowUi) {
     QFontDatabase::addApplicationFont(":/Comfortaa.ttf");
     ui->setupUi(this);
@@ -55,4 +55,26 @@ void MainWindow::setLeaderInterface() {
 void MainWindow::setLoginInterface() {
     setCentralWidget(new login(this));
     setFixedSize({300, 250});
+}
+
+bool MainWindow::connectDatabase() {
+    return database.connect(get_connection_string());
+}
+
+void MainWindow::setDatabase(const std::string& host,
+                             const unsigned short int& port,
+                             const std::string& user,
+                             const std::string& password,
+                             const std::string& database) {
+    database_ip = host;
+    database_port = port;
+    database_login = user;
+    database_password = password;
+    database_name = database;
+}
+
+std::string MainWindow::get_connection_string() {
+    return "postgresql://host='" + database_ip + "' dbname='" + database_name +
+           "' port=" + std::to_string(database_port) + " user='" +
+           database_login + "' password='" + database_password + "'";
 }

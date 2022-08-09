@@ -29,7 +29,7 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
 
    public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
     void setLeaderInterface();
     void setLoginInterface();
@@ -37,16 +37,21 @@ class MainWindow : public QMainWindow {
     void setMarketerInterface();
     void setSellerInterface();
     db_pool database;
+    bool connectDatabase();
+    void setDatabase(const std::string& host, const unsigned short int& port,
+                     const std::string& user, const std::string& password,
+                     const std::string& database);
+
+   private:
     std::string database_ip = "localhost";
     unsigned short int database_port = 5432;
     std::string database_login = "practice";
     std::string database_password = "root";
     std::string database_name = "Practice";
-
-   private:
-    Ui::MainWindowUi *ui;
+    Ui::MainWindowUi* ui;
     QIcon closeEye = QIcon(QPixmap(":/images/closeEye.png"));
     QIcon openEye = QIcon(QPixmap(":/images/openEye.png"));
     QMessageBox msgBoxEmptyInput;
     QMessageBox msgBoxIncorrectInput;
+    std::string get_connection_string();
 };

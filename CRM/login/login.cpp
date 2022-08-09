@@ -34,14 +34,7 @@ std::string hashPassword(const std::string &password) {
 login::login(QMainWindow *parent)
     : parent(dynamic_cast<MainWindow *>(parent)), ui(new Ui::loginUi) {
     ui->setupUi(this);
-    if (!this->parent->database.connect(
-            "postgresql://host='" + this->parent->database_ip + "' dbname='" +
-            this->parent->database_name +
-            "' port=" + std::to_string(this->parent->database_port) +
-            " user='" + this->parent->database_login +
-            "' "
-            "password='" +
-            this->parent->database_password + "'")) {
+    if (!this->parent->connectDatabase()) {
         QMessageBox::critical(this, "Ошибка", "Невозможно подключиться к БД");
     }
 }
@@ -59,6 +52,10 @@ void login::on_ShowPassword_clicked(bool checked) {
 }
 
 void login::on_LoginButton_clicked() {
+    if (!this->parent->connectDatabase()) {
+        QMessageBox::critical(this, "Ошибка", "Невозможно подключиться к БД");
+        return;
+    }
     std::string Login, Password;
     Role role = Unknown;
     Login = ui->Login->text().toStdString();
