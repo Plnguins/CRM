@@ -15,7 +15,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 cmake_minimum_required(VERSION 3.16)
 
-project("CRM")
+project("CRM" CXX)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/bin)
@@ -25,6 +25,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/bin)
 
 set(CMAKE_CXX_STANDARD 17)
 set(Boost_NO_WARN_NEW_VERSIONS 1)
+string(TOLOWER ${CMAKE_BUILD_TYPE} BUILD_TYPE)
+message(${BUILD_TYPE})
 
 find_package(OpenSSL REQUIRED)
 
@@ -41,7 +43,13 @@ include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 set(SOCI_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/soci)
 
 option(SOCI_CXX11 "Build to the C++11 standard" ON)
-option(SOCI_ASAN "" ON)
+
+IF(BUILD_TYPE STREQUAL "debug")
+    option(SOCI_ASAN "" ON)
+ELSE()
+    option(SOCI_ASAN "" OFF)
+ENDIF()
+
 option(WITH_BOOST "" ON)
 option(SOCI_TESTS "" OFF)
 option(SOCI_SHARED "" ON)
@@ -80,6 +88,11 @@ ENDIF()
 
 set_target_properties(CRM PROPERTIES AUTOMOC TRUE AUTOUIC TRUE AUTORCC TRUE)
 
+IF(BUILD_TYPE STREQUAL "debug")
+    target_compile_options(CRM PRIVATE -fsanitize=address)
+    target_link_options(CRM PRIVATE -fsanitize=address)
+ENDIF()
+
 target_link_libraries(CRM ${Boost_LIBRARIES})
 
 target_include_directories(CRM PRIVATE ${SOCI_BINARY_DIR}/include)
@@ -96,7 +109,6 @@ get_target_property(QtCore_LOCATION Qt6::Core LOCATION)
 get_filename_component(QT_DLL_DIR ${QtCore_LOCATION} PATH)
 
 IF(WIN32)
-    string(TOLOWER ${CMAKE_BUILD_TYPE} BUILD_TYPE)
     add_custom_command(TARGET CRM POST_BUILD
         COMMAND ${QT_DLL_DIR}/windeployqt.exe ${CMAKE_BINARY_DIR}/bin/CRM.exe --${BUILD_TYPE}
         WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
