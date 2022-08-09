@@ -64,7 +64,11 @@ ENDIF()
 
 file(GLOB_RECURSE SRC "CRM/*.h" "CRM/*.cpp" "CRM/*.ui" "resources/*.qrc")
 
-add_executable(CRM ${SRC} ${resources})
+set(MACOSX_BUNDLE_ICON_FILE main.icns)
+SET(MACOSX_BUNDLE_EXECUTABLE_NAME CRM)
+SET(MACOSX_BUNDLE_BUNDLE_NAME CRM)
+
+add_executable(CRM WIN32 MACOSX_BUNDLE ${SRC} ${resources})
 set_target_properties(CRM PROPERTIES AUTOMOC TRUE AUTOUIC TRUE AUTORCC TRUE)
 
 target_link_libraries(CRM ${Boost_LIBRARIES})
@@ -94,17 +98,12 @@ ENDIF()
 
 IF(APPLE)
     add_custom_command(TARGET CRM POST_BUILD
-        COMMAND ${QT6_INSTALL_PREFIX}/bin/macdeployqt CRM.app
+        COMMAND ${QT6_INSTALL_PREFIX}/bin/macdeployqt CRM.app -dmg
         WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
         COMMENT "Copying libraries")
     add_custom_command(TARGET CRM POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_BINARY_DIR}/bin/CRM.app ${CMAKE_SOURCE_DIR}/packages/com.pinguins.crm/data)
 ENDIF()
-
-set_target_properties(CRM PROPERTIES
-    WIN32_EXECUTABLE ON
-    MACOSX_BUNDLE ON
-)
 
 add_custom_command(TARGET CRM POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_SOURCE_DIR}/LICENSE.txt ${CMAKE_SOURCE_DIR}/packages/com.pinguins.crm/meta/LICENSE.txt)

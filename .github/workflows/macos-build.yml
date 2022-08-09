@@ -99,14 +99,10 @@ jobs:
           -DOPENSSL_LIBRARIES=/usr/local/opt/openssl@1.1/lib
       - name: Build
         run: cmake --build ${{ github.workspace }}/build --parallel --config ${{ env.BUILD_TYPE }}
-      - name: Create Setup
-        run: ${{ env.IQTA_TOOLS }}/QtInstallerFramework/4.4/bin/binarycreator -c ${{ github.workspace }}/config/config.xml -p ${{ github.workspace }}/packages ${{ github.workspace }}/CRM.app -v
-      - name: Copy libraries
-        run: ${{ env.Qt6_DIR }}/bin/macdeployqt CRM.app -dmg
       - uses: actions/upload-artifact@v3
         name: Upload setup
         with:
-          name: MacOS-Setup
+          name: MacOS
           path: ${{ github.workspace }}/CRM.dmg
   release:
     if: startsWith(github.ref, 'refs/tags/')
