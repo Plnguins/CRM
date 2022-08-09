@@ -92,6 +92,15 @@ IF(WIN32)
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_BINARY_DIR}/bin ${CMAKE_SOURCE_DIR}/packages/com.pinguins.crm/data)
 ENDIF()
 
+IF(APPLE)
+    add_custom_command(TARGET CRM POST_BUILD
+        COMMAND ${QT6_INSTALL_PREFIX}/bin/macdeployqt CRM.app
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+        COMMENT "Copying libraries")
+    add_custom_command(TARGET CRM POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_BINARY_DIR}/bin/CRM.app ${CMAKE_SOURCE_DIR}/packages/com.pinguins.crm/data)
+ENDIF()
+
 set_target_properties(CRM PROPERTIES
     WIN32_EXECUTABLE ON
     MACOSX_BUNDLE ON
