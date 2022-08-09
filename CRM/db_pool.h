@@ -32,25 +32,26 @@ class db_pool {
 
     boost::weak_ptr<soci::connection_pool> get_pool() { return pool_; }
 
-    bool connect(const std::string& conn_str, std::size_t n = 5) {
+    bool connect(const std::string& conn_str, std::size_t pool_size = 5) {
         if (pool_ != nullptr) {
             close();
         }
-        int is_connected = 0;
-        if (!(pool_ = boost::shared_ptr<soci::connection_pool>(
-                  new soci::connection_pool((pool_size_ = n))))) {
+        pool_size_ = pool_size;
+        boost::optional<int> is_connected;
+        pool_ = boost::shared_ptr<soci::connection_pool>(
+            new soci::connection_pool(pool_size_));
+        if (!pool_) {
             return false;
         }
         try {
-            soci::indicator ind;
             for (std::size_t _i = 0; _i < pool_size_; _i++) {
                 soci::session& sql = pool_->at(_i);
                 sql.open(conn_str);
-                sql << "SELECT 1;", soci::into(is_connected, ind);
+                sql << "SELECT 1;", soci::into(is_connected);
                 if (!is_connected) {
                     break;
                 } else if (_i + 1 < pool_size_) {
-                    is_connected = 0;
+                    is_connected.get() = 0;
                 }
             }
         } catch (std::exception const& e) {
@@ -64,13 +65,12 @@ class db_pool {
 
     void close() {
         if (pool_ != nullptr) {
-            boost::shared_ptr<soci::connection_pool> tmp(nullptr);
             try {
                 for (std::size_t _i = 0; _i < pool_size_; _i++) {
                     soci::session& sql = pool_->at(_i);
                     sql.close();
                 }
-                pool_.swap(tmp);
+                pool_.reset();
             } catch (std::exception const& e) {
                 // Logging
             }
