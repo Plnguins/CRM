@@ -99,11 +99,18 @@ jobs:
           -DOPENSSL_LIBRARIES=/usr/local/opt/openssl@1.1/lib
       - name: Build
         run: cmake --build ${{ github.workspace }}/build --parallel --config ${{ env.BUILD_TYPE }}
+      - name: Create Setup
+        run: ${{ env.IQTA_TOOLS }}/QtInstallerFramework/4.4/bin/binarycreator -c ${{ github.workspace }}/config/config.xml -p ${{ github.workspace }}/packages ${{ github.workspace }}/MacOS-Setup -v
       - uses: actions/upload-artifact@v3
         name: Upload builded app
         with:
           name: MacOS
           path: ${{ github.workspace }}/build/bin/CRM.dmg
+      - uses: actions/upload-artifact@v3
+        name: Upload setup
+        with:
+          name: MacOS-Setup
+          path: ${{ github.workspace }}/MacOS-Setup
   release:
     if: startsWith(github.ref, 'refs/tags/')
     needs: macos
