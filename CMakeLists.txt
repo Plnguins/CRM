@@ -41,7 +41,7 @@ include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 set(SOCI_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/soci)
 
 option(SOCI_CXX11 "Build to the C++11 standard" ON)
-option(SOCI_ASAN "" OFF)
+option(SOCI_ASAN "" ON)
 option(WITH_BOOST "" ON)
 option(SOCI_TESTS "" OFF)
 option(SOCI_SHARED "" ON)
