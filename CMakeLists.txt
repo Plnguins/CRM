@@ -65,10 +65,19 @@ ENDIF()
 file(GLOB_RECURSE SRC "CRM/*.h" "CRM/*.cpp" "CRM/*.ui" "resources/*.qrc")
 
 set(MACOSX_BUNDLE_ICON_FILE main.icns)
-SET(MACOSX_BUNDLE_EXECUTABLE_NAME CRM)
-SET(MACOSX_BUNDLE_BUNDLE_NAME CRM)
+set(MACOSX_BUNDLE_EXECUTABLE_NAME CRM)
+set(MACOSX_BUNDLE_BUNDLE_NAME CRM)
+set(app_icon_macos "${CMAKE_CURRENT_SOURCE_DIR}/resources/main.icns")
+set_source_files_properties(${app_icon_macos} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
 
-add_executable(CRM WIN32 MACOSX_BUNDLE ${SRC} ${resources})
+IF(WIN32)
+    add_executable(CRM WIN32 ${SRC} ${resources})
+ELSEIF(APPLE)
+    add_executable(CRM MACOSX_BUNDLE ${app_icon_macos} ${SRC} ${resources})
+ELSE()
+    add_executable(CRM ${SRC} ${resources})
+ENDIF()
+
 set_target_properties(CRM PROPERTIES AUTOMOC TRUE AUTOUIC TRUE AUTORCC TRUE)
 
 target_link_libraries(CRM ${Boost_LIBRARIES})
@@ -101,8 +110,6 @@ IF(APPLE)
         COMMAND ${QT6_INSTALL_PREFIX}/bin/macdeployqt CRM.app -dmg
         WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
         COMMENT "Copying libraries")
-    add_custom_command(TARGET CRM POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_BINARY_DIR}/bin/CRM.app ${CMAKE_SOURCE_DIR}/packages/com.pinguins.crm/data)
 ENDIF()
 
 add_custom_command(TARGET CRM POST_BUILD
