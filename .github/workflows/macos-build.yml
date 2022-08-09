@@ -36,7 +36,7 @@ on:
       - "!.github/workflows/macos-build.yml"
 
 env:
-  BUILD_TYPE: Release
+  BUILD_TYPE: Debug
   QT_VERSION: "6.2.4"
   QT_DIR: ${{ github.workspace }}
   QT_TOOLS: "tools_ifw"
