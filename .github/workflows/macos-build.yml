@@ -100,7 +100,7 @@ jobs:
       - name: Build
         run: cmake --build ${{ github.workspace }}/build --parallel --config ${{ env.BUILD_TYPE }}
       - uses: actions/upload-artifact@v3
-        name: Upload setup
+        name: Upload bundle
         with:
           name: MacOS
           path: ${{ github.workspace }}/build/bin/CRM.dmg
