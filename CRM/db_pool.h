@@ -64,13 +64,13 @@ class db_pool {
 
     void close() {
         if (pool_ != nullptr) {
+            boost::shared_ptr<soci::connection_pool> tmp(nullptr);
             try {
                 for (std::size_t _i = 0; _i < pool_size_; _i++) {
                     soci::session& sql = pool_->at(_i);
                     sql.close();
                 }
-                pool_.~shared_ptr();
-                pool_ = nullptr;
+                pool_.swap(tmp);
             } catch (std::exception const& e) {
                 // Logging
             }
