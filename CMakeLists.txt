@@ -89,8 +89,8 @@ ENDIF()
 set_target_properties(CRM PROPERTIES AUTOMOC TRUE AUTOUIC TRUE AUTORCC TRUE)
 
 IF(BUILD_TYPE STREQUAL "debug")
-    target_compile_options(CRM PRIVATE -fsanitize=address)
-    target_link_options(CRM PRIVATE -fsanitize=address)
+    add_compile_options(-fsanitize=address)
+    add_link_options(-fsanitize=address)
 ENDIF()
 
 target_link_libraries(CRM ${Boost_LIBRARIES})
