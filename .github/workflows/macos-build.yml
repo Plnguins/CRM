@@ -102,7 +102,8 @@ jobs:
           -DBoost_INCLUDE_DIR=${{ env.BOOST_DIR }}/boost/boost/include \
           -DBoost_LIBRARY_DIRS=${{ env.BOOST_DIR }}/boost/boost/lib \
           -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl@1.1 \
-          -DOPENSSL_LIBRARIES=/usr/local/opt/openssl@1.1/lib
+          -DOPENSSL_LIBRARIES=/usr/local/opt/openssl@1.1/lib \
+          -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"
       - name: Build target
         run: xcodebuild -project ${{ github.workspace }}/build/CRM.xcodeproj -scheme CRM -configuration ${{ env.BUILD_TYPE }} -enableAddressSanitizer ${{ env.ASAN_ENABLED }} CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO build
       - name: List file in build directory
