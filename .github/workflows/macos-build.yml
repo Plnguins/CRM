@@ -101,7 +101,9 @@ jobs:
           -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl@1.1 \
           -DOPENSSL_LIBRARIES=/usr/local/opt/openssl@1.1/lib
       - name: List targets
-        run: xcodebuild -project ${{ github.workspace }}/build/CRM.xcodeproj -list
+        run: xcodebuild -project ${{ github.workspace }}/build/CRM.xcodeproj -scheme ALL_BUILD build
+      - name: List file in build directory
+        run: ls -la ${{ github.workspace }}/build
       - uses: actions/upload-artifact@v3
         name: Upload bundle
         with:
