@@ -95,24 +95,37 @@ jobs:
           platform_version: ${{ env.BOOST_PLATFORM }}
           toolset: clang
           boost_install_dir: ${{ env.BOOST_DIR }}
-      - name: Configure CMake
+      - name: Configure CMake for x86_64
         run: |
-          cmake -B ${{ github.workspace }}/build -G Xcode \
+          cmake -B ${{ github.workspace }}/build-x86_64 -G Xcode \
           -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
           -DBoost_INCLUDE_DIR=${{ env.BOOST_DIR }}/boost/boost/include \
           -DBoost_LIBRARY_DIRS=${{ env.BOOST_DIR }}/boost/boost/lib \
           -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl@1.1 \
           -DOPENSSL_LIBRARIES=/usr/local/opt/openssl@1.1/lib \
-          -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"
-      - name: Build target
-        run: xcodebuild -project ${{ github.workspace }}/build/CRM.xcodeproj -scheme CRM -configuration ${{ env.BUILD_TYPE }} -enableAddressSanitizer ${{ env.ASAN_ENABLED }} CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO build
-      - name: List file in build directory
-        run: ls -la ${{ github.workspace }}/build
+          -DCMAKE_OSX_DEPLOYMENT_TARGET=10.15 \
+          -DCMAKE_OSX_ARCHITECTURES="x86_64"
+      - name: Build x86_64 target
+        run: xcodebuild -project ${{ github.workspace }}/build-x86_64/CRM.xcodeproj -scheme CRM -configuration ${{ env.BUILD_TYPE }} -enableAddressSanitizer ${{ env.ASAN_ENABLED }} CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO build
+      - name: Configure CMake for arm64
+        run: |
+          cmake -B ${{ github.workspace }}/build-arm64 -G Xcode \
+          -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
+          -DBoost_INCLUDE_DIR=${{ env.BOOST_DIR }}/boost/boost/include \
+          -DBoost_LIBRARY_DIRS=${{ env.BOOST_DIR }}/boost/boost/lib \
+          -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl@1.1 \
+          -DOPENSSL_LIBRARIES=/usr/local/opt/openssl@1.1/lib \
+          -DCMAKE_OSX_DEPLOYMENT_TARGET=11 \
+          -DCMAKE_OSX_ARCHITECTURES="arm64"
+      - name: Build arm64 target
+        run: xcodebuild -project ${{ github.workspace }}/build-arm64/CRM.xcodeproj -scheme CRM -configuration ${{ env.BUILD_TYPE }} -enableAddressSanitizer ${{ env.ASAN_ENABLED }} CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO build
+      - name: Unite binaries
+        run: lipo -create -output ${{ github.workspace }}/CRM ${{ github.workspace }}/build-x86_64/CRM.app/Contents/MacOS/CRM ${{ github.workspace }}/build-arm64/CRM.app/Contents/MacOS/CRM
       - uses: actions/upload-artifact@v3
         name: Upload bundle
         with:
           name: MacOS
-          path: ${{ github.workspace }}/build/bin/CRM.dmg
+          path: ${{ github.workspace }}/CRM
   release:
     if: startsWith(github.ref, 'refs/tags/')
     needs: macos
