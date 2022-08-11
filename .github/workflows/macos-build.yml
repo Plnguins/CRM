@@ -37,6 +37,7 @@ on:
 
 env:
   BUILD_TYPE: Debug
+  ASAN_ENABLED: YES
   QT_VERSION: "6.2.4"
   QT_DIR: ${{ github.workspace }}
   QT_TOOLS: "tools_ifw"
@@ -54,7 +55,9 @@ jobs:
     steps:
       - name: Change to Release if tag
         if: startsWith(github.ref, 'refs/tags/')
-        run: echo "BUILD_TYPE=Release" >> $GITHUB_ENV
+        run: |
+          echo "BUILD_TYPE=Release" >> $GITHUB_ENV
+          echo "ASAN_ENABLED=NO" >> $GITHUB_ENV
       - uses: actions/checkout@v3
         name: Clone
         with:
@@ -101,7 +104,7 @@ jobs:
           -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl@1.1 \
           -DOPENSSL_LIBRARIES=/usr/local/opt/openssl@1.1/lib
       - name: Build target
-        run: xcodebuild -project ${{ github.workspace }}/build/CRM.xcodeproj -scheme CRM -configuration ${{ env.BUILD_TYPE }} build
+        run: xcodebuild -project ${{ github.workspace }}/build/CRM.xcodeproj -scheme CRM -configuration ${{ env.BUILD_TYPE }} -enableAddressSanitizer ${{ env.ASAN_ENABLED }} build
       - name: List file in build directory
         run: ls -la ${{ github.workspace }}/build
       - uses: actions/upload-artifact@v3
