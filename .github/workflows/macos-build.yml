@@ -100,7 +100,7 @@ jobs:
           -DBoost_LIBRARY_DIRS=${{ env.BOOST_DIR }}/boost/boost/lib \
           -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl@1.1 \
           -DOPENSSL_LIBRARIES=/usr/local/opt/openssl@1.1/lib
-      - name: List targets
+      - name: Build target
         run: xcodebuild -project ${{ github.workspace }}/build/CRM.xcodeproj -scheme CRM -configuration ${{ env.BUILD_TYPE }} build
       - name: List file in build directory
         run: ls -la ${{ github.workspace }}/build
