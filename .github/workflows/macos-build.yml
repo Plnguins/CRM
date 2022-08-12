@@ -97,7 +97,7 @@ jobs:
           boost_install_dir: ${{ env.BOOST_DIR }}
       - name: Configure CMake
         run: |
-          cmake -B ${{ github.workspace }}/build -G Xcode \
+          cmake -B ${{ github.workspace }}/build \
           -DCMAKE_BUILD_TYPE=${{ env.BUILD_TYPE }} \
           -DBoost_INCLUDE_DIR=${{ env.BOOST_DIR }}/boost/boost/include \
           -DBoost_LIBRARY_DIRS=${{ env.BOOST_DIR }}/boost/boost/lib \
@@ -105,9 +105,13 @@ jobs:
           -DOPENSSL_LIBRARIES=/usr/local/opt/openssl@1.1/lib \
           -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"
       - name: Build target
-        run: xcodebuild -project ${{ github.workspace }}/build/CRM.xcodeproj ONLY_ACTIVE_ARCH=NO -scheme CRM -configuration ${{ env.BUILD_TYPE }} -destination "generic/platform=MacOS" -enableAddressSanitizer ${{ env.ASAN_ENABLED }} CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO build
+        run: cmake --build ${{ github.workspace }}/build --parallel --config ${{ env.BUILD_TYPE }}
       - name: Get the executable archs
-        run: lipo ${{ github.workspace }}/build/bin/CRM.app/Contents/MacOS/CRM -archs
+        run: |
+          lipo ${{ github.workspace }}/build/bin/CRM.app/Contents/MacOS/CRM -archs
+          lipo /usr/local/opt/openssl@1.1/lib/libssl.dylib -archs
+          lipo /usr/local/lib/libpq.dylib -archs
+          lipo /usr/local/opt/openssl@1.1/lib/libcrypto.dylib -archs
       - uses: actions/upload-artifact@v3
         name: Upload bundle
         with:
