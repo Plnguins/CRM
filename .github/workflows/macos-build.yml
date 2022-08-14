@@ -101,7 +101,7 @@ jobs:
           -DBoost_LIBRARY_DIRS=${{ env.BOOST_DIR }}/boost/boost/lib \
           -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl@1.1 \
           -DOPENSSL_LIBRARIES=/usr/local/opt/openssl@1.1/lib
-      - name: Build target
+      - name: Build
         run: cmake --build ${{ github.workspace }}/build --parallel --config ${{ env.BUILD_TYPE }}
       - uses: actions/upload-artifact@v3
         name: Upload bundle
