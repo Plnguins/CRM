@@ -31,7 +31,7 @@
 #include "../mainwindow.h"
 #include "ui_login.h"
 
-enum Role { Leader, Manager, Marketer, Seller, Unknown };
+enum class Role { Leader, Manager, Marketer, Seller, Unknown };
 
 namespace Ui {
 class loginUi;
