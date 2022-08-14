@@ -37,7 +37,6 @@ on:
 
 env:
   BUILD_TYPE: Debug
-  ASAN_ENABLED: YES
   QT_VERSION: "6.2.4"
   QT_DIR: ${{ github.workspace }}
   QT_TOOLS: "tools_ifw"
@@ -57,7 +56,6 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         run: |
           echo "BUILD_TYPE=Release" >> $GITHUB_ENV
-          echo "ASAN_ENABLED=NO" >> $GITHUB_ENV
       - uses: actions/checkout@v3
         name: Clone
         with:
@@ -102,13 +100,7 @@ jobs:
           -DBoost_INCLUDE_DIR=${{ env.BOOST_DIR }}/boost/boost/include \
           -DBoost_LIBRARY_DIRS=${{ env.BOOST_DIR }}/boost/boost/lib \
           -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl@1.1 \
-          -DOPENSSL_LIBRARIES=/usr/local/opt/openssl@1.1/lib \
-          -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"
-      - name: Get the executable archs
-        run: |
-          lipo /usr/local/opt/openssl@1.1/lib/libssl.dylib -archs
-          lipo /usr/local/lib/libpq.dylib -archs
-          lipo /usr/local/opt/openssl@1.1/lib/libcrypto.dylib -archs
+          -DOPENSSL_LIBRARIES=/usr/local/opt/openssl@1.1/lib
       - name: Build target
         run: cmake --build ${{ github.workspace }}/build --parallel --config ${{ env.BUILD_TYPE }}
       - uses: actions/upload-artifact@v3
