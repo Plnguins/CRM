@@ -85,7 +85,7 @@ jobs:
       - name: Install boost
         id: install-boost
         if: steps.cache-boost.outputs.cache-hit != 'true'
-        uses: MarkusJx/install-boost@v2.3.0
+        uses: MarkusJx/install-boost@v2.3.1
         with:
           boost_version: ${{ env.BOOST_VERSION }}
           platform_version: ${{ env.BOOST_PLATFORM }}
