@@ -34,14 +34,7 @@ std::string hashPassword(const std::string &password) {
 login::login(QMainWindow *parent)
     : parent(dynamic_cast<MainWindow *>(parent)), ui(new Ui::loginUi) {
     ui->setupUi(this);
-    if (!this->parent->database.connect(
-            "postgresql://host='" + this->parent->database_ip + "' dbname='" +
-            this->parent->database_name +
-            "' port=" + std::to_string(this->parent->database_port) +
-            " user='" + this->parent->database_login +
-            "' "
-            "password='" +
-            this->parent->database_password + "'")) {
+    if (!this->parent->connectDatabase()) {
         QMessageBox::critical(this, "Ошибка", "Невозможно подключиться к БД");
     }
 }
@@ -59,8 +52,12 @@ void login::on_ShowPassword_clicked(bool checked) {
 }
 
 void login::on_LoginButton_clicked() {
+    if (!this->parent->connectDatabase()) {
+        QMessageBox::critical(this, "Ошибка", "Невозможно подключиться к БД");
+        return;
+    }
     std::string Login, Password;
-    Role role = Unknown;
+    Role role = Role::Unknown;
     Login = ui->Login->text().toStdString();
     Password = hashPassword(ui->Password->text().toStdString());
     try {
@@ -83,50 +80,50 @@ void login::on_LoginButton_clicked() {
         sql << check_leader, soci::into(result_leader),
             soci::use(result.get().id, "id");
         if (result_leader.is_initialized()) {
-            role = Leader;
+            role = Role::Leader;
         }
         std::string check_stock_manager =
             "SELECT * FROM stock_manager WHERE employee = :id";
         sql << check_stock_manager, soci::into(result_stock_manager),
             soci::use(result.get().id, "id");
         if (result_stock_manager.is_initialized()) {
-            role = Manager;
+            role = Role::Manager;
         }
         std::string check_marketer =
             "SELECT * FROM marketer WHERE employee = :id";
         sql << check_marketer, soci::into(result_marketer),
             soci::use(result.get().id, "id");
         if (result_marketer.is_initialized()) {
-            role = Marketer;
+            role = Role::Marketer;
         }
         std::string check_seller = "SELECT * FROM seller WHERE employee = :id";
         sql << check_seller, soci::into(result_seller),
             soci::use(result.get().id, "id");
         if (result_seller.is_initialized()) {
-            role = Seller;
+            role = Role::Seller;
         }
         switch (role) {
-            case Leader:
+            case Role::Leader:
                 parent->setLeaderInterface();
                 ui->Login->clear();
                 ui->Password->clear();
                 break;
-            case Manager:
+            case Role::Manager:
                 parent->setManagerInterface();
                 ui->Login->clear();
                 ui->Password->clear();
                 break;
-            case Marketer:
+            case Role::Marketer:
                 parent->setMarketerInterface();
                 ui->Login->clear();
                 ui->Password->clear();
                 break;
-            case Seller:
+            case Role::Seller:
                 parent->setSellerInterface();
                 ui->Login->clear();
                 ui->Password->clear();
                 break;
-            case Unknown:
+            case Role::Unknown:
                 QMessageBox::critical(
                     this, "Ошибка",
                     "Пользователь не принадлежит ни к одной роли");
