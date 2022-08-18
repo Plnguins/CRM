@@ -54,7 +54,7 @@ void MainWindow::setLeaderInterface() {
 
 void MainWindow::setLoginInterface() {
     setCentralWidget(new login(this));
-    setFixedSize({300, 250});
+    setFixedSize({300, 233});
 }
 
 bool MainWindow::connectDatabase() {
