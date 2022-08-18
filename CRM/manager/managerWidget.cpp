@@ -18,6 +18,9 @@
 managerWidget::managerWidget(QMainWindow* parent)
     : parent(dynamic_cast<MainWindow*>(parent)), ui(new Ui::managerUi) {
     ui->setupUi(this);
+
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(
+        QHeaderView::ResizeToContents);
 }
 
 managerWidget::~managerWidget() { delete ui; }
@@ -67,7 +70,7 @@ void managerWidget::on_Provider_clicked() {
     ui->tableWidget->setColumnCount(2);
     ui->tableWidget->setColumnWidth(0, 91);
     ui->tableWidget->setColumnWidth(1, 375);
-    QStringList Labels = {"id", "Name"};
+    QStringList Labels = {"ID", "Название"};
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
     // temporary
@@ -111,19 +114,10 @@ void managerWidget::on_Deal_clicked() {
 
     // get from db
     ui->tableWidget->setColumnCount(9);
-    QStringList Labels = {"id",     "id laptop", "price",  "customer", "status",
-                          "source", "date",      "seller", "mark?"};
+    QStringList Labels = {"ID",         "Ноутбук", "Цена",
+                          "Покупатель", "Статус",  "Дата создания",
+                          "Продавец",   "Оценка",  "Последнее обновление"};
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
-
-    ui->tableWidget->setColumnWidth(0, 52);
-    ui->tableWidget->setColumnWidth(1, 52);
-    ui->tableWidget->setColumnWidth(2, 52);
-    ui->tableWidget->setColumnWidth(3, 52);
-    ui->tableWidget->setColumnWidth(4, 51);
-    ui->tableWidget->setColumnWidth(5, 52);
-    ui->tableWidget->setColumnWidth(6, 52);
-    ui->tableWidget->setColumnWidth(7, 52);
-    ui->tableWidget->setColumnWidth(8, 51);
 
     // temporary
     QTableWidgetItem* item = new QTableWidgetItem("123");
@@ -166,16 +160,9 @@ void managerWidget::on_Stock_clicked() {
 
     // get from db
     ui->tableWidget->setColumnCount(6);
-    QStringList Labels = {"id",     "id laptop", "price",
-                          "number", "available", "source"};
+    QStringList Labels = {"ID",         "Ноутбук",  "Цена",
+                          "Количество", "Доступно", "Поставщик"};
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
-
-    ui->tableWidget->setColumnWidth(0, 78);
-    ui->tableWidget->setColumnWidth(1, 78);
-    ui->tableWidget->setColumnWidth(2, 78);
-    ui->tableWidget->setColumnWidth(3, 77);
-    ui->tableWidget->setColumnWidth(4, 77);
-    ui->tableWidget->setColumnWidth(5, 78);
 
     // temporary
     QTableWidgetItem* item = new QTableWidgetItem("123");
