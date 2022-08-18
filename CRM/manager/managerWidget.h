@@ -39,16 +39,10 @@ class managerWidget : public QWidget {
     void tableVendorUpdate();
     void tableDealUpdate();
     void tableStorageUpdate();
-
     void on_Logout_clicked();
-
     void on_Provider_clicked();
-
     void on_Deal_clicked();
-
     void on_Stock_clicked();
-
-    void on_Support_clicked();
 
    private:
     MainWindow* parent;

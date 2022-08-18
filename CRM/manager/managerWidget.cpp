@@ -194,26 +194,6 @@ void managerWidget::on_Stock_clicked() {
     // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void managerWidget::on_Support_clicked() {
-    ui->tableWidget->hide();
-    ui->Update->hide();
-    ui->Edit->hide();
-    ui->Add->hide();
-    ui->Delete->hide();
-    ui->RoundedBlue->hide();
-    ui->ProviderLabel->show();
-    ui->Icon->hide();
-    ui->Title->hide();
-    ui->Company->hide();
-    ui->Greeting->hide();
-    ui->Send->show();
-    ui->Help->show();
-    ui->textEdit->show();
-
-    ui->ProviderLabel->setText("ТехПод");
-    ui->Send->setText("Отправить");
-}
-
 void managerWidget::tableVendorUpdate() {
     //
 }
