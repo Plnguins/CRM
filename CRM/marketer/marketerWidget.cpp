@@ -15,8 +15,8 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #include "marketerWidget.h"
 
-marketerWidget::marketerWidget(QWidget *parent)
-    : parent(dynamic_cast<MainWindow *>(parent)), ui(new Ui::marketerUi) {
+marketerWidget::marketerWidget(QWidget* parent)
+    : parent(dynamic_cast<MainWindow*>(parent)), ui(new Ui::marketerUi) {
     ui->setupUi(this);
 
     ui->Ads->setIcon(QIcon(":/images/ad-white.png"));
@@ -76,10 +76,10 @@ void marketerWidget::on_Ads_clicked() {
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
     // temporary
-    QTableWidgetItem *item = new QTableWidgetItem("123");
+    QTableWidgetItem* item = new QTableWidgetItem("123");
     for (size_t i = 0; i < 5; i++) {
         for (size_t j = 0; j < 2; j++) {
-            QTableWidgetItem *item = new QTableWidgetItem("123");
+            QTableWidgetItem* item = new QTableWidgetItem("123");
             ui->tableWidget->setItem(i, j, item);
             ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
                                                   Qt::ItemIsSelectable);
