@@ -18,33 +18,6 @@
 managerWidget::managerWidget(QMainWindow* parent)
     : parent(dynamic_cast<MainWindow*>(parent)), ui(new Ui::managerUi) {
     ui->setupUi(this);
-
-    ui->Provider->setIcon(QIcon(":/images/vendor-white.png"));
-    ui->Provider->setIconSize({30, 30});
-    ui->Deal->setIcon(QIcon(":/images/dollar.png"));
-    ui->Deal->setIconSize({27, 27});
-    ui->Stock->setIcon(QIcon(":/images/sklad-white.png"));
-    ui->Stock->setIconSize({30, 30});
-    ui->Support->setIcon(QIcon(":/images/t-white.png"));
-    ui->Support->setIconSize({28, 28});
-    ui->Logout->setIcon(QIcon(":/images/logout.png"));
-    ui->Logout->setIconSize({28, 28});
-
-    ui->tableWidget->hide();
-    ui->RoundedBlue->hide();
-    ui->Update->hide();
-    ui->Edit->hide();
-    ui->Add->hide();
-    ui->Delete->hide();
-    ui->ProviderLabel->hide();
-    ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
-
-    ui->textEdit->clear();
-
-    QPixmap icon(":/images/main.png");
-    ui->Icon->setPixmap(icon.scaled(ui->Icon->size(), Qt::KeepAspectRatio));
 }
 
 managerWidget::~managerWidget() { delete ui; }
@@ -91,7 +64,6 @@ void managerWidget::on_Provider_clicked() {
     // tableVendorUpdate();
 
     // get from db
-    ui->tableWidget->setRowCount(5);
     ui->tableWidget->setColumnCount(2);
     ui->tableWidget->setColumnWidth(0, 91);
     ui->tableWidget->setColumnWidth(1, 375);
@@ -138,7 +110,6 @@ void managerWidget::on_Deal_clicked() {
     // tableDealUpdate();
 
     // get from db
-    ui->tableWidget->setRowCount(5);
     ui->tableWidget->setColumnCount(9);
     QStringList Labels = {"id",     "id laptop", "price",  "customer", "status",
                           "source", "date",      "seller", "mark?"};
@@ -194,7 +165,6 @@ void managerWidget::on_Stock_clicked() {
     // tableStorageUpdate();
 
     // get from db
-    ui->tableWidget->setRowCount(5);
     ui->tableWidget->setColumnCount(6);
     QStringList Labels = {"id",     "id laptop", "price",
                           "number", "available", "source"};
