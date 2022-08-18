@@ -44,7 +44,7 @@ void MainWindow::setMarketerInterface() {
 
 void MainWindow::setManagerInterface() {
     setCentralWidget(new managerWidget(this));
-    setFixedSize({821, 511});
+    setFixedSize({821, 489});
 }
 
 void MainWindow::setLeaderInterface() {

@@ -22,7 +22,7 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
     <x>0</x>
     <y>0</y>
     <width>821</width>
-    <height>511</height>
+    <height>489</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,7 +32,7 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>-2</y>
+     <y>0</y>
      <width>661</width>
      <height>491</height>
     </rect>
@@ -403,7 +403,7 @@ QPushButton#Delete:pressed {
    <property name="geometry">
     <rect>
      <x>320</x>
-     <y>368</y>
+     <y>380</y>
      <width>321</width>
      <height>81</height>
     </rect>
