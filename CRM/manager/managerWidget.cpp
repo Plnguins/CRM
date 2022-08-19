@@ -67,11 +67,10 @@ void managerWidget::on_Provider_clicked() {
     // tableVendorUpdate();
 
     // get from db
-    ui->tableWidget->setColumnCount(2);
-    ui->tableWidget->setColumnWidth(0, 91);
-    ui->tableWidget->setColumnWidth(1, 375);
     QStringList Labels = {"ID", "Название"};
+    ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
+    ui->tableWidget->setRowCount(5);
 
     // temporary
     QTableWidgetItem* item = new QTableWidgetItem("123");
@@ -113,13 +112,14 @@ void managerWidget::on_Deal_clicked() {
     // tableDealUpdate();
 
     // get from db
-    ui->tableWidget->setColumnCount(9);
     QStringList Labels = {"ID",         "Ноутбук", "Цена",
                           "Покупатель", "Статус",  "Дата создания",
                           "Продавец",   "Оценка",  "Последнее обновление"};
+    ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
     // temporary
+    ui->tableWidget->setRowCount(5);
     QTableWidgetItem* item = new QTableWidgetItem("123");
     for (size_t i = 0; i < 5; i++) {
         for (size_t j = 0; j < 9; j++) {
