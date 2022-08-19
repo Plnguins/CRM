@@ -18,6 +18,7 @@
 #include <QMainWindow>
 #include <QWidget>
 
+#include "../database-types/provider.h"
 #include "../database-types/stock.h"
 #include "../mainwindow.h"
 #include "ui_manager.h"
@@ -38,6 +39,7 @@ class managerWidget : public QWidget {
 
    private slots:
     std::vector<boost::tuple<stock, std::string, std::string>> getStock();
+    std::vector<provider> getProvider();
     void on_Logout_clicked();
     void on_Provider_clicked();
     void on_Deal_clicked();

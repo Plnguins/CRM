@@ -63,24 +63,20 @@ void managerWidget::on_Provider_clicked() {
     ui->ProviderLabel->setText("Поставщики");
     ui->Update->setText("Update");
 
-    // TODO: fill table with db
-    // tableVendorUpdate();
-
-    // get from db
     QStringList Labels = {"ID", "Название"};
     ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
-    ui->tableWidget->setRowCount(5);
 
-    // temporary
-    QTableWidgetItem* item = new QTableWidgetItem("123");
-    for (size_t i = 0; i < 5; i++) {
-        for (size_t j = 0; j < 2; j++) {
-            QTableWidgetItem* item = new QTableWidgetItem("123");
-            ui->tableWidget->setItem(i, j, item);
-            ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
-                                                  Qt::ItemIsSelectable);
-        }
+    std::vector<provider> providers = getProvider();
+    ui->tableWidget->setRowCount(providers.size());
+
+    size_t current_row = 0;
+    for (const auto& current : providers) {
+        ui->tableWidget->setItem(
+            current_row, 0, new QTableWidgetItem(QString::number(current.id)));
+        ui->tableWidget->setItem(current_row, 1,
+                                 new QTableWidgetItem(current.name.c_str()));
+        current_row++;
     }
 }
 
@@ -196,6 +192,27 @@ managerWidget::getStock() {
     } catch (const std::exception& e) {
         QMessageBox::critical(this, "Ошибка", e.what());
         return std::vector<boost::tuple<stock, std::string, std::string>>();
+    }
+    return result;
+}
+
+std::vector<provider> managerWidget::getProvider() {
+    if (!this->parent->connectDatabase()) {
+        QMessageBox::critical(this, "Ошибка", "Невозможно подключиться к БД");
+        return std::vector<provider>();
+    }
+    std::vector<provider> result;
+    try {
+        soci::session sql(*parent->database.get_pool().lock());
+        std::string query = "SELECT * FROM provider";
+        soci::rowset<provider> rs = (sql.prepare << query);
+        for (auto it = rs.begin(); it != rs.end(); it++) {
+            auto current = *it;
+            result.push_back(current);
+        }
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this, "Ошибка", e.what());
+        return std::vector<provider>();
     }
     return result;
 }
