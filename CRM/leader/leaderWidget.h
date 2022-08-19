@@ -29,7 +29,7 @@ class leaderWidget : public QWidget {
     Q_OBJECT
 
    public:
-    explicit leaderWidget(QMainWindow *parent = nullptr);
+    explicit leaderWidget(QMainWindow* parent = nullptr);
     ~leaderWidget();
 
    signals:
@@ -56,7 +56,7 @@ class leaderWidget : public QWidget {
     void on_Support_clicked();
 
    private:
-    MainWindow *parent;
-    Ui::leaderUi *ui;
+    MainWindow* parent;
+    Ui::leaderUi* ui;
     QTranslator translator;
 };

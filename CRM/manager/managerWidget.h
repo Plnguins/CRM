@@ -29,7 +29,7 @@ class managerWidget : public QWidget {
     Q_OBJECT
 
    public:
-    explicit managerWidget(QMainWindow *parent = nullptr);
+    explicit managerWidget(QMainWindow* parent = nullptr);
     ~managerWidget();
 
    signals:
@@ -51,6 +51,6 @@ class managerWidget : public QWidget {
     void on_Support_clicked();
 
    private:
-    MainWindow *parent;
-    Ui::managerUi *ui;
+    MainWindow* parent;
+    Ui::managerUi* ui;
 };

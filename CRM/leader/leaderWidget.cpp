@@ -15,8 +15,8 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #include "leaderWidget.h"
 
-leaderWidget::leaderWidget(QMainWindow *parent)
-    : parent(dynamic_cast<MainWindow *>(parent)), ui(new Ui::leaderUi) {
+leaderWidget::leaderWidget(QMainWindow* parent)
+    : parent(dynamic_cast<MainWindow*>(parent)), ui(new Ui::leaderUi) {
     ui->setupUi(this);
 
     ui->Provider->setIcon(QIcon(":/images/vendor-white.png"));
@@ -103,10 +103,10 @@ void leaderWidget::on_Provider_clicked() {
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
     // temporary
-    QTableWidgetItem *item = new QTableWidgetItem("123");
+    QTableWidgetItem* item = new QTableWidgetItem("123");
     for (size_t i = 0; i < 5; i++) {
         for (size_t j = 0; j < 2; j++) {
-            QTableWidgetItem *item = new QTableWidgetItem("123");
+            QTableWidgetItem* item = new QTableWidgetItem("123");
             ui->tableWidget->setItem(i, j, item);
             ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
                                                   Qt::ItemIsSelectable);
@@ -159,10 +159,10 @@ void leaderWidget::on_Deal_clicked() {
     ui->tableWidget->setColumnWidth(8, 51);
 
     // temporary
-    QTableWidgetItem *item = new QTableWidgetItem("123");
+    QTableWidgetItem* item = new QTableWidgetItem("123");
     for (size_t i = 0; i < 5; i++) {
         for (size_t j = 0; j < 9; j++) {
-            QTableWidgetItem *item = new QTableWidgetItem("123");
+            QTableWidgetItem* item = new QTableWidgetItem("123");
             ui->tableWidget->setItem(i, j, item);
             ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
                                                   Qt::ItemIsSelectable);
@@ -212,10 +212,10 @@ void leaderWidget::on_Stock_clicked() {
     ui->tableWidget->setColumnWidth(5, 78);
 
     // temporary
-    QTableWidgetItem *item = new QTableWidgetItem("123");
+    QTableWidgetItem* item = new QTableWidgetItem("123");
     for (size_t i = 0; i < 5; i++) {
         for (size_t j = 0; j < 6; j++) {
-            QTableWidgetItem *item = new QTableWidgetItem("123");
+            QTableWidgetItem* item = new QTableWidgetItem("123");
             ui->tableWidget->setItem(i, j, item);
             ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
                                                   Qt::ItemIsSelectable);
@@ -259,10 +259,10 @@ void leaderWidget::on_Ads_clicked() {
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
     // temporary
-    QTableWidgetItem *item = new QTableWidgetItem("123");
+    QTableWidgetItem* item = new QTableWidgetItem("123");
     for (size_t i = 0; i < 5; i++) {
         for (size_t j = 0; j < 2; j++) {
-            QTableWidgetItem *item = new QTableWidgetItem("123");
+            QTableWidgetItem* item = new QTableWidgetItem("123");
             ui->tableWidget->setItem(i, j, item);
             ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
                                                   Qt::ItemIsSelectable);
@@ -309,10 +309,10 @@ void leaderWidget::on_Employee_clicked() {
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
     // temporary
-    QTableWidgetItem *item = new QTableWidgetItem("123");
+    QTableWidgetItem* item = new QTableWidgetItem("123");
     for (size_t i = 0; i < 5; i++) {
         for (size_t j = 0; j < 5; j++) {
-            QTableWidgetItem *item = new QTableWidgetItem("123");
+            QTableWidgetItem* item = new QTableWidgetItem("123");
             ui->tableWidget->setItem(i, j, item);
             ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
                                                   Qt::ItemIsSelectable);

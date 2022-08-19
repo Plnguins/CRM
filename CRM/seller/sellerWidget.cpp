@@ -15,8 +15,8 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #include "sellerWidget.h"
 
-sellerWidget::sellerWidget(QMainWindow *parent)
-    : parent(dynamic_cast<MainWindow *>(parent)), ui(new Ui::sellerUi) {
+sellerWidget::sellerWidget(QMainWindow* parent)
+    : parent(dynamic_cast<MainWindow*>(parent)), ui(new Ui::sellerUi) {
     ui->setupUi(this);
 
     ui->Client->setIcon(QIcon(":/images/client-white.png"));
@@ -85,10 +85,10 @@ void sellerWidget::on_Client_clicked() {
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
     // temporary
-    QTableWidgetItem *item = new QTableWidgetItem("123");
+    QTableWidgetItem* item = new QTableWidgetItem("123");
     for (size_t i = 0; i < 5; i++) {
         for (size_t j = 0; j < 7; j++) {
-            QTableWidgetItem *item = new QTableWidgetItem("123");
+            QTableWidgetItem* item = new QTableWidgetItem("123");
             ui->tableWidget->setItem(i, j, item);
             ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
                                                   Qt::ItemIsSelectable);
@@ -142,10 +142,10 @@ void sellerWidget::on_Deal_clicked() {
     ui->tableWidget->setColumnWidth(8, 51);
 
     // temporary
-    QTableWidgetItem *item = new QTableWidgetItem("123");
+    QTableWidgetItem* item = new QTableWidgetItem("123");
     for (size_t i = 0; i < 5; i++) {
         for (size_t j = 0; j < 9; j++) {
-            QTableWidgetItem *item = new QTableWidgetItem("123");
+            QTableWidgetItem* item = new QTableWidgetItem("123");
             ui->tableWidget->setItem(i, j, item);
             ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
                                                   Qt::ItemIsSelectable);
@@ -195,10 +195,10 @@ void sellerWidget::on_Stock_clicked() {
     ui->tableWidget->setColumnWidth(5, 78);
 
     // temporary
-    QTableWidgetItem *item = new QTableWidgetItem("123");
+    QTableWidgetItem* item = new QTableWidgetItem("123");
     for (size_t i = 0; i < 5; i++) {
         for (size_t j = 0; j < 6; j++) {
-            QTableWidgetItem *item = new QTableWidgetItem("123");
+            QTableWidgetItem* item = new QTableWidgetItem("123");
             ui->tableWidget->setItem(i, j, item);
             ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
                                                   Qt::ItemIsSelectable);

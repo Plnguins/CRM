@@ -15,15 +15,15 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #include "login.h"
 
-std::string hashPassword(const std::string &password) {
+std::string hashPassword(const std::string& password) {
     // Encrypting and hashing password using PBKDF2 algorithm and hashing using
     // sha512, salt is static, iterations is 4096, result length is 8192
-    unsigned char *result = new unsigned char[8192];
+    unsigned char* result = new unsigned char[8192];
     unsigned char salt = 0;
     unsigned int key_length = 8192;
     PKCS5_PBKDF2_HMAC(password.c_str(), password.size(), &salt, 1, 4096,
                       EVP_sha512(), key_length, result);
-    unsigned long long *res = reinterpret_cast<unsigned long long *>(result);
+    unsigned long long* res = reinterpret_cast<unsigned long long*>(result);
     std::stringstream output;
     for (size_t i = 0; i < key_length >> 6; i++) {
         output << std::hex << res[i];
@@ -31,8 +31,8 @@ std::string hashPassword(const std::string &password) {
     return output.str();
 }
 
-login::login(QMainWindow *parent)
-    : parent(dynamic_cast<MainWindow *>(parent)), ui(new Ui::loginUi) {
+login::login(QMainWindow* parent)
+    : parent(dynamic_cast<MainWindow*>(parent)), ui(new Ui::loginUi) {
     ui->setupUi(this);
     if (!this->parent->connectDatabase()) {
         QMessageBox::critical(this, "Ошибка", "Невозможно подключиться к БД");
@@ -41,7 +41,7 @@ login::login(QMainWindow *parent)
 
 login::~login() { delete ui; }
 
-QPushButton *login::getLoginButton() { return ui->LoginButton; }
+QPushButton* login::getLoginButton() { return ui->LoginButton; }
 
 void login::on_ShowPassword_clicked(bool checked) {
     if (checked) {
@@ -129,7 +129,7 @@ void login::on_LoginButton_clicked() {
                     "Пользователь не принадлежит ни к одной роли");
                 break;
         }
-    } catch (const std::exception &e) {
+    } catch (const std::exception& e) {
         std::string message = e.what();
         QMessageBox::critical(
             this, "Ошибка",

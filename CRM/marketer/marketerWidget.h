@@ -29,7 +29,7 @@ class marketerWidget : public QWidget {
     Q_OBJECT
 
    public:
-    explicit marketerWidget(QWidget *parent = nullptr);
+    explicit marketerWidget(QWidget* parent = nullptr);
     ~marketerWidget();
 
    private slots:
@@ -45,6 +45,6 @@ class marketerWidget : public QWidget {
     void logout();
 
    private:
-    MainWindow *parent;
-    Ui::marketerUi *ui;
+    MainWindow* parent;
+    Ui::marketerUi* ui;
 };

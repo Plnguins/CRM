@@ -29,7 +29,7 @@ class sellerWidget : public QWidget {
     Q_OBJECT
 
    public:
-    explicit sellerWidget(QMainWindow *parent = nullptr);
+    explicit sellerWidget(QMainWindow* parent = nullptr);
     ~sellerWidget();
 
    signals:
@@ -51,6 +51,6 @@ class sellerWidget : public QWidget {
     void tableDealUpdate();
 
    private:
-    MainWindow *parent;
-    Ui::sellerUi *ui;
+    MainWindow* parent;
+    Ui::sellerUi* ui;
 };
