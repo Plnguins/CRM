@@ -16,11 +16,13 @@
 #pragma once
 #include <soci/boost-gregorian-date.h>
 #include <soci/boost-optional.h>
+#include <soci/boost-tuple.h>
 #include <soci/connection-pool.h>
 #include <soci/soci.h>
 
 #include <boost/optional.hpp>
 #include <boost/smart_ptr.hpp>
+#include <boost/tuple/tuple.hpp>
 
 class db_pool {
     boost::shared_ptr<soci::connection_pool> pool_;

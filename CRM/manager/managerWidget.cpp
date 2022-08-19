@@ -83,7 +83,7 @@ void managerWidget::on_Provider_clicked() {
         }
     }
 
-    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableVendorUpdate()));
+    // connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableVendorUpdate()));
     // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
     // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
     // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
@@ -130,7 +130,7 @@ void managerWidget::on_Deal_clicked() {
         }
     }
 
-    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableDealUpdate()));
+    // connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableDealUpdate()));
     // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
     // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
     // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
@@ -159,36 +159,65 @@ void managerWidget::on_Stock_clicked() {
     // tableStorageUpdate();
 
     // get from db
-    ui->tableWidget->setColumnCount(6);
+    std::vector<boost::tuple<stock, std::string, std::string>> result =
+        getStock();
+
     QStringList Labels = {"ID",         "Ноутбук",  "Цена",
                           "Количество", "Доступно", "Поставщик"};
+    ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
-
-    // temporary
-    QTableWidgetItem* item = new QTableWidgetItem("123");
-    for (size_t i = 0; i < 5; i++) {
-        for (size_t j = 0; j < 6; j++) {
-            QTableWidgetItem* item = new QTableWidgetItem("123");
-            ui->tableWidget->setItem(i, j, item);
-            ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
-                                                  Qt::ItemIsSelectable);
-        }
+    ui->tableWidget->setRowCount(result.size());
+    size_t current_row = 0;
+    for (const auto& [stock, laptop_name, provider_name] : result) {
+        // std::cerr << stock.id << " " << stock.laptop << " " << stock.price
+        //           << " " << stock.count << " " << stock.available << " "
+        //           << stock.source << " " << laptop_name << std::endl;
+        ui->tableWidget->setItem(
+            current_row, 0, new QTableWidgetItem(QString::number(stock.id)));
+        ui->tableWidget->setItem(current_row, 1,
+                                 new QTableWidgetItem(laptop_name.c_str()));
+        ui->tableWidget->setItem(
+            current_row, 2, new QTableWidgetItem(QString::number(stock.price)));
+        ui->tableWidget->setItem(
+            current_row, 3, new QTableWidgetItem(QString::number(stock.count)));
+        ui->tableWidget->setItem(
+            current_row, 4,
+            new QTableWidgetItem(QString::number(stock.available)));
+        ui->tableWidget->setItem(current_row, 5,
+                                 new QTableWidgetItem(provider_name.c_str()));
+        current_row++;
     }
 
-    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableStorageUpdate()));
+    // connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableStorageUpdate()));
     // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
     // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
     // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
-void managerWidget::tableVendorUpdate() {
-    //
-}
-
-void managerWidget::tableDealUpdate() {
-    //
-}
-
-void managerWidget::tableStorageUpdate() {
-    //
+std::vector<boost::tuple<stock, std::string, std::string>>
+managerWidget::getStock() {
+    if (!this->parent->connectDatabase()) {
+        QMessageBox::critical(this, "Ошибка", "Невозможно подключиться к БД");
+        return std::vector<boost::tuple<stock, std::string, std::string>>();
+    }
+    std::vector<boost::tuple<stock, std::string, std::string>> result;
+    try {
+        soci::session sql(*parent->database.get_pool().lock());
+        std::string query =
+            "SELECT stock.*, laptop.name, provider.name FROM stock JOIN laptop "
+            "ON laptop.id=stock.laptop JOIN provider ON "
+            "provider.id=stock.source LIMIT 10";
+        soci::rowset<boost::tuple<int, int, int, int, int, int, std::string,
+                                  std::string>>
+            rs = (sql.prepare << query);
+        for (auto it = rs.begin(); it != rs.end(); it++) {
+            result.push_back({stock(it->get<0>(), it->get<1>(), it->get<2>(),
+                                    it->get<3>(), it->get<4>(), it->get<5>()),
+                              it->get<6>(), it->get<7>()});
+        }
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this, "Ошибка", e.what());
+        return std::vector<boost::tuple<stock, std::string, std::string>>();
+    }
+    return result;
 }
