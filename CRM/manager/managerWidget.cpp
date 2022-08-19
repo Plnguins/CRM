@@ -82,11 +82,6 @@ void managerWidget::on_Provider_clicked() {
                                                   Qt::ItemIsSelectable);
         }
     }
-
-    // connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableVendorUpdate()));
-    // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
 void managerWidget::on_Deal_clicked() {
@@ -129,11 +124,6 @@ void managerWidget::on_Deal_clicked() {
                                                   Qt::ItemIsSelectable);
         }
     }
-
-    // connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableDealUpdate()));
-    // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
 void managerWidget::on_Stock_clicked() {
@@ -155,10 +145,6 @@ void managerWidget::on_Stock_clicked() {
     ui->ProviderLabel->setText("Склад");
     ui->Update->setText("Update");
 
-    // TODO: fill table with db
-    // tableStorageUpdate();
-
-    // get from db
     std::vector<boost::tuple<stock, std::string, std::string>> result =
         getStock();
 
@@ -169,9 +155,6 @@ void managerWidget::on_Stock_clicked() {
     ui->tableWidget->setRowCount(result.size());
     size_t current_row = 0;
     for (const auto& [stock, laptop_name, provider_name] : result) {
-        // std::cerr << stock.id << " " << stock.laptop << " " << stock.price
-        //           << " " << stock.count << " " << stock.available << " "
-        //           << stock.source << " " << laptop_name << std::endl;
         ui->tableWidget->setItem(
             current_row, 0, new QTableWidgetItem(QString::number(stock.id)));
         ui->tableWidget->setItem(current_row, 1,
@@ -187,11 +170,6 @@ void managerWidget::on_Stock_clicked() {
                                  new QTableWidgetItem(provider_name.c_str()));
         current_row++;
     }
-
-    // connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableStorageUpdate()));
-    // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
 std::vector<boost::tuple<stock, std::string, std::string>>
