@@ -61,69 +61,52 @@ void login::on_LoginButton_clicked() {
     std::string Login, Password;
     Role role = Role::Unknown;
     Login = ui->Login->text().toStdString();
+    if (Login.empty() || ui->Password->text().isEmpty()) {
+        QMessageBox::critical(this, "Ошибка", "Введите логин и пароль");
+        return;
+    }
     Password = hashPassword(ui->Password->text().toStdString());
     try {
         soci::session sql(*parent->database.get_pool().lock());
         std::string get_employee =
-            "SELECT * FROM employee WHERE login = :login AND password = "
-            ":password";
-        boost::optional<employee> result;
-        sql << get_employee, soci::into(result), soci::use(Login, "login"),
-            soci::use(Password, "password");
-        if (!result.is_initialized()) {
+            "SELECT employee.name, employee.surname, employee.password, "
+            "leader.id, stock_manager.id, marketer.id, seller.id FROM (((( "
+            "employee LEFT OUTER JOIN leader ON leader.employee = employee.id) "
+            "LEFT OUTER JOIN stock_manager ON stock_manager.employee = "
+            "employee.id) LEFT OUTER JOIN marketer ON marketer.employee = "
+            "employee.id) LEFT OUTER JOIN seller ON seller.employee = "
+            "employee.id) WHERE login = :login LIMIT 1";
+        boost::tuple<boost::optional<std::string>, boost::optional<std::string>,
+                     boost::optional<std::string>, boost::optional<int>,
+                     boost::optional<int>, boost::optional<int>,
+                     boost::optional<int>>
+            result;
+        sql << get_employee, soci::into(result), soci::use(Login, "login");
+        if (!result.get<2>() || result.get<2>().get() != Password) {
             QMessageBox::critical(this, "Ошибка", "Неверный логин или пароль");
             return;
         }
-        boost::optional<leader> result_leader;
-        boost::optional<stock_manager> result_stock_manager;
-        boost::optional<marketer> result_marketer;
-        boost::optional<seller> result_seller;
-        std::string check_leader = "SELECT * FROM leader WHERE employee = :id";
-        sql << check_leader, soci::into(result_leader),
-            soci::use(result.get().id, "id");
-        if (result_leader.is_initialized()) {
+        if (result.get<2>().is_initialized()) {
             role = Role::Leader;
-        }
-        std::string check_stock_manager =
-            "SELECT * FROM stock_manager WHERE employee = :id";
-        sql << check_stock_manager, soci::into(result_stock_manager),
-            soci::use(result.get().id, "id");
-        if (result_stock_manager.is_initialized()) {
+        } else if (result.get<3>().is_initialized()) {
             role = Role::Manager;
-        }
-        std::string check_marketer =
-            "SELECT * FROM marketer WHERE employee = :id";
-        sql << check_marketer, soci::into(result_marketer),
-            soci::use(result.get().id, "id");
-        if (result_marketer.is_initialized()) {
+        } else if (result.get<4>().is_initialized()) {
             role = Role::Marketer;
-        }
-        std::string check_seller = "SELECT * FROM seller WHERE employee = :id";
-        sql << check_seller, soci::into(result_seller),
-            soci::use(result.get().id, "id");
-        if (result_seller.is_initialized()) {
+        } else if (result.get<5>().is_initialized()) {
             role = Role::Seller;
         }
         switch (role) {
             case Role::Leader:
                 parent->setLeaderInterface();
-                ui->Login->clear();
-                ui->Password->clear();
                 break;
             case Role::Manager:
                 parent->setManagerInterface();
-                ui->Login->clear();
-                ui->Password->clear();
                 break;
             case Role::Marketer:
                 parent->setMarketerInterface();
-                ui->Login->clear();
-                ui->Password->clear();
                 break;
             case Role::Seller:
                 parent->setSellerInterface();
-                ui->Login->clear();
-                ui->Password->clear();
                 break;
             case Role::Unknown:
                 QMessageBox::critical(
