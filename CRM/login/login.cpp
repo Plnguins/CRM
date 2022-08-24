@@ -17,16 +17,18 @@
 
 std::string hashPassword(const std::string& password) {
     // Encrypting and hashing password using PBKDF2 algorithm and hashing using
-    // sha512, salt is static, iterations is 4096, result length is 8192
-    unsigned char* result = new unsigned char[8192];
+    // sha512, salt is static, iterations is 4096, result length is 128
+    const unsigned int key_length = 128;
+    unsigned char result[key_length];
+    memset(result, 0, key_length * sizeof(unsigned char));
     unsigned char salt = 0;
-    unsigned int key_length = 8192;
-    PKCS5_PBKDF2_HMAC(password.c_str(), password.size(), &salt, 1, 4096,
-                      EVP_sha512(), key_length, result);
-    unsigned long long* res = reinterpret_cast<unsigned long long*>(result);
+    PKCS5_PBKDF2_HMAC(password.c_str(), password.size() * sizeof(password[0]),
+                      &salt, sizeof(salt), 4096, EVP_sha512(),
+                      key_length * sizeof(unsigned char), result);
     std::stringstream output;
-    for (size_t i = 0; i < key_length >> 6; i++) {
-        output << std::hex << res[i];
+    for (size_t i = 0; i < key_length; i++) {
+        output << std::setw(sizeof(unsigned char) * 2) << std::setfill('0')
+               << std::hex << static_cast<unsigned short>(result[i]);
     }
     return output.str();
 }
