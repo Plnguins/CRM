@@ -86,13 +86,13 @@ void login::on_LoginButton_clicked() {
             QMessageBox::critical(this, "Ошибка", "Неверный логин или пароль");
             return;
         }
-        if (result.get<2>().is_initialized()) {
+        if (result.get<3>().is_initialized()) {
             role = Role::Leader;
-        } else if (result.get<3>().is_initialized()) {
-            role = Role::Manager;
         } else if (result.get<4>().is_initialized()) {
-            role = Role::Marketer;
+            role = Role::Manager;
         } else if (result.get<5>().is_initialized()) {
+            role = Role::Marketer;
+        } else if (result.get<6>().is_initialized()) {
             role = Role::Seller;
         }
         std::string name = result.get<0>().get(),
