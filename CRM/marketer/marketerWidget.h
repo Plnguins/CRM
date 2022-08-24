@@ -29,7 +29,8 @@ class marketerWidget : public QWidget {
     Q_OBJECT
 
    public:
-    explicit marketerWidget(QWidget* parent = nullptr);
+    explicit marketerWidget(QWidget* parent = nullptr, std::string = "",
+                            std::string = "");
     ~marketerWidget();
 
    private slots:

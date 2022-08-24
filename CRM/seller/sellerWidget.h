@@ -29,7 +29,8 @@ class sellerWidget : public QWidget {
     Q_OBJECT
 
    public:
-    explicit sellerWidget(QMainWindow* parent = nullptr);
+    explicit sellerWidget(QMainWindow* parent = nullptr, std::string = "",
+                          std::string = "");
     ~sellerWidget();
 
    signals:

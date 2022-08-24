@@ -31,7 +31,7 @@ class managerWidget : public QWidget {
     Q_OBJECT
 
    public:
-    explicit managerWidget(QMainWindow* parent = nullptr);
+    explicit managerWidget(QMainWindow* parent = nullptr, std::string = "", std::string="");
     ~managerWidget();
 
    signals:

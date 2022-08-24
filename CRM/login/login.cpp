@@ -95,18 +95,20 @@ void login::on_LoginButton_clicked() {
         } else if (result.get<5>().is_initialized()) {
             role = Role::Seller;
         }
+        std::string name = result.get<0>().get(),
+                    surname = result.get<1>().get();
         switch (role) {
             case Role::Leader:
-                parent->setLeaderInterface();
+                parent->setLeaderInterface(name, surname);
                 break;
             case Role::Manager:
-                parent->setManagerInterface();
+                parent->setManagerInterface(name, surname);
                 break;
             case Role::Marketer:
-                parent->setMarketerInterface();
+                parent->setMarketerInterface(name, surname);
                 break;
             case Role::Seller:
-                parent->setSellerInterface();
+                parent->setSellerInterface(name, surname);
                 break;
             case Role::Unknown:
                 QMessageBox::critical(

@@ -15,9 +15,13 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #include "managerWidget.h"
 
-managerWidget::managerWidget(QMainWindow* parent)
+managerWidget::managerWidget(QMainWindow* parent, std::string name,
+                             std::string surname)
     : parent(dynamic_cast<MainWindow*>(parent)), ui(new Ui::managerUi) {
     ui->setupUi(this);
+
+    ui->Greeting->setText(QString::fromStdString("Добро пожаловать,  " + name +
+                                                 " " + surname + "!"));
 
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(
         QHeaderView::ResizeToContents);
@@ -179,8 +183,8 @@ managerWidget::getStock() {
         soci::session sql(*parent->database.get_pool().lock());
         std::string query =
             "SELECT stock.*, laptop.name, provider.name FROM stock JOIN laptop "
-            "ON laptop.id=stock.laptop JOIN provider ON "
-            "provider.id=stock.source LIMIT 10";
+            "ON laptop.id = stock.laptop JOIN provider ON "
+            "provider.id = stock.source LIMIT 10";
         soci::rowset<boost::tuple<int, int, int, int, int, int, std::string,
                                   std::string>>
             rs = (sql.prepare << query);

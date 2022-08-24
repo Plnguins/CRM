@@ -15,9 +15,12 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #include "marketerWidget.h"
 
-marketerWidget::marketerWidget(QWidget* parent)
+marketerWidget::marketerWidget(QWidget* parent, std::string name, std::string surname)
     : parent(dynamic_cast<MainWindow*>(parent)), ui(new Ui::marketerUi) {
     ui->setupUi(this);
+
+    ui->Greeting->setText(QString::fromStdString("Добро пожаловать,  " + name +
+                                                 " " + surname + "!"));
 
     ui->Ads->setIcon(QIcon(":/images/ad-white.png"));
     ui->Ads->setIconSize({27, 27});
