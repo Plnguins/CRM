@@ -49,7 +49,7 @@ void MainWindow::setManagerInterface(std::string name, std::string surname) {
 
 void MainWindow::setLeaderInterface(std::string name, std::string surname) {
     setCentralWidget(new leaderWidget(this, name, surname));
-    setFixedSize({821, 511});
+    setFixedSize({821, 492});
 }
 
 void MainWindow::setLoginInterface() {
