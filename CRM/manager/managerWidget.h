@@ -18,6 +18,7 @@
 #include <QMainWindow>
 #include <QWidget>
 
+#include "../database-types/deal.h"
 #include "../database-types/provider.h"
 #include "../database-types/stock.h"
 #include "../mainwindow.h"
@@ -31,7 +32,8 @@ class managerWidget : public QWidget {
     Q_OBJECT
 
    public:
-    explicit managerWidget(QMainWindow* parent = nullptr, std::string = "", std::string="");
+    explicit managerWidget(QMainWindow* parent = nullptr, std::string = "",
+                           std::string = "");
     ~managerWidget();
 
    signals:
@@ -40,6 +42,8 @@ class managerWidget : public QWidget {
    private slots:
     std::vector<boost::tuple<stock, std::string, std::string>> getStock();
     std::vector<provider> getProvider();
+    std::vector<boost::tuple<deal, std::string, std::string, std::string>>
+    getDeal();
     void on_Logout_clicked();
     void on_Provider_clicked();
     void on_Deal_clicked();
