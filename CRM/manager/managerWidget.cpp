@@ -67,6 +67,7 @@ void managerWidget::on_Provider_clicked() {
     ui->ProviderLabel->setText("Поставщики");
     ui->Update->setText("Update");
 
+    ui->tableWidget->clear();
     QStringList Labels = {"ID", "Название"};
     ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
@@ -148,6 +149,7 @@ void managerWidget::on_Stock_clicked() {
     std::vector<boost::tuple<stock, std::string, std::string>> result =
         getStock();
 
+    ui->tableWidget->clear();
     QStringList Labels = {"ID",         "Ноутбук",  "Цена",
                           "Количество", "Доступно", "Поставщик"};
     ui->tableWidget->setColumnCount(Labels.size());
