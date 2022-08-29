@@ -73,7 +73,7 @@ jobs:
           path: ${{ env.BOOST_DIR }}/boost/boost
           key: ${{ runner.os }}-Boost-${{ env.BOOST_VERSION }}-${{ env.BOOST_DIR }}-${{ env.BOOST_PLATFORM }}
       - name: Install Qt
-        uses: jurplel/install-qt-action@c04feedfdfd6dbe64db62deda57fb0971a1bf440
+        uses: jurplel/install-qt-action@43ec12788e42f375acfcb2cec059edfb9572fbaa
         with:
           cached: ${{ steps.cache-qt.outputs.cache-hit }}
           version: ${{ env.QT_VERSION }}
