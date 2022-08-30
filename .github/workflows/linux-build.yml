@@ -39,7 +39,7 @@ env:
   BUILD_TYPE: Debug
   QT_VERSION: "6.2.4"
   QT_DIR: ${{ github.workspace }}
-  QT_ARCH: "linux-gcc"
+  QT_ARCH: "gcc_64"
   QT_TOOLS: "tools_ifw"
   BOOST_PLATFORM: 20.04
   BOOST_DIR: ${{ github.workspace }}
