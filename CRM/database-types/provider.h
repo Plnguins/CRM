@@ -24,11 +24,12 @@ struct provider {
 
     provider() = default;
 
+    provider(int id, std::string name) : id(id), name(name) {}
+
     provider(const provider& other)
         : id(other.id),
-          name(other.name.c_str()) {
-    }  // c_str() нужен для того, чтобы конструктор копирования работал
-       // корректно при включенном ASan
+          name(other.name) {
+    }  
 
     provider& operator=(const provider& rhs) {
         if (this != std::addressof(rhs)) {

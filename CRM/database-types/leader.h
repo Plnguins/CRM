@@ -24,9 +24,11 @@ struct leader {
 
     leader() = default;
 
-    leader(const leader &other) : id(other.id), employee(other.employee) {}
+    leader(int id, int employee) : id(id), employee(employee) {}
 
-    leader &operator=(const leader &rhs) {
+    leader(const leader& other) : id(other.id), employee(other.employee) {}
+
+    leader& operator=(const leader& rhs) {
         if (this != std::addressof(rhs)) {
             id = rhs.id;
             employee = rhs.employee;
@@ -40,26 +42,26 @@ template <>
 struct type_conversion<leader> {
     using base_type = values;
 
-    static void from_base(values const &v, indicator ind, leader &l) {
+    static void from_base(values const& v, indicator ind, leader& l) {
         if (ind == i_null) {
             return;
         }
         try {
             l.id = v.get<int>("id");
             l.employee = v.get<int>("employee");
-        } catch (const std::exception &l) {
+        } catch (const std::exception& l) {
             // Logging
         }
     }
 
-    static void to_base(leader const &l, values &v, indicator &ind) {
+    static void to_base(leader const& l, values& v, indicator& ind) {
         try {
             v.set("id", l.id);
             v.set("employee", l.employee);
 
             ind = i_ok;
             return;
-        } catch (const std::exception &l) {
+        } catch (const std::exception& l) {
             // Logging
         }
         ind = i_null;

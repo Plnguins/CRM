@@ -24,9 +24,11 @@ struct marketer {
 
     marketer() = default;
 
-    marketer(const marketer &other) : id(other.id), employee(other.employee) {}
+    marketer(int id, int employee) : id(id), employee(employee) {}
 
-    marketer &operator=(const marketer &rhs) {
+    marketer(const marketer& other) : id(other.id), employee(other.employee) {}
+
+    marketer& operator=(const marketer& rhs) {
         if (this != std::addressof(rhs)) {
             id = rhs.id;
             employee = rhs.employee;
@@ -40,26 +42,26 @@ template <>
 struct type_conversion<marketer> {
     using base_type = values;
 
-    static void from_base(values const &v, indicator ind, marketer &l) {
+    static void from_base(values const& v, indicator ind, marketer& l) {
         if (ind == i_null) {
             return;
         }
         try {
             l.id = v.get<int>("id");
             l.employee = v.get<int>("employee");
-        } catch (const std::exception &l) {
+        } catch (const std::exception& l) {
             // Logging
         }
     }
 
-    static void to_base(marketer const &l, values &v, indicator &ind) {
+    static void to_base(marketer const& l, values& v, indicator& ind) {
         try {
             v.set("id", l.id);
             v.set("employee", l.employee);
 
             ind = i_ok;
             return;
-        } catch (const std::exception &l) {
+        } catch (const std::exception& l) {
             // Logging
         }
         ind = i_null;
