@@ -18,6 +18,7 @@
 #include <soci/boost-optional.h>
 #include <soci/boost-tuple.h>
 #include <soci/connection-pool.h>
+#include <soci/postgresql/soci-postgresql.h>
 #include <soci/soci.h>
 
 #include <boost/optional.hpp>
