@@ -43,12 +43,6 @@ set(SOCI_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/soci)
 
 option(SOCI_CXX11 "Build to the C++11 standard" ON)
 
-IF(BUILD_TYPE STREQUAL "debug")
-    option(SOCI_ASAN "" ON)
-ELSE()
-    option(SOCI_ASAN "" OFF)
-ENDIF()
-
 option(WITH_BOOST "" ON)
 option(SOCI_TESTS "" OFF)
 option(SOCI_SHARED "" ON)
