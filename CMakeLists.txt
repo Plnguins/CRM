@@ -109,7 +109,7 @@ IF(APPLE)
     add_custom_command(TARGET CRM POST_BUILD
         COMMAND ${QT6_INSTALL_PREFIX}/bin/macdeployqt CRM.app -dmg
         WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
-        COMMENT "Copying libraries")
+        COMMENT "Creating dmg")
 ENDIF()
 
 add_custom_command(TARGET CRM POST_BUILD
