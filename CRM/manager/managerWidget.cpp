@@ -29,24 +29,7 @@ managerWidget::managerWidget(QMainWindow* parent, std::string name,
 
 managerWidget::~managerWidget() { delete ui; }
 
-void managerWidget::on_Logout_clicked() {
-    ui->Icon->show();
-    ui->Title->show();
-    ui->Company->show();
-    ui->Greeting->show();
-    ui->tableWidget->hide();
-    ui->RoundedBlue->hide();
-    ui->Update->hide();
-    ui->Edit->hide();
-    ui->Add->hide();
-    ui->Delete->hide();
-    ui->ProviderLabel->hide();
-    ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
-    ui->textEdit->clear();
-    parent->setLoginInterface();
-}
+void managerWidget::on_Logout_clicked() { parent->setLoginInterface(); }
 
 void managerWidget::on_Provider_clicked() {
     ui->tableWidget->show();
