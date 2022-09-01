@@ -6,9 +6,9 @@
 #include "database-types/stock.h"
 #include "db_pool.h"
 
-std::vector<boost::tuple<stock, laptop, provider>> getStock(soci::session&);
+std::vector<boost::tuple<stock, laptop, provider>> getStock(soci::session&, const int&, const int&);
 
-std::vector<provider> getProvider(soci::session&);
+std::vector<provider> getProvider(soci::session&, const int&, const int&);
 
 std::vector<boost::tuple<deal, laptop, client, employee>> getDeal(
-    soci::session&);
+    soci::session&, const int&, const int&);

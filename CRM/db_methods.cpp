@@ -1,12 +1,14 @@
 #include "db_methods.h"
 
-std::vector<boost::tuple<stock, laptop, provider>> getStock(
-    soci::session& sql) {
+std::vector<boost::tuple<stock, laptop, provider>> getStock(soci::session& sql,
+                                                            const int& offset,
+                                                            const int& limit) {
     std::vector<boost::tuple<stock, laptop, provider>> result;
     std::string query =
         "SELECT stock.*, laptop.*, provider.* FROM stock JOIN laptop "
         "ON laptop.id = stock.laptop JOIN provider ON "
-        "provider.id = stock.source LIMIT 10";
+        "provider.id = stock.source LIMIT " +
+        std::to_string(limit) + " OFFSET " + std::to_string(offset * limit);
     soci::rowset<soci::row> rs = (sql.prepare << query);
     for (auto it = rs.begin(); it != rs.end(); it++) {
         const auto& row = *it;
@@ -23,9 +25,12 @@ std::vector<boost::tuple<stock, laptop, provider>> getStock(
     return result;
 }
 
-std::vector<provider> getProvider(soci::session& sql) {
+std::vector<provider> getProvider(soci::session& sql, const int& offset,
+                                  const int& limit) {
     std::vector<provider> result;
-    std::string query = "SELECT * FROM provider";
+    std::string query = "SELECT * FROM provider LIMIT " +
+                        std::to_string(limit) + " OFFSET " +
+                        std::to_string(offset * limit);
     soci::rowset<provider> rs = (sql.prepare << query);
     for (auto it = rs.begin(); it != rs.end(); it++) {
         const auto& row = *it;
@@ -35,13 +40,14 @@ std::vector<provider> getProvider(soci::session& sql) {
 }
 
 std::vector<boost::tuple<deal, laptop, client, employee>> getDeal(
-    soci::session& sql) {
+    soci::session& sql, const int& offset, const int& limit) {
     std::vector<boost::tuple<deal, laptop, client, employee>> result;
     std::string query =
         "SELECT deal.*, laptop.*, client.*, employee.* FROM "
         "deal JOIN laptop ON laptop.id = deal.laptop JOIN client ON "
         "client.id = deal.client JOIN employee ON employee.id = "
-        "deal.seller";
+        "deal.seller LIMIT " +
+        std::to_string(limit) + " OFFSET " + std::to_string(offset * limit);
     soci::rowset<soci::row> rs = (sql.prepare << query);
     for (auto it = rs.begin(); it != rs.end(); it++) {
         const auto& row = *it;

@@ -48,7 +48,6 @@ void managerWidget::on_Provider_clicked() {
     ui->textEdit->hide();
 
     ui->ProviderLabel->setText("Поставщики");
-    ui->Update->setText("Update");
 
     ui->tableWidget->clear();
     QStringList Labels = {"ID", "Название"};
@@ -57,7 +56,7 @@ void managerWidget::on_Provider_clicked() {
 
     try {
         soci::session session(*parent->database.get_pool().lock());
-        std::vector<provider> providers = getProvider(session);
+        std::vector<provider> providers = getProvider(session, 0, 10);
         ui->tableWidget->setRowCount(providers.size());
 
         size_t current_row = 0;
@@ -92,7 +91,6 @@ void managerWidget::on_Deal_clicked() {
     ui->textEdit->hide();
 
     ui->ProviderLabel->setText("Сделки");
-    ui->Update->setText("Update");
 
     ui->tableWidget->clear();
     QStringList Labels = {"ID",         "Ноутбук", "Цена",
@@ -104,7 +102,7 @@ void managerWidget::on_Deal_clicked() {
     try {
         soci::session session(*parent->database.get_pool().lock());
         std::vector<boost::tuple<deal, laptop, client, employee>> deals =
-            getDeal(session);
+            getDeal(session, 0, 10);
         ui->tableWidget->setRowCount(deals.size());
 
         size_t current_row = 0;
@@ -168,8 +166,7 @@ void managerWidget::on_Stock_clicked() {
     try {
         soci::session session(*parent->database.get_pool().lock());
         std::vector<boost::tuple<stock, laptop, provider>> result =
-            getStock(session);
-        ui->tableWidget->clear();
+            getStock(session, 0, 10);
         QStringList Labels = {"ID",         "Ноутбук",  "Цена",
                               "Количество", "Доступно", "Поставщик"};
         ui->tableWidget->setColumnCount(Labels.size());
