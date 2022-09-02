@@ -15,9 +15,7 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #pragma once
 
-#include <QTranslator>
-#include <QWidget>
-
+#include "../db_methods.h"
 #include "../mainwindow.h"
 #include "ui_leader.h"
 
@@ -33,31 +31,15 @@ class leaderWidget : public QWidget {
                           std::string = "");
     ~leaderWidget();
 
-   signals:
-    void logout();
-
    private slots:
     void on_Provider_clicked();
-    void tableVendorUpdate();
-    void tableDealUpdate();
-    void tableStorageUpdate();
-    void tableAdUpdate();
-    void tableEmployeesUpdate();
-
     void on_Employee_clicked();
-
     void on_Stock_clicked();
-
     void on_Ads_clicked();
-
     void on_Logout_clicked();
-
     void on_Deal_clicked();
-
-    void on_Support_clicked();
 
    private:
     MainWindow* parent;
     Ui::leaderUi* ui;
-    QTranslator translator;
 };

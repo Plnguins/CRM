@@ -57,24 +57,7 @@ leaderWidget::leaderWidget(QMainWindow* parent, std::string name,
 
 leaderWidget::~leaderWidget() { delete ui; }
 
-void leaderWidget::on_Logout_clicked() {
-    ui->Icon->show();
-    ui->Title->show();
-    ui->Company->show();
-    ui->Greeting->show();
-    ui->tableWidget->hide();
-    ui->RoundedBlue->hide();
-    ui->Update->hide();
-    ui->Edit->hide();
-    ui->Add->hide();
-    ui->Delete->hide();
-    ui->ProviderLabel->hide();
-    ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
-    ui->textEdit->clear();
-    parent->setLoginInterface();
-}
+void leaderWidget::on_Logout_clicked() { parent->setLoginInterface(); }
 
 void leaderWidget::on_Provider_clicked() {
     ui->tableWidget->show();
@@ -116,11 +99,6 @@ void leaderWidget::on_Provider_clicked() {
                                                   Qt::ItemIsSelectable);
         }
     }
-
-    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableVendorUpdate()));
-    // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
 void leaderWidget::on_Deal_clicked() {
@@ -172,11 +150,6 @@ void leaderWidget::on_Deal_clicked() {
                                                   Qt::ItemIsSelectable);
         }
     }
-
-    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableDealUpdate()));
-    // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
 void leaderWidget::on_Stock_clicked() {
@@ -225,11 +198,6 @@ void leaderWidget::on_Stock_clicked() {
                                                   Qt::ItemIsSelectable);
         }
     }
-
-    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableStorageUpdate()));
-    // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
 void leaderWidget::on_Ads_clicked() {
@@ -272,11 +240,6 @@ void leaderWidget::on_Ads_clicked() {
                                                   Qt::ItemIsSelectable);
         }
     }
-
-    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableAdUpdate()));
-    // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
 void leaderWidget::on_Employee_clicked() {
@@ -322,51 +285,4 @@ void leaderWidget::on_Employee_clicked() {
                                                   Qt::ItemIsSelectable);
         }
     }
-
-    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableVendorUpdate()));
-    // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
-}
-
-void leaderWidget::on_Support_clicked() {
-    ui->tableWidget->hide();
-    ui->Update->hide();
-    ui->Edit->hide();
-    ui->Add->hide();
-    ui->Delete->hide();
-    ui->RoundedBlue->hide();
-    ui->ProviderLabel->show();
-    ui->Icon->hide();
-    ui->Title->hide();
-    ui->Company->hide();
-    ui->Greeting->hide();
-    ui->Send->show();
-    ui->Help->show();
-    ui->textEdit->show();
-
-    ui->ProviderLabel->setText("ТехПод");
-    ui->Send->setText("Отправить");
-}
-
-//----------table update functions---------------
-
-void leaderWidget::tableVendorUpdate() {
-    //
-}
-
-void leaderWidget::tableDealUpdate() {
-    //
-}
-
-void leaderWidget::tableStorageUpdate() {
-    //
-}
-
-void leaderWidget::tableAdUpdate() {
-    //
-}
-
-void leaderWidget::tableEmployeesUpdate() {
-    //
 }
