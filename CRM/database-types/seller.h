@@ -24,6 +24,8 @@ struct seller {
 
     seller() = default;
 
+    seller(int id, int employee) : id(id), employee(employee) {}
+
     seller(const seller &other) : id(other.id), employee(other.employee) {}
 
     seller &operator=(const seller &rhs) {

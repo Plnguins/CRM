@@ -43,12 +43,6 @@ set(SOCI_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/soci)
 
 option(SOCI_CXX11 "Build to the C++11 standard" ON)
 
-IF(BUILD_TYPE STREQUAL "debug")
-    option(SOCI_ASAN "" ON)
-ELSE()
-    option(SOCI_ASAN "" OFF)
-ENDIF()
-
 option(WITH_BOOST "" ON)
 option(SOCI_TESTS "" OFF)
 option(SOCI_SHARED "" ON)
@@ -87,15 +81,6 @@ ENDIF()
 
 set_target_properties(CRM PROPERTIES AUTOMOC TRUE AUTOUIC TRUE AUTORCC TRUE)
 
-IF(BUILD_TYPE STREQUAL "debug")
-    set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -fsanitize=address")
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fsanitize=address")
-    set(CMAKE_LINKER_FLAGS_DEBUG "${CMAKE_LINKER_FLAGS_DEBUG} -fsanitize=address")
-    set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS_DEBUG} -fsanitize=address")
-    add_compile_options(-fsanitize=address)
-    add_link_options(-fsanitize=address)
-ENDIF()
-
 target_link_libraries(CRM ${Boost_LIBRARIES})
 
 target_include_directories(CRM PRIVATE ${SOCI_BINARY_DIR}/include)
@@ -124,7 +109,7 @@ IF(APPLE)
     add_custom_command(TARGET CRM POST_BUILD
         COMMAND ${QT6_INSTALL_PREFIX}/bin/macdeployqt CRM.app -dmg
         WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
-        COMMENT "Copying libraries")
+        COMMENT "Creating dmg")
 ENDIF()
 
 add_custom_command(TARGET CRM POST_BUILD

@@ -15,9 +15,13 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #include "leaderWidget.h"
 
-leaderWidget::leaderWidget(QMainWindow* parent)
+leaderWidget::leaderWidget(QMainWindow* parent, std::string name,
+                           std::string surname)
     : parent(dynamic_cast<MainWindow*>(parent)), ui(new Ui::leaderUi) {
     ui->setupUi(this);
+
+    ui->Greeting->setText(QString::fromStdString("Добро пожаловать,  " + name +
+                                                 " " + surname + "!"));
 
     ui->Provider->setIcon(QIcon(":/images/vendor-white.png"));
     ui->Provider->setIconSize({30, 30});

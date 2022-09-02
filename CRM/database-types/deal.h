@@ -22,6 +22,7 @@ struct deal {
     int id;                          // ID сделки
     int laptop;                      // ID ноутбука
     int cost;                        // Сумма сделки
+    int client;                      // ID клиента
     std::string status;              // Статус сделки
     boost::gregorian::date created;  // Дата создания
     int seller;  // ID ответственного сотрудника
@@ -30,21 +31,36 @@ struct deal {
 
     deal() = default;
 
-    deal(const deal &other)
+    deal(int id, int laptop, int cost, int client, std::string status,
+         boost::gregorian::date created, int seller, int rate,
+         boost::gregorian::date last_update)
+        : id(id),
+          laptop(laptop),
+          cost(cost),
+          client(client),
+          status(status),
+          created(created),
+          seller(seller),
+          rate(rate),
+          last_update(last_update) {}
+
+    deal(const deal& other)
         : id(other.id),
           laptop(other.laptop),
           cost(other.cost),
+          client(other.client),
           status(other.status),
           created(other.created),
           seller(other.seller),
           rate(other.rate),
           last_update(other.last_update) {}
 
-    deal &operator=(const deal &rhs) {
+    deal& operator=(const deal& rhs) {
         if (this != &rhs) {
             id = rhs.id;
             laptop = rhs.laptop;
             cost = rhs.cost;
+            client = rhs.client;
             status = rhs.status;
             created = rhs.created;
             seller = rhs.seller;
@@ -60,7 +76,7 @@ template <>
 struct type_conversion<deal> {
     using base_type = values;
 
-    static void from_base(values const &v, indicator ind, deal &d) {
+    static void from_base(values const& v, indicator ind, deal& d) {
         if (ind == i_null) {
             return;
         }
@@ -68,21 +84,23 @@ struct type_conversion<deal> {
             d.id = v.get<int>("id");
             d.laptop = v.get<int>("laptop");
             d.cost = v.get<int>("cost");
+            d.client = v.get<int>("client");
             d.status = v.get<std::string>("status");
             d.created = v.get<boost::gregorian::date>("created");
             d.seller = v.get<int>("seller");
-            d.rate = v.get<int>("rate");
+            d.rate = v.get<int>("rate", 0);
             d.last_update = v.get<boost::gregorian::date>("last_update");
-        } catch (std::exception const &e) {
+        } catch (std::exception const& e) {
             // Logging
         }
     }
 
-    static void to_base(deal const &d, values &v, indicator &ind) {
+    static void to_base(deal const& d, values& v, indicator& ind) {
         try {
             v.set("id", d.id);
             v.set("laptop", d.laptop);
             v.set("cost", d.cost);
+            v.set("client", d.client);
             v.set("status", d.status);
             v.set("created", d.created);
             v.set("seller", d.seller);
@@ -91,7 +109,7 @@ struct type_conversion<deal> {
 
             ind = i_ok;
             return;
-        } catch (std::exception const &e) {
+        } catch (std::exception const& e) {
             // Logging
         }
         ind = i_null;

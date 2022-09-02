@@ -17,7 +17,6 @@
 #include <memory>
 
 #include "../db_pool.h"
-#include "boost/date_time/gregorian/gregorian.hpp"
 
 struct comment {
     int id;                       // ID комментария
@@ -26,6 +25,9 @@ struct comment {
     std::string content;          // Содержимое комментария
 
     comment() = default;
+
+    comment(int id, int deal, boost::gregorian::date date, std::string content)
+        : id(id), deal(deal), date(date), content(content) {}
 
     comment(const comment& other)
         : id(other.id),

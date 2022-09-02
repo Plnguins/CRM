@@ -27,12 +27,9 @@ struct advertisement {
 
     advertisement() = default;
 
-    void clear() {
-        id = 0;
-        source.clear();
-        budget = 0;
-        comments.clear();
-    }
+    advertisement(int id, std::string source, long long budget,
+                  std::string comments)
+        : id(id), source(source), budget(budget), comments(comments) {}
 
     advertisement(const advertisement& other)
         : id(other.id),

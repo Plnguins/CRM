@@ -29,7 +29,8 @@ class leaderWidget : public QWidget {
     Q_OBJECT
 
    public:
-    explicit leaderWidget(QMainWindow* parent = nullptr);
+    explicit leaderWidget(QMainWindow* parent = nullptr, std::string = "",
+                          std::string = "");
     ~leaderWidget();
 
    signals:

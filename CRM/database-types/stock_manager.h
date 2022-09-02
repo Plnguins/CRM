@@ -24,10 +24,12 @@ struct stock_manager {
 
     stock_manager() = default;
 
-    stock_manager(const stock_manager &other)
+    stock_manager(int id, int employee) : id(id), employee(employee) {}
+
+    stock_manager(const stock_manager& other)
         : id(other.id), employee(other.employee) {}
 
-    stock_manager &operator=(const stock_manager &rhs) {
+    stock_manager& operator=(const stock_manager& rhs) {
         if (this != std::addressof(rhs)) {
             id = rhs.id;
             employee = rhs.employee;
@@ -41,26 +43,26 @@ template <>
 struct type_conversion<stock_manager> {
     using base_type = values;
 
-    static void from_base(values const &v, indicator ind, stock_manager &l) {
+    static void from_base(values const& v, indicator ind, stock_manager& l) {
         if (ind == i_null) {
             return;
         }
         try {
             l.id = v.get<int>("id");
             l.employee = v.get<int>("employee");
-        } catch (const std::exception &l) {
+        } catch (const std::exception& l) {
             // Logging
         }
     }
 
-    static void to_base(stock_manager const &l, values &v, indicator &ind) {
+    static void to_base(stock_manager const& l, values& v, indicator& ind) {
         try {
             v.set("id", l.id);
             v.set("employee", l.employee);
 
             ind = i_ok;
             return;
-        } catch (const std::exception &l) {
+        } catch (const std::exception& l) {
             // Logging
         }
         ind = i_null;

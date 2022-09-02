@@ -30,6 +30,18 @@ struct client {
 
     client() = default;
 
+    client(int id, std::string surname, std::string name,
+           std::string patronymic, std::string email, std::string phone,
+           std::string sex, std::string city)
+        : id(id),
+          name(name),
+          surname(surname),
+          patronymic(patronymic),
+          email(email),
+          phone(phone),
+          sex(sex),
+          city(city) {}
+
     client(const client& other)
         : id(other.id),
           surname(other.surname),

@@ -31,11 +31,11 @@ class MainWindow : public QMainWindow {
    public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
-    void setLeaderInterface();
+    void setLeaderInterface(std::string, std::string);
     void setLoginInterface();
-    void setManagerInterface();
-    void setMarketerInterface();
-    void setSellerInterface();
+    void setManagerInterface(std::string, std::string);
+    void setMarketerInterface(std::string, std::string);
+    void setSellerInterface(std::string, std::string);
     db_pool database;
     bool connectDatabase();
     void setDatabase(const std::string& host, const unsigned short int& port,

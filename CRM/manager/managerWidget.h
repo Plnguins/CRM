@@ -18,6 +18,7 @@
 #include <QMainWindow>
 #include <QWidget>
 
+#include "../db_methods.h"
 #include "../mainwindow.h"
 #include "ui_manager.h"
 
@@ -29,26 +30,18 @@ class managerWidget : public QWidget {
     Q_OBJECT
 
    public:
-    explicit managerWidget(QMainWindow* parent = nullptr);
+    explicit managerWidget(QMainWindow* parent = nullptr, std::string = "",
+                           std::string = "");
     ~managerWidget();
 
    signals:
     void logout();
 
    private slots:
-    void tableVendorUpdate();
-    void tableDealUpdate();
-    void tableStorageUpdate();
-
     void on_Logout_clicked();
-
     void on_Provider_clicked();
-
     void on_Deal_clicked();
-
     void on_Stock_clicked();
-
-    void on_Support_clicked();
 
    private:
     MainWindow* parent;

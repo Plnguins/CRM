@@ -32,29 +32,29 @@ MainWindow::MainWindow(QWidget* parent)
 
 MainWindow::~MainWindow() { delete ui; }
 
-void MainWindow::setSellerInterface() {
-    setCentralWidget(new sellerWidget(this));
+void MainWindow::setSellerInterface(std::string name, std::string surname) {
+    setCentralWidget(new sellerWidget(this, name, surname));
     setFixedSize({821, 511});
 }
 
-void MainWindow::setMarketerInterface() {
-    setCentralWidget(new marketerWidget(this));
+void MainWindow::setMarketerInterface(std::string name, std::string surname) {
+    setCentralWidget(new marketerWidget(this, name, surname));
     setFixedSize({832, 503});
 }
 
-void MainWindow::setManagerInterface() {
-    setCentralWidget(new managerWidget(this));
-    setFixedSize({821, 511});
+void MainWindow::setManagerInterface(std::string name, std::string surname) {
+    setCentralWidget(new managerWidget(this, name, surname));
+    setFixedSize({821, 489});
 }
 
-void MainWindow::setLeaderInterface() {
-    setCentralWidget(new leaderWidget(this));
-    setFixedSize({821, 511});
+void MainWindow::setLeaderInterface(std::string name, std::string surname) {
+    setCentralWidget(new leaderWidget(this, name, surname));
+    setFixedSize({821, 492});
 }
 
 void MainWindow::setLoginInterface() {
     setCentralWidget(new login(this));
-    setFixedSize({300, 250});
+    setFixedSize({300, 233});
 }
 
 bool MainWindow::connectDatabase() {

@@ -24,9 +24,14 @@ struct provider {
 
     provider() = default;
 
-    provider(const provider &other) : id(other.id), name(other.name) {}
+    provider(int id, std::string name) : id(id), name(name) {}
 
-    provider &operator=(const provider &rhs) {
+    provider(const provider& other)
+        : id(other.id),
+          name(other.name) {
+    }  
+
+    provider& operator=(const provider& rhs) {
         if (this != std::addressof(rhs)) {
             id = rhs.id;
             name = rhs.name;
@@ -40,26 +45,26 @@ template <>
 struct type_conversion<provider> {
     using base_type = values;
 
-    static void from_base(values const &v, indicator ind, provider &l) {
+    static void from_base(values const& v, indicator ind, provider& l) {
         if (ind == i_null) {
             return;
         }
         try {
             l.id = v.get<int>("id");
-            l.name = v.get<int>("name");
-        } catch (const std::exception &l) {
+            l.name = v.get<std::string>("name");
+        } catch (const std::exception& l) {
             // Logging
         }
     }
 
-    static void to_base(provider const &l, values &v, indicator &ind) {
+    static void to_base(provider const& l, values& v, indicator& ind) {
         try {
             v.set("id", l.id);
             v.set("name", l.name);
 
             ind = i_ok;
             return;
-        } catch (const std::exception &l) {
+        } catch (const std::exception& l) {
             // Logging
         }
         ind = i_null;

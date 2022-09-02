@@ -22,7 +22,7 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
     <x>0</x>
     <y>0</y>
     <width>821</width>
-    <height>511</height>
+    <height>489</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,7 +32,7 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
    <property name="geometry">
     <rect>
      <x>160</x>
-     <y>-2</y>
+     <y>0</y>
      <width>661</width>
      <height>491</height>
     </rect>
@@ -71,8 +71,11 @@ color: rgb(56, 84, 102);</string>
      <height>51</height>
     </rect>
    </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton#pushButton_8:!pressed {
+    <string notr="true">QPushButton#Update:!pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -84,7 +87,7 @@ color: rgb(56, 84, 102);</string>
 	border-bottom-left-radius:5px;
  }
 
-QPushButton#pushButton_8 {
+QPushButton#Update {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -96,7 +99,7 @@ QPushButton#pushButton_8 {
 	border-bottom-left-radius:5px;
  }
 
-QPushButton#pushButton_8:hover {
+QPushButton#Update:hover {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -109,7 +112,7 @@ QPushButton#pushButton_8:hover {
  }
 
 
-QPushButton#pushButton_8:pressed {
+QPushButton#Update:pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -133,6 +136,9 @@ QPushButton#pushButton_8:pressed {
      <width>201</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
    </property>
    <property name="styleSheet">
     <string notr="true">font: 12pt &quot;Comfortaa&quot;;
@@ -162,6 +168,9 @@ border-bottom-left-radius: 5px;
      <height>431</height>
     </rect>
    </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(221, 235, 255);
 
@@ -180,8 +189,11 @@ border-radius:20px;</string>
      <height>51</height>
     </rect>
    </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton#pushButton_9:!pressed {
+    <string notr="true">QPushButton#Edit:!pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -193,7 +205,7 @@ border-radius:20px;</string>
 	border-bottom-left-radius:5px;
  }
 
-QPushButton#pushButton_9 {
+QPushButton#Edit {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -205,7 +217,7 @@ QPushButton#pushButton_9 {
 	border-bottom-left-radius:5px;
  }
 
-QPushButton#pushButton_9:hover {
+QPushButton#Edit:hover {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -218,7 +230,7 @@ QPushButton#pushButton_9:hover {
  }
 
 
-QPushButton#pushButton_9:pressed {
+QPushButton#Edit:pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -242,6 +254,9 @@ QPushButton#pushButton_9:pressed {
      <width>431</width>
      <height>191</height>
     </rect>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
    </property>
    <property name="styleSheet">
     <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
@@ -278,6 +293,9 @@ color: rgb(56, 84, 102);</string>
      <height>81</height>
     </rect>
    </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
     <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
@@ -303,6 +321,9 @@ hr { height: 1px; border-width: 0; }
      <width>491</width>
      <height>431</height>
     </rect>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
    </property>
    <property name="styleSheet">
     <string notr="true">QTableWidget#tableWidget {
@@ -335,6 +356,20 @@ QTableWidget::item:selection {
 }
 </string>
    </property>
+   <property name="sizeAdjustPolicy">
+    <enum>QAbstractScrollArea::AdjustToContents</enum>
+   </property>
+   <property name="editTriggers">
+    <set>QAbstractItemView::NoEditTriggers</set>
+   </property>
+   <property name="rowCount">
+    <number>5</number>
+   </property>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
+   <row/>
   </widget>
   <widget class="QPushButton" name="Delete">
    <property name="geometry">
@@ -345,8 +380,11 @@ QTableWidget::item:selection {
      <height>51</height>
     </rect>
    </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton#pushButton_11:!pressed {
+    <string notr="true">QPushButton#Delete:!pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -358,7 +396,7 @@ QTableWidget::item:selection {
 	border-bottom-left-radius:5px;
  }
 
-QPushButton#pushButton_11 {
+QPushButton#Delete {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -370,7 +408,7 @@ QPushButton#pushButton_11 {
 	border-bottom-left-radius:5px;
  }
 
-QPushButton#pushButton_11:hover {
+QPushButton#Delete:hover {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -383,7 +421,7 @@ QPushButton#pushButton_11:hover {
  }
 
 
-QPushButton#pushButton_11:pressed {
+QPushButton#Delete:pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -403,7 +441,7 @@ QPushButton#pushButton_11:pressed {
    <property name="geometry">
     <rect>
      <x>320</x>
-     <y>368</y>
+     <y>380</y>
      <width>321</width>
      <height>81</height>
     </rect>
@@ -425,8 +463,11 @@ color: rgb(56, 84, 102);</string>
      <height>51</height>
     </rect>
    </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton#pushButton_12:!pressed {
+    <string notr="true">QPushButton#Send:!pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -435,7 +476,7 @@ color: rgb(56, 84, 102);</string>
 	border-radius:20px;
  }
 
-QPushButton#pushButton_12 {
+QPushButton#Send {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -444,7 +485,7 @@ QPushButton#pushButton_12 {
 	border-radius:20px;;
  }
 
-QPushButton#pushButton_12:hover {
+QPushButton#Send:hover {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -454,7 +495,7 @@ QPushButton#pushButton_12:hover {
  }
 
 
-QPushButton#pushButton_12:pressed {
+QPushButton#Send:pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -476,8 +517,11 @@ QPushButton#pushButton_12:pressed {
      <height>51</height>
     </rect>
    </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton#pushButton_10:!pressed {
+    <string notr="true">QPushButton#Add:!pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -489,7 +533,7 @@ QPushButton#pushButton_12:pressed {
 	border-bottom-left-radius:5px;
  }
 
-QPushButton#pushButton_10 {
+QPushButton#Add {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -501,7 +545,7 @@ QPushButton#pushButton_10 {
 	border-bottom-left-radius:5px;
  }
 
-QPushButton#pushButton_10:hover {
+QPushButton#Add:hover {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -514,7 +558,7 @@ QPushButton#pushButton_10:hover {
  }
 
 
-QPushButton#pushButton_10:pressed {
+QPushButton#Add:pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -541,6 +585,18 @@ QPushButton#pushButton_10:pressed {
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::PlainText</enum>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../../resources/resources.qrc">:/images/main.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QGroupBox" name="LeftButtons">
@@ -609,6 +665,18 @@ QPushButton#Provider:checked {
       <property name="text">
        <string>Поставщики</string>
       </property>
+      <property name="icon">
+       <iconset>
+        <activeoff>:/images/vendor-white.png</activeoff>
+        <activeon>:/images/vendor-white.png</activeon>
+       </iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
       <property name="flat">
        <bool>false</bool>
       </property>
@@ -657,6 +725,18 @@ QPushButton#Deal:pressed {
       <property name="text">
        <string>Сделки</string>
       </property>
+      <property name="icon">
+       <iconset>
+        <activeoff>:/images/dollar.png</activeoff>
+        <activeon>:/images/dollar.png</activeon>
+       </iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>27</width>
+        <height>27</height>
+       </size>
+      </property>
       <property name="flat">
        <bool>true</bool>
       </property>
@@ -664,8 +744,16 @@ QPushButton#Deal:pressed {
     </item>
     <item>
      <widget class="QPushButton" name="Stock">
+      <property name="font">
+       <font>
+        <family>Comfortaa</family>
+        <pointsize>12</pointsize>
+        <italic>false</italic>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">QPushButton#Employee:!pressed {
+       <string notr="true">QPushButton#Stock:!pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	color: rgb(222, 222, 222);
 	font: bold;
@@ -674,7 +762,7 @@ QPushButton#Deal:pressed {
 	border-radius:20px;
  }
 
-QPushButton#Employee {
+QPushButton#Stock {
     font: 12pt &quot;Comfortaa&quot;;
 	color: rgb(222, 222, 222);
 	font: bold;
@@ -683,7 +771,7 @@ QPushButton#Employee {
 	border-radius:20px;
  }
 
-QPushButton#Employee:hover {
+QPushButton#Stock:hover {
      background-color: rgb(54, 69, 80);
 	font: 12pt &quot;Comfortaa&quot;;
 	color: rgb(222, 222, 222);
@@ -693,7 +781,7 @@ QPushButton#Employee:hover {
  }
 
 
-QPushButton#Employee:pressed {
+QPushButton#Stock:pressed {
      background-color: rgb(45, 58, 66);
 	font: 12pt &quot;Comfortaa&quot;;
 	color: rgb(222, 222, 222);
@@ -705,53 +793,17 @@ QPushButton#Employee:pressed {
       <property name="text">
        <string>Склад</string>
       </property>
-      <property name="flat">
-       <bool>true</bool>
+      <property name="icon">
+       <iconset>
+        <activeoff>:/images/sklad-white.png</activeoff>
+        <activeon>:/images/sklad-white.png</activeon>
+       </iconset>
       </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="Support">
-      <property name="styleSheet">
-       <string notr="true">QPushButton#Support:!pressed {
-    font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	background-color: rgb(56, 84, 102);
-	border-radius:20px;
- }
-
-QPushButton#Support {
-    font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	background-color: rgb(56, 84, 102);
-	border-radius:20px;
- }
-
-QPushButton#Support:hover {
-     background-color: rgb(54, 69, 80);
-	font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	border-radius:20px;
- }
-
-
-QPushButton#Support:pressed {
-     background-color: rgb(45, 58, 66);
-	font: 12pt &quot;Comfortaa&quot;;
-	color: rgb(222, 222, 222);
-	font: bold;
-	border: none;
-	border-radius:20px;
- }</string>
-      </property>
-      <property name="text">
-       <string>Техпод</string>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
       </property>
       <property name="flat">
        <bool>true</bool>
@@ -814,6 +866,18 @@ QPushButton#Logout:pressed {
       <property name="text">
        <string>Log out</string>
       </property>
+      <property name="icon">
+       <iconset>
+        <activeoff>:/images/logout.png</activeoff>
+        <activeon>:/images/logout.png</activeon>
+       </iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>28</width>
+        <height>28</height>
+       </size>
+      </property>
      </widget>
     </item>
     <item>
@@ -850,6 +914,8 @@ background-color: rgb(56, 84, 102);</string>
   <zorder>ProviderLabel</zorder>
   <zorder>LeftButtons</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../resources/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -15,9 +15,12 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #include "sellerWidget.h"
 
-sellerWidget::sellerWidget(QMainWindow* parent)
+sellerWidget::sellerWidget(QMainWindow* parent, std::string name, std::string surname)
     : parent(dynamic_cast<MainWindow*>(parent)), ui(new Ui::sellerUi) {
     ui->setupUi(this);
+
+    ui->Greeting->setText(QString::fromStdString("Добро пожаловать,  " + name +
+                                                 " " + surname + "!"));
 
     ui->Client->setIcon(QIcon(":/images/client-white.png"));
     ui->Client->setIconSize({30, 30});
