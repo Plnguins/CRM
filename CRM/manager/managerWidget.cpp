@@ -45,7 +45,6 @@ void managerWidget::on_Provider_clicked() {
     ui->Greeting->hide();
     ui->Send->hide();
     ui->Help->hide();
-    ui->textEdit->hide();
 
     ui->ProviderLabel->setText("Поставщики");
 
@@ -88,7 +87,6 @@ void managerWidget::on_Deal_clicked() {
     ui->Greeting->hide();
     ui->Send->hide();
     ui->Help->hide();
-    ui->textEdit->hide();
 
     ui->ProviderLabel->setText("Сделки");
 
@@ -158,7 +156,6 @@ void managerWidget::on_Stock_clicked() {
     ui->Greeting->hide();
     ui->Send->hide();
     ui->Help->hide();
-    ui->textEdit->hide();
 
     ui->ProviderLabel->setText("Склад");
     ui->Update->setText("Update");

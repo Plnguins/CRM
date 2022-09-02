@@ -246,27 +246,6 @@ QPushButton#Edit:pressed {
     <string>Edit</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="textEdit">
-   <property name="geometry">
-    <rect>
-     <x>270</x>
-     <y>188</y>
-     <width>431</width>
-     <height>191</height>
-    </rect>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(221, 235, 255);
-	border: 5px solid #BBD6FF ;
-	border-radius: 20px;</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="Company">
    <property name="geometry">
     <rect>
@@ -910,7 +889,6 @@ background-color: rgb(56, 84, 102);</string>
   <zorder>Update</zorder>
   <zorder>tableWidget</zorder>
   <zorder>Help</zorder>
-  <zorder>textEdit</zorder>
   <zorder>ProviderLabel</zorder>
   <zorder>LeftButtons</zorder>
  </widget>
