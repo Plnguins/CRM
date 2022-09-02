@@ -42,7 +42,10 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
 color: rgb(56, 84, 102);</string>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Welcome FIO(из БД брать)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Welcome&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QPushButton" name="Update">
@@ -53,6 +56,9 @@ color: rgb(56, 84, 102);</string>
      <width>141</width>
      <height>51</height>
     </rect>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton#Update:!pressed {
@@ -117,6 +123,9 @@ QPushButton#Update:pressed {
      <height>41</height>
     </rect>
    </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
     <string notr="true">font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
@@ -145,6 +154,9 @@ border-bottom-left-radius: 5px;
      <height>431</height>
     </rect>
    </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(221, 235, 255);
 
@@ -162,6 +174,9 @@ border-radius:20px;</string>
      <width>141</width>
      <height>51</height>
     </rect>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton#Edit:!pressed {
@@ -242,6 +257,9 @@ color: rgb(56, 84, 102);</string>
      <height>431</height>
     </rect>
    </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
     <string notr="true">QTableWidget#tableWidget {
 	background-color:transparent;
@@ -282,6 +300,9 @@ QTableWidget::item:selection {
      <width>141</width>
      <height>51</height>
     </rect>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton#Delete:!pressed {
@@ -363,6 +384,9 @@ color: rgb(56, 84, 102);</string>
      <height>51</height>
     </rect>
    </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
     <string notr="true">QPushButton#Send:!pressed {
     font: 12pt &quot;Comfortaa&quot;;
@@ -413,6 +437,9 @@ QPushButton#Send:pressed {
      <width>141</width>
      <height>51</height>
     </rect>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton#Add:!pressed {
@@ -479,6 +506,18 @@ QPushButton#Add:pressed {
    <property name="text">
     <string/>
    </property>
+   <property name="textFormat">
+    <enum>Qt::PlainText</enum>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../../resources/resources.qrc">:/images/main.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
@@ -542,6 +581,17 @@ QPushButton#Client:checked {
       <property name="text">
        <string>Клиенты</string>
       </property>
+      <property name="icon">
+       <iconset>
+        <activeon>:/images/client-white.png</activeon>
+       </iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
       <property name="flat">
        <bool>false</bool>
       </property>
@@ -589,6 +639,17 @@ QPushButton#pushButton_2:pressed {
       </property>
       <property name="text">
        <string>Сделки</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <activeon>:/images/dollar.png</activeon>
+       </iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>27</width>
+        <height>27</height>
+       </size>
       </property>
       <property name="flat">
        <bool>true</bool>
@@ -709,6 +770,17 @@ QPushButton#Logout:pressed {
       </property>
       <property name="text">
        <string>Log out</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <activeon>:/images/logout.png</activeon>
+       </iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>28</width>
+        <height>28</height>
+       </size>
       </property>
      </widget>
     </item>
