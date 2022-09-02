@@ -23,36 +23,8 @@ leaderWidget::leaderWidget(QMainWindow* parent, std::string name,
     ui->Greeting->setText(QString::fromStdString("Добро пожаловать,  " + name +
                                                  " " + surname + "!"));
 
-    ui->Provider->setIcon(QIcon(":/images/vendor-white.png"));
-    ui->Provider->setIconSize({30, 30});
-    ui->Deal->setIcon(QIcon(":/images/dollar.png"));
-    ui->Deal->setIconSize({27, 27});
-    ui->Ads->setIcon(QIcon(":/images/ad-white.png"));
-    ui->Ads->setIconSize({27, 27});
-    ui->Employee->setIcon(QIcon(":/images/worker-white.png"));
-    ui->Employee->setIconSize({30, 30});
-    ui->Stock->setIcon(QIcon(":/images/sklad-white.png"));
-    ui->Stock->setIconSize({30, 30});
-    ui->Support->setIcon(QIcon(":/images/t-white.png"));
-    ui->Support->setIconSize({28, 28});
-    ui->Logout->setIcon(QIcon(":/images/logout.png"));
-    ui->Logout->setIconSize({28, 28});
-
-    ui->tableWidget->hide();
-    ui->RoundedBlue->hide();
-    ui->Update->hide();
-    ui->Edit->hide();
-    ui->Add->hide();
-    ui->Delete->hide();
-    ui->ProviderLabel->hide();
-    ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
-
-    ui->textEdit->clear();
-
-    QPixmap icon(":/images/main.png");
-    ui->Icon->setPixmap(icon.scaled(ui->Icon->size(), Qt::KeepAspectRatio));
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(
+        QHeaderView::ResizeToContents);
 }
 
 leaderWidget::~leaderWidget() { delete ui; }
@@ -72,11 +44,8 @@ void leaderWidget::on_Provider_clicked() {
     ui->Company->hide();
     ui->Greeting->hide();
     ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
 
     ui->ProviderLabel->setText("Поставщики");
-    ui->Update->setText("Update");
 
     // TODO: fill table with db
     // tableVendorUpdate();
@@ -114,11 +83,8 @@ void leaderWidget::on_Deal_clicked() {
     ui->Company->hide();
     ui->Greeting->hide();
     ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
 
     ui->ProviderLabel->setText("Сделки");
-    ui->Update->setText("Update");
 
     // TODO: fill table with db
     // tableDealUpdate();
@@ -165,11 +131,9 @@ void leaderWidget::on_Stock_clicked() {
     ui->Company->hide();
     ui->Greeting->hide();
     ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
 
     ui->ProviderLabel->setText("Склад");
-    ui->Update->setText("Update");
+    QStringList Labels = {"ID",         "Ноутбук",  "Цена",
 
     // TODO: fill table with db
     // tableStorageUpdate();
@@ -213,11 +177,8 @@ void leaderWidget::on_Ads_clicked() {
     ui->Company->hide();
     ui->Greeting->hide();
     ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
 
     ui->ProviderLabel->setText("Реклама");
-    ui->Update->setText("Update");
 
     // TODO: fill table with db
     // tableVendorUpdate();
@@ -255,11 +216,8 @@ void leaderWidget::on_Employee_clicked() {
     ui->Company->hide();
     ui->Greeting->hide();
     ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
 
     ui->ProviderLabel->setText("Работники");
-    ui->Update->setText("Update");
 
     // TODO: fill table with db
     // tableVendorUpdate();
