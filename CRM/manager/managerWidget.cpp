@@ -158,16 +158,15 @@ void managerWidget::on_Stock_clicked() {
     ui->Help->hide();
 
     ui->ProviderLabel->setText("Склад");
-    ui->Update->setText("Update");
+    QStringList Labels = {"ID",         "Ноутбук",  "Цена",
+                          "Количество", "Доступно", "Поставщик"};
+    ui->tableWidget->setColumnCount(Labels.size());
+    ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
     try {
         soci::session session(*parent->database.get_pool().lock());
         std::vector<boost::tuple<stock, laptop, provider>> result =
             getStock(session, 0, 10);
-        QStringList Labels = {"ID",         "Ноутбук",  "Цена",
-                              "Количество", "Доступно", "Поставщик"};
-        ui->tableWidget->setColumnCount(Labels.size());
-        ui->tableWidget->setHorizontalHeaderLabels(Labels);
         ui->tableWidget->setRowCount(result.size());
         size_t current_row = 0;
         for (const auto& [stock, laptop, provider] : result) {
