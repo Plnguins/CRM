@@ -1,3 +1,4 @@
+#include "database-types/advertisement.h"
 #include "database-types/client.h"
 #include "database-types/deal.h"
 #include "database-types/employee.h"
@@ -16,3 +17,6 @@ std::vector<boost::tuple<deal, laptop, client, employee>> getDeal(
     soci::session&, const int&, const int&);
 
 std::vector<employee> getEmployee(soci::session&, const int&, const int&);
+
+std::vector<advertisement> getAdvertisement(soci::session&, const int&,
+                                            const int&);

@@ -85,3 +85,18 @@ std::vector<employee> getEmployee(soci::session& sql, const int& offset,
     }
     return result;
 }
+
+std::vector<advertisement> getAdvertisement(soci::session& sql,
+                                            const int& offset,
+                                            const int& limit) {
+    std::vector<advertisement> result;
+    std::string query = "SELECT * FROM advertisement LIMIT " +
+                        std::to_string(limit) + " OFFSET " +
+                        std::to_string(offset * limit);
+    soci::rowset<advertisement> rs = (sql.prepare << query);
+    for (auto it = rs.begin(); it != rs.end(); it++) {
+        const auto& row = *it;
+        result.push_back(row);
+    }
+    return result;
+}
