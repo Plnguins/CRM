@@ -38,15 +38,14 @@ void managerWidget::on_Provider_clicked() {
     ui->Add->show();
     ui->Delete->show();
     ui->RoundedBlue->show();
-    ui->ProviderLabel->show();
+    ui->Title->show();
     ui->Icon->hide();
-    ui->Title->hide();
+    ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
     ui->Send->hide();
-    ui->Help->hide();
 
-    ui->ProviderLabel->setText("Поставщики");
+    ui->Title->setText("Поставщики");
 
     ui->tableWidget->clear();
     QStringList Labels = {"ID", "Название"};
@@ -80,15 +79,14 @@ void managerWidget::on_Deal_clicked() {
     ui->Add->show();
     ui->Delete->show();
     ui->RoundedBlue->show();
-    ui->ProviderLabel->show();
+    ui->Title->show();
     ui->Icon->hide();
-    ui->Title->hide();
+    ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
     ui->Send->hide();
-    ui->Help->hide();
 
-    ui->ProviderLabel->setText("Сделки");
+    ui->Title->setText("Сделки");
 
     ui->tableWidget->clear();
     QStringList Labels = {"ID",         "Ноутбук", "Цена",
@@ -149,15 +147,14 @@ void managerWidget::on_Stock_clicked() {
     ui->Add->show();
     ui->Delete->show();
     ui->RoundedBlue->show();
-    ui->ProviderLabel->show();
+    ui->Title->show();
     ui->Icon->hide();
-    ui->Title->hide();
+    ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
     ui->Send->hide();
-    ui->Help->hide();
 
-    ui->ProviderLabel->setText("Склад");
+    ui->Title->setText("Склад");
     QStringList Labels = {"ID",         "Ноутбук",  "Цена",
                           "Количество", "Доступно", "Поставщик"};
     ui->tableWidget->setColumnCount(Labels.size());

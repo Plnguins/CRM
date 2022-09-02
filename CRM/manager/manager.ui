@@ -131,7 +131,7 @@ QPushButton#Update:pressed {
     <string>Update</string>
    </property>
   </widget>
-  <widget class="QLabel" name="ProviderLabel">
+  <widget class="QLabel" name="Title">
    <property name="geometry">
     <rect>
      <x>360</x>
@@ -266,35 +266,6 @@ color: rgb(56, 84, 102);</string>
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Pinguins.Inc&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QTextBrowser" name="Help">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>78</y>
-     <width>341</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(221, 235, 255);
-	border: 5px solid #BBD6FF ;
-	border-radius: 20px;</string>
-   </property>
-   <property name="html">
-    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Comfortaa'; font-size:12pt; font-weight:700; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-weight:600;&quot;&gt;Опишите свою проблему и в ближайшее время с Вами свяжется работник нашей службы поддержки.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
@@ -419,7 +390,7 @@ QPushButton#Delete:pressed {
     <string>Delete</string>
    </property>
   </widget>
-  <widget class="QLabel" name="Title">
+  <widget class="QLabel" name="Name">
    <property name="geometry">
     <rect>
      <x>320</x>
@@ -881,7 +852,7 @@ background-color: rgb(56, 84, 102);</string>
   </widget>
   <zorder>RoundedBackground</zorder>
   <zorder>Icon</zorder>
-  <zorder>Title</zorder>
+  <zorder>Name</zorder>
   <zorder>Company</zorder>
   <zorder>Greeting</zorder>
   <zorder>RoundedBlue</zorder>
@@ -891,8 +862,7 @@ background-color: rgb(56, 84, 102);</string>
   <zorder>Send</zorder>
   <zorder>Update</zorder>
   <zorder>tableWidget</zorder>
-  <zorder>Help</zorder>
-  <zorder>ProviderLabel</zorder>
+  <zorder>Title</zorder>
   <zorder>LeftButtons</zorder>
  </widget>
  <resources>

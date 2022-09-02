@@ -70,7 +70,7 @@ color: rgb(56, 84, 102);</string>
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="Title">
+  <widget class="QLabel" name="Name">
    <property name="geometry">
     <rect>
      <x>320</x>
@@ -453,7 +453,7 @@ QPushButton#Delete:pressed {
     <string>Delete</string>
    </property>
   </widget>
-  <widget class="QLabel" name="ProviderLabel">
+  <widget class="QLabel" name="Title">
    <property name="geometry">
     <rect>
      <x>360</x>
@@ -944,7 +944,7 @@ QPushButton#pushButton_12:pressed {
   </widget>
   <zorder>Send</zorder>
   <zorder>RoundedBackground</zorder>
-  <zorder>Title</zorder>
+  <zorder>Name</zorder>
   <zorder>Company</zorder>
   <zorder>Greeting</zorder>
   <zorder>Icon</zorder>
@@ -954,7 +954,7 @@ QPushButton#pushButton_12:pressed {
   <zorder>Edit</zorder>
   <zorder>Add</zorder>
   <zorder>Delete</zorder>
-  <zorder>ProviderLabel</zorder>
+  <zorder>Title</zorder>
   <zorder>LeftButtons</zorder>
  </widget>
  <resources>
