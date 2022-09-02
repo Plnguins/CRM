@@ -48,7 +48,7 @@ void managerWidget::on_Provider_clicked() {
     ui->Title->setText("Поставщики");
 
     ui->tableWidget->clear();
-    QStringList Labels = {"ID", "Название"};
+    const QStringList Labels = {"ID", "Название"};
     ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
@@ -89,9 +89,10 @@ void managerWidget::on_Deal_clicked() {
     ui->Title->setText("Сделки");
 
     ui->tableWidget->clear();
-    QStringList Labels = {"ID",         "Ноутбук", "Цена",
-                          "Покупатель", "Статус",  "Дата создания",
-                          "Продавец",   "Оценка",  "Последнее обновление"};
+    const QStringList Labels = {
+        "ID",         "Ноутбук", "Цена",
+        "Покупатель", "Статус",  "Дата создания",
+        "Продавец",   "Оценка",  "Последнее обновление"};
     ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
@@ -155,8 +156,8 @@ void managerWidget::on_Stock_clicked() {
     ui->Send->hide();
 
     ui->Title->setText("Склад");
-    QStringList Labels = {"ID",         "Ноутбук",  "Цена",
-                          "Количество", "Доступно", "Поставщик"};
+    const QStringList Labels = {"ID",         "Ноутбук",  "Цена",
+                                "Количество", "Доступно", "Поставщик"};
     ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 

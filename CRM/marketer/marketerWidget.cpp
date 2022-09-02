@@ -53,7 +53,7 @@ void marketerWidget::on_Ads_clicked() {
     ui->tableWidget->setColumnCount(2);
     ui->tableWidget->setColumnWidth(0, 91);
     ui->tableWidget->setColumnWidth(1, 375);
-    QStringList Labels = {"id", "Place"};
+    const QStringList Labels = {"id", "Place"};
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
     // temporary

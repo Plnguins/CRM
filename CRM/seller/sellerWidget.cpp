@@ -51,7 +51,8 @@ void sellerWidget::on_Client_clicked() {
     // get from db
     ui->tableWidget->setRowCount(5);
     ui->tableWidget->setColumnCount(7);
-    QStringList Labels = {"id", "FIO", "Date", "City", "Sex", "e-mail", "tel"};
+    const QStringList Labels = {"id",  "FIO",    "Date", "City",
+                                "Sex", "e-mail", "tel"};
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
     // temporary
@@ -83,9 +84,10 @@ void sellerWidget::on_Deal_clicked() {
     ui->Title->setText("Сделки");
 
     ui->tableWidget->clear();
-    QStringList Labels = {"ID",         "Ноутбук", "Цена",
-                          "Покупатель", "Статус",  "Дата создания",
-                          "Продавец",   "Оценка",  "Последнее обновление"};
+    const QStringList Labels = {
+        "ID",         "Ноутбук", "Цена",
+        "Покупатель", "Статус",  "Дата создания",
+        "Продавец",   "Оценка",  "Последнее обновление"};
     ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
@@ -149,8 +151,8 @@ void sellerWidget::on_Stock_clicked() {
     ui->Send->hide();
 
     ui->Title->setText("Склад");
-    QStringList Labels = {"ID",         "Ноутбук",  "Цена",
-                          "Количество", "Доступно", "Поставщик"};
+    const QStringList Labels = {"ID",         "Ноутбук",  "Цена",
+                                "Количество", "Доступно", "Поставщик"};
     ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
