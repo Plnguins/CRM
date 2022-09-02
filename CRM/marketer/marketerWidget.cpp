@@ -45,26 +45,31 @@ void marketerWidget::on_Ads_clicked() {
 
     ui->Title->setText("Реклама");
 
-    // TODO: fill table with db
-    // tableVendorUpdate();
-
-    // get from db
-    ui->tableWidget->setRowCount(5);
-    ui->tableWidget->setColumnCount(2);
-    ui->tableWidget->setColumnWidth(0, 91);
-    ui->tableWidget->setColumnWidth(1, 375);
-    const QStringList Labels = {"id", "Place"};
+    const QStringList Labels = {"ID", "Место", "Бюджет", "Комментарии"};
+    ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
-    // temporary
-    QTableWidgetItem* item = new QTableWidgetItem("123");
-    for (size_t i = 0; i < 5; i++) {
-        for (size_t j = 0; j < 2; j++) {
-            QTableWidgetItem* item = new QTableWidgetItem("123");
-            ui->tableWidget->setItem(i, j, item);
-            ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
-                                                  Qt::ItemIsSelectable);
+    try {
+        soci::session session(*parent->database.get_pool().lock());
+        std::vector<advertisement> result = getAdvertisement(session, 0, 10);
+        ui->tableWidget->setRowCount(result.size());
+
+        size_t current_row = 0;
+        for (const auto& ad : result) {
+            ui->tableWidget->setItem(
+                current_row, 0, new QTableWidgetItem(QString::number(ad.id)));
+            ui->tableWidget->setItem(current_row, 1,
+                                     new QTableWidgetItem(ad.source.c_str()));
+            ui->tableWidget->setItem(
+                current_row, 2,
+                new QTableWidgetItem(QString::number(ad.budget)));
+            ui->tableWidget->setItem(current_row, 3,
+                                     new QTableWidgetItem(ad.comments.c_str()));
+            current_row++;
         }
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this, "Ошибка", e.what());
+        return;
     }
 }
 
