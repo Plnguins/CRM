@@ -48,9 +48,9 @@ border-radius: 20px;</string>
   <widget class="QLabel" name="Greeting">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>160</x>
      <y>38</y>
-     <width>331</width>
+     <width>661</width>
      <height>41</height>
     </rect>
    </property>
@@ -59,7 +59,10 @@ border-radius: 20px;</string>
 color: rgb(56, 84, 102);</string>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Welcome FIO(из БД брать)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Welcome&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QPushButton" name="Update">
