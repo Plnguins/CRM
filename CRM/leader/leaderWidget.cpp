@@ -48,7 +48,7 @@ void leaderWidget::on_Provider_clicked() {
     ui->Title->setText("Поставщики");
 
     ui->tableWidget->clear();
-    QStringList Labels = {"ID", "Название"};
+    const QStringList Labels = {"ID", "Название"};
     ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
@@ -89,9 +89,10 @@ void leaderWidget::on_Deal_clicked() {
     ui->Title->setText("Сделки");
 
     ui->tableWidget->clear();
-    QStringList Labels = {"ID",         "Ноутбук", "Цена",
-                          "Покупатель", "Статус",  "Дата создания",
-                          "Продавец",   "Оценка",  "Последнее обновление"};
+    const QStringList Labels = {
+        "ID",         "Ноутбук", "Цена",
+        "Покупатель", "Статус",  "Дата создания",
+        "Продавец",   "Оценка",  "Последнее обновление"};
     ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
@@ -155,8 +156,8 @@ void leaderWidget::on_Stock_clicked() {
     ui->Send->hide();
 
     ui->Title->setText("Склад");
-    QStringList Labels = {"ID",         "Ноутбук",  "Цена",
-                          "Количество", "Доступно", "Поставщик"};
+    const QStringList Labels = {"ID",         "Ноутбук",  "Цена",
+                                "Количество", "Доступно", "Поставщик"};
     ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
@@ -213,9 +214,7 @@ void leaderWidget::on_Ads_clicked() {
     // get from db
     ui->tableWidget->setRowCount(5);
     ui->tableWidget->setColumnCount(2);
-    ui->tableWidget->setColumnWidth(0, 91);
-    ui->tableWidget->setColumnWidth(1, 375);
-    QStringList Labels = {"id", "Place"};
+    const QStringList Labels = {"id", "Place"};
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
     // temporary
@@ -246,28 +245,32 @@ void leaderWidget::on_Employee_clicked() {
 
     ui->Title->setText("Работники");
 
-    // TODO: fill table with db
-    // tableVendorUpdate();
-
-    // get from db
-    ui->tableWidget->setRowCount(5);
-    ui->tableWidget->setColumnCount(5);
-    ui->tableWidget->setColumnWidth(0, 90);
-    ui->tableWidget->setColumnWidth(1, 136);
-    ui->tableWidget->setColumnWidth(2, 90);
-    ui->tableWidget->setColumnWidth(3, 90);
-    ui->tableWidget->setColumnWidth(4, 60);
-    QStringList Labels = {"id", "FIO", "Login", "Password", "Number"};
+    const QStringList Labels = {"ID", "Фамилия", "Имя", "Отчество", "Логин"};
+    ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
-    // temporary
-    QTableWidgetItem* item = new QTableWidgetItem("123");
-    for (size_t i = 0; i < 5; i++) {
-        for (size_t j = 0; j < 5; j++) {
-            QTableWidgetItem* item = new QTableWidgetItem("123");
-            ui->tableWidget->setItem(i, j, item);
-            ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
-                                                  Qt::ItemIsSelectable);
+    try {
+        soci::session session(*parent->database.get_pool().lock());
+        std::vector<employee> result = getEmployee(session, 0, 10);
+
+        size_t current_row = 0;
+        for (const auto& employee : result) {
+            ui->tableWidget->setItem(
+                current_row, 0,
+                new QTableWidgetItem(QString::number(employee.id)));
+            ui->tableWidget->setItem(
+                current_row, 1, new QTableWidgetItem(employee.surname.c_str()));
+            ui->tableWidget->setItem(
+                current_row, 2, new QTableWidgetItem(employee.name.c_str()));
+            ui->tableWidget->setItem(
+                current_row, 3,
+                new QTableWidgetItem(employee.patronymic.c_str()));
+            ui->tableWidget->setItem(
+                current_row, 4, new QTableWidgetItem(employee.login.c_str()));
+            current_row++;
         }
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this, "Ошибка", e.what());
+        return;
     }
 }

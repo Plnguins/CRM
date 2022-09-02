@@ -71,3 +71,17 @@ std::vector<boost::tuple<deal, laptop, client, employee>> getDeal(
     }
     return result;
 }
+
+std::vector<employee> getEmployee(soci::session& sql, const int& offset,
+                                  const int& limit) {
+    std::vector<employee> result;
+    std::string query = "SELECT * FROM employee LIMIT " +
+                        std::to_string(limit) + " OFFSET " +
+                        std::to_string(offset * limit);
+    soci::rowset<employee> rs = (sql.prepare << query);
+    for (auto it = rs.begin(); it != rs.end(); it++) {
+        const auto& row = *it;
+        result.push_back(row);
+    }
+    return result;
+}
