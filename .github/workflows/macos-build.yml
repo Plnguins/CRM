@@ -86,6 +86,10 @@ jobs:
           platform_version: ${{ env.BOOST_PLATFORM }}
           toolset: clang
           boost_install_dir: ${{ env.BOOST_DIR }}
+      - name: Create symlinks
+        run: |
+          sudo ln -s $(pg_config --libdir)/* /usr/local/lib/ || true
+          sudo ln -s $(pg_config --includedir)/* /usr/local/include/
       - name: Configure CMake
         run: |
           cmake -B ${{ github.workspace }}/build \
