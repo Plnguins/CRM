@@ -27,8 +27,6 @@ sellerWidget::sellerWidget(QMainWindow* parent, std::string name,
         QHeaderView::ResizeToContents);
 }
 
-sellerWidget::~sellerWidget() { delete ui; }
-
 void sellerWidget::on_Client_clicked() {
     ui->tableWidget->show();
     ui->Edit->show();
@@ -203,5 +201,3 @@ void sellerWidget::on_Stock_clicked() {
         return;
     }
 }
-
-void sellerWidget::on_Logout_clicked() { parent->setLoginInterface(); }

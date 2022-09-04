@@ -43,8 +43,7 @@ class login : public QWidget {
 
    public:
     explicit login(QMainWindow* parent = nullptr);
-    ~login();
-    QPushButton* getLoginButton();
+    ~login() { delete ui; }
 
    private slots:
     void on_LoginButton_clicked();

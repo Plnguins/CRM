@@ -29,14 +29,14 @@ class leaderWidget : public QWidget {
    public:
     explicit leaderWidget(QMainWindow* parent = nullptr, std::string = "",
                           std::string = "");
-    ~leaderWidget();
+    ~leaderWidget() { delete ui; }
 
    private slots:
     void on_Provider_clicked();
     void on_Employee_clicked();
     void on_Stock_clicked();
     void on_Ads_clicked();
-    void on_Logout_clicked();
+    void on_Logout_clicked() { parent->setLoginInterface(); }
     void on_Deal_clicked();
     void on_Client_clicked();
 

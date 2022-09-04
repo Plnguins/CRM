@@ -29,10 +29,10 @@ class managerWidget : public QWidget {
    public:
     explicit managerWidget(QMainWindow* parent = nullptr, std::string = "",
                            std::string = "");
-    ~managerWidget();
+    ~managerWidget() { delete ui; }
 
    private slots:
-    void on_Logout_clicked();
+    void on_Logout_clicked() { parent->setLoginInterface(); }
     void on_Provider_clicked();
     void on_Deal_clicked();
     void on_Stock_clicked();

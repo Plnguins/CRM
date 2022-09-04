@@ -27,10 +27,6 @@ managerWidget::managerWidget(QMainWindow* parent, std::string name,
         QHeaderView::ResizeToContents);
 }
 
-managerWidget::~managerWidget() { delete ui; }
-
-void managerWidget::on_Logout_clicked() { parent->setLoginInterface(); }
-
 void managerWidget::on_Provider_clicked() {
     ui->tableWidget->show();
     ui->Edit->show();

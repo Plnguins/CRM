@@ -27,8 +27,6 @@ marketerWidget::marketerWidget(QWidget* parent, std::string name,
         QHeaderView::ResizeToContents);
 }
 
-marketerWidget::~marketerWidget() { delete ui; }
-
 void marketerWidget::on_Ads_clicked() {
     ui->tableWidget->show();
     ui->Edit->show();
@@ -70,5 +68,3 @@ void marketerWidget::on_Ads_clicked() {
         return;
     }
 }
-
-void marketerWidget::on_Logout_clicked() { parent->setLoginInterface(); }

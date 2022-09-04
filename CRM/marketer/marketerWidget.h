@@ -29,11 +29,11 @@ class marketerWidget : public QWidget {
    public:
     explicit marketerWidget(QWidget* parent = nullptr, std::string = "",
                             std::string = "");
-    ~marketerWidget();
+    ~marketerWidget() { delete ui; }
 
    private slots:
     void on_Ads_clicked();
-    void on_Logout_clicked();
+    void on_Logout_clicked() { parent->setLoginInterface(); }
 
    private:
     MainWindow* parent;

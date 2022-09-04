@@ -29,13 +29,13 @@ class sellerWidget : public QWidget {
    public:
     explicit sellerWidget(QMainWindow* parent = nullptr, std::string = "",
                           std::string = "");
-    ~sellerWidget();
+    ~sellerWidget() { delete ui; }
 
    private slots:
     void on_Client_clicked();
     void on_Deal_clicked();
     void on_Stock_clicked();
-    void on_Logout_clicked();
+    void on_Logout_clicked() { parent->setLoginInterface(); }
 
    private:
     MainWindow* parent;
