@@ -20,3 +20,5 @@ std::vector<employee> getEmployee(soci::session&, const int&, const int&);
 
 std::vector<advertisement> getAdvertisement(soci::session&, const int&,
                                             const int&);
+
+std::vector<client> getClient(soci::session&, const int&, const int&);
