@@ -25,8 +25,8 @@ struct client {
     std::string patronymic;  // Отчество клиента
     std::string email;       // Email клиента
     std::string phone;       // Телефон клиента
-    std::string sex;         //Пол клиента
-    std::string city;        //Город клиента
+    std::string sex;         // Пол клиента
+    std::string city;        // Город клиента
 
     client() = default;
 
