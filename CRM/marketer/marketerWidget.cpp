@@ -31,7 +31,6 @@ marketerWidget::~marketerWidget() { delete ui; }
 
 void marketerWidget::on_Ads_clicked() {
     ui->tableWidget->show();
-    ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
@@ -41,7 +40,6 @@ void marketerWidget::on_Ads_clicked() {
     ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-    ui->Send->hide();
 
     ui->Title->setText("Реклама");
 

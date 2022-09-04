@@ -33,7 +33,6 @@ void leaderWidget::on_Logout_clicked() { parent->setLoginInterface(); }
 
 void leaderWidget::on_Provider_clicked() {
     ui->tableWidget->show();
-    ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
@@ -43,7 +42,6 @@ void leaderWidget::on_Provider_clicked() {
     ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-    ui->Send->hide();
 
     ui->Title->setText("Поставщики");
 
@@ -74,7 +72,6 @@ void leaderWidget::on_Provider_clicked() {
 
 void leaderWidget::on_Deal_clicked() {
     ui->tableWidget->show();
-    ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
@@ -84,7 +81,6 @@ void leaderWidget::on_Deal_clicked() {
     ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-    ui->Send->hide();
 
     ui->Title->setText("Сделки");
 
@@ -143,7 +139,6 @@ void leaderWidget::on_Deal_clicked() {
 
 void leaderWidget::on_Stock_clicked() {
     ui->tableWidget->show();
-    ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
@@ -153,7 +148,6 @@ void leaderWidget::on_Stock_clicked() {
     ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-    ui->Send->hide();
 
     ui->Title->setText("Склад");
     const QStringList Labels = {"ID",         "Ноутбук",  "Цена",
@@ -194,7 +188,6 @@ void leaderWidget::on_Stock_clicked() {
 
 void leaderWidget::on_Ads_clicked() {
     ui->tableWidget->show();
-    ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
@@ -204,7 +197,6 @@ void leaderWidget::on_Ads_clicked() {
     ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-    ui->Send->hide();
 
     ui->Title->setText("Реклама");
 
@@ -238,7 +230,6 @@ void leaderWidget::on_Ads_clicked() {
 
 void leaderWidget::on_Employee_clicked() {
     ui->tableWidget->show();
-    ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
@@ -248,7 +239,6 @@ void leaderWidget::on_Employee_clicked() {
     ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-    ui->Send->hide();
 
     ui->Title->setText("Работники");
 

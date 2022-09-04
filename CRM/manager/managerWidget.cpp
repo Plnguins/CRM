@@ -33,7 +33,6 @@ void managerWidget::on_Logout_clicked() { parent->setLoginInterface(); }
 
 void managerWidget::on_Provider_clicked() {
     ui->tableWidget->show();
-    ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
@@ -43,7 +42,6 @@ void managerWidget::on_Provider_clicked() {
     ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-    ui->Send->hide();
 
     ui->Title->setText("Поставщики");
 
@@ -74,7 +72,6 @@ void managerWidget::on_Provider_clicked() {
 
 void managerWidget::on_Deal_clicked() {
     ui->tableWidget->show();
-    ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
@@ -84,7 +81,6 @@ void managerWidget::on_Deal_clicked() {
     ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-    ui->Send->hide();
 
     ui->Title->setText("Сделки");
 
@@ -143,7 +139,6 @@ void managerWidget::on_Deal_clicked() {
 
 void managerWidget::on_Stock_clicked() {
     ui->tableWidget->show();
-    ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
@@ -153,7 +148,6 @@ void managerWidget::on_Stock_clicked() {
     ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-    ui->Send->hide();
 
     ui->Title->setText("Склад");
     const QStringList Labels = {"ID",         "Ноутбук",  "Цена",

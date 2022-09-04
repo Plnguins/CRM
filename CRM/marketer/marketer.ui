@@ -59,76 +59,10 @@ border-radius: 20px;</string>
 color: rgb(56, 84, 102);</string>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Welcome&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Добро пожаловать&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="Update">
-   <property name="geometry">
-    <rect>
-     <x>670</x>
-     <y>430</y>
-     <width>141</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton#Update:!pressed {
-    font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(221, 235, 255);
-	border: 5px solid #BBD6FF ;
-	border-top-right-radius:20px;
-	border-bottom-right-radius:20px;
-	border-top-left-radius:5px;
-	border-bottom-left-radius:5px;
- }
-
-QPushButton#Update {
-    font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(221, 235, 255);
-	border: 5px solid #BBD6FF ;
-	border-top-right-radius:20px;
-	border-bottom-right-radius:20px;
-	border-top-left-radius:5px;
-	border-bottom-left-radius:5px;
- }
-
-QPushButton#Update:hover {
-    font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(165, 199, 250);
-	border: 5px solid #75ACFF;
-	border-top-right-radius:20px;
-	border-bottom-right-radius:20px;
-	border-top-left-radius:5px;
-	border-bottom-left-radius:5px;
- }
-
-
-QPushButton#Update:pressed {
-    font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(165, 199, 250);
-	border: 5px solid #75ACFF;
-	border-top-right-radius:20px;
-	border-bottom-right-radius:20px;
-	border-top-left-radius:5px;
-	border-bottom-left-radius:5px;
- }</string>
-   </property>
-   <property name="text">
-    <string>Update</string>
    </property>
   </widget>
   <widget class="QLabel" name="Title">
@@ -262,7 +196,7 @@ QPushButton#Edit:pressed {
  }</string>
    </property>
    <property name="text">
-    <string>Edit</string>
+    <string>Изменить</string>
    </property>
   </widget>
   <widget class="QLabel" name="Company">
@@ -389,7 +323,7 @@ QPushButton#Delete:pressed {
  }</string>
    </property>
    <property name="text">
-    <string>Delete</string>
+    <string>Удалить</string>
    </property>
   </widget>
   <widget class="QLabel" name="Name">
@@ -407,60 +341,6 @@ color: rgb(56, 84, 102);</string>
    </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;Pinguin CRM&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="Send">
-   <property name="geometry">
-    <rect>
-     <x>420</x>
-     <y>430</y>
-     <width>141</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton#Send:!pressed {
-    font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(221, 235, 255);
-	border: 5px solid #BBD6FF ;
-	border-radius:20px;
- }
-
-QPushButton#Send {
-    font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(221, 235, 255);
-	border: 5px solid #BBD6FF ;
-	border-radius:20px;;
- }
-
-QPushButton#Send:hover {
-    font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(165, 199, 250);
-	border: 5px solid #75ACFF;
-	border-radius:20px;
- }
-
-
-QPushButton#Send:pressed {
-    font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(165, 199, 250);
-	border: 5px solid #75ACFF;
-	border-radius:20px;
- }</string>
-   </property>
-   <property name="text">
-    <string>Send</string>
    </property>
   </widget>
   <widget class="QPushButton" name="Add">
@@ -526,7 +406,7 @@ QPushButton#Add:pressed {
  }</string>
    </property>
    <property name="text">
-    <string>Add</string>
+    <string>Добавить</string>
    </property>
   </widget>
   <widget class="QLabel" name="Icon">
@@ -701,7 +581,7 @@ QPushButton#pushButton_7:pressed {
  }</string>
       </property>
       <property name="text">
-       <string>Log out</string>
+       <string>Выйти</string>
       </property>
       <property name="icon">
        <iconset>
@@ -739,9 +619,7 @@ background-color: rgb(56, 84, 102);</string>
   <zorder>tableWidget</zorder>
   <zorder>Add</zorder>
   <zorder>Delete</zorder>
-  <zorder>Send</zorder>
   <zorder>Edit</zorder>
-  <zorder>Update</zorder>
   <zorder>Icon</zorder>
   <zorder>Title</zorder>
   <zorder>LeftButtons</zorder>

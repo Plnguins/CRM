@@ -31,7 +31,6 @@ sellerWidget::~sellerWidget() { delete ui; }
 
 void sellerWidget::on_Client_clicked() {
     ui->tableWidget->show();
-    ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
@@ -41,7 +40,6 @@ void sellerWidget::on_Client_clicked() {
     ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-    ui->Send->hide();
 
     ui->Title->setText("Клиенты");
 
@@ -69,7 +67,6 @@ void sellerWidget::on_Client_clicked() {
 
 void sellerWidget::on_Deal_clicked() {
     ui->tableWidget->show();
-    ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
@@ -79,7 +76,6 @@ void sellerWidget::on_Deal_clicked() {
     ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-    ui->Send->hide();
 
     ui->Title->setText("Сделки");
 
@@ -138,7 +134,6 @@ void sellerWidget::on_Deal_clicked() {
 
 void sellerWidget::on_Stock_clicked() {
     ui->tableWidget->show();
-    ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
@@ -148,7 +143,6 @@ void sellerWidget::on_Stock_clicked() {
     ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-    ui->Send->hide();
 
     ui->Title->setText("Склад");
     const QStringList Labels = {"ID",         "Ноутбук",  "Цена",
