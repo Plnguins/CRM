@@ -26,7 +26,7 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Маркетолог</string>
   </property>
   <widget class="QLabel" name="RoundedBackground">
    <property name="geometry">
