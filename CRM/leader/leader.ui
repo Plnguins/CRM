@@ -737,6 +737,64 @@ QPushButton#Employee:pressed {
      </widget>
     </item>
     <item>
+     <widget class="QPushButton" name="Client">
+      <property name="styleSheet">
+       <string notr="true">QPushButton#Client {
+    font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	background-color: rgb(56, 84, 102);
+	border-radius:20px;
+ }
+
+QPushButton#Client:hover:!pressed {
+     background-color: rgb(54, 69, 80);
+	font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	border-radius:20px;
+ }
+
+QPushButton#pushButton:pressed {
+     background-color: rgb(54, 69, 80);
+	font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	border-radius:20px;
+ }
+
+QPushButton#Client:checked {
+     background-color: rgb(54, 69, 80);
+	font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	border-radius:20px;
+ }</string>
+      </property>
+      <property name="text">
+       <string>Клиенты</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <activeon>:/images/client-white.png</activeon>
+       </iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
      <spacer name="verticalSpacer">
       <property name="orientation">
        <enum>Qt::Vertical</enum>

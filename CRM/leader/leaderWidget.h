@@ -38,6 +38,7 @@ class leaderWidget : public QWidget {
     void on_Ads_clicked();
     void on_Logout_clicked();
     void on_Deal_clicked();
+    void on_Client_clicked();
 
    private:
     MainWindow* parent;

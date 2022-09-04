@@ -271,3 +271,62 @@ void leaderWidget::on_Employee_clicked() {
         return;
     }
 }
+
+void leaderWidget::on_Client_clicked() {
+    ui->tableWidget->show();
+    ui->Edit->show();
+    ui->Add->show();
+    ui->Delete->show();
+    ui->RoundedBlue->show();
+    ui->Title->show();
+    ui->Icon->hide();
+    ui->Name->hide();
+    ui->Company->hide();
+    ui->Greeting->hide();
+
+    ui->Title->setText("Клиенты");
+
+    const QStringList Labels = {"ID",    "Фамилия", "Имя",   "Отчество",
+                                "Город", "Пол",     "email", "Телефон"};
+    ui->tableWidget->setColumnCount(Labels.size());
+    ui->tableWidget->setHorizontalHeaderLabels(Labels);
+
+    try {
+        soci::session session(*parent->database.get_pool().lock());
+        std::vector<client> clients = getClient(session, 0, 10);
+        ui->tableWidget->setRowCount(clients.size());
+
+        size_t current_row = 0;
+        for (const auto& client : clients) {
+            ui->tableWidget->setItem(
+                current_row, 0,
+                new QTableWidgetItem(QString::number(client.id)));
+            ui->tableWidget->setItem(
+                current_row, 1,
+                new QTableWidgetItem(QString::fromStdString(client.name)));
+            ui->tableWidget->setItem(
+                current_row, 2,
+                new QTableWidgetItem(QString::fromStdString(client.surname)));
+            ui->tableWidget->setItem(
+                current_row, 3,
+                new QTableWidgetItem(
+                    QString::fromStdString(client.patronymic)));
+            ui->tableWidget->setItem(
+                current_row, 4,
+                new QTableWidgetItem(QString::fromStdString(client.city)));
+            ui->tableWidget->setItem(
+                current_row, 5,
+                new QTableWidgetItem(QString::fromStdString(client.sex)));
+            ui->tableWidget->setItem(
+                current_row, 6,
+                new QTableWidgetItem(QString::fromStdString(client.email)));
+            ui->tableWidget->setItem(
+                current_row, 7,
+                new QTableWidgetItem(QString::fromStdString(client.phone)));
+            current_row++;
+        }
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this, "Ошибка", e.what());
+        return;
+    }
+}
