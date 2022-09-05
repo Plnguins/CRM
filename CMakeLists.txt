@@ -79,7 +79,7 @@ ELSE()
     add_executable(CRM ${SRC} ${resources})
 ENDIF()
 
-qt_add_lupdate(CRM TS_FILES ${CMAKE_SOURCE_DIR}/resources/translation/crm_ru.ts ${CMAKE_SOURCE_DIR}/resources/translation/crm_en.ts SOURCES ${SRC} INCLUDE_DIRECTORIES ${CMAKE_SOURCE_DIR}/CRM)
+qt_add_lupdate(CRM TS_FILES ${CMAKE_SOURCE_DIR}/resources/translation/crm_ru.ts ${CMAKE_SOURCE_DIR}/resources/translation/crm_en.ts SOURCES ${SRC} INCLUDE_DIRECTORIES ${CMAKE_SOURCE_DIR}/CRM OPTIONS "-noobsolete")
 qt_add_lrelease(CRM TS_FILES ${CMAKE_SOURCE_DIR}/resources/translation/crm_ru.ts ${CMAKE_SOURCE_DIR}/resources/translation/crm_en.ts QM_FILES_OUTPUT_VARIABLE qm_files)
 qt_add_resources(CRM "translation" PREFIX "/i18n" BASE "${CMAKE_CURRENT_BINARY_DIR}" FILES "${qm_files}")
 
