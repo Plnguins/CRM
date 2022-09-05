@@ -39,9 +39,10 @@ void marketerWidget::on_Ads_clicked() {
     ui->Company->hide();
     ui->Greeting->hide();
 
-    ui->Title->setText("Реклама");
+    ui->Title->setText(tr("Реклама"));
 
-    const QStringList Labels = {"ID", "Место", "Бюджет", "Комментарии"};
+    const QStringList Labels = {tr("ID"), tr("Платформа"), tr("Бюджет"),
+                                tr("Комментарии")};
     ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 

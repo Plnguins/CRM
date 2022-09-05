@@ -14,11 +14,16 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #include <QApplication>
+#include <QTranslator>
 
 #include "mainwindow.h"
 
 int main(int argc, char* argv[]) {
     QApplication a(argc, argv);
+    QTranslator translator;
+    if (translator.load(QLocale::system(), u"crm"_qs, u"_"_qs, u":/i18n"_qs)) {
+        a.installTranslator(&translator);
+    }
     MainWindow w;
     w.show();
     return a.exec();
