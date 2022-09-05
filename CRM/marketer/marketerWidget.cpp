@@ -20,8 +20,8 @@ marketerWidget::marketerWidget(QWidget* parent, std::string name,
     : parent(dynamic_cast<MainWindow*>(parent)), ui(new Ui::marketerUi) {
     ui->setupUi(this);
 
-    ui->Greeting->setText(QString::fromStdString("Добро пожаловать,  " + name +
-                                                 " " + surname + "!"));
+    ui->Greeting->setText(tr("Добро пожаловать, ") +
+                          QString::fromStdString(name + " " + surname + "!"));
 
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(
         QHeaderView::ResizeToContents);
@@ -65,7 +65,7 @@ void marketerWidget::on_Ads_clicked() {
             current_row++;
         }
     } catch (const std::exception& e) {
-        QMessageBox::critical(this, "Ошибка", e.what());
+        QMessageBox::critical(this, tr("Ошибка"), e.what());
         return;
     }
 }
