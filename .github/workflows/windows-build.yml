@@ -116,4 +116,4 @@ jobs:
           artifacts: "${{ github.workspace }}/Windows/Windows-Setup.exe"
           name: ${{ github.event.head_commit.message }}
           draft: false
-          prerelease: ${{ env.GIT_BRANCH_NAME == 'master' }}
+          prerelease: ${{ env.GIT_BRANCH_NAME != 'master' }}
