@@ -60,12 +60,6 @@ jobs:
         name: Clone
         with:
           submodules: recursive
-      - name: Cache Boost
-        id: cache-boost
-        uses: actions/cache@v3
-        with:
-          path: ${{ env.BOOST_DIR }}/boost/boost
-          key: ${{ runner.os }}-Boost-${{ env.BOOST_VERSION }}-${{ env.BOOST_DIR }}-${{ env.BOOST_PLATFORM }}
       - name: Install Qt
         uses: jurplel/install-qt-action@43ec12788e42f375acfcb2cec059edfb9572fbaa
         with:
@@ -84,13 +78,13 @@ jobs:
           packages: cmake postgresql libpq-dev g++ build-essential libxkbcommon-dev
       - name: Install boost
         id: install-boost
-        if: steps.cache-boost.outputs.cache-hit != 'true'
-        uses: MarkusJx/install-boost@v2.3.1
+        uses: MarkusJx/install-boost@v2.4.0
         with:
           boost_version: ${{ env.BOOST_VERSION }}
           platform_version: ${{ env.BOOST_PLATFORM }}
           toolset: gcc
           boost_install_dir: ${{ env.BOOST_DIR }}
+          cache: true
       - name: Configure CMake
         run: |
           cmake -B ${{ github.workspace }}/build \
