@@ -26,7 +26,7 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Менеджер</string>
   </property>
   <widget class="QLabel" name="RoundedBackground">
    <property name="geometry">
@@ -48,9 +48,9 @@ border-radius: 20px;</string>
   <widget class="QLabel" name="Greeting">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>160</x>
      <y>38</y>
-     <width>331</width>
+     <width>661</width>
      <height>41</height>
     </rect>
    </property>
@@ -59,76 +59,13 @@ border-radius: 20px;</string>
 color: rgb(56, 84, 102);</string>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Welcome FIO(из БД брать)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;Добро пожаловать&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="Update">
-   <property name="geometry">
-    <rect>
-     <x>670</x>
-     <y>428</y>
-     <width>141</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton#Update:!pressed {
-    font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(221, 235, 255);
-	border: 5px solid #BBD6FF ;
-	border-top-right-radius:20px;
-	border-bottom-right-radius:20px;
-	border-top-left-radius:5px;
-	border-bottom-left-radius:5px;
- }
-
-QPushButton#Update {
-    font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(221, 235, 255);
-	border: 5px solid #BBD6FF ;
-	border-top-right-radius:20px;
-	border-bottom-right-radius:20px;
-	border-top-left-radius:5px;
-	border-bottom-left-radius:5px;
- }
-
-QPushButton#Update:hover {
-    font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(165, 199, 250);
-	border: 5px solid #75ACFF;
-	border-top-right-radius:20px;
-	border-bottom-right-radius:20px;
-	border-top-left-radius:5px;
-	border-bottom-left-radius:5px;
- }
-
-
-QPushButton#Update:pressed {
-    font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(165, 199, 250);
-	border: 5px solid #75ACFF;
-	border-top-right-radius:20px;
-	border-bottom-right-radius:20px;
-	border-top-left-radius:5px;
-	border-bottom-left-radius:5px;
- }</string>
-   </property>
-   <property name="text">
-    <string>Update</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="ProviderLabel">
+  <widget class="QLabel" name="Title">
    <property name="geometry">
     <rect>
      <x>360</x>
@@ -243,28 +180,7 @@ QPushButton#Edit:pressed {
  }</string>
    </property>
    <property name="text">
-    <string>Edit</string>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="textEdit">
-   <property name="geometry">
-    <rect>
-     <x>270</x>
-     <y>188</y>
-     <width>431</width>
-     <height>191</height>
-    </rect>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(221, 235, 255);
-	border: 5px solid #BBD6FF ;
-	border-radius: 20px;</string>
+    <string>Изменить</string>
    </property>
   </widget>
   <widget class="QLabel" name="Company">
@@ -282,35 +198,6 @@ color: rgb(56, 84, 102);</string>
    </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Pinguins.Inc&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QTextBrowser" name="Help">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>78</y>
-     <width>341</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(221, 235, 255);
-	border: 5px solid #BBD6FF ;
-	border-radius: 20px;</string>
-   </property>
-   <property name="html">
-    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Comfortaa'; font-size:12pt; font-weight:700; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-weight:600;&quot;&gt;Опишите свою проблему и в ближайшее время с Вами свяжется работник нашей службы поддержки.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QTableWidget" name="tableWidget">
@@ -434,10 +321,10 @@ QPushButton#Delete:pressed {
  }</string>
    </property>
    <property name="text">
-    <string>Delete</string>
+    <string>Удалить</string>
    </property>
   </widget>
-  <widget class="QLabel" name="Title">
+  <widget class="QLabel" name="Name">
    <property name="geometry">
     <rect>
      <x>320</x>
@@ -452,60 +339,6 @@ color: rgb(56, 84, 102);</string>
    </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;Pinguin CRM&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="Send">
-   <property name="geometry">
-    <rect>
-     <x>420</x>
-     <y>428</y>
-     <width>141</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton#Send:!pressed {
-    font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(221, 235, 255);
-	border: 5px solid #BBD6FF ;
-	border-radius:20px;
- }
-
-QPushButton#Send {
-    font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(221, 235, 255);
-	border: 5px solid #BBD6FF ;
-	border-radius:20px;;
- }
-
-QPushButton#Send:hover {
-    font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(165, 199, 250);
-	border: 5px solid #75ACFF;
-	border-radius:20px;
- }
-
-
-QPushButton#Send:pressed {
-    font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(165, 199, 250);
-	border: 5px solid #75ACFF;
-	border-radius:20px;
- }</string>
-   </property>
-   <property name="text">
-    <string>Send</string>
    </property>
   </widget>
   <widget class="QPushButton" name="Add">
@@ -571,7 +404,7 @@ QPushButton#Add:pressed {
  }</string>
    </property>
    <property name="text">
-    <string>Add</string>
+    <string>Добавить</string>
    </property>
   </widget>
   <widget class="QLabel" name="Icon">
@@ -864,7 +697,7 @@ QPushButton#Logout:pressed {
  }</string>
       </property>
       <property name="text">
-       <string>Log out</string>
+       <string>Выйти</string>
       </property>
       <property name="icon">
        <iconset>
@@ -899,19 +732,15 @@ background-color: rgb(56, 84, 102);</string>
   </widget>
   <zorder>RoundedBackground</zorder>
   <zorder>Icon</zorder>
-  <zorder>Title</zorder>
+  <zorder>Name</zorder>
   <zorder>Company</zorder>
   <zorder>Greeting</zorder>
   <zorder>RoundedBlue</zorder>
   <zorder>Edit</zorder>
   <zorder>Add</zorder>
   <zorder>Delete</zorder>
-  <zorder>Send</zorder>
-  <zorder>Update</zorder>
   <zorder>tableWidget</zorder>
-  <zorder>Help</zorder>
-  <zorder>textEdit</zorder>
-  <zorder>ProviderLabel</zorder>
+  <zorder>Title</zorder>
   <zorder>LeftButtons</zorder>
  </widget>
  <resources>

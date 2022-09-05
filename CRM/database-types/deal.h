@@ -56,7 +56,7 @@ struct deal {
           last_update(other.last_update) {}
 
     deal& operator=(const deal& rhs) {
-        if (this != &rhs) {
+        if (this != std::addressof(rhs)) {
             id = rhs.id;
             laptop = rhs.laptop;
             cost = rhs.cost;

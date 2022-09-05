@@ -34,12 +34,12 @@ MainWindow::~MainWindow() { delete ui; }
 
 void MainWindow::setSellerInterface(std::string name, std::string surname) {
     setCentralWidget(new sellerWidget(this, name, surname));
-    setFixedSize({821, 511});
+    setFixedSize({832, 492});
 }
 
 void MainWindow::setMarketerInterface(std::string name, std::string surname) {
     setCentralWidget(new marketerWidget(this, name, surname));
-    setFixedSize({832, 503});
+    setFixedSize({823, 492});
 }
 
 void MainWindow::setManagerInterface(std::string name, std::string surname) {

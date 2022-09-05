@@ -23,350 +23,306 @@ leaderWidget::leaderWidget(QMainWindow* parent, std::string name,
     ui->Greeting->setText(QString::fromStdString("Добро пожаловать,  " + name +
                                                  " " + surname + "!"));
 
-    ui->Provider->setIcon(QIcon(":/images/vendor-white.png"));
-    ui->Provider->setIconSize({30, 30});
-    ui->Deal->setIcon(QIcon(":/images/dollar.png"));
-    ui->Deal->setIconSize({27, 27});
-    ui->Ads->setIcon(QIcon(":/images/ad-white.png"));
-    ui->Ads->setIconSize({27, 27});
-    ui->Employee->setIcon(QIcon(":/images/worker-white.png"));
-    ui->Employee->setIconSize({30, 30});
-    ui->Stock->setIcon(QIcon(":/images/sklad-white.png"));
-    ui->Stock->setIconSize({30, 30});
-    ui->Support->setIcon(QIcon(":/images/t-white.png"));
-    ui->Support->setIconSize({28, 28});
-    ui->Logout->setIcon(QIcon(":/images/logout.png"));
-    ui->Logout->setIconSize({28, 28});
-
-    ui->tableWidget->hide();
-    ui->RoundedBlue->hide();
-    ui->Update->hide();
-    ui->Edit->hide();
-    ui->Add->hide();
-    ui->Delete->hide();
-    ui->ProviderLabel->hide();
-    ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
-
-    ui->textEdit->clear();
-
-    QPixmap icon(":/images/main.png");
-    ui->Icon->setPixmap(icon.scaled(ui->Icon->size(), Qt::KeepAspectRatio));
-}
-
-leaderWidget::~leaderWidget() { delete ui; }
-
-void leaderWidget::on_Logout_clicked() {
-    ui->Icon->show();
-    ui->Title->show();
-    ui->Company->show();
-    ui->Greeting->show();
-    ui->tableWidget->hide();
-    ui->RoundedBlue->hide();
-    ui->Update->hide();
-    ui->Edit->hide();
-    ui->Add->hide();
-    ui->Delete->hide();
-    ui->ProviderLabel->hide();
-    ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
-    ui->textEdit->clear();
-    parent->setLoginInterface();
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(
+        QHeaderView::ResizeToContents);
 }
 
 void leaderWidget::on_Provider_clicked() {
     ui->tableWidget->show();
-    ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
     ui->RoundedBlue->show();
-    ui->ProviderLabel->show();
+    ui->Title->show();
     ui->Icon->hide();
-    ui->Title->hide();
+    ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-    ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
 
-    ui->ProviderLabel->setText("Поставщики");
-    ui->Update->setText("Update");
+    ui->Title->setText("Поставщики");
 
-    // TODO: fill table with db
-    // tableVendorUpdate();
-
-    // get from db
-    ui->tableWidget->setRowCount(5);
-    ui->tableWidget->setColumnCount(2);
-    ui->tableWidget->setColumnWidth(0, 91);
-    ui->tableWidget->setColumnWidth(1, 375);
-    QStringList Labels = {"id", "Name"};
+    ui->tableWidget->clear();
+    const QStringList Labels = {"ID", "Название"};
+    ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
-    // temporary
-    QTableWidgetItem* item = new QTableWidgetItem("123");
-    for (size_t i = 0; i < 5; i++) {
-        for (size_t j = 0; j < 2; j++) {
-            QTableWidgetItem* item = new QTableWidgetItem("123");
-            ui->tableWidget->setItem(i, j, item);
-            ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
-                                                  Qt::ItemIsSelectable);
-        }
-    }
+    try {
+        soci::session session(*parent->database.get_pool().lock());
+        std::vector<provider> providers = getProvider(session, 0, 10);
+        ui->tableWidget->setRowCount(providers.size());
 
-    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableVendorUpdate()));
-    // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
+        size_t current_row = 0;
+        for (const auto& current : providers) {
+            ui->tableWidget->setItem(
+                current_row, 0,
+                new QTableWidgetItem(QString::number(current.id)));
+            ui->tableWidget->setItem(
+                current_row, 1, new QTableWidgetItem(current.name.c_str()));
+            current_row++;
+        }
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this, "Ошибка", e.what());
+        return;
+    }
 }
 
 void leaderWidget::on_Deal_clicked() {
     ui->tableWidget->show();
-    ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
     ui->RoundedBlue->show();
-    ui->ProviderLabel->show();
+    ui->Title->show();
     ui->Icon->hide();
-    ui->Title->hide();
+    ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-    ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
 
-    ui->ProviderLabel->setText("Сделки");
-    ui->Update->setText("Update");
+    ui->Title->setText("Сделки");
 
-    // TODO: fill table with db
-    // tableDealUpdate();
-
-    // get from db
-    ui->tableWidget->setRowCount(5);
-    ui->tableWidget->setColumnCount(9);
-    QStringList Labels = {"id",     "id laptop", "price",  "customer", "status",
-                          "source", "date",      "seller", "mark?"};
+    ui->tableWidget->clear();
+    const QStringList Labels = {
+        "ID",         "Ноутбук", "Цена",
+        "Покупатель", "Статус",  "Дата создания",
+        "Продавец",   "Оценка",  "Последнее обновление"};
+    ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
-    ui->tableWidget->setColumnWidth(0, 52);
-    ui->tableWidget->setColumnWidth(1, 52);
-    ui->tableWidget->setColumnWidth(2, 52);
-    ui->tableWidget->setColumnWidth(3, 52);
-    ui->tableWidget->setColumnWidth(4, 51);
-    ui->tableWidget->setColumnWidth(5, 52);
-    ui->tableWidget->setColumnWidth(6, 52);
-    ui->tableWidget->setColumnWidth(7, 52);
-    ui->tableWidget->setColumnWidth(8, 51);
+    try {
+        soci::session session(*parent->database.get_pool().lock());
+        std::vector<boost::tuple<deal, laptop, client, employee>> deals =
+            getDeal(session, 0, 10);
+        ui->tableWidget->setRowCount(deals.size());
 
-    // temporary
-    QTableWidgetItem* item = new QTableWidgetItem("123");
-    for (size_t i = 0; i < 5; i++) {
-        for (size_t j = 0; j < 9; j++) {
-            QTableWidgetItem* item = new QTableWidgetItem("123");
-            ui->tableWidget->setItem(i, j, item);
-            ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
-                                                  Qt::ItemIsSelectable);
+        size_t current_row = 0;
+        for (const auto& [deal, laptop, customer, seller] : deals) {
+            ui->tableWidget->setItem(
+                current_row, 0, new QTableWidgetItem(QString::number(deal.id)));
+            ui->tableWidget->setItem(current_row, 1,
+                                     new QTableWidgetItem(laptop.name.c_str()));
+            ui->tableWidget->setItem(
+                current_row, 2,
+                new QTableWidgetItem(QString::number(deal.cost)));
+            ui->tableWidget->setItem(
+                current_row, 3, new QTableWidgetItem(customer.name.c_str()));
+            ui->tableWidget->setItem(current_row, 4,
+                                     new QTableWidgetItem(deal.status.c_str()));
+            ui->tableWidget->setItem(
+                current_row, 5,
+                new QTableWidgetItem((std::to_string(deal.created.day()) + "." +
+                                      std::to_string(deal.created.month()) +
+                                      "." + std::to_string(deal.created.year()))
+                                         .c_str()));
+            ui->tableWidget->setItem(current_row, 6,
+                                     new QTableWidgetItem(seller.name.c_str()));
+            ui->tableWidget->setItem(
+                current_row, 7,
+                new QTableWidgetItem(QString::number(deal.rate)));
+            ui->tableWidget->setItem(
+                current_row, 8,
+                new QTableWidgetItem(
+                    (std::to_string(deal.last_update.day()) + "." +
+                     std::to_string(deal.last_update.month()) + "." +
+                     std::to_string(deal.last_update.year()))
+                        .c_str()));
+            current_row++;
         }
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this, "Ошибка", e.what());
+        return;
     }
-
-    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableDealUpdate()));
-    // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
 void leaderWidget::on_Stock_clicked() {
     ui->tableWidget->show();
-    ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
     ui->RoundedBlue->show();
-    ui->ProviderLabel->show();
+    ui->Title->show();
     ui->Icon->hide();
-    ui->Title->hide();
+    ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-    ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
 
-    ui->ProviderLabel->setText("Склад");
-    ui->Update->setText("Update");
-
-    // TODO: fill table with db
-    // tableStorageUpdate();
-
-    // get from db
-    ui->tableWidget->setRowCount(5);
-    ui->tableWidget->setColumnCount(6);
-    QStringList Labels = {"id",     "id laptop", "price",
-                          "number", "available", "source"};
+    ui->Title->setText("Склад");
+    const QStringList Labels = {"ID",         "Ноутбук",  "Цена",
+                                "Количество", "Доступно", "Поставщик"};
+    ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
-    ui->tableWidget->setColumnWidth(0, 78);
-    ui->tableWidget->setColumnWidth(1, 78);
-    ui->tableWidget->setColumnWidth(2, 78);
-    ui->tableWidget->setColumnWidth(3, 77);
-    ui->tableWidget->setColumnWidth(4, 77);
-    ui->tableWidget->setColumnWidth(5, 78);
-
-    // temporary
-    QTableWidgetItem* item = new QTableWidgetItem("123");
-    for (size_t i = 0; i < 5; i++) {
-        for (size_t j = 0; j < 6; j++) {
-            QTableWidgetItem* item = new QTableWidgetItem("123");
-            ui->tableWidget->setItem(i, j, item);
-            ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
-                                                  Qt::ItemIsSelectable);
+    try {
+        soci::session session(*parent->database.get_pool().lock());
+        std::vector<boost::tuple<stock, laptop, provider>> result =
+            getStock(session, 0, 10);
+        ui->tableWidget->setRowCount(result.size());
+        size_t current_row = 0;
+        for (const auto& [stock, laptop, provider] : result) {
+            ui->tableWidget->setItem(
+                current_row, 0,
+                new QTableWidgetItem(QString::number(stock.id)));
+            ui->tableWidget->setItem(current_row, 1,
+                                     new QTableWidgetItem(laptop.name.c_str()));
+            ui->tableWidget->setItem(
+                current_row, 2,
+                new QTableWidgetItem(QString::number(stock.price)));
+            ui->tableWidget->setItem(
+                current_row, 3,
+                new QTableWidgetItem(QString::number(stock.count)));
+            ui->tableWidget->setItem(
+                current_row, 4,
+                new QTableWidgetItem(QString::number(stock.available)));
+            ui->tableWidget->setItem(
+                current_row, 5, new QTableWidgetItem(provider.name.c_str()));
+            current_row++;
         }
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this, "Ошибка", e.what());
+        return;
     }
-
-    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableStorageUpdate()));
-    // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
 }
 
 void leaderWidget::on_Ads_clicked() {
     ui->tableWidget->show();
-    ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
     ui->RoundedBlue->show();
-    ui->ProviderLabel->show();
+    ui->Title->show();
     ui->Icon->hide();
-    ui->Title->hide();
+    ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-    ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
 
-    ui->ProviderLabel->setText("Реклама");
-    ui->Update->setText("Update");
+    ui->Title->setText("Реклама");
 
-    // TODO: fill table with db
-    // tableVendorUpdate();
-
-    // get from db
-    ui->tableWidget->setRowCount(5);
-    ui->tableWidget->setColumnCount(2);
-    ui->tableWidget->setColumnWidth(0, 91);
-    ui->tableWidget->setColumnWidth(1, 375);
-    QStringList Labels = {"id", "Place"};
+    const QStringList Labels = {"ID", "Место", "Бюджет", "Комментарии"};
+    ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
-    // temporary
-    QTableWidgetItem* item = new QTableWidgetItem("123");
-    for (size_t i = 0; i < 5; i++) {
-        for (size_t j = 0; j < 2; j++) {
-            QTableWidgetItem* item = new QTableWidgetItem("123");
-            ui->tableWidget->setItem(i, j, item);
-            ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
-                                                  Qt::ItemIsSelectable);
-        }
-    }
+    try {
+        soci::session session(*parent->database.get_pool().lock());
+        std::vector<advertisement> result = getAdvertisement(session, 0, 10);
+        ui->tableWidget->setRowCount(result.size());
 
-    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableAdUpdate()));
-    // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
+        size_t current_row = 0;
+        for (const auto& ad : result) {
+            ui->tableWidget->setItem(
+                current_row, 0, new QTableWidgetItem(QString::number(ad.id)));
+            ui->tableWidget->setItem(current_row, 1,
+                                     new QTableWidgetItem(ad.source.c_str()));
+            ui->tableWidget->setItem(
+                current_row, 2,
+                new QTableWidgetItem(QString::number(ad.budget)));
+            ui->tableWidget->setItem(current_row, 3,
+                                     new QTableWidgetItem(ad.comments.c_str()));
+            current_row++;
+        }
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this, "Ошибка", e.what());
+        return;
+    }
 }
 
 void leaderWidget::on_Employee_clicked() {
     ui->tableWidget->show();
-    ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
     ui->RoundedBlue->show();
-    ui->ProviderLabel->show();
+    ui->Title->show();
     ui->Icon->hide();
-    ui->Title->hide();
+    ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-    ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
 
-    ui->ProviderLabel->setText("Работники");
-    ui->Update->setText("Update");
+    ui->Title->setText("Работники");
 
-    // TODO: fill table with db
-    // tableVendorUpdate();
-
-    // get from db
-    ui->tableWidget->setRowCount(5);
-    ui->tableWidget->setColumnCount(5);
-    ui->tableWidget->setColumnWidth(0, 90);
-    ui->tableWidget->setColumnWidth(1, 136);
-    ui->tableWidget->setColumnWidth(2, 90);
-    ui->tableWidget->setColumnWidth(3, 90);
-    ui->tableWidget->setColumnWidth(4, 60);
-    QStringList Labels = {"id", "FIO", "Login", "Password", "Number"};
+    const QStringList Labels = {"ID", "Фамилия", "Имя", "Отчество", "Логин"};
+    ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
-    // temporary
-    QTableWidgetItem* item = new QTableWidgetItem("123");
-    for (size_t i = 0; i < 5; i++) {
-        for (size_t j = 0; j < 5; j++) {
-            QTableWidgetItem* item = new QTableWidgetItem("123");
-            ui->tableWidget->setItem(i, j, item);
-            ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
-                                                  Qt::ItemIsSelectable);
-        }
-    }
+    try {
+        soci::session session(*parent->database.get_pool().lock());
+        std::vector<employee> result = getEmployee(session, 0, 10);
 
-    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableVendorUpdate()));
-    // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
+        size_t current_row = 0;
+        for (const auto& employee : result) {
+            ui->tableWidget->setItem(
+                current_row, 0,
+                new QTableWidgetItem(QString::number(employee.id)));
+            ui->tableWidget->setItem(
+                current_row, 1, new QTableWidgetItem(employee.surname.c_str()));
+            ui->tableWidget->setItem(
+                current_row, 2, new QTableWidgetItem(employee.name.c_str()));
+            ui->tableWidget->setItem(
+                current_row, 3,
+                new QTableWidgetItem(employee.patronymic.c_str()));
+            ui->tableWidget->setItem(
+                current_row, 4, new QTableWidgetItem(employee.login.c_str()));
+            current_row++;
+        }
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this, "Ошибка", e.what());
+        return;
+    }
 }
 
-void leaderWidget::on_Support_clicked() {
-    ui->tableWidget->hide();
-    ui->Update->hide();
-    ui->Edit->hide();
-    ui->Add->hide();
-    ui->Delete->hide();
-    ui->RoundedBlue->hide();
-    ui->ProviderLabel->show();
+void leaderWidget::on_Client_clicked() {
+    ui->tableWidget->show();
+    ui->Edit->show();
+    ui->Add->show();
+    ui->Delete->show();
+    ui->RoundedBlue->show();
+    ui->Title->show();
     ui->Icon->hide();
-    ui->Title->hide();
+    ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-    ui->Send->show();
-    ui->Help->show();
-    ui->textEdit->show();
 
-    ui->ProviderLabel->setText("ТехПод");
-    ui->Send->setText("Отправить");
-}
+    ui->Title->setText("Клиенты");
 
-//----------table update functions---------------
+    const QStringList Labels = {"ID",    "Фамилия", "Имя",   "Отчество",
+                                "Город", "Пол",     "email", "Телефон"};
+    ui->tableWidget->setColumnCount(Labels.size());
+    ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
-void leaderWidget::tableVendorUpdate() {
-    //
-}
+    try {
+        soci::session session(*parent->database.get_pool().lock());
+        std::vector<client> clients = getClient(session, 0, 10);
+        ui->tableWidget->setRowCount(clients.size());
 
-void leaderWidget::tableDealUpdate() {
-    //
-}
-
-void leaderWidget::tableStorageUpdate() {
-    //
-}
-
-void leaderWidget::tableAdUpdate() {
-    //
-}
-
-void leaderWidget::tableEmployeesUpdate() {
-    //
+        size_t current_row = 0;
+        for (const auto& client : clients) {
+            ui->tableWidget->setItem(
+                current_row, 0,
+                new QTableWidgetItem(QString::number(client.id)));
+            ui->tableWidget->setItem(
+                current_row, 1,
+                new QTableWidgetItem(QString::fromStdString(client.name)));
+            ui->tableWidget->setItem(
+                current_row, 2,
+                new QTableWidgetItem(QString::fromStdString(client.surname)));
+            ui->tableWidget->setItem(
+                current_row, 3,
+                new QTableWidgetItem(
+                    QString::fromStdString(client.patronymic)));
+            ui->tableWidget->setItem(
+                current_row, 4,
+                new QTableWidgetItem(QString::fromStdString(client.city)));
+            ui->tableWidget->setItem(
+                current_row, 5,
+                new QTableWidgetItem(QString::fromStdString(client.sex)));
+            ui->tableWidget->setItem(
+                current_row, 6,
+                new QTableWidgetItem(QString::fromStdString(client.email)));
+            ui->tableWidget->setItem(
+                current_row, 7,
+                new QTableWidgetItem(QString::fromStdString(client.phone)));
+            current_row++;
+        }
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this, "Ошибка", e.what());
+        return;
+    }
 }

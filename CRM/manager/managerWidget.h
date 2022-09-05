@@ -15,9 +15,6 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #pragma once
 
-#include <QMainWindow>
-#include <QWidget>
-
 #include "../db_methods.h"
 #include "../mainwindow.h"
 #include "ui_manager.h"
@@ -32,13 +29,10 @@ class managerWidget : public QWidget {
    public:
     explicit managerWidget(QMainWindow* parent = nullptr, std::string = "",
                            std::string = "");
-    ~managerWidget();
-
-   signals:
-    void logout();
+    ~managerWidget() { delete ui; }
 
    private slots:
-    void on_Logout_clicked();
+    void on_Logout_clicked() { parent->setLoginInterface(); }
     void on_Provider_clicked();
     void on_Deal_clicked();
     void on_Stock_clicked();

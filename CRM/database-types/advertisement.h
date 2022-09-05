@@ -22,7 +22,7 @@
 struct advertisement {
     int id;                // ID рекламы
     std::string source;    // Источник рекламы
-    long long budget;      // Бюджет рекламы
+    int budget;            // Бюджет рекламы
     std::string comments;  // Комментарий к рекламе
 
     advertisement() = default;
@@ -61,7 +61,7 @@ struct type_conversion<advertisement> {
         try {
             ad.id = v.get<int>("id", 0);
             ad.source = v.get<std::string>("source", "");
-            ad.budget = v.get<long long>("budget", 0);
+            ad.budget = v.get<int>("budget", 0);
             ad.comments = v.get<std::string>("comments", "");
         } catch (std::exception const& e) {
             // Logging

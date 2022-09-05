@@ -49,8 +49,6 @@ class MainWindow : public QMainWindow {
     std::string database_password = "root";
     std::string database_name = "Practice";
     Ui::MainWindowUi* ui;
-    QIcon closeEye = QIcon(QPixmap(":/images/closeEye.png"));
-    QIcon openEye = QIcon(QPixmap(":/images/openEye.png"));
     QMessageBox msgBoxEmptyInput;
     QMessageBox msgBoxIncorrectInput;
     std::string get_connection_string();

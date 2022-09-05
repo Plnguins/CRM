@@ -21,7 +21,7 @@
 struct laptop {
     int id;            // ID ноутбука
     std::string name;  // Название ноутбука
-    double income;     //Желаемая прибыль
+    double income;     // Желаемая прибыль
     std::string type;  // Тип ноутбука
     std::string cpu;   // Процессор ноутбука
     std::string gpu;   // Видеокарта ноутбука

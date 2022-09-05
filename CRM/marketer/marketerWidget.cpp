@@ -15,42 +15,20 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #include "marketerWidget.h"
 
-marketerWidget::marketerWidget(QWidget* parent, std::string name, std::string surname)
+marketerWidget::marketerWidget(QWidget* parent, std::string name,
+                               std::string surname)
     : parent(dynamic_cast<MainWindow*>(parent)), ui(new Ui::marketerUi) {
     ui->setupUi(this);
 
     ui->Greeting->setText(QString::fromStdString("Добро пожаловать,  " + name +
                                                  " " + surname + "!"));
 
-    ui->Ads->setIcon(QIcon(":/images/ad-white.png"));
-    ui->Ads->setIconSize({27, 27});
-    ui->Support->setIcon(QIcon(":/images/t-white.png"));
-    ui->Support->setIconSize({28, 28});
-    ui->Logout->setIcon(QIcon(":/images/logout.png"));
-    ui->Logout->setIconSize({28, 28});
-
-    ui->tableWidget->hide();
-    ui->RoundedBlue->hide();
-    ui->Update->hide();
-    ui->Edit->hide();
-    ui->Add->hide();
-    ui->Delete->hide();
-    ui->Title->hide();
-    ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
-
-    ui->textEdit->clear();
-
-    QPixmap icon(":/images/main.png");
-    ui->Icon->setPixmap(icon.scaled(ui->Icon->size(), Qt::KeepAspectRatio));
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(
+        QHeaderView::ResizeToContents);
 }
-
-marketerWidget::~marketerWidget() { delete ui; }
 
 void marketerWidget::on_Ads_clicked() {
     ui->tableWidget->show();
-    ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
@@ -60,80 +38,33 @@ void marketerWidget::on_Ads_clicked() {
     ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-    ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
 
     ui->Title->setText("Реклама");
-    ui->Update->setText("Update");
 
-    // TODO: fill table with db
-    // tableVendorUpdate();
-
-    // get from db
-    ui->tableWidget->setRowCount(5);
-    ui->tableWidget->setColumnCount(2);
-    ui->tableWidget->setColumnWidth(0, 91);
-    ui->tableWidget->setColumnWidth(1, 375);
-    QStringList Labels = {"id", "Place"};
+    const QStringList Labels = {"ID", "Место", "Бюджет", "Комментарии"};
+    ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
-    // temporary
-    QTableWidgetItem* item = new QTableWidgetItem("123");
-    for (size_t i = 0; i < 5; i++) {
-        for (size_t j = 0; j < 2; j++) {
-            QTableWidgetItem* item = new QTableWidgetItem("123");
-            ui->tableWidget->setItem(i, j, item);
-            ui->tableWidget->item(i, j)->setFlags(Qt::ItemIsEnabled |
-                                                  Qt::ItemIsSelectable);
+    try {
+        soci::session session(*parent->database.get_pool().lock());
+        std::vector<advertisement> result = getAdvertisement(session, 0, 10);
+        ui->tableWidget->setRowCount(result.size());
+
+        size_t current_row = 0;
+        for (const auto& ad : result) {
+            ui->tableWidget->setItem(
+                current_row, 0, new QTableWidgetItem(QString::number(ad.id)));
+            ui->tableWidget->setItem(current_row, 1,
+                                     new QTableWidgetItem(ad.source.c_str()));
+            ui->tableWidget->setItem(
+                current_row, 2,
+                new QTableWidgetItem(QString::number(ad.budget)));
+            ui->tableWidget->setItem(current_row, 3,
+                                     new QTableWidgetItem(ad.comments.c_str()));
+            current_row++;
         }
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this, "Ошибка", e.what());
+        return;
     }
-
-    connect(ui->Update, SIGNAL(clicked()), this, SLOT(tableAdUpdate()));
-    // connect(ui->Edit, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Add, SIGNAL(clicked()), this, SLOT(doSmth()));
-    // connect(ui->Delete, SIGNAL(clicked()), this, SLOT(doSmth()));
-}
-
-void marketerWidget::on_Support_clicked() {
-    ui->tableWidget->hide();
-    ui->Update->hide();
-    ui->Edit->hide();
-    ui->Add->hide();
-    ui->Delete->hide();
-    ui->RoundedBlue->hide();
-    ui->Title->show();
-    ui->Icon->hide();
-    ui->Name->hide();
-    ui->Company->hide();
-    ui->Greeting->hide();
-    ui->Send->show();
-    ui->Help->show();
-    ui->textEdit->show();
-
-    ui->Title->setText("ТехПод");
-    ui->Send->setText("Отправить");
-}
-
-void marketerWidget::on_Logout_clicked() {
-    ui->Icon->show();
-    ui->Name->show();
-    ui->Company->show();
-    ui->Greeting->show();
-    ui->tableWidget->hide();
-    ui->RoundedBlue->hide();
-    ui->Update->hide();
-    ui->Edit->hide();
-    ui->Add->hide();
-    ui->Delete->hide();
-    ui->Title->hide();
-    ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
-    ui->textEdit->clear();
-    parent->setLoginInterface();
-}
-
-void marketerWidget::tableAdUpdate() {
-    //
 }

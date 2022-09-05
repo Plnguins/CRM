@@ -15,9 +15,7 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #pragma once
 
-#include <QMainWindow>
-#include <QWidget>
-
+#include "../db_methods.h"
 #include "../mainwindow.h"
 #include "ui_seller.h"
 
@@ -31,25 +29,13 @@ class sellerWidget : public QWidget {
    public:
     explicit sellerWidget(QMainWindow* parent = nullptr, std::string = "",
                           std::string = "");
-    ~sellerWidget();
-
-   signals:
-    void logout();
+    ~sellerWidget() { delete ui; }
 
    private slots:
     void on_Client_clicked();
-
     void on_Deal_clicked();
-
     void on_Stock_clicked();
-
-    void on_Support_clicked();
-
-    void on_Logout_clicked();
-
-    void tableClientUpdate();
-    void tableStorageUpdate();
-    void tableDealUpdate();
+    void on_Logout_clicked() { parent->setLoginInterface(); }
 
    private:
     MainWindow* parent;

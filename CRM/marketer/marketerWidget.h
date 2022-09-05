@@ -15,9 +15,7 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #pragma once
 
-#include <QMainWindow>
-#include <QWidget>
-
+#include "../db_methods.h"
 #include "../mainwindow.h"
 #include "ui_marketer.h"
 
@@ -31,19 +29,11 @@ class marketerWidget : public QWidget {
    public:
     explicit marketerWidget(QWidget* parent = nullptr, std::string = "",
                             std::string = "");
-    ~marketerWidget();
+    ~marketerWidget() { delete ui; }
 
    private slots:
     void on_Ads_clicked();
-
-    void on_Support_clicked();
-
-    void on_Logout_clicked();
-
-    void tableAdUpdate();
-
-   signals:
-    void logout();
+    void on_Logout_clicked() { parent->setLoginInterface(); }
 
    private:
     MainWindow* parent;

@@ -41,10 +41,6 @@ login::login(QMainWindow* parent)
     }
 }
 
-login::~login() { delete ui; }
-
-QPushButton* login::getLoginButton() { return ui->LoginButton; }
-
 void login::on_ShowPassword_clicked(bool checked) {
     if (checked) {
         ui->Password->setEchoMode(QLineEdit::Normal);

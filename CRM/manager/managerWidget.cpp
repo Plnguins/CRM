@@ -27,30 +27,22 @@ managerWidget::managerWidget(QMainWindow* parent, std::string name,
         QHeaderView::ResizeToContents);
 }
 
-managerWidget::~managerWidget() { delete ui; }
-
-void managerWidget::on_Logout_clicked() { parent->setLoginInterface(); }
-
 void managerWidget::on_Provider_clicked() {
     ui->tableWidget->show();
-    ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
     ui->RoundedBlue->show();
-    ui->ProviderLabel->show();
+    ui->Title->show();
     ui->Icon->hide();
-    ui->Title->hide();
+    ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-    ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
 
-    ui->ProviderLabel->setText("Поставщики");
+    ui->Title->setText("Поставщики");
 
     ui->tableWidget->clear();
-    QStringList Labels = {"ID", "Название"};
+    const QStringList Labels = {"ID", "Название"};
     ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
@@ -76,26 +68,23 @@ void managerWidget::on_Provider_clicked() {
 
 void managerWidget::on_Deal_clicked() {
     ui->tableWidget->show();
-    ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
     ui->RoundedBlue->show();
-    ui->ProviderLabel->show();
+    ui->Title->show();
     ui->Icon->hide();
-    ui->Title->hide();
+    ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-    ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
 
-    ui->ProviderLabel->setText("Сделки");
+    ui->Title->setText("Сделки");
 
     ui->tableWidget->clear();
-    QStringList Labels = {"ID",         "Ноутбук", "Цена",
-                          "Покупатель", "Статус",  "Дата создания",
-                          "Продавец",   "Оценка",  "Последнее обновление"};
+    const QStringList Labels = {
+        "ID",         "Ноутбук", "Цена",
+        "Покупатель", "Статус",  "Дата создания",
+        "Продавец",   "Оценка",  "Последнее обновление"};
     ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
@@ -146,31 +135,26 @@ void managerWidget::on_Deal_clicked() {
 
 void managerWidget::on_Stock_clicked() {
     ui->tableWidget->show();
-    ui->Update->show();
     ui->Edit->show();
     ui->Add->show();
     ui->Delete->show();
     ui->RoundedBlue->show();
-    ui->ProviderLabel->show();
+    ui->Title->show();
     ui->Icon->hide();
-    ui->Title->hide();
+    ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-    ui->Send->hide();
-    ui->Help->hide();
-    ui->textEdit->hide();
 
-    ui->ProviderLabel->setText("Склад");
-    ui->Update->setText("Update");
+    ui->Title->setText("Склад");
+    const QStringList Labels = {"ID",         "Ноутбук",  "Цена",
+                                "Количество", "Доступно", "Поставщик"};
+    ui->tableWidget->setColumnCount(Labels.size());
+    ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
     try {
         soci::session session(*parent->database.get_pool().lock());
         std::vector<boost::tuple<stock, laptop, provider>> result =
             getStock(session, 0, 10);
-        QStringList Labels = {"ID",         "Ноутбук",  "Цена",
-                              "Количество", "Доступно", "Поставщик"};
-        ui->tableWidget->setColumnCount(Labels.size());
-        ui->tableWidget->setHorizontalHeaderLabels(Labels);
         ui->tableWidget->setRowCount(result.size());
         size_t current_row = 0;
         for (const auto& [stock, laptop, provider] : result) {
