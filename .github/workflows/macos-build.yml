@@ -60,12 +60,6 @@ jobs:
         name: Clone
         with:
           submodules: recursive
-      - name: Cache Boost
-        id: cache-boost
-        uses: actions/cache@v3
-        with:
-          path: ${{ env.BOOST_DIR }}/boost/boost
-          key: ${{ runner.os }}-Boost-${{ env.BOOST_VERSION }}-${{ env.BOOST_DIR }}-${{ env.BOOST_PLATFORM }}
       - name: Install Qt
         uses: jurplel/install-qt-action@43ec12788e42f375acfcb2cec059edfb9572fbaa
         with:
@@ -79,13 +73,13 @@ jobs:
           tools: ${{ env.QT_TOOLS }}
       - name: Install boost
         id: install-boost
-        if: steps.cache-boost.outputs.cache-hit != 'true'
         uses: MarkusJx/install-boost@v2.4.0
         with:
           boost_version: ${{ env.BOOST_VERSION }}
           platform_version: ${{ env.BOOST_PLATFORM }}
           toolset: clang
           boost_install_dir: ${{ env.BOOST_DIR }}
+          cache: true
       - name: Create symlinks
         run: |
           sudo ln -s $(pg_config --libdir)/* /usr/local/lib/ || true
