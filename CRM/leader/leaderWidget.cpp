@@ -28,16 +28,10 @@ leaderWidget::leaderWidget(QMainWindow* parent, std::string name,
 }
 
 void leaderWidget::on_Provider_clicked() {
-    ui->tableWidget->show();
-    ui->Edit->show();
-    ui->Add->show();
-    ui->Delete->show();
-    ui->RoundedBlue->show();
-    ui->Title->show();
-    ui->Icon->hide();
-    ui->Name->hide();
-    ui->Company->hide();
-    ui->Greeting->hide();
+    /*
+     * Функция отображает поставщиков
+     */
+    hideGreeting();
 
     ui->Title->setText(tr("Поставщики"));
 
@@ -67,16 +61,10 @@ void leaderWidget::on_Provider_clicked() {
 }
 
 void leaderWidget::on_Deal_clicked() {
-    ui->tableWidget->show();
-    ui->Edit->show();
-    ui->Add->show();
-    ui->Delete->show();
-    ui->RoundedBlue->show();
-    ui->Title->show();
-    ui->Icon->hide();
-    ui->Name->hide();
-    ui->Company->hide();
-    ui->Greeting->hide();
+    /*
+     * Функция отображает сделки
+     */
+    hideGreeting();
 
     ui->Title->setText(tr("Сделки"));
 
@@ -134,16 +122,10 @@ void leaderWidget::on_Deal_clicked() {
 }
 
 void leaderWidget::on_Stock_clicked() {
-    ui->tableWidget->show();
-    ui->Edit->show();
-    ui->Add->show();
-    ui->Delete->show();
-    ui->RoundedBlue->show();
-    ui->Title->show();
-    ui->Icon->hide();
-    ui->Name->hide();
-    ui->Company->hide();
-    ui->Greeting->hide();
+    /*
+     * Функция отображает склад
+     */
+    hideGreeting();
 
     ui->Title->setText(tr("Склад"));
     const QStringList Labels = {tr("ID"),       tr("Ноутбук"),
@@ -184,16 +166,10 @@ void leaderWidget::on_Stock_clicked() {
 }
 
 void leaderWidget::on_Ads_clicked() {
-    ui->tableWidget->show();
-    ui->Edit->show();
-    ui->Add->show();
-    ui->Delete->show();
-    ui->RoundedBlue->show();
-    ui->Title->show();
-    ui->Icon->hide();
-    ui->Name->hide();
-    ui->Company->hide();
-    ui->Greeting->hide();
+    /*
+     * Функция отображает рекламу
+     */
+    hideGreeting();
 
     ui->Title->setText(tr("Реклама"));
 
@@ -227,16 +203,10 @@ void leaderWidget::on_Ads_clicked() {
 }
 
 void leaderWidget::on_Employee_clicked() {
-    ui->tableWidget->show();
-    ui->Edit->show();
-    ui->Add->show();
-    ui->Delete->show();
-    ui->RoundedBlue->show();
-    ui->Title->show();
-    ui->Icon->hide();
-    ui->Name->hide();
-    ui->Company->hide();
-    ui->Greeting->hide();
+    /*
+     * Функция отображает сотрудников
+     */
+    hideGreeting();
 
     ui->Title->setText(tr("Работники"));
 
@@ -272,16 +242,10 @@ void leaderWidget::on_Employee_clicked() {
 }
 
 void leaderWidget::on_Client_clicked() {
-    ui->tableWidget->show();
-    ui->Edit->show();
-    ui->Add->show();
-    ui->Delete->show();
-    ui->RoundedBlue->show();
-    ui->Title->show();
-    ui->Icon->hide();
-    ui->Name->hide();
-    ui->Company->hide();
-    ui->Greeting->hide();
+    /*
+     * Функция отображает клиентов
+     */
+    hideGreeting();
 
     ui->Title->setText(tr("Клиенты"));
 
@@ -329,4 +293,20 @@ void leaderWidget::on_Client_clicked() {
         QMessageBox::critical(this, tr("Ошибка"), e.what());
         return;
     }
+}
+
+void leaderWidget::hideGreeting() {
+    /*
+     * Функция скрывает приветствие и показывает таблицу
+     */
+    ui->tableWidget->show();
+    ui->Edit->show();
+    ui->Add->show();
+    ui->Delete->show();
+    ui->RoundedBlue->show();
+    ui->Title->show();
+    ui->Icon->hide();
+    ui->Name->hide();
+    ui->Company->hide();
+    ui->Greeting->hide();
 }

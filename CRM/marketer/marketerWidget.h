@@ -38,4 +38,6 @@ class marketerWidget : public QWidget {
    private:
     MainWindow* parent;
     Ui::marketerUi* ui;
+
+    void hideGreeting();
 };

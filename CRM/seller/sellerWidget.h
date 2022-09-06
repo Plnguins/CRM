@@ -40,4 +40,6 @@ class sellerWidget : public QWidget {
    private:
     MainWindow* parent;
     Ui::sellerUi* ui;
+
+    void hideGreeting();
 };

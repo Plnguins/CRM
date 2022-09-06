@@ -43,4 +43,6 @@ class leaderWidget : public QWidget {
    private:
     MainWindow* parent;
     Ui::leaderUi* ui;
+
+    void hideGreeting();
 };

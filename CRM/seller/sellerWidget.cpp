@@ -28,16 +28,10 @@ sellerWidget::sellerWidget(QMainWindow* parent, std::string name,
 }
 
 void sellerWidget::on_Client_clicked() {
-    ui->tableWidget->show();
-    ui->Edit->show();
-    ui->Add->show();
-    ui->Delete->show();
-    ui->RoundedBlue->show();
-    ui->Title->show();
-    ui->Icon->hide();
-    ui->Name->hide();
-    ui->Company->hide();
-    ui->Greeting->hide();
+    /*
+     * Функция отображает клиентов
+     */
+    hideGreeting();
 
     ui->Title->setText(tr("Клиенты"));
 
@@ -88,16 +82,10 @@ void sellerWidget::on_Client_clicked() {
 }
 
 void sellerWidget::on_Deal_clicked() {
-    ui->tableWidget->show();
-    ui->Edit->show();
-    ui->Add->show();
-    ui->Delete->show();
-    ui->RoundedBlue->show();
-    ui->Title->show();
-    ui->Icon->hide();
-    ui->Name->hide();
-    ui->Company->hide();
-    ui->Greeting->hide();
+    /*
+     * Функция отображает сделки
+     */
+    hideGreeting();
 
     ui->Title->setText(tr("Сделки"));
 
@@ -155,16 +143,10 @@ void sellerWidget::on_Deal_clicked() {
 }
 
 void sellerWidget::on_Stock_clicked() {
-    ui->tableWidget->show();
-    ui->Edit->show();
-    ui->Add->show();
-    ui->Delete->show();
-    ui->RoundedBlue->show();
-    ui->Title->show();
-    ui->Icon->hide();
-    ui->Name->hide();
-    ui->Company->hide();
-    ui->Greeting->hide();
+    /*
+     * Функция отображает склад
+     */
+    hideGreeting();
 
     ui->Title->setText(tr("Склад"));
     const QStringList Labels = {tr("ID"),       tr("Ноутбук"),
@@ -202,4 +184,20 @@ void sellerWidget::on_Stock_clicked() {
         QMessageBox::critical(this, tr("Ошибка"), e.what());
         return;
     }
+}
+
+void sellerWidget::hideGreeting() {
+    /*
+     * Функция скрывает приветствие и показывает таблицу
+     */
+    ui->tableWidget->show();
+    ui->Edit->show();
+    ui->Add->show();
+    ui->Delete->show();
+    ui->RoundedBlue->show();
+    ui->Title->show();
+    ui->Icon->hide();
+    ui->Name->hide();
+    ui->Company->hide();
+    ui->Greeting->hide();
 }

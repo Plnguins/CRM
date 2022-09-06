@@ -28,16 +28,10 @@ marketerWidget::marketerWidget(QWidget* parent, std::string name,
 }
 
 void marketerWidget::on_Ads_clicked() {
-    ui->tableWidget->show();
-    ui->Edit->show();
-    ui->Add->show();
-    ui->Delete->show();
-    ui->RoundedBlue->show();
-    ui->Title->show();
-    ui->Icon->hide();
-    ui->Name->hide();
-    ui->Company->hide();
-    ui->Greeting->hide();
+    /*
+     * Функция отображает рекламу
+     */
+    hideGreeting();
 
     ui->Title->setText(tr("Реклама"));
 
@@ -68,4 +62,20 @@ void marketerWidget::on_Ads_clicked() {
         QMessageBox::critical(this, tr("Ошибка"), e.what());
         return;
     }
+}
+
+void marketerWidget::hideGreeting() {
+    /*
+     * Функция скрывает приветствие и показывает таблицу
+     */
+    ui->tableWidget->show();
+    ui->Edit->show();
+    ui->Add->show();
+    ui->Delete->show();
+    ui->RoundedBlue->show();
+    ui->Title->show();
+    ui->Icon->hide();
+    ui->Name->hide();
+    ui->Company->hide();
+    ui->Greeting->hide();
 }

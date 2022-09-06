@@ -40,4 +40,6 @@ class managerWidget : public QWidget {
    private:
     MainWindow* parent;
     Ui::managerUi* ui;
+
+    void hideGreeting();
 };
