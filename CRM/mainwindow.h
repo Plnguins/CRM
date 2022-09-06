@@ -36,6 +36,14 @@ class MainWindow : public QMainWindow {
     void setManagerInterface(std::string, std::string);
     void setMarketerInterface(std::string, std::string);
     void setSellerInterface(std::string, std::string);
+    void setSettingsInterface();
+
+    const std::string& getDataBaseLogin() { return database_login; }
+    const unsigned short int& getDataBasePort() { return database_port; }
+    const std::string& getDataBasePassword() { return database_password; }
+    const std::string& getDataBaseName() { return database_name; }
+    const std::string& getDataBaseIP() { return database_ip; }
+
     db_pool database;
     bool connectDatabase();
     void setDatabase(const std::string& host, const unsigned short int& port,

@@ -15,6 +15,7 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #include "mainwindow.h"
 
+#include "db_settings/db_settings.h"
 #include "leader/leaderWidget.h"
 #include "login/login.h"
 #include "manager/managerWidget.h"
@@ -50,6 +51,11 @@ void MainWindow::setManagerInterface(std::string name, std::string surname) {
 void MainWindow::setLeaderInterface(std::string name, std::string surname) {
     setCentralWidget(new leaderWidget(this, name, surname));
     setFixedSize({821, 492});
+}
+
+void MainWindow::setSettingsInterface() {
+    setCentralWidget(new db_settings(this));
+    setFixedSize({331, 311});
 }
 
 void MainWindow::setLoginInterface() {

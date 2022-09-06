@@ -68,4 +68,7 @@
     <qresource prefix="/">
         <file>Comfortaa.ttf</file>
     </qresource>
+    <qresource prefix="/">
+        <file>images/settings.png</file>
+    </qresource>
 </RCC>

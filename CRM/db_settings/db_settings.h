@@ -15,43 +15,24 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #pragma once
 
-#include <openssl/evp.h>
-#include <openssl/sha.h>
-
-#include <QMainWindow>
-#include <QMessageBox>
-#include <QWidget>
-#include <iomanip>
-#include <sstream>
-
-#include "../database-types/employee.h"
-#include "../database-types/leader.h"
-#include "../database-types/marketer.h"
-#include "../database-types/seller.h"
-#include "../database-types/stock_manager.h"
 #include "../mainwindow.h"
-#include "ui_login.h"
-
-enum class Role { Leader, Manager, Marketer, Seller, Unknown };
+#include "ui_db_settings.h"
 
 namespace Ui {
-class loginUi;
+class db_settingsUi;
 }
 
-class login : public QWidget {
+class db_settings : public QWidget {
     Q_OBJECT
 
    public:
-    explicit login(QMainWindow* parent = nullptr);
-    ~login() { delete ui; }
+    explicit db_settings(QMainWindow* parent = nullptr);
+    ~db_settings();
 
    private slots:
-    void on_LoginButton_clicked();
-    void on_ShowPassword_clicked(bool checked);
+    void on_ApplyButton_clicked();
 
-    void on_Settings_clicked();
-
-private:
+   private:
+    Ui::db_settingsUi* ui;
     MainWindow* parent;
-    Ui::loginUi* ui;
 };

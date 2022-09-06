@@ -39,6 +39,8 @@ login::login(QMainWindow* parent)
     if (!this->parent->connectDatabase()) {
         QMessageBox::critical(this, "Ошибка", "Невозможно подключиться к БД");
     }
+
+    ui->Settings->setIcon(QIcon(":/images/settings.png"));
 }
 
 void login::on_ShowPassword_clicked(bool checked) {
@@ -119,4 +121,11 @@ void login::on_LoginButton_clicked() {
             ("Что-то пошло не так. Ошибка:\n" + message).c_str());
         // Logging
     }
+    parent->setLeaderInterface("123", "123");
+}
+
+void login::on_Settings_clicked() {
+    parent->setSettingsInterface();
+    ui->Login->clear();
+    ui->Password->clear();
 }

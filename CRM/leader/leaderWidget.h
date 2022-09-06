@@ -40,7 +40,22 @@ class leaderWidget : public QWidget {
     void on_Deal_clicked();
     void on_Client_clicked();
 
-   private:
+    void changeButtonsText();
+    void goToPage(int pageNumber);
+
+    void on_pushButton_clicked();
+    void on_pushButton_2_clicked();
+    void on_pushButton_3_clicked();
+    void on_pushButton_4_clicked();
+    void on_pushButton_5_clicked();
+
+private:
     MainWindow* parent;
     Ui::leaderUi* ui;
+
+    //get from table
+    int numberOfPages = 20;
+    //pages starts from 1
+    std::vector<short> pages = {1, 2, 3, 4, 5};
+    std::string curInterface;
 };
