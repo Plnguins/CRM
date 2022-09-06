@@ -20,8 +20,8 @@ sellerWidget::sellerWidget(QMainWindow* parent, std::string name,
     : parent(dynamic_cast<MainWindow*>(parent)), ui(new Ui::sellerUi) {
     ui->setupUi(this);
 
-    ui->Greeting->setText(QString::fromStdString("Добро пожаловать,  " + name +
-                                                 " " + surname + "!"));
+    ui->Greeting->setText(tr("Добро пожаловать, ") +
+                          QString::fromStdString(name + " " + surname + "!"));
 
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(
         QHeaderView::ResizeToContents);
@@ -39,10 +39,11 @@ void sellerWidget::on_Client_clicked() {
     ui->Company->hide();
     ui->Greeting->hide();
 
-    ui->Title->setText("Клиенты");
+    ui->Title->setText(tr("Клиенты"));
 
-    const QStringList Labels = {"ID",    "Фамилия", "Имя",   "Отчество",
-                                "Город", "Пол",     "email", "Телефон"};
+    const QStringList Labels = {tr("ID"),       tr("Фамилия"), tr("Имя"),
+                                tr("Отчество"), tr("Город"),   tr("Пол"),
+                                tr("email"),    tr("Телефон")};
     ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
@@ -81,7 +82,7 @@ void sellerWidget::on_Client_clicked() {
             current_row++;
         }
     } catch (const std::exception& e) {
-        QMessageBox::critical(this, "Ошибка", e.what());
+        QMessageBox::critical(this, tr("Ошибка"), e.what());
         return;
     }
 }
@@ -98,13 +99,13 @@ void sellerWidget::on_Deal_clicked() {
     ui->Company->hide();
     ui->Greeting->hide();
 
-    ui->Title->setText("Сделки");
+    ui->Title->setText(tr("Сделки"));
 
     ui->tableWidget->clear();
     const QStringList Labels = {
-        "ID",         "Ноутбук", "Цена",
-        "Покупатель", "Статус",  "Дата создания",
-        "Продавец",   "Оценка",  "Последнее обновление"};
+        tr("ID"),         tr("Ноутбук"), tr("Цена"),
+        tr("Покупатель"), tr("Статус"),  tr("Дата создания"),
+        tr("Продавец"),   tr("Оценка"),  tr("Последнее обновление")};
     ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
@@ -148,7 +149,7 @@ void sellerWidget::on_Deal_clicked() {
             current_row++;
         }
     } catch (const std::exception& e) {
-        QMessageBox::critical(this, "Ошибка", e.what());
+        QMessageBox::critical(this, tr("Ошибка"), e.what());
         return;
     }
 }
@@ -165,9 +166,10 @@ void sellerWidget::on_Stock_clicked() {
     ui->Company->hide();
     ui->Greeting->hide();
 
-    ui->Title->setText("Склад");
-    const QStringList Labels = {"ID",         "Ноутбук",  "Цена",
-                                "Количество", "Доступно", "Поставщик"};
+    ui->Title->setText(tr("Склад"));
+    const QStringList Labels = {tr("ID"),       tr("Ноутбук"),
+                                tr("Цена"),     tr("Количество"),
+                                tr("Доступно"), tr("Поставщик")};
     ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
@@ -197,7 +199,7 @@ void sellerWidget::on_Stock_clicked() {
             current_row++;
         }
     } catch (const std::exception& e) {
-        QMessageBox::critical(this, "Ошибка", e.what());
+        QMessageBox::critical(this, tr("Ошибка"), e.what());
         return;
     }
 }

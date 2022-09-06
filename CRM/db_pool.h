@@ -21,9 +21,8 @@
 #include <soci/postgresql/soci-postgresql.h>
 #include <soci/soci.h>
 
-#include <boost/optional.hpp>
+#include <boost/smart_ptr.hpp>  // Умные указатели
 #include <boost/smart_ptr.hpp>
-#include <boost/tuple/tuple.hpp>
 
 class db_pool {
     boost::shared_ptr<soci::connection_pool> pool_;

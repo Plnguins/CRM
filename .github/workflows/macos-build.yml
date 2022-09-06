@@ -123,4 +123,4 @@ jobs:
           artifacts: "${{ github.workspace }}/MacOS/CRM.dmg"
           name: ${{ github.event.head_commit.message }}
           draft: false
-          prerelease: ${{ env.GIT_BRANCH_NAME == 'master' }}
+          prerelease: ${{ env.GIT_BRANCH_NAME != 'master' }}

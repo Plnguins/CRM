@@ -35,7 +35,7 @@ message(STATUS "Boost version: ${Boost_VERSION}")
 find_package(PostgreSQL REQUIRED)
 include_directories(SYSTEM ${PostgreSQL_INCLUDE_DIRS})
 
-find_package(Qt6 REQUIRED COMPONENTS Core Widgets Gui)
+find_package(Qt6 REQUIRED COMPONENTS Core Widgets Gui LinguistTools)
 
 include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 
@@ -78,6 +78,10 @@ ELSEIF(APPLE)
 ELSE()
     add_executable(CRM ${SRC} ${resources})
 ENDIF()
+
+qt_add_lupdate(CRM TS_FILES ${CMAKE_SOURCE_DIR}/resources/translation/crm_ru.ts ${CMAKE_SOURCE_DIR}/resources/translation/crm_en.ts SOURCES ${SRC} INCLUDE_DIRECTORIES ${CMAKE_SOURCE_DIR}/CRM OPTIONS "-noobsolete")
+qt_add_lrelease(CRM TS_FILES ${CMAKE_SOURCE_DIR}/resources/translation/crm_ru.ts ${CMAKE_SOURCE_DIR}/resources/translation/crm_en.ts QM_FILES_OUTPUT_VARIABLE qm_files)
+qt_add_resources(CRM "translation" PREFIX "/i18n" BASE "${CMAKE_CURRENT_BINARY_DIR}" FILES "${qm_files}")
 
 set_target_properties(CRM PROPERTIES AUTOMOC TRUE AUTOUIC TRUE AUTORCC TRUE)
 
