@@ -14,17 +14,21 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #pragma once
-#include <soci/boost-gregorian-date.h>
-#include <soci/boost-optional.h>
-#include <soci/boost-tuple.h>
-#include <soci/connection-pool.h>
-#include <soci/postgresql/soci-postgresql.h>
-#include <soci/soci.h>
+#include <soci/boost-gregorian-date.h>  // Дата и время
+#include <soci/boost-optional.h>  // Optional - позволяет работать с пустыми значениями
+#include <soci/boost-tuple.h>  // Позволяет работать с кортежами
+#include <soci/connection-pool.h>  // Пул соединений
+#include <soci/postgresql/soci-postgresql.h>  // Для исключений именно для PostgreSQL
+#include <soci/soci.h>  // Базовая библиотека для работы с СУБД
 
 #include <boost/smart_ptr.hpp>  // Умные указатели
-#include <boost/smart_ptr.hpp>
 
 class db_pool {
+    /*
+     * Класс для работы с пулом подключений к СУБД, т.к. приложение потенциально
+     * работает в многопоточном режиме и для избежания одновременного доступа к
+     * одной памяти разных потоков
+     */
     boost::shared_ptr<soci::connection_pool> pool_;
     std::size_t pool_size_;
 
@@ -36,17 +40,20 @@ class db_pool {
 
     bool connect(const std::string& conn_str, std::size_t pool_size = 5) {
         if (pool_ != nullptr) {
+            //Закрываем соединение, если оно уже было открыто
             close();
         }
         pool_size_ = pool_size;
         boost::optional<int> is_connected;
         pool_ = boost::shared_ptr<soci::connection_pool>(
-            new soci::connection_pool(pool_size_));
+            new soci::connection_pool(pool_size_));  // Создаем пул подключений
         if (!pool_) {
+            // Если пул не создался, то возвращаем false
             return false;
         }
         try {
             for (std::size_t _i = 0; _i < pool_size_; _i++) {
+                // Проверяем каждый пул на соединение
                 soci::session& sql = pool_->at(_i);
                 sql.open(conn_str);
                 sql << "SELECT 1;", soci::into(is_connected);
@@ -66,6 +73,9 @@ class db_pool {
     }
 
     void close() {
+        /*
+         * Функция закрытия подключения к СУБД
+         */
         if (pool_ != nullptr) {
             try {
                 for (std::size_t _i = 0; _i < pool_size_; _i++) {
