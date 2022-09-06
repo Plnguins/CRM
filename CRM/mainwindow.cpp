@@ -30,8 +30,6 @@ MainWindow::MainWindow(QWidget* parent)
     setLoginInterface();
 }
 
-MainWindow::~MainWindow() { delete ui; }
-
 void MainWindow::setSellerInterface(std::string name, std::string surname) {
     setCentralWidget(new sellerWidget(this, name, surname));
     setFixedSize({832, 492});
