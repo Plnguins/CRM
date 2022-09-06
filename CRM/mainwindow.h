@@ -31,25 +31,30 @@ class MainWindow : public QMainWindow {
    public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow() { delete ui; }
+
     void setLeaderInterface(std::string, std::string);
     void setLoginInterface();
     void setManagerInterface(std::string, std::string);
     void setMarketerInterface(std::string, std::string);
     void setSellerInterface(std::string, std::string);
+
     db_pool database;
+
     bool connectDatabase();
     void setDatabase(const std::string& host, const unsigned short int& port,
                      const std::string& user, const std::string& password,
                      const std::string& database);
 
    private:
+    // Параметры подключения к СУБД
     std::string database_ip = "localhost";
     unsigned short int database_port = 5432;
     std::string database_login = "practice";
     std::string database_password = "root";
     std::string database_name = "Practice";
+
+    // Указатель на интерфейс
     Ui::MainWindowUi* ui;
-    QMessageBox msgBoxEmptyInput;
-    QMessageBox msgBoxIncorrectInput;
+
     std::string get_connection_string();
 };
