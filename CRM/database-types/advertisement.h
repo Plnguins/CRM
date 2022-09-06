@@ -55,6 +55,9 @@ struct type_conversion<advertisement> {
     using base_type = values;
 
     static void from_base(values const& v, indicator ind, advertisement& ad) {
+        /*
+         * Конвертация из данных в структуру
+         */
         if (ind == i_null) {
             return;
         }
@@ -69,6 +72,9 @@ struct type_conversion<advertisement> {
     }
 
     static void to_base(const advertisement& p, values& v, indicator& ind) {
+        /*
+         * Конвертация из структуры в данные
+         */
         try {
             v.set("id", p.id);
             v.set("source", p.source);

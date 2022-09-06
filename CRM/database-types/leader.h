@@ -43,6 +43,9 @@ struct type_conversion<leader> {
     using base_type = values;
 
     static void from_base(values const& v, indicator ind, leader& l) {
+        /*
+         * Конвертация из данных в структуру
+         */
         if (ind == i_null) {
             return;
         }
@@ -55,6 +58,9 @@ struct type_conversion<leader> {
     }
 
     static void to_base(leader const& l, values& v, indicator& ind) {
+        /*
+         * Конвертация из структуры в данные
+         */
         try {
             v.set("id", l.id);
             v.set("employee", l.employee);
