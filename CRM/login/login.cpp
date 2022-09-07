@@ -121,9 +121,3 @@ void login::on_LoginButton_clicked() {
         // Logging
     }
 }
-
-void login::on_Settings_clicked() {
-    parent->setSettingsInterface();
-    ui->Login->clear();
-    ui->Password->clear();
-}

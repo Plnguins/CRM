@@ -49,7 +49,7 @@ class login : public QWidget {
     void on_LoginButton_clicked();
     void on_ShowPassword_clicked(bool checked);
 
-    void on_Settings_clicked();
+    void on_Settings_clicked() { parent->setSettingsInterface(); }
 
    private:
     MainWindow* parent;
