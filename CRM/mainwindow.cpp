@@ -32,36 +32,58 @@ MainWindow::MainWindow(QWidget* parent)
 }
 
 void MainWindow::setSellerInterface(std::string name, std::string surname) {
+    /*
+     * Функция открывает интерфейс продавца
+     */
     setCentralWidget(new sellerWidget(this, name, surname));
     setFixedSize({821, 492});
 }
 
 void MainWindow::setMarketerInterface(std::string name, std::string surname) {
+    /*
+     * Функция открывает интерфейс маркетолога
+     */
     setCentralWidget(new marketerWidget(this, name, surname));
     setFixedSize({821, 492});
 }
 
 void MainWindow::setManagerInterface(std::string name, std::string surname) {
+    /*
+     * Функция открывает интерфейс менеджера
+     */
     setCentralWidget(new managerWidget(this, name, surname));
     setFixedSize({821, 492});
 }
 
 void MainWindow::setLeaderInterface(std::string name, std::string surname) {
+    /*
+     * Функция открывает интерфейс руководителя
+     */
     setCentralWidget(new leaderWidget(this, name, surname));
     setFixedSize({821, 492});
 }
 
 void MainWindow::setSettingsInterface() {
+    /*
+     * Функция открывает интерфейс с параметрами СУБД
+     */
     setCentralWidget(new db_settings(this));
     setFixedSize({331, 311});
 }
 
 void MainWindow::setLoginInterface() {
+    /*
+     * Функция открывает интерфейс авторизации
+     */
     setCentralWidget(new login(this));
     setFixedSize({300, 233});
 }
 
 bool MainWindow::connectDatabase() {
+    /*
+     * Функция пытается подключиться к СУБД и возвращает true в случае успеха
+     * и false в случае неудачи
+     */
     return database.connect(get_connection_string());
 }
 
@@ -70,6 +92,9 @@ void MainWindow::setDatabase(const std::string& host,
                              const std::string& user,
                              const std::string& password,
                              const std::string& database) {
+    /*
+     * Функция устанавливает параметры подключения к СУБД
+     */
     database_ip = host;
     database_port = port;
     database_login = user;
@@ -78,6 +103,9 @@ void MainWindow::setDatabase(const std::string& host,
 }
 
 std::string MainWindow::get_connection_string() {
+    /*
+     * Функция возвращает строку подключения к СУБД
+     */
     return "postgresql://host='" + database_ip + "' dbname='" + database_name +
            "' port=" + std::to_string(database_port) + " user='" +
            database_login + "' password='" + database_password + "'";

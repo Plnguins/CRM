@@ -51,13 +51,15 @@ class MainWindow : public QMainWindow {
                      const std::string& database);
 
    private:
+    // Параметры подключения к СУБД
     std::string database_ip = "localhost";
     unsigned short int database_port = 5432;
     std::string database_login = "practice";
     std::string database_password = "root";
     std::string database_name = "Practice";
+
+    // Указатель на интерфейс
     Ui::MainWindowUi* ui;
-    QMessageBox msgBoxEmptyInput;
-    QMessageBox msgBoxIncorrectInput;
+
     std::string get_connection_string();
 };
