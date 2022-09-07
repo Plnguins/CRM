@@ -15,47 +15,14 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #pragma once
 
-#include "../db_methods.h"
-#include "../mainwindow.h"
-#include "ui_leader.h"
+#include "../interface/interfaceWidget.h"
 
-namespace Ui {
-class leaderUi;
-}
-
-class leaderWidget : public QWidget {
+class leaderWidget : public interfaceWidget {
     Q_OBJECT
 
    public:
-    explicit leaderWidget(QMainWindow* parent = nullptr, std::string = "",
-                          std::string = "");
-    ~leaderWidget() { delete ui; }
-
-   private slots:
-    void on_Provider_clicked();
-    void on_Employee_clicked();
-    void on_Stock_clicked();
-    void on_Ads_clicked();
-    void on_Logout_clicked() { parent->setLoginInterface(); }
-    void on_Deal_clicked();
-    void on_Client_clicked();
-
-    void changeButtonsText();
-    void goToPage(int pageNumber);
-
-    void on_pushButton_clicked();
-    void on_pushButton_2_clicked();
-    void on_pushButton_3_clicked();
-    void on_pushButton_4_clicked();
-    void on_pushButton_5_clicked();
-
-private:
-    MainWindow* parent;
-    Ui::leaderUi* ui;
-
-    //get from table
-    int numberOfPages = 20;
-    //pages starts from 1
-    std::vector<short> pages = {1, 2, 3, 4, 5};
-    std::string curInterface;
+    explicit leaderWidget(QMainWindow* parent = nullptr, std::string name = "",
+                          std::string surname = "")
+        : interfaceWidget(parent, name, surname) {}
+    ~leaderWidget() = default;
 };

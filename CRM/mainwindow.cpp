@@ -35,17 +35,17 @@ MainWindow::~MainWindow() { delete ui; }
 
 void MainWindow::setSellerInterface(std::string name, std::string surname) {
     setCentralWidget(new sellerWidget(this, name, surname));
-    setFixedSize({832, 492});
+    setFixedSize({821, 492});
 }
 
 void MainWindow::setMarketerInterface(std::string name, std::string surname) {
     setCentralWidget(new marketerWidget(this, name, surname));
-    setFixedSize({823, 492});
+    setFixedSize({821, 492});
 }
 
 void MainWindow::setManagerInterface(std::string name, std::string surname) {
     setCentralWidget(new managerWidget(this, name, surname));
-    setFixedSize({821, 489});
+    setFixedSize({821, 492});
 }
 
 void MainWindow::setLeaderInterface(std::string name, std::string surname) {

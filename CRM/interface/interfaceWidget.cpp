@@ -1,4 +1,4 @@
-// Leader source code for CRM application
+// Interface source code for CRM application
 // Copyright(C) 2022 Plnguins
 
 // This program is free software : you can redistribute it and / or modify
@@ -13,11 +13,11 @@
 
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
-#include "leaderWidget.h"
+#include "interfaceWidget.h"
 
-leaderWidget::leaderWidget(QMainWindow* parent, std::string name,
-                           std::string surname)
-    : parent(dynamic_cast<MainWindow*>(parent)), ui(new Ui::leaderUi) {
+interfaceWidget::interfaceWidget(QMainWindow* parent, std::string name,
+                                 std::string surname)
+    : parent(dynamic_cast<MainWindow*>(parent)), ui(new Ui::interfaceUi) {
     ui->setupUi(this);
 
     ui->Greeting->setText(QString::fromStdString("Добро пожаловать,  " + name +
@@ -39,7 +39,7 @@ leaderWidget::leaderWidget(QMainWindow* parent, std::string name,
     ui->pushButton_5->setText(QString::number(pages[4]));
 }
 
-void leaderWidget::on_Provider_clicked() {
+void interfaceWidget::on_Provider_clicked() {
     ui->tableWidget->show();
     ui->Edit->show();
     ui->Add->show();
@@ -102,7 +102,7 @@ void leaderWidget::on_Provider_clicked() {
     }
 }
 
-void leaderWidget::on_Deal_clicked() {
+void interfaceWidget::on_Deal_clicked() {
     ui->tableWidget->show();
     ui->Edit->show();
     ui->Add->show();
@@ -193,7 +193,7 @@ void leaderWidget::on_Deal_clicked() {
     }
 }
 
-void leaderWidget::on_Stock_clicked() {
+void interfaceWidget::on_Stock_clicked() {
     ui->tableWidget->show();
     ui->Edit->show();
     ui->Add->show();
@@ -266,7 +266,7 @@ void leaderWidget::on_Stock_clicked() {
     }
 }
 
-void leaderWidget::on_Ads_clicked() {
+void interfaceWidget::on_Ads_clicked() {
     ui->tableWidget->show();
     ui->Edit->show();
     ui->Add->show();
@@ -332,7 +332,7 @@ void leaderWidget::on_Ads_clicked() {
     }
 }
 
-void leaderWidget::on_Employee_clicked() {
+void interfaceWidget::on_Employee_clicked() {
     ui->tableWidget->show();
     ui->Edit->show();
     ui->Add->show();
@@ -400,7 +400,7 @@ void leaderWidget::on_Employee_clicked() {
     }
 }
 
-void leaderWidget::on_Client_clicked() {
+void interfaceWidget::on_Client_clicked() {
     ui->tableWidget->show();
     ui->Edit->show();
     ui->Add->show();
@@ -483,7 +483,7 @@ void leaderWidget::on_Client_clicked() {
     }
 }
 
-void leaderWidget::changeButtonsText(){
+void interfaceWidget::changeButtonsText() {
     ui->pushButton->setText(QString::number(pages[0]));
     ui->pushButton_2->setText(QString::number(pages[1]));
     ui->pushButton_3->setText(QString::number(pages[2]));
@@ -491,7 +491,7 @@ void leaderWidget::changeButtonsText(){
     ui->pushButton_5->setText(QString::number(pages[4]));
 }
 
-void leaderWidget::goToPage(int pageNumber) {
+void interfaceWidget::goToPage(int pageNumber) {
     if (curInterface == "Deal") {
         try {
             soci::session session(*parent->database.get_pool().lock());
@@ -502,24 +502,27 @@ void leaderWidget::goToPage(int pageNumber) {
             size_t current_row = 0;
             for (const auto& [deal, laptop, customer, seller] : deals) {
                 ui->tableWidget->setItem(
-                    current_row, 0, new QTableWidgetItem(QString::number(deal.id)));
-                ui->tableWidget->setItem(current_row, 1,
-                                         new QTableWidgetItem(laptop.name.c_str()));
+                    current_row, 0,
+                    new QTableWidgetItem(QString::number(deal.id)));
+                ui->tableWidget->setItem(
+                    current_row, 1, new QTableWidgetItem(laptop.name.c_str()));
                 ui->tableWidget->setItem(
                     current_row, 2,
                     new QTableWidgetItem(QString::number(deal.cost)));
                 ui->tableWidget->setItem(
-                    current_row, 3, new QTableWidgetItem(customer.name.c_str()));
-                ui->tableWidget->setItem(current_row, 4,
-                                         new QTableWidgetItem(deal.status.c_str()));
+                    current_row, 3,
+                    new QTableWidgetItem(customer.name.c_str()));
+                ui->tableWidget->setItem(
+                    current_row, 4, new QTableWidgetItem(deal.status.c_str()));
                 ui->tableWidget->setItem(
                     current_row, 5,
-                    new QTableWidgetItem((std::to_string(deal.created.day()) + "." +
-                                          std::to_string(deal.created.month()) +
-                                          "." + std::to_string(deal.created.year()))
-                                             .c_str()));
-                ui->tableWidget->setItem(current_row, 6,
-                                         new QTableWidgetItem(seller.name.c_str()));
+                    new QTableWidgetItem(
+                        (std::to_string(deal.created.day()) + "." +
+                         std::to_string(deal.created.month()) + "." +
+                         std::to_string(deal.created.year()))
+                            .c_str()));
+                ui->tableWidget->setItem(
+                    current_row, 6, new QTableWidgetItem(seller.name.c_str()));
                 ui->tableWidget->setItem(
                     current_row, 7,
                     new QTableWidgetItem(QString::number(deal.rate)));
@@ -540,7 +543,8 @@ void leaderWidget::goToPage(int pageNumber) {
     if (curInterface == "Provider") {
         try {
             soci::session session(*parent->database.get_pool().lock());
-            std::vector<provider> providers = getProvider(session, pageNumber - 1, 12);
+            std::vector<provider> providers =
+                getProvider(session, pageNumber - 1, 12);
             ui->tableWidget->setRowCount(providers.size());
 
             size_t current_row = 0;
@@ -568,8 +572,8 @@ void leaderWidget::goToPage(int pageNumber) {
                 ui->tableWidget->setItem(
                     current_row, 0,
                     new QTableWidgetItem(QString::number(stock.id)));
-                ui->tableWidget->setItem(current_row, 1,
-                                         new QTableWidgetItem(laptop.name.c_str()));
+                ui->tableWidget->setItem(
+                    current_row, 1, new QTableWidgetItem(laptop.name.c_str()));
                 ui->tableWidget->setItem(
                     current_row, 2,
                     new QTableWidgetItem(QString::number(stock.price)));
@@ -580,7 +584,8 @@ void leaderWidget::goToPage(int pageNumber) {
                     current_row, 4,
                     new QTableWidgetItem(QString::number(stock.available)));
                 ui->tableWidget->setItem(
-                    current_row, 5, new QTableWidgetItem(provider.name.c_str()));
+                    current_row, 5,
+                    new QTableWidgetItem(provider.name.c_str()));
                 current_row++;
             }
         } catch (const std::exception& e) {
@@ -591,20 +596,22 @@ void leaderWidget::goToPage(int pageNumber) {
     if (curInterface == "Ads") {
         try {
             soci::session session(*parent->database.get_pool().lock());
-            std::vector<advertisement> result = getAdvertisement(session, pageNumber - 1, 12);
+            std::vector<advertisement> result =
+                getAdvertisement(session, pageNumber - 1, 12);
             ui->tableWidget->setRowCount(result.size());
 
             size_t current_row = 0;
             for (const auto& ad : result) {
                 ui->tableWidget->setItem(
-                    current_row, 0, new QTableWidgetItem(QString::number(ad.id)));
-                ui->tableWidget->setItem(current_row, 1,
-                                         new QTableWidgetItem(ad.source.c_str()));
+                    current_row, 0,
+                    new QTableWidgetItem(QString::number(ad.id)));
+                ui->tableWidget->setItem(
+                    current_row, 1, new QTableWidgetItem(ad.source.c_str()));
                 ui->tableWidget->setItem(
                     current_row, 2,
                     new QTableWidgetItem(QString::number(ad.budget)));
-                ui->tableWidget->setItem(current_row, 3,
-                                         new QTableWidgetItem(ad.comments.c_str()));
+                ui->tableWidget->setItem(
+                    current_row, 3, new QTableWidgetItem(ad.comments.c_str()));
                 current_row++;
             }
         } catch (const std::exception& e) {
@@ -615,7 +622,8 @@ void leaderWidget::goToPage(int pageNumber) {
     if (curInterface == "Employee") {
         try {
             soci::session session(*parent->database.get_pool().lock());
-            std::vector<employee> result = getEmployee(session, pageNumber - 1, 12);
+            std::vector<employee> result =
+                getEmployee(session, pageNumber - 1, 12);
 
             size_t current_row = 0;
             for (const auto& employee : result) {
@@ -623,14 +631,17 @@ void leaderWidget::goToPage(int pageNumber) {
                     current_row, 0,
                     new QTableWidgetItem(QString::number(employee.id)));
                 ui->tableWidget->setItem(
-                    current_row, 1, new QTableWidgetItem(employee.surname.c_str()));
+                    current_row, 1,
+                    new QTableWidgetItem(employee.surname.c_str()));
                 ui->tableWidget->setItem(
-                    current_row, 2, new QTableWidgetItem(employee.name.c_str()));
+                    current_row, 2,
+                    new QTableWidgetItem(employee.name.c_str()));
                 ui->tableWidget->setItem(
                     current_row, 3,
                     new QTableWidgetItem(employee.patronymic.c_str()));
                 ui->tableWidget->setItem(
-                    current_row, 4, new QTableWidgetItem(employee.login.c_str()));
+                    current_row, 4,
+                    new QTableWidgetItem(employee.login.c_str()));
                 current_row++;
             }
         } catch (const std::exception& e) {
@@ -641,7 +652,8 @@ void leaderWidget::goToPage(int pageNumber) {
     if (curInterface == "Client") {
         try {
             soci::session session(*parent->database.get_pool().lock());
-            std::vector<client> clients = getClient(session, pageNumber -1, 12);
+            std::vector<client> clients =
+                getClient(session, pageNumber - 1, 12);
             ui->tableWidget->setRowCount(clients.size());
 
             size_t current_row = 0;
@@ -654,7 +666,8 @@ void leaderWidget::goToPage(int pageNumber) {
                     new QTableWidgetItem(QString::fromStdString(client.name)));
                 ui->tableWidget->setItem(
                     current_row, 2,
-                    new QTableWidgetItem(QString::fromStdString(client.surname)));
+                    new QTableWidgetItem(
+                        QString::fromStdString(client.surname)));
                 ui->tableWidget->setItem(
                     current_row, 3,
                     new QTableWidgetItem(
@@ -680,51 +693,38 @@ void leaderWidget::goToPage(int pageNumber) {
     }
 }
 
-void leaderWidget::on_pushButton_clicked()
-{
+void interfaceWidget::on_pushButton_clicked() {
     int cur_left_number = pages[0];
     if (cur_left_number > 2) {
-        for (auto &tmp:pages)
-            tmp -=2;
+        for (auto& tmp : pages) tmp -= 2;
         changeButtonsText();
     } else if (cur_left_number > 1) {
-        for (auto &tmp:pages)
-            tmp -=1;
+        for (auto& tmp : pages) tmp -= 1;
         changeButtonsText();
     }
-    //go to pages[pages[0]]
+    // go to pages[pages[0]]
 }
 
-void leaderWidget::on_pushButton_2_clicked()
-{
-    //go to pages[pages[1]]
+void interfaceWidget::on_pushButton_2_clicked() {
+    // go to pages[pages[1]]
 }
 
-void leaderWidget::on_pushButton_3_clicked()
-{
-    //go to pages[pages[2]]
+void interfaceWidget::on_pushButton_3_clicked() {
+    // go to pages[pages[2]]
 }
 
-void leaderWidget::on_pushButton_4_clicked()
-{
-    //go to pages[pages[3]]
+void interfaceWidget::on_pushButton_4_clicked() {
+    // go to pages[pages[3]]
 }
 
-void leaderWidget::on_pushButton_5_clicked()
-{
+void interfaceWidget::on_pushButton_5_clicked() {
     int cur_right_number = pages[4];
     if (numberOfPages - cur_right_number > 1) {
-        for (auto &tmp:pages)
-            tmp += 2;
+        for (auto& tmp : pages) tmp += 2;
         changeButtonsText();
     } else if (numberOfPages - cur_right_number == 1) {
-        for (auto &tmp:pages)
-            tmp += 1;
+        for (auto& tmp : pages) tmp += 1;
         changeButtonsText();
     }
-    //go to pages[pages[4]]
+    // go to pages[pages[4]]
 }
-
-
-
-

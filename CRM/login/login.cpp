@@ -121,7 +121,6 @@ void login::on_LoginButton_clicked() {
             ("Что-то пошло не так. Ошибка:\n" + message).c_str());
         // Logging
     }
-    parent->setLeaderInterface("123", "123");
 }
 
 void login::on_Settings_clicked() {
