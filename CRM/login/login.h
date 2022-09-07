@@ -51,7 +51,7 @@ class login : public QWidget {
 
     void on_Settings_clicked();
 
-private:
+   private:
     MainWindow* parent;
     Ui::loginUi* ui;
 };
