@@ -40,18 +40,13 @@ interfaceWidget::interfaceWidget(QMainWindow* parent, std::string name,
 }
 
 void interfaceWidget::on_Provider_clicked() {
-    ui->tableWidget->show();
-    ui->Edit->show();
-    ui->Add->show();
-    ui->Delete->show();
-    ui->RoundedBlue->show();
-    ui->Title->show();
-    ui->Icon->hide();
-    ui->Name->hide();
-    ui->Company->hide();
-    ui->Greeting->hide();
+    /*
+     * Функция отображает клиентов
+     */
+    hideGreeting();
 
-    curInterface = "Provider";
+    updateTable = &interfaceWidget::updateProvider;
+    (this->*updateTable)(0, 10);
 
     if (numberOfPages >= 5) {
         ui->pushButton->show();
@@ -74,7 +69,169 @@ void interfaceWidget::on_Provider_clicked() {
     } else if (numberOfPages == 1) {
         ui->pushButton->show();
     }
+}
 
+void interfaceWidget::on_Deal_clicked() {
+    /*
+     * Функция отображает клиентов
+     */
+    hideGreeting();
+
+    updateTable = &interfaceWidget::updateDeal;
+    (this->*updateTable)(0, 10);
+
+    if (numberOfPages >= 5) {
+        ui->pushButton->show();
+        ui->pushButton_2->show();
+        ui->pushButton_3->show();
+        ui->pushButton_4->show();
+        ui->pushButton_5->show();
+    } else if (numberOfPages == 4) {
+        ui->pushButton->show();
+        ui->pushButton_2->show();
+        ui->pushButton_3->show();
+        ui->pushButton_4->show();
+    } else if (numberOfPages == 3) {
+        ui->pushButton->show();
+        ui->pushButton_2->show();
+        ui->pushButton_3->show();
+    } else if (numberOfPages == 2) {
+        ui->pushButton->show();
+        ui->pushButton_2->show();
+    } else if (numberOfPages == 1) {
+        ui->pushButton->show();
+    }
+}
+
+void interfaceWidget::on_Stock_clicked() {
+    /*
+     * Функция отображает клиентов
+     */
+    hideGreeting();
+
+    updateTable = &interfaceWidget::updateStock;
+    (this->*updateTable)(0, 10);
+
+    if (numberOfPages >= 5) {
+        ui->pushButton->show();
+        ui->pushButton_2->show();
+        ui->pushButton_3->show();
+        ui->pushButton_4->show();
+        ui->pushButton_5->show();
+    } else if (numberOfPages == 4) {
+        ui->pushButton->show();
+        ui->pushButton_2->show();
+        ui->pushButton_3->show();
+        ui->pushButton_4->show();
+    } else if (numberOfPages == 3) {
+        ui->pushButton->show();
+        ui->pushButton_2->show();
+        ui->pushButton_3->show();
+    } else if (numberOfPages == 2) {
+        ui->pushButton->show();
+        ui->pushButton_2->show();
+    } else if (numberOfPages == 1) {
+        ui->pushButton->show();
+    }
+}
+
+void interfaceWidget::on_Ads_clicked() {
+    /*
+     * Функция отображает клиентов
+     */
+    hideGreeting();
+
+    updateTable = &interfaceWidget::updateAds;
+    (this->*updateTable)(0, 10);
+
+    if (numberOfPages >= 5) {
+        ui->pushButton->show();
+        ui->pushButton_2->show();
+        ui->pushButton_3->show();
+        ui->pushButton_4->show();
+        ui->pushButton_5->show();
+    } else if (numberOfPages == 4) {
+        ui->pushButton->show();
+        ui->pushButton_2->show();
+        ui->pushButton_3->show();
+        ui->pushButton_4->show();
+    } else if (numberOfPages == 3) {
+        ui->pushButton->show();
+        ui->pushButton_2->show();
+        ui->pushButton_3->show();
+    } else if (numberOfPages == 2) {
+        ui->pushButton->show();
+        ui->pushButton_2->show();
+    } else if (numberOfPages == 1) {
+        ui->pushButton->show();
+    }
+}
+
+void interfaceWidget::on_Employee_clicked() {
+    /*
+     * Функция отображает клиентов
+     */
+    hideGreeting();
+
+    updateTable = &interfaceWidget::updateEmployee;
+    (this->*updateTable)(0, 10);
+
+    if (numberOfPages >= 5) {
+        ui->pushButton->show();
+        ui->pushButton_2->show();
+        ui->pushButton_3->show();
+        ui->pushButton_4->show();
+        ui->pushButton_5->show();
+    } else if (numberOfPages == 4) {
+        ui->pushButton->show();
+        ui->pushButton_2->show();
+        ui->pushButton_3->show();
+        ui->pushButton_4->show();
+    } else if (numberOfPages == 3) {
+        ui->pushButton->show();
+        ui->pushButton_2->show();
+        ui->pushButton_3->show();
+    } else if (numberOfPages == 2) {
+        ui->pushButton->show();
+        ui->pushButton_2->show();
+    } else if (numberOfPages == 1) {
+        ui->pushButton->show();
+    }
+}
+
+void interfaceWidget::on_Client_clicked() {
+    /*
+     * Функция отображает клиентов
+     */
+    hideGreeting();
+
+    updateTable = &interfaceWidget::updateClient;
+    (this->*updateTable)(0, 10);
+
+    if (numberOfPages >= 5) {
+        ui->pushButton->show();
+        ui->pushButton_2->show();
+        ui->pushButton_3->show();
+        ui->pushButton_4->show();
+        ui->pushButton_5->show();
+    } else if (numberOfPages == 4) {
+        ui->pushButton->show();
+        ui->pushButton_2->show();
+        ui->pushButton_3->show();
+        ui->pushButton_4->show();
+    } else if (numberOfPages == 3) {
+        ui->pushButton->show();
+        ui->pushButton_2->show();
+        ui->pushButton_3->show();
+    } else if (numberOfPages == 2) {
+        ui->pushButton->show();
+        ui->pushButton_2->show();
+    } else if (numberOfPages == 1) {
+        ui->pushButton->show();
+    }
+}
+
+void interfaceWidget::updateProvider(const int& page, const int& limit) {
     ui->Title->setText(tr("Поставщики"));
 
     ui->tableWidget->clear();
@@ -84,7 +241,7 @@ void interfaceWidget::on_Provider_clicked() {
 
     try {
         soci::session session(*parent->database.get_pool().lock());
-        std::vector<provider> providers = getProvider(session, 0, 12);
+        std::vector<provider> providers = getProvider(session, page, limit);
         ui->tableWidget->setRowCount(providers.size());
 
         size_t current_row = 0;
@@ -102,7 +259,10 @@ void interfaceWidget::on_Provider_clicked() {
     }
 }
 
-void interfaceWidget::on_Deal_clicked() {
+void interfaceWidget::hideGreeting() {
+    /*
+     * Функция скрывает приветствие и показывает таблицу
+     */
     ui->tableWidget->show();
     ui->Edit->show();
     ui->Add->show();
@@ -113,31 +273,9 @@ void interfaceWidget::on_Deal_clicked() {
     ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
+}
 
-    curInterface = "Deal";
-
-    if (numberOfPages >= 5) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-        ui->pushButton_4->show();
-        ui->pushButton_5->show();
-    } else if (numberOfPages == 4) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-        ui->pushButton_4->show();
-    } else if (numberOfPages == 3) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-    } else if (numberOfPages == 2) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-    } else if (numberOfPages == 1) {
-        ui->pushButton->show();
-    }
-
+void interfaceWidget::updateDeal(const int& page, const int& limit) {
     ui->Title->setText(tr("Сделки"));
 
     ui->tableWidget->clear();
@@ -151,7 +289,7 @@ void interfaceWidget::on_Deal_clicked() {
     try {
         soci::session session(*parent->database.get_pool().lock());
         std::vector<boost::tuple<deal, laptop, client, employee>> deals =
-            getDeal(session, 0, 12);
+            getDeal(session, page, limit);
         ui->tableWidget->setRowCount(deals.size());
 
         size_t current_row = 0;
@@ -193,42 +331,7 @@ void interfaceWidget::on_Deal_clicked() {
     }
 }
 
-void interfaceWidget::on_Stock_clicked() {
-    ui->tableWidget->show();
-    ui->Edit->show();
-    ui->Add->show();
-    ui->Delete->show();
-    ui->RoundedBlue->show();
-    ui->Title->show();
-    ui->Icon->hide();
-    ui->Name->hide();
-    ui->Company->hide();
-    ui->Greeting->hide();
-
-    curInterface = "Stock";
-
-    if (numberOfPages >= 5) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-        ui->pushButton_4->show();
-        ui->pushButton_5->show();
-    } else if (numberOfPages == 4) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-        ui->pushButton_4->show();
-    } else if (numberOfPages == 3) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-    } else if (numberOfPages == 2) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-    } else if (numberOfPages == 1) {
-        ui->pushButton->show();
-    }
-
+void interfaceWidget::updateStock(const int& page, const int& limit) {
     ui->Title->setText(tr("Склад"));
     const QStringList Labels = {tr("ID"),       tr("Ноутбук"),
                                 tr("Цена"),     tr("Количество"),
@@ -239,7 +342,7 @@ void interfaceWidget::on_Stock_clicked() {
     try {
         soci::session session(*parent->database.get_pool().lock());
         std::vector<boost::tuple<stock, laptop, provider>> result =
-            getStock(session, 0, 12);
+            getStock(session, page, limit);
         ui->tableWidget->setRowCount(result.size());
         size_t current_row = 0;
         for (const auto& [stock, laptop, provider] : result) {
@@ -267,42 +370,7 @@ void interfaceWidget::on_Stock_clicked() {
     }
 }
 
-void interfaceWidget::on_Ads_clicked() {
-    ui->tableWidget->show();
-    ui->Edit->show();
-    ui->Add->show();
-    ui->Delete->show();
-    ui->RoundedBlue->show();
-    ui->Title->show();
-    ui->Icon->hide();
-    ui->Name->hide();
-    ui->Company->hide();
-    ui->Greeting->hide();
-
-    curInterface = "Ads";
-
-    if (numberOfPages >= 5) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-        ui->pushButton_4->show();
-        ui->pushButton_5->show();
-    } else if (numberOfPages == 4) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-        ui->pushButton_4->show();
-    } else if (numberOfPages == 3) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-    } else if (numberOfPages == 2) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-    } else if (numberOfPages == 1) {
-        ui->pushButton->show();
-    }
-
+void interfaceWidget::updateAds(const int& page, const int& limit) {
     ui->Title->setText(tr("Реклама"));
 
     const QStringList Labels = {tr("ID"), tr("Платформа"), tr("Бюджет"),
@@ -312,7 +380,8 @@ void interfaceWidget::on_Ads_clicked() {
 
     try {
         soci::session session(*parent->database.get_pool().lock());
-        std::vector<advertisement> result = getAdvertisement(session, 0, 12);
+        std::vector<advertisement> result =
+            getAdvertisement(session, page, limit);
         ui->tableWidget->setRowCount(result.size());
 
         size_t current_row = 0;
@@ -334,42 +403,7 @@ void interfaceWidget::on_Ads_clicked() {
     }
 }
 
-void interfaceWidget::on_Employee_clicked() {
-    ui->tableWidget->show();
-    ui->Edit->show();
-    ui->Add->show();
-    ui->Delete->show();
-    ui->RoundedBlue->show();
-    ui->Title->show();
-    ui->Icon->hide();
-    ui->Name->hide();
-    ui->Company->hide();
-    ui->Greeting->hide();
-
-    curInterface = "Employee";
-
-    if (numberOfPages >= 5) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-        ui->pushButton_4->show();
-        ui->pushButton_5->show();
-    } else if (numberOfPages == 4) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-        ui->pushButton_4->show();
-    } else if (numberOfPages == 3) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-    } else if (numberOfPages == 2) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-    } else if (numberOfPages == 1) {
-        ui->pushButton->show();
-    }
-
+void interfaceWidget::updateEmployee(const int& page, const int& limit) {
     ui->Title->setText(tr("Работники"));
 
     const QStringList Labels = {tr("ID"), tr("Фамилия"), tr("Имя"),
@@ -379,7 +413,7 @@ void interfaceWidget::on_Employee_clicked() {
 
     try {
         soci::session session(*parent->database.get_pool().lock());
-        std::vector<employee> result = getEmployee(session, 0, 12);
+        std::vector<employee> result = getEmployee(session, page, limit);
 
         size_t current_row = 0;
         for (const auto& employee : result) {
@@ -403,42 +437,7 @@ void interfaceWidget::on_Employee_clicked() {
     }
 }
 
-void interfaceWidget::on_Client_clicked() {
-    ui->tableWidget->show();
-    ui->Edit->show();
-    ui->Add->show();
-    ui->Delete->show();
-    ui->RoundedBlue->show();
-    ui->Title->show();
-    ui->Icon->hide();
-    ui->Name->hide();
-    ui->Company->hide();
-    ui->Greeting->hide();
-
-    curInterface = "Client";
-
-    if (numberOfPages >= 5) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-        ui->pushButton_4->show();
-        ui->pushButton_5->show();
-    } else if (numberOfPages == 4) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-        ui->pushButton_4->show();
-    } else if (numberOfPages == 3) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-    } else if (numberOfPages == 2) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-    } else if (numberOfPages == 1) {
-        ui->pushButton->show();
-    }
-
+void interfaceWidget::updateClient(const int& page, const int& limit) {
     ui->Title->setText(tr("Клиенты"));
 
     const QStringList Labels = {tr("ID"),       tr("Фамилия"), tr("Имя"),
@@ -449,7 +448,7 @@ void interfaceWidget::on_Client_clicked() {
 
     try {
         soci::session session(*parent->database.get_pool().lock());
-        std::vector<client> clients = getClient(session, 0, 12);
+        std::vector<client> clients = getClient(session, page, limit);
         ui->tableWidget->setRowCount(clients.size());
 
         size_t current_row = 0;
@@ -493,208 +492,6 @@ void interfaceWidget::changeButtonsText() {
     ui->pushButton_3->setText(QString::number(pages[2]));
     ui->pushButton_4->setText(QString::number(pages[3]));
     ui->pushButton_5->setText(QString::number(pages[4]));
-}
-
-void interfaceWidget::goToPage(int pageNumber) {
-    if (curInterface == "Deal") {
-        try {
-            soci::session session(*parent->database.get_pool().lock());
-            std::vector<boost::tuple<deal, laptop, client, employee>> deals =
-                getDeal(session, pageNumber - 1, 12);
-            ui->tableWidget->setRowCount(deals.size());
-
-            size_t current_row = 0;
-            for (const auto& [deal, laptop, customer, seller] : deals) {
-                ui->tableWidget->setItem(
-                    current_row, 0,
-                    new QTableWidgetItem(QString::number(deal.id)));
-                ui->tableWidget->setItem(
-                    current_row, 1, new QTableWidgetItem(laptop.name.c_str()));
-                ui->tableWidget->setItem(
-                    current_row, 2,
-                    new QTableWidgetItem(QString::number(deal.cost)));
-                ui->tableWidget->setItem(
-                    current_row, 3,
-                    new QTableWidgetItem(customer.name.c_str()));
-                ui->tableWidget->setItem(
-                    current_row, 4, new QTableWidgetItem(deal.status.c_str()));
-                ui->tableWidget->setItem(
-                    current_row, 5,
-                    new QTableWidgetItem(
-                        (std::to_string(deal.created.day()) + "." +
-                         std::to_string(deal.created.month()) + "." +
-                         std::to_string(deal.created.year()))
-                            .c_str()));
-                ui->tableWidget->setItem(
-                    current_row, 6, new QTableWidgetItem(seller.name.c_str()));
-                ui->tableWidget->setItem(
-                    current_row, 7,
-                    new QTableWidgetItem(QString::number(deal.rate)));
-                ui->tableWidget->setItem(
-                    current_row, 8,
-                    new QTableWidgetItem(
-                        (std::to_string(deal.last_update.day()) + "." +
-                         std::to_string(deal.last_update.month()) + "." +
-                         std::to_string(deal.last_update.year()))
-                            .c_str()));
-                current_row++;
-            }
-        } catch (const std::exception& e) {
-            QMessageBox::critical(this, "Ошибка", e.what());
-            return;
-        }
-    }
-    if (curInterface == "Provider") {
-        try {
-            soci::session session(*parent->database.get_pool().lock());
-            std::vector<provider> providers =
-                getProvider(session, pageNumber - 1, 12);
-            ui->tableWidget->setRowCount(providers.size());
-
-            size_t current_row = 0;
-            for (const auto& current : providers) {
-                ui->tableWidget->setItem(
-                    current_row, 0,
-                    new QTableWidgetItem(QString::number(current.id)));
-                ui->tableWidget->setItem(
-                    current_row, 1, new QTableWidgetItem(current.name.c_str()));
-                current_row++;
-            }
-        } catch (const std::exception& e) {
-            QMessageBox::critical(this, "Ошибка", e.what());
-            return;
-        }
-    }
-    if (curInterface == "Stock") {
-        try {
-            soci::session session(*parent->database.get_pool().lock());
-            std::vector<boost::tuple<stock, laptop, provider>> result =
-                getStock(session, pageNumber - 1, 12);
-            ui->tableWidget->setRowCount(result.size());
-            size_t current_row = 0;
-            for (const auto& [stock, laptop, provider] : result) {
-                ui->tableWidget->setItem(
-                    current_row, 0,
-                    new QTableWidgetItem(QString::number(stock.id)));
-                ui->tableWidget->setItem(
-                    current_row, 1, new QTableWidgetItem(laptop.name.c_str()));
-                ui->tableWidget->setItem(
-                    current_row, 2,
-                    new QTableWidgetItem(QString::number(stock.price)));
-                ui->tableWidget->setItem(
-                    current_row, 3,
-                    new QTableWidgetItem(QString::number(stock.count)));
-                ui->tableWidget->setItem(
-                    current_row, 4,
-                    new QTableWidgetItem(QString::number(stock.available)));
-                ui->tableWidget->setItem(
-                    current_row, 5,
-                    new QTableWidgetItem(provider.name.c_str()));
-                current_row++;
-            }
-        } catch (const std::exception& e) {
-            QMessageBox::critical(this, "Ошибка", e.what());
-            return;
-        }
-    }
-    if (curInterface == "Ads") {
-        try {
-            soci::session session(*parent->database.get_pool().lock());
-            std::vector<advertisement> result =
-                getAdvertisement(session, pageNumber - 1, 12);
-            ui->tableWidget->setRowCount(result.size());
-
-            size_t current_row = 0;
-            for (const auto& ad : result) {
-                ui->tableWidget->setItem(
-                    current_row, 0,
-                    new QTableWidgetItem(QString::number(ad.id)));
-                ui->tableWidget->setItem(
-                    current_row, 1, new QTableWidgetItem(ad.source.c_str()));
-                ui->tableWidget->setItem(
-                    current_row, 2,
-                    new QTableWidgetItem(QString::number(ad.budget)));
-                ui->tableWidget->setItem(
-                    current_row, 3, new QTableWidgetItem(ad.comments.c_str()));
-                current_row++;
-            }
-        } catch (const std::exception& e) {
-            QMessageBox::critical(this, "Ошибка", e.what());
-            return;
-        }
-    }
-    if (curInterface == "Employee") {
-        try {
-            soci::session session(*parent->database.get_pool().lock());
-            std::vector<employee> result =
-                getEmployee(session, pageNumber - 1, 12);
-
-            size_t current_row = 0;
-            for (const auto& employee : result) {
-                ui->tableWidget->setItem(
-                    current_row, 0,
-                    new QTableWidgetItem(QString::number(employee.id)));
-                ui->tableWidget->setItem(
-                    current_row, 1,
-                    new QTableWidgetItem(employee.surname.c_str()));
-                ui->tableWidget->setItem(
-                    current_row, 2,
-                    new QTableWidgetItem(employee.name.c_str()));
-                ui->tableWidget->setItem(
-                    current_row, 3,
-                    new QTableWidgetItem(employee.patronymic.c_str()));
-                ui->tableWidget->setItem(
-                    current_row, 4,
-                    new QTableWidgetItem(employee.login.c_str()));
-                current_row++;
-            }
-        } catch (const std::exception& e) {
-            QMessageBox::critical(this, "Ошибка", e.what());
-            return;
-        }
-    }
-    if (curInterface == "Client") {
-        try {
-            soci::session session(*parent->database.get_pool().lock());
-            std::vector<client> clients =
-                getClient(session, pageNumber - 1, 12);
-            ui->tableWidget->setRowCount(clients.size());
-
-            size_t current_row = 0;
-            for (const auto& client : clients) {
-                ui->tableWidget->setItem(
-                    current_row, 0,
-                    new QTableWidgetItem(QString::number(client.id)));
-                ui->tableWidget->setItem(
-                    current_row, 1,
-                    new QTableWidgetItem(QString::fromStdString(client.name)));
-                ui->tableWidget->setItem(
-                    current_row, 2,
-                    new QTableWidgetItem(
-                        QString::fromStdString(client.surname)));
-                ui->tableWidget->setItem(
-                    current_row, 3,
-                    new QTableWidgetItem(
-                        QString::fromStdString(client.patronymic)));
-                ui->tableWidget->setItem(
-                    current_row, 4,
-                    new QTableWidgetItem(QString::fromStdString(client.city)));
-                ui->tableWidget->setItem(
-                    current_row, 5,
-                    new QTableWidgetItem(QString::fromStdString(client.sex)));
-                ui->tableWidget->setItem(
-                    current_row, 6,
-                    new QTableWidgetItem(QString::fromStdString(client.email)));
-                ui->tableWidget->setItem(
-                    current_row, 7,
-                    new QTableWidgetItem(QString::fromStdString(client.phone)));
-                current_row++;
-            }
-        } catch (const std::exception& e) {
-            QMessageBox::critical(this, "Ошибка", e.what());
-            return;
-        }
-    }
 }
 
 void interfaceWidget::on_pushButton_clicked() {

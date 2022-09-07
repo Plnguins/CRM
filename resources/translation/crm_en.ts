@@ -4,68 +4,68 @@
 <context>
     <name>db_settingsUi</name>
     <message>
-        <location filename="../../CRM/db_settings/db_settings.ui" line="31"/>
+        <location filename="../../CRM/db_settings/db_settings.ui" line="46"/>
         <source>Pinguins.Inc</source>
         <translation>Pinguins.Inc</translation>
     </message>
     <message>
-        <location filename="../../CRM/db_settings/db_settings.ui" line="14"/>
-        <location filename="../../CRM/db_settings/db_settings.ui" line="49"/>
+        <location filename="../../CRM/db_settings/db_settings.ui" line="29"/>
+        <location filename="../../CRM/db_settings/db_settings.ui" line="64"/>
         <source>Параметры СУБД</source>
         <translation>Database settings</translation>
     </message>
     <message>
-        <location filename="../../CRM/db_settings/db_settings.ui" line="70"/>
+        <location filename="../../CRM/db_settings/db_settings.ui" line="85"/>
         <source>IP адрес:</source>
         <translation>IP address:</translation>
     </message>
     <message>
-        <location filename="../../CRM/db_settings/db_settings.ui" line="110"/>
+        <location filename="../../CRM/db_settings/db_settings.ui" line="125"/>
         <source>Пароль</source>
         <translation>Password</translation>
     </message>
     <message>
-        <location filename="../../CRM/db_settings/db_settings.ui" line="149"/>
+        <location filename="../../CRM/db_settings/db_settings.ui" line="164"/>
         <source>IP</source>
         <translation>IP</translation>
     </message>
     <message>
-        <location filename="../../CRM/db_settings/db_settings.ui" line="183"/>
+        <location filename="../../CRM/db_settings/db_settings.ui" line="198"/>
         <source>Применить</source>
         <translation>Apply</translation>
     </message>
     <message>
-        <location filename="../../CRM/db_settings/db_settings.ui" line="212"/>
+        <location filename="../../CRM/db_settings/db_settings.ui" line="227"/>
         <source>Порт</source>
         <translation>Port</translation>
     </message>
     <message>
-        <location filename="../../CRM/db_settings/db_settings.ui" line="230"/>
+        <location filename="../../CRM/db_settings/db_settings.ui" line="245"/>
         <source>Порт:</source>
         <translation>Port:</translation>
     </message>
     <message>
-        <location filename="../../CRM/db_settings/db_settings.ui" line="253"/>
+        <location filename="../../CRM/db_settings/db_settings.ui" line="268"/>
         <source>Логин</source>
         <translation>Login</translation>
     </message>
     <message>
-        <location filename="../../CRM/db_settings/db_settings.ui" line="271"/>
+        <location filename="../../CRM/db_settings/db_settings.ui" line="286"/>
         <source>Пароль СУБД:</source>
         <translation>Database password:</translation>
     </message>
     <message>
-        <location filename="../../CRM/db_settings/db_settings.ui" line="289"/>
+        <location filename="../../CRM/db_settings/db_settings.ui" line="304"/>
         <source>Логин СУБД:</source>
         <translation>Database login:</translation>
     </message>
     <message>
-        <location filename="../../CRM/db_settings/db_settings.ui" line="307"/>
+        <location filename="../../CRM/db_settings/db_settings.ui" line="322"/>
         <source>Название БД:</source>
         <translation>Database name:</translation>
     </message>
     <message>
-        <location filename="../../CRM/db_settings/db_settings.ui" line="330"/>
+        <location filename="../../CRM/db_settings/db_settings.ui" line="345"/>
         <source>Название БД</source>
         <translation>Database name</translation>
     </message>
@@ -156,172 +156,172 @@
         <translation>Welcome, </translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="78"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="235"/>
         <source>Поставщики</source>
         <translation>Providers</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="81"/>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="145"/>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="233"/>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="308"/>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="375"/>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="444"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="238"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="283"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="336"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="376"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="409"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="443"/>
         <source>ID</source>
         <translation>ID</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="81"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="238"/>
         <source>Название</source>
         <translation>Name</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="100"/>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="191"/>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="265"/>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="332"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="257"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="329"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="368"/>
         <location filename="../../CRM/interface/interfaceWidget.cpp" line="401"/>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="485"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="435"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="484"/>
         <source>Ошибка</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="141"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="279"/>
         <source>Сделки</source>
         <translation>Deals</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="145"/>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="233"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="283"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="336"/>
         <source>Ноутбук</source>
         <translation>Laptop</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="145"/>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="234"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="283"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="337"/>
         <source>Цена</source>
         <translation>Cost</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="146"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="284"/>
         <source>Покупатель</source>
         <translation>Customer</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="146"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="284"/>
         <source>Статус</source>
         <translation>Status</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="146"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="284"/>
         <source>Дата создания</source>
         <translation>Creation date</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="147"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="285"/>
         <source>Продавец</source>
         <translation>Seller</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="147"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="285"/>
         <source>Оценка</source>
         <translation>Rate</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="147"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="285"/>
         <source>Последнее обновление</source>
         <translation>Last update</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="232"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="335"/>
         <source>Склад</source>
         <translation>Stock</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="234"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="337"/>
         <source>Количество</source>
         <translation>Count</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="235"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="338"/>
         <source>Доступно</source>
         <translation>Available</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="235"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="338"/>
         <source>Поставщик</source>
         <translation>Provider</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="306"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="374"/>
         <source>Реклама</source>
         <translation>Advertisment</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="308"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="376"/>
         <source>Бюджет</source>
         <translation>Budget</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="308"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="376"/>
         <source>Платформа</source>
         <translation>Platform</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="309"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="377"/>
         <source>Комментарии</source>
         <translation>Comments</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="373"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="407"/>
         <source>Работники</source>
         <translation>Employees</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="375"/>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="444"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="409"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="443"/>
         <source>Фамилия</source>
         <translation>Surname</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="375"/>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="444"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="409"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="443"/>
         <source>Имя</source>
         <translation>Name</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="376"/>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="445"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="410"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="444"/>
         <source>Отчество</source>
         <translation>Patronymic</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="376"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="410"/>
         <source>Логин</source>
         <translation>Login</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="442"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="441"/>
         <source>Клиенты</source>
         <translation>Clients</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="445"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="444"/>
         <source>Город</source>
         <translation>City</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="445"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="444"/>
         <source>Пол</source>
         <translation>Sex</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="446"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="445"/>
         <source>email</source>
         <translation>email</translation>
     </message>
     <message>
-        <location filename="../../CRM/interface/interfaceWidget.cpp" line="446"/>
+        <location filename="../../CRM/interface/interfaceWidget.cpp" line="445"/>
         <source>Телефон</source>
         <translation>Phone</translation>
     </message>

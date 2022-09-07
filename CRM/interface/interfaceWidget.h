@@ -41,7 +41,7 @@ class interfaceWidget : public QWidget {
     void on_Logout_clicked() { parent->setLoginInterface(); }
 
     void changeButtonsText();
-    void goToPage(int pageNumber);
+    void goToPage(int pageNumber) { (this->*updateTable)(pageNumber, 10); }
 
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
@@ -58,5 +58,15 @@ class interfaceWidget : public QWidget {
     int numberOfPages = 20;
     // pages starts from 1
     std::vector<short> pages = {1, 2, 3, 4, 5};
-    std::string curInterface;
+
+    void updateProvider(const int& = 0, const int& = 10);
+    void updateEmployee(const int& = 0, const int& = 10);
+    void updateStock(const int& = 0, const int& = 10);
+    void updateAds(const int& = 0, const int& = 10);
+    void updateDeal(const int& = 0, const int& = 10);
+    void updateClient(const int& = 0, const int& = 10);
+
+    void (interfaceWidget::*updateTable)(const int&, const int&) = nullptr;
+
+    void hideGreeting();
 };
