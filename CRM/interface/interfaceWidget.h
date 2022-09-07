@@ -32,12 +32,12 @@ class interfaceWidget : public QWidget {
     ~interfaceWidget() { delete ui; }
 
    private slots:
-    virtual void on_Provider_clicked();
-    virtual void on_Employee_clicked();
-    virtual void on_Stock_clicked();
-    virtual void on_Ads_clicked();
-    virtual void on_Deal_clicked();
-    virtual void on_Client_clicked();
+    void on_Provider_clicked();
+    void on_Employee_clicked();
+    void on_Stock_clicked();
+    void on_Ads_clicked();
+    void on_Deal_clicked();
+    void on_Client_clicked();
     void on_Logout_clicked() { parent->setLoginInterface(); }
 
     void changeButtonsText();
