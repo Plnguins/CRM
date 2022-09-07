@@ -24,6 +24,7 @@ class marketerWidget : public interfaceWidget {
     explicit marketerWidget(QMainWindow* parent = nullptr,
                             std::string name = "", std::string surname = "")
         : interfaceWidget(parent, name, surname) {
+        // Скрываем ненужные элементы интерфейса
         ui->Client->hide();
         ui->Employee->hide();
         ui->Provider->hide();

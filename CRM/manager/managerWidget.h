@@ -28,6 +28,7 @@ class managerWidget : public interfaceWidget {
     explicit managerWidget(QMainWindow* parent = nullptr, std::string name = "",
                            std::string surname = "")
         : interfaceWidget(parent, name, surname) {
+        // Скрываем ненужные элементы интерфейса
         ui->Client->hide();
         ui->Ads->hide();
         ui->Employee->hide();

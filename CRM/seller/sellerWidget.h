@@ -24,6 +24,7 @@ class sellerWidget : public interfaceWidget {
     explicit sellerWidget(QMainWindow* parent = nullptr, std::string name = "",
                           std::string surname = "")
         : interfaceWidget(parent, name, surname) {
+        // Скрываем ненужные элементы интерфейса
         ui->Ads->hide();
         ui->Employee->hide();
         ui->Provider->hide();
