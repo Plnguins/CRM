@@ -305,7 +305,7 @@ void interfaceWidget::on_Ads_clicked() {
 
     ui->Title->setText(tr("Реклама"));
 
-    const QStringList Labels = {tr("ID"), tr("Место"), tr("Бюджет"),
+    const QStringList Labels = {tr("ID"), tr("Платформа"), tr("Бюджет"),
                                 tr("Комментарии")};
     ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);

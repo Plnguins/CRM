@@ -21,12 +21,12 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>386</height>
+    <width>332</width>
+    <height>313</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Параметры СУБД</string>
   </property>
   <widget class="QLabel" name="Company">
    <property name="geometry">
@@ -61,7 +61,7 @@ font: bold;
 color:  rgb(56, 84, 102);</string>
    </property>
    <property name="text">
-    <string>Data Base Settings</string>
+    <string>Параметры СУБД</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -82,7 +82,7 @@ font: bold;
 color:  rgb(56, 84, 102);</string>
    </property>
    <property name="text">
-    <string>Data Base IP:</string>
+    <string>IP адрес:</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_6">
@@ -119,10 +119,10 @@ border:3px solid #DDEBFF;
 border-radius: 10px;</string>
    </property>
    <property name="text">
-    <string>root</string>
+    <string/>
    </property>
    <property name="placeholderText">
-    <string>Login</string>
+    <string>Пароль</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
@@ -158,10 +158,10 @@ border:3px solid #DDEBFF;
 border-radius: 10px;</string>
    </property>
    <property name="text">
-    <string>LocalHost</string>
+    <string/>
    </property>
    <property name="placeholderText">
-    <string>Login</string>
+    <string>IP</string>
    </property>
   </widget>
   <widget class="QPushButton" name="ApplyButton">
@@ -195,7 +195,7 @@ QPushButton#ApplyButton:hover{
 </string>
    </property>
    <property name="text">
-    <string>Apply</string>
+    <string>Применить</string>
    </property>
    <property name="autoDefault">
     <bool>true</bool>
@@ -221,10 +221,10 @@ border:3px solid #DDEBFF;
 border-radius: 10px;</string>
    </property>
    <property name="text">
-    <string>5432</string>
+    <string/>
    </property>
    <property name="placeholderText">
-    <string>Login</string>
+    <string>Порт</string>
    </property>
   </widget>
   <widget class="QLabel" name="DataBasePort">
@@ -242,7 +242,7 @@ font: bold;
 color:  rgb(56, 84, 102);</string>
    </property>
    <property name="text">
-    <string>Data Base Port:</string>
+    <string>Порт:</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="DataBaseLoginEnter">
@@ -262,10 +262,10 @@ border:3px solid #DDEBFF;
 border-radius: 10px;</string>
    </property>
    <property name="text">
-    <string>practice</string>
+    <string/>
    </property>
    <property name="placeholderText">
-    <string>Login</string>
+    <string>Логин</string>
    </property>
   </widget>
   <widget class="QLabel" name="DataBasePassword">
@@ -283,7 +283,7 @@ font: bold;
 color:  rgb(56, 84, 102);</string>
    </property>
    <property name="text">
-    <string>Data Base Password:</string>
+    <string>Пароль СУБД:</string>
    </property>
   </widget>
   <widget class="QLabel" name="DataBaseLogin">
@@ -301,7 +301,7 @@ font: bold;
 color:  rgb(56, 84, 102);</string>
    </property>
    <property name="text">
-    <string>Data Base Login:</string>
+    <string>Логин СУБД:</string>
    </property>
   </widget>
   <widget class="QLabel" name="DataBaseName">
@@ -319,7 +319,7 @@ font: bold;
 color:  rgb(56, 84, 102);</string>
    </property>
    <property name="text">
-    <string>Data Base Name:</string>
+    <string>Название БД:</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="DataBaseNameEnter">
@@ -339,10 +339,10 @@ border:3px solid #DDEBFF;
 border-radius: 10px;</string>
    </property>
    <property name="text">
-    <string>Practice</string>
+    <string/>
    </property>
    <property name="placeholderText">
-    <string>Login</string>
+    <string>Название БД</string>
    </property>
   </widget>
   <zorder>label_4</zorder>
