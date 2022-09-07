@@ -27,7 +27,7 @@ class db_settings : public QWidget {
 
    public:
     explicit db_settings(QMainWindow* parent = nullptr);
-    ~db_settings();
+    ~db_settings() { delete ui; }
 
    private slots:
     void on_ApplyButton_clicked();

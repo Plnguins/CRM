@@ -30,8 +30,6 @@ db_settings::db_settings(QMainWindow* parent)
     ui->DataBaseNameEnter->setText(this->parent->getDataBaseName().c_str());
 }
 
-db_settings::~db_settings() { delete ui; }
-
 void db_settings::on_ApplyButton_clicked() {
     std::string database_ip = ui->DataBaseIPEnter->text().toStdString();
     unsigned short int database_port = ui->DataBasePortEnter->text().toUShort();
