@@ -266,8 +266,9 @@ background-color: rgb(255, 255, 255);</string>
     <string/>
    </property>
    <property name="icon">
-    <iconset>
-     <normaloff>../../resources/images/settings.png</normaloff>../../resources/images/settings.png</iconset>
+    <iconset resource="../../resources/resources.qrc">
+     <normaloff>:/images/settings.png</normaloff>
+     <activeon>:/images/settings.png</activeon>:/images/settings.png</iconset>
    </property>
    <property name="iconSize">
     <size>
@@ -297,6 +298,8 @@ background-color: rgb(255, 255, 255);</string>
   <tabstop>ShowPassword</tabstop>
   <tabstop>LoginButton</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../../resources/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -40,8 +40,6 @@ login::login(QMainWindow* parent)
         QMessageBox::critical(this, tr("Ошибка"),
                               tr("Невозможно подключиться к БД"));
     }
-
-    ui->Settings->setIcon(QIcon(":/images/settings.png"));
 }
 
 void login::on_ShowPassword_clicked(bool checked) {
