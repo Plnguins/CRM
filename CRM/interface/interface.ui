@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Leader UI code for CRM application
+<!-- Main UI code for CRM application
 Copyright(C) 2022 Plnguins
 
 This program is free software : you can redistribute it and / or modify
@@ -15,8 +15,11 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
 <ui version="4.0">
- <class>leaderUi</class>
- <widget class="QWidget" name="leaderUi">
+ <class>interfaceUi</class>
+ <widget class="QWidget" name="interfaceUi">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -125,12 +128,15 @@ border-radius: 20px;</string>
    </property>
   </widget>
   <widget class="QTableWidget" name="tableWidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>170</x>
      <y>50</y>
      <width>491</width>
-     <height>431</height>
+     <height>391</height>
     </rect>
    </property>
    <property name="visible">
@@ -141,11 +147,11 @@ border-radius: 20px;</string>
 	background-color:transparent;
 	color: rgb(56, 84, 102);
 	font: 14px &quot;Comfortaa&quot;;
-	border-top-left-radius: 20px;
-	border-bottom-right-radius:5px;
-	border-top-right-radius: 5px;
-	border-bottom-left-radius: 20px;
 	border: 5px solid #BBD6FF ;
+	border-bottom-left-radius:20px;
+	border-bottom-right-radius:20px;
+	border-top-left-radius:20px;
+	border-top-right-radius:5px;
 }
 
 
@@ -155,6 +161,8 @@ border-radius: 20px;</string>
 QHeaderView{
 	background-color:transparent;
 	border: 10px black solid;
+	border-top-left-radius:20px;
+	border-top-right-radius:5px;
 }
 
 QTableView QTableCornerButton::section {
@@ -174,7 +182,7 @@ QTableWidget::item:selection {
      <x>170</x>
      <y>50</y>
      <width>491</width>
-     <height>431</height>
+     <height>391</height>
     </rect>
    </property>
    <property name="visible">
@@ -447,7 +455,7 @@ border-bottom-left-radius: 5px;
 	font: bold;
 	border: none;
 	background-color: rgb(56, 84, 102);
-	border-radius:20px;
+	border-radius:10px;
  }
 
 QPushButton#Ads {
@@ -456,7 +464,7 @@ QPushButton#Ads {
 	font: bold;
 	border: none;
 	background-color: rgb(56, 84, 102);
-	border-radius:20px;
+	border-radius:10px;
  }
 
 QPushButton#Ads:hover {
@@ -465,7 +473,7 @@ QPushButton#Ads:hover {
 	color: rgb(222, 222, 222);
 	font: bold;
 	border: none;
-	border-radius:20px;
+	border-radius:10px;
  }
 
 
@@ -475,7 +483,7 @@ QPushButton#Ads:pressed {
 	color: rgb(222, 222, 222);
 	font: bold;
 	border: none;
-	border-radius:20px;
+	border-radius:10px;
  }</string>
       </property>
       <property name="text">
@@ -508,7 +516,7 @@ QPushButton#Provider {
 	font: bold;
 	border: none;
 	background-color: rgb(56, 84, 102);
-	border-radius:20px;
+	border-radius:10px;
  }
 
 
@@ -519,7 +527,7 @@ QPushButton#Provider:hover:!pressed {
 	color: rgb(222, 222, 222);
 	font: bold;
 	border: none;
-	border-radius:20px;
+	border-radius:10px;
  }
 
 QPushButton#Provider:pressed {
@@ -528,7 +536,7 @@ QPushButton#Provider:pressed {
 	color: rgb(222, 222, 222);
 	font: bold;
 	border: none;
-	border-radius:20px;
+	border-radius:10px;
  }
 
 QPushButton#Provider:checked {
@@ -537,7 +545,7 @@ QPushButton#Provider:checked {
 	color: rgb(222, 222, 222);
 	font: bold;
 	border: none;
-	border-radius:20px;
+	border-radius:10px;
  }</string>
       </property>
       <property name="text">
@@ -568,7 +576,7 @@ QPushButton#Provider:checked {
 	font: bold;
 	border: none;
 	background-color: rgb(56, 84, 102);
-	border-radius:20px;
+	border-radius:10px;
  }
 
 QPushButton#Stock {
@@ -577,7 +585,7 @@ QPushButton#Stock {
 	font: bold;
 	border: none;
 	background-color: rgb(56, 84, 102);
-	border-radius:20px;
+	border-radius:10px;
  }
 
 QPushButton#Stock:hover {
@@ -586,7 +594,7 @@ QPushButton#Stock:hover {
 	color: rgb(222, 222, 222);
 	font: bold;
 	border: none;
-	border-radius:20px;
+	border-radius:10px;
  }
 
 
@@ -596,7 +604,7 @@ QPushButton#Stock:pressed {
 	color: rgb(222, 222, 222);
 	font: bold;
 	border: none;
-	border-radius:20px;
+	border-radius:10px;
  }</string>
       </property>
       <property name="text">
@@ -627,7 +635,7 @@ QPushButton#Stock:pressed {
 	font: bold;
 	border: none;
 	background-color: rgb(56, 84, 102);
-	border-radius:20px;
+	border-radius:10px;
  }
 
 QPushButton#Deal {
@@ -636,7 +644,7 @@ QPushButton#Deal {
 	font: bold;
 	border: none;
 	background-color: rgb(56, 84, 102);
-	border-radius:20px;
+	border-radius:10px;
  }
 
 QPushButton#Deal:hover {
@@ -645,7 +653,7 @@ QPushButton#Deal:hover {
 	color: rgb(222, 222, 222);
 	font: bold;
 	border: none;
-	border-radius:20px;
+	border-radius:10px;
  }
 
 
@@ -686,7 +694,7 @@ QPushButton#Deal:pressed {
 	font: bold;
 	border: none;
 	background-color: rgb(56, 84, 102);
-	border-radius:20px;
+	border-radius:10px;
  }
 
 QPushButton#Employee {
@@ -695,7 +703,7 @@ QPushButton#Employee {
 	font: bold;
 	border: none;
 	background-color: rgb(56, 84, 102);
-	border-radius:20px;
+	border-radius:10px;
  }
 
 QPushButton#Employee:hover {
@@ -704,7 +712,7 @@ QPushButton#Employee:hover {
 	color: rgb(222, 222, 222);
 	font: bold;
 	border: none;
-	border-radius:20px;
+	border-radius:10px;
  }
 
 
@@ -745,7 +753,7 @@ QPushButton#Employee:pressed {
 	font: bold;
 	border: none;
 	background-color: rgb(56, 84, 102);
-	border-radius:20px;
+	border-radius:10px;
  }
 
 QPushButton#Client:hover:!pressed {
@@ -754,7 +762,7 @@ QPushButton#Client:hover:!pressed {
 	color: rgb(222, 222, 222);
 	font: bold;
 	border: none;
-	border-radius:20px;
+	border-radius:10px;
  }
 
 QPushButton#pushButton:pressed {
@@ -763,7 +771,7 @@ QPushButton#pushButton:pressed {
 	color: rgb(222, 222, 222);
 	font: bold;
 	border: none;
-	border-radius:20px;
+	border-radius:10px;
  }
 
 QPushButton#Client:checked {
@@ -772,7 +780,7 @@ QPushButton#Client:checked {
 	color: rgb(222, 222, 222);
 	font: bold;
 	border: none;
-	border-radius:20px;
+	border-radius:10px;
  }</string>
       </property>
       <property name="text">
@@ -816,7 +824,7 @@ QPushButton#Client:checked {
 	font: bold;
 	border: none;
 	background-color: rgb(56, 84, 102);
-	border-radius:20px;
+	border-radius:10px;
  }
 
 QPushButton#Logout {
@@ -825,7 +833,7 @@ QPushButton#Logout {
 	font: bold;
 	border: none;
 	background-color: rgb(56, 84, 102);
-	border-radius:20px;
+	border-radius:10px;
  }
 
 QPushButton#Logout:hover {
@@ -834,7 +842,7 @@ QPushButton#Logout:hover {
 	color: rgb(222, 222, 222);
 	font: bold;
 	border: none;
-	border-radius:20px;
+	border-radius:10px;
  }
 
 
@@ -844,7 +852,7 @@ QPushButton#Logout:pressed {
 	color: rgb(222, 222, 222);
 	font: bold;
 	border: none;
-	border-radius:20px;
+	border-radius:10px;
  }</string>
       </property>
       <property name="text">
@@ -880,18 +888,355 @@ background-color: rgb(56, 84, 102);</string>
     </item>
    </layout>
   </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>440</y>
+     <width>41</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#pushButton:!pressed {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border-left: 2px solid #BBD6FF ;
+	border-right: 2px solid #BBD6FF ;
+	border-top: 5px solid #BBD6FF ;
+	border-bottom: 2px solid #BBD6FF;
+	border-radius:5px;
+ }
+
+QPushButton#pushButton {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border-left: 2px solid #BBD6FF ;
+	border-right: 2px solid #BBD6FF ;
+	border-top: 5px solid #BBD6FF ;
+	border-bottom: 2px solid #BBD6FF;
+	border-radius:5px;
+ }
+
+QPushButton#pushButton:hover {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(165, 199, 250);
+	border-left: 2px solid #BBD6FF ;
+	border-right: 2px solid #BBD6FF ;
+	border-top: 5px solid #BBD6FF ;
+	border-bottom: 2px solid #BBD6FF;
+	border-radius:5px;
+ }
+
+
+QPushButton#pushButton:pressed {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(165, 199, 250);
+	border-left: 2px solid #BBD6FF ;
+	border-right: 2px solid #BBD6FF ;
+	border-top: 5px solid #BBD6FF ;
+	border-bottom: 2px solid #BBD6FF;
+	border-radius:5px;
+ }</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>440</y>
+     <width>41</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#pushButton_2:!pressed {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border-left: 2px solid #BBD6FF ;
+	border-right: 2px solid #BBD6FF ;
+	border-top: 5px solid #BBD6FF ;
+	border-bottom: 2px solid #BBD6FF;
+	border-radius:5px;
+ }
+
+QPushButton#pushButton_2 {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border-left: 2px solid #BBD6FF ;
+	border-right: 2px solid #BBD6FF ;
+	border-top: 5px solid #BBD6FF ;
+	border-bottom: 2px solid #BBD6FF;
+	border-radius:5px;
+ }
+
+QPushButton#pushButton_2:hover {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(165, 199, 250);
+	border-left: 2px solid #BBD6FF ;
+	border-right: 2px solid #BBD6FF ;
+	border-top: 5px solid #BBD6FF ;
+	border-bottom: 2px solid #BBD6FF;
+	border-radius:5px;
+ }
+
+
+QPushButton#pushButton_2:pressed {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(165, 199, 250);
+	border-left: 2px solid #BBD6FF ;
+	border-right: 2px solid #BBD6FF ;
+	border-top: 5px solid #BBD6FF ;
+	border-bottom: 2px solid #BBD6FF;
+	border-radius:5px;
+ }</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>440</y>
+     <width>41</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#pushButton_3:!pressed {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border-left: 2px solid #BBD6FF ;
+	border-right: 2px solid #BBD6FF ;
+	border-top: 5px solid #BBD6FF ;
+	border-bottom: 2px solid #BBD6FF;
+	border-radius:5px;
+ }
+
+QPushButton#pushButton_3 {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border-left: 2px solid #BBD6FF ;
+	border-right: 2px solid #BBD6FF ;
+	border-top: 5px solid #BBD6FF ;
+	border-bottom: 2px solid #BBD6FF;
+	border-radius:5px;
+ }
+
+QPushButton#pushButton_3:hover {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(165, 199, 250);
+	border-left: 2px solid #BBD6FF ;
+	border-right: 2px solid #BBD6FF ;
+	border-top: 5px solid #BBD6FF ;
+	border-bottom: 2px solid #BBD6FF;
+	border-radius:5px;
+ }
+
+
+QPushButton#pushButton_3:pressed {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(165, 199, 250);
+	border-left: 2px solid #BBD6FF ;
+	border-right: 2px solid #BBD6FF ;
+	border-top: 5px solid #BBD6FF ;
+	border-bottom: 2px solid #BBD6FF;
+	border-radius:5px;
+ }</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_4">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>440</y>
+     <width>41</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#pushButton_4:!pressed {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border-left: 2px solid #BBD6FF ;
+	border-right: 2px solid #BBD6FF ;
+	border-top: 5px solid #BBD6FF ;
+	border-bottom: 2px solid #BBD6FF;
+	border-radius:5px;
+ }
+
+QPushButton#pushButton_4 {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border-left: 2px solid #BBD6FF ;
+	border-right: 2px solid #BBD6FF ;
+	border-top: 5px solid #BBD6FF ;
+	border-bottom: 2px solid #BBD6FF;
+	border-radius:5px;
+ }
+
+QPushButton#pushButton_4:hover {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(165, 199, 250);
+	border-left: 2px solid #BBD6FF ;
+	border-right: 2px solid #BBD6FF ;
+	border-top: 5px solid #BBD6FF ;
+	border-bottom: 2px solid #BBD6FF;
+	border-radius:5px;
+ }
+
+
+QPushButton#pushButton_4:pressed {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(165, 199, 250);
+	border-left: 2px solid #BBD6FF ;
+	border-right: 2px solid #BBD6FF ;
+	border-top: 5px solid #BBD6FF ;
+	border-bottom: 2px solid #BBD6FF;
+	border-radius:5px;
+ }</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_5">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>440</y>
+     <width>41</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#pushButton_5:!pressed {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border-left: 2px solid #BBD6FF ;
+	border-right: 2px solid #BBD6FF ;
+	border-top: 5px solid #BBD6FF ;
+	border-bottom: 2px solid #BBD6FF;
+	border-radius:5px;
+ }
+
+QPushButton#pushButton_5 {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border-left: 2px solid #BBD6FF ;
+	border-right: 2px solid #BBD6FF ;
+	border-top: 5px solid #BBD6FF ;
+	border-bottom: 2px solid #BBD6FF;
+	border-radius:5px;
+ }
+
+QPushButton#pushButton_5:hover {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(165, 199, 250);
+	border-left: 2px solid #BBD6FF ;
+	border-right: 2px solid #BBD6FF ;
+	border-top: 5px solid #BBD6FF ;
+	border-bottom: 2px solid #BBD6FF;
+	border-radius:5px;
+ }
+
+
+QPushButton#pushButton_5:pressed {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(165, 199, 250);
+	border-left: 2px solid #BBD6FF ;
+	border-right: 2px solid #BBD6FF ;
+	border-top: 5px solid #BBD6FF ;
+	border-bottom: 2px solid #BBD6FF;
+	border-radius:5px;
+ }</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="BackGround">
+   <property name="geometry">
+    <rect>
+     <x>-92</x>
+     <y>-25</y>
+     <width>1081</width>
+     <height>781</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(221, 235, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>BackGround</zorder>
   <zorder>RoundedBackground</zorder>
   <zorder>Name</zorder>
   <zorder>Company</zorder>
   <zorder>Greeting</zorder>
   <zorder>Icon</zorder>
-  <zorder>RoundedBlue</zorder>
-  <zorder>tableWidget</zorder>
   <zorder>Edit</zorder>
   <zorder>Add</zorder>
   <zorder>Delete</zorder>
   <zorder>Title</zorder>
   <zorder>LeftButtons</zorder>
+  <zorder>pushButton</zorder>
+  <zorder>pushButton_2</zorder>
+  <zorder>pushButton_3</zorder>
+  <zorder>pushButton_4</zorder>
+  <zorder>pushButton_5</zorder>
+  <zorder>RoundedBlue</zorder>
+  <zorder>tableWidget</zorder>
  </widget>
  <resources>
   <include location="../../resources/resources.qrc"/>

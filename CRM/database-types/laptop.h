@@ -77,6 +77,9 @@ struct type_conversion<laptop> {
     using base_type = values;
 
     static void from_base(values const& v, indicator ind, laptop& l) {
+        /*
+         * Конвертация из данных в структуру
+         */
         if (ind == i_null) {
             return;
         }
@@ -96,6 +99,9 @@ struct type_conversion<laptop> {
     }
 
     static void to_base(laptop const& l, values& v, indicator& ind) {
+        /*
+         * Конвертация из структуры в данные
+         */
         try {
             v.set("id", l.id);
             v.set("name", l.name);

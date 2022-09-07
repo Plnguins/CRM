@@ -36,6 +36,14 @@ class MainWindow : public QMainWindow {
     void setManagerInterface(std::string, std::string);
     void setMarketerInterface(std::string, std::string);
     void setSellerInterface(std::string, std::string);
+    void setSettingsInterface();
+
+    const std::string& getDataBaseLogin() { return database_login; }
+    const unsigned short int& getDataBasePort() { return database_port; }
+    const std::string& getDataBasePassword() { return database_password; }
+    const std::string& getDataBaseName() { return database_name; }
+    const std::string& getDataBaseIP() { return database_ip; }
+
     db_pool database;
     bool connectDatabase();
     void setDatabase(const std::string& host, const unsigned short int& port,
@@ -43,13 +51,15 @@ class MainWindow : public QMainWindow {
                      const std::string& database);
 
    private:
+    // Параметры подключения к СУБД
     std::string database_ip = "localhost";
     unsigned short int database_port = 5432;
     std::string database_login = "practice";
     std::string database_password = "root";
     std::string database_name = "Practice";
+
+    // Указатель на интерфейс
     Ui::MainWindowUi* ui;
-    QMessageBox msgBoxEmptyInput;
-    QMessageBox msgBoxIncorrectInput;
+
     std::string get_connection_string();
 };

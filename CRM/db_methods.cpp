@@ -13,6 +13,9 @@
 
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
+/*
+ * Реализация функций для работы с СУБД
+ */
 #include "db_methods.h"
 
 std::vector<boost::tuple<stock, laptop, provider>> getStock(soci::session& sql,
@@ -23,10 +26,11 @@ std::vector<boost::tuple<stock, laptop, provider>> getStock(soci::session& sql,
         "SELECT stock.*, laptop.*, provider.* FROM stock JOIN laptop "
         "ON laptop.id = stock.laptop JOIN provider ON "
         "provider.id = stock.source LIMIT " +
-        std::to_string(limit) + " OFFSET " + std::to_string(offset * limit);
-    soci::rowset<soci::row> rs = (sql.prepare << query);
-    for (auto it = rs.begin(); it != rs.end(); it++) {
-        const auto& row = *it;
+        std::to_string(limit) + " OFFSET " +
+        std::to_string(offset * limit);  // Формируем запрос к СУБД
+    soci::rowset<soci::row> rs = (sql.prepare << query);  // Подготавливаем его
+    for (auto it = rs.begin(); it != rs.end(); it++) {  // Выполняем построчно
+        const auto& row = *it;  // Текущая строка
         result.push_back(
             {stock(row.get<int>(0), row.get<int>(1), row.get<int>(2),
                    row.get<int>(3), row.get<int>(4), row.get<int>(5)),
@@ -35,23 +39,24 @@ std::vector<boost::tuple<stock, laptop, provider>> getStock(soci::session& sql,
                     row.get<std::string>(10), row.get<std::string>(11),
                     row.get<int>(12), row.get<int>(13),
                     row.get<std::string>(14)),
-             provider(row.get<int>(15), row.get<std::string>(16))});
+             provider(row.get<int>(15),
+                      row.get<std::string>(16))});  // Добавляем в результат
     }
-    return result;
+    return result;  // Возвращаем результат
 }
 
 std::vector<provider> getProvider(soci::session& sql, const int& offset,
                                   const int& limit) {
     std::vector<provider> result;
-    std::string query = "SELECT * FROM provider LIMIT " +
-                        std::to_string(limit) + " OFFSET " +
-                        std::to_string(offset * limit);
-    soci::rowset<provider> rs = (sql.prepare << query);
-    for (auto it = rs.begin(); it != rs.end(); it++) {
-        const auto& row = *it;
-        result.push_back(row);
+    std::string query =
+        "SELECT * FROM provider LIMIT " + std::to_string(limit) + " OFFSET " +
+        std::to_string(offset * limit);  // Формируем запрос к СУБД
+    soci::rowset<provider> rs = (sql.prepare << query);  // Подготавливаем его
+    for (auto it = rs.begin(); it != rs.end(); it++) {  // Выполняем построчно
+        const auto& row = *it;  // Текущая строка
+        result.push_back(row);  // Добавляем в результат
     }
-    return result;
+    return result;  // Возвращаем результат
 }
 
 std::vector<boost::tuple<deal, laptop, client, employee>> getDeal(
@@ -62,10 +67,11 @@ std::vector<boost::tuple<deal, laptop, client, employee>> getDeal(
         "deal JOIN laptop ON laptop.id = deal.laptop JOIN client ON "
         "client.id = deal.client JOIN employee ON employee.id = "
         "deal.seller LIMIT " +
-        std::to_string(limit) + " OFFSET " + std::to_string(offset * limit);
-    soci::rowset<soci::row> rs = (sql.prepare << query);
-    for (auto it = rs.begin(); it != rs.end(); it++) {
-        const auto& row = *it;
+        std::to_string(limit) + " OFFSET " +
+        std::to_string(offset * limit);  // Формируем запрос к СУБД
+    soci::rowset<soci::row> rs = (sql.prepare << query);  // Подготавливаем его
+    for (auto it = rs.begin(); it != rs.end(); it++) {  // Выполняем построчно
+        const auto& row = *it;  // Текущая строка
         result.push_back(
             {deal(row.get<int>(0), row.get<int>(1), row.get<int>(2),
                   row.get<int>(3), row.get<std::string>(4),
@@ -82,49 +88,52 @@ std::vector<boost::tuple<deal, laptop, client, employee>> getDeal(
                     row.get<std::string>(24), row.get<std::string>(25)),
              employee(row.get<int>(26), row.get<std::string>(27),
                       row.get<std::string>(28), row.get<std::string>(29),
-                      row.get<std::string>(30), row.get<std::string>(31))});
+                      row.get<std::string>(30),
+                      row.get<std::string>(31))});  // Добавляем в результат
     }
-    return result;
+    return result;  // Возвращаем результат
 }
 
 std::vector<employee> getEmployee(soci::session& sql, const int& offset,
                                   const int& limit) {
     std::vector<employee> result;
-    std::string query = "SELECT * FROM employee LIMIT " +
-                        std::to_string(limit) + " OFFSET " +
-                        std::to_string(offset * limit);
-    soci::rowset<employee> rs = (sql.prepare << query);
-    for (auto it = rs.begin(); it != rs.end(); it++) {
-        const auto& row = *it;
-        result.push_back(row);
+    std::string query =
+        "SELECT * FROM employee LIMIT " + std::to_string(limit) + " OFFSET " +
+        std::to_string(offset * limit);  // Формируем запрос к СУБД
+    soci::rowset<employee> rs = (sql.prepare << query);  // Подготавливаем его
+    for (auto it = rs.begin(); it != rs.end(); it++) {  // Выполняем построчно
+        const auto& row = *it;  // Текущая строка
+        result.push_back(row);  // Добавляем в результат
     }
-    return result;
+    return result;  // Возвращаем результат
 }
 
 std::vector<advertisement> getAdvertisement(soci::session& sql,
                                             const int& offset,
                                             const int& limit) {
     std::vector<advertisement> result;
-    std::string query = "SELECT * FROM advertisement LIMIT " +
-                        std::to_string(limit) + " OFFSET " +
-                        std::to_string(offset * limit);
-    soci::rowset<advertisement> rs = (sql.prepare << query);
-    for (auto it = rs.begin(); it != rs.end(); it++) {
-        const auto& row = *it;
-        result.push_back(row);
+    std::string query =
+        "SELECT * FROM advertisement LIMIT " + std::to_string(limit) +
+        " OFFSET " + std::to_string(offset * limit);  // Формируем запрос к СУБД
+    soci::rowset<advertisement> rs =
+        (sql.prepare << query);  // Подготавливаем его
+    for (auto it = rs.begin(); it != rs.end(); it++) {  // Выполняем построчно
+        const auto& row = *it;  // Текущая строка
+        result.push_back(row);  // Добавляем в результат
     }
-    return result;
+    return result;  // Возвращаем результат
 }
 
 std::vector<client> getClient(soci::session& sql, const int& offset,
                               const int& limit) {
     std::vector<client> result;
-    std::string query = "SELECT * FROM client LIMIT " + std::to_string(limit) +
-                        " OFFSET " + std::to_string(offset * limit);
-    soci::rowset<client> rs = (sql.prepare << query);
-    for (auto it = rs.begin(); it != rs.end(); it++) {
-        const auto& row = *it;
-        result.push_back(row);
+    std::string query =
+        "SELECT * FROM client LIMIT " + std::to_string(limit) + " OFFSET " +
+        std::to_string(offset * limit);  // Формируем запрос к СУБД
+    soci::rowset<client> rs = (sql.prepare << query);  // Подготавливаем его
+    for (auto it = rs.begin(); it != rs.end(); it++) {  // Выполняем построчно
+        const auto& row = *it;  // Текущая строка
+        result.push_back(row);  // Добавляем в результат
     }
-    return result;
+    return result;  // Возвращаем результат
 }

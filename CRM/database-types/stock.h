@@ -63,6 +63,9 @@ struct type_conversion<stock> {
     using base_type = values;
 
     static void from_base(values const& v, indicator ind, stock& d) {
+        /*
+         * Конвертация из данных в структуру
+         */
         if (ind == i_null) {
             return;
         }
@@ -79,6 +82,9 @@ struct type_conversion<stock> {
     }
 
     static void to_base(stock const& d, values& v, indicator& ind) {
+        /*
+         * Конвертация из структуры в данные
+         */
         try {
             v.set("id", d.id);
             v.set("laptop", d.laptop);

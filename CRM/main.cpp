@@ -21,7 +21,9 @@
 int main(int argc, char* argv[]) {
     QApplication a(argc, argv);
     QTranslator translator;
-    if (translator.load(QLocale::system(), u"crm"_qs, u"_"_qs, u":/i18n"_qs)) {
+    if (translator.load(QLocale::system(), u"crm"_qs, u"_"_qs,
+                        u":/i18n"_qs)) {  // Если удалось загрузить перевод -
+                                          // устанавливаем его
         a.installTranslator(&translator);
     }
     MainWindow w;

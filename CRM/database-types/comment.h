@@ -52,6 +52,9 @@ struct type_conversion<comment> {
     using base_type = values;
 
     static void from_base(values const& v, indicator ind, comment& c) {
+        /*
+         * Конвертация из данных в структуру
+         */
         if (ind == i_null) {
             return;
         }
@@ -67,6 +70,9 @@ struct type_conversion<comment> {
     }
 
     static void to_base(const comment& p, values& v, indicator& ind) {
+        /*
+         * Конвертация из структуры в данные
+         */
         try {
             v.set("id", p.id);
             v.set("deal", p.deal);

@@ -13,6 +13,9 @@
 
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
+/*
+ * Функции работы с СУБД
+ */
 #include "database-types/advertisement.h"
 #include "database-types/client.h"
 #include "database-types/deal.h"
@@ -22,18 +25,26 @@
 #include "database-types/stock.h"
 #include "db_pool.h"
 
-std::vector<boost::tuple<stock, laptop, provider>> getStock(soci::session&,
-                                                            const int&,
-                                                            const int&);
+std::vector<boost::tuple<stock, laptop, provider>> getStock(
+    soci::session&, const int&,
+    const int&);  // Функция получения данных о товарах на складе
 
-std::vector<provider> getProvider(soci::session&, const int&, const int&);
+std::vector<provider> getProvider(
+    soci::session&, const int&,
+    const int&);  // Функция получения данных о поставщиках
 
 std::vector<boost::tuple<deal, laptop, client, employee>> getDeal(
-    soci::session&, const int&, const int&);
+    soci::session&, const int&,
+    const int&);  // Функция получения данных о сделках
 
-std::vector<employee> getEmployee(soci::session&, const int&, const int&);
+std::vector<employee> getEmployee(
+    soci::session&, const int&,
+    const int&);  // Функция получения данных о сотрудниках
 
-std::vector<advertisement> getAdvertisement(soci::session&, const int&,
-                                            const int&);
+std::vector<advertisement> getAdvertisement(
+    soci::session&, const int&,
+    const int&);  // Функция получения данных о рекламе
 
-std::vector<client> getClient(soci::session&, const int&, const int&);
+std::vector<client> getClient(
+    soci::session&, const int&,
+    const int&);  // Функция получения данных о клиентах

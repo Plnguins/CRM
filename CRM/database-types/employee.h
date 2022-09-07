@@ -64,6 +64,9 @@ struct type_conversion<employee> {
     using base_type = values;
 
     static void from_base(values const& v, indicator ind, employee& e) {
+        /*
+         * Конвертация из данных в структуру
+         */
         if (ind == i_null) {
             return;
         }
@@ -80,6 +83,9 @@ struct type_conversion<employee> {
     }
 
     static void to_base(employee const& e, values& v, indicator& ind) {
+        /*
+         * Конвертация из структуры в данные
+         */
         try {
             v.set("id", e.id);
             v.set("surname", e.surname);

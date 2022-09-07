@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Login UI code for CRM application
+<!-- Seller UI code for CRM application
 Copyright(C) 2022 Plnguins
 
 This program is free software : you can redistribute it and / or modify
@@ -31,9 +31,9 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
   <widget class="QPushButton" name="LoginButton">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>80</x>
      <y>140</y>
-     <width>101</width>
+     <width>111</width>
      <height>31</height>
     </rect>
    </property>
@@ -172,9 +172,9 @@ color:  rgb(56, 84, 102);</string>
    <property name="geometry">
     <rect>
      <x>210</x>
-     <y>90</y>
-     <width>31</width>
-     <height>31</height>
+     <y>93</y>
+     <width>24</width>
+     <height>24</height>
     </rect>
    </property>
    <property name="text">
@@ -185,6 +185,12 @@ color:  rgb(56, 84, 102);</string>
      <activeoff>:/images/openEye.png</activeoff>
      <activeon>:/images/closeEye.png</activeon>
     </iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
    </property>
    <property name="checkable">
     <bool>true</bool>
@@ -247,6 +253,33 @@ background-color: rgb(255, 255, 255);</string>
     <string/>
    </property>
   </widget>
+  <widget class="QPushButton" name="Settings">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>140</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="../../resources/resources.qrc">
+     <normaloff>:/images/settings.png</normaloff>
+     <activeon>:/images/settings.png</activeon>:/images/settings.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>22</width>
+     <height>22</height>
+    </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
   <zorder>label_4</zorder>
   <zorder>label_6</zorder>
   <zorder>LoginButton</zorder>
@@ -257,6 +290,7 @@ background-color: rgb(255, 255, 255);</string>
   <zorder>LoginLabel</zorder>
   <zorder>ShowPassword</zorder>
   <zorder>PasswordLabel</zorder>
+  <zorder>Settings</zorder>
  </widget>
  <tabstops>
   <tabstop>Login</tabstop>

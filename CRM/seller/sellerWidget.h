@@ -15,29 +15,19 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #pragma once
 
-#include "../db_methods.h"
-#include "../mainwindow.h"
-#include "ui_seller.h"
+#include "../interface/interfaceWidget.h"
 
-namespace Ui {
-class sellerUi;
-}
-
-class sellerWidget : public QWidget {
+class sellerWidget : public interfaceWidget {
     Q_OBJECT
 
    public:
-    explicit sellerWidget(QMainWindow* parent = nullptr, std::string = "",
-                          std::string = "");
-    ~sellerWidget() { delete ui; }
-
-   private slots:
-    void on_Client_clicked();
-    void on_Deal_clicked();
-    void on_Stock_clicked();
-    void on_Logout_clicked() { parent->setLoginInterface(); }
-
-   private:
-    MainWindow* parent;
-    Ui::sellerUi* ui;
+    explicit sellerWidget(QMainWindow* parent = nullptr, std::string name = "",
+                          std::string surname = "")
+        : interfaceWidget(parent, name, surname) {
+        // Скрываем ненужные элементы интерфейса
+        ui->Ads->hide();
+        ui->Employee->hide();
+        ui->Provider->hide();
+    }
+    ~sellerWidget() = default;
 };

@@ -15,32 +15,14 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #pragma once
 
-#include "../db_methods.h"
-#include "../mainwindow.h"
-#include "ui_leader.h"
+#include "../interface/interfaceWidget.h"
 
-namespace Ui {
-class leaderUi;
-}
-
-class leaderWidget : public QWidget {
+class leaderWidget : public interfaceWidget {
     Q_OBJECT
 
    public:
-    explicit leaderWidget(QMainWindow* parent = nullptr, std::string = "",
-                          std::string = "");
-    ~leaderWidget() { delete ui; }
-
-   private slots:
-    void on_Provider_clicked();
-    void on_Employee_clicked();
-    void on_Stock_clicked();
-    void on_Ads_clicked();
-    void on_Logout_clicked() { parent->setLoginInterface(); }
-    void on_Deal_clicked();
-    void on_Client_clicked();
-
-   private:
-    MainWindow* parent;
-    Ui::leaderUi* ui;
+    explicit leaderWidget(QMainWindow* parent = nullptr, std::string name = "",
+                          std::string surname = "")
+        : interfaceWidget(parent, name, surname) {}
+    ~leaderWidget() = default;
 };

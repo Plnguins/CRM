@@ -46,6 +46,9 @@ struct type_conversion<view> {
     using base_type = values;
 
     static void from_base(values const& v, indicator ind, view& l) {
+        /*
+         * Конвертация из данных в структуру
+         */
         if (ind == i_null) {
             return;
         }
@@ -59,6 +62,9 @@ struct type_conversion<view> {
     }
 
     static void to_base(view const& l, values& v, indicator& ind) {
+        /*
+         * Конвертация из структуры в данные
+         */
         try {
             v.set("id", l.id);
             v.set("source", l.source);
