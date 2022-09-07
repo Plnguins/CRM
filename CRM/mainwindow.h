@@ -30,7 +30,7 @@ class MainWindow : public QMainWindow {
 
    public:
     MainWindow(QWidget* parent = nullptr);
-    ~MainWindow();
+    ~MainWindow() { delete ui; }
     void setLeaderInterface(std::string, std::string);
     void setLoginInterface();
     void setManagerInterface(std::string, std::string);

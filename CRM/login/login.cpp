@@ -37,7 +37,8 @@ login::login(QMainWindow* parent)
     : parent(dynamic_cast<MainWindow*>(parent)), ui(new Ui::loginUi) {
     ui->setupUi(this);
     if (!this->parent->connectDatabase()) {
-        QMessageBox::critical(this, "Ошибка", "Невозможно подключиться к БД");
+        QMessageBox::critical(this, tr("Ошибка"),
+                              tr("Невозможно подключиться к БД"));
     }
 
     ui->Settings->setIcon(QIcon(":/images/settings.png"));
@@ -53,14 +54,15 @@ void login::on_ShowPassword_clicked(bool checked) {
 
 void login::on_LoginButton_clicked() {
     if (!this->parent->connectDatabase()) {
-        QMessageBox::critical(this, "Ошибка", "Невозможно подключиться к БД");
+        QMessageBox::critical(this, tr("Ошибка"),
+                              tr("Невозможно подключиться к БД"));
         return;
     }
     std::string Login, Password;
     Role role = Role::Unknown;
     Login = ui->Login->text().toStdString();
     if (Login.empty() || ui->Password->text().isEmpty()) {
-        QMessageBox::critical(this, "Ошибка", "Введите логин и пароль");
+        QMessageBox::critical(this, tr("Ошибка"), tr("Введите логин и пароль"));
         return;
     }
     Password = hashPassword(ui->Password->text().toStdString());
@@ -81,7 +83,8 @@ void login::on_LoginButton_clicked() {
             result;
         sql << get_employee, soci::into(result), soci::use(Login, "login");
         if (!result.get<2>() || result.get<2>().get() != Password) {
-            QMessageBox::critical(this, "Ошибка", "Неверный логин или пароль");
+            QMessageBox::critical(this, tr("Ошибка"),
+                                  tr("Неверный логин или пароль"));
             return;
         }
         if (result.get<3>().is_initialized()) {
@@ -110,15 +113,13 @@ void login::on_LoginButton_clicked() {
                 break;
             case Role::Unknown:
                 QMessageBox::critical(
-                    this, "Ошибка",
-                    "Пользователь не принадлежит ни к одной роли");
+                    this, tr("Ошибка"),
+                    tr("Пользователь не принадлежит ни к одной роли"));
                 break;
         }
     } catch (const std::exception& e) {
-        std::string message = e.what();
-        QMessageBox::critical(
-            this, "Ошибка",
-            ("Что-то пошло не так. Ошибка:\n" + message).c_str());
+        QMessageBox::critical(this, tr("Ошибка"),
+                              tr("Что-то пошло не так. Ошибка:\n") + e.what());
         // Logging
     }
 }
