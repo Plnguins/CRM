@@ -74,6 +74,9 @@ struct type_conversion<client> {
     using base_type = values;
 
     static void from_base(values const& v, indicator ind, client& c) {
+        /*
+         * Конвертация из данных в структуру
+         */
         if (ind == i_null) {
             return;
         }
@@ -92,6 +95,9 @@ struct type_conversion<client> {
     }
 
     static void to_base(const client& c, values& v, indicator& ind) {
+        /*
+         * Конвертация из структуры в данные
+         */
         try {
             v.set("id", c.id);
             v.set("surname", c.surname);
