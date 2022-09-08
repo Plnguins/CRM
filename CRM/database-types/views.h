@@ -25,10 +25,12 @@ struct view {
 
     view() = default;
 
-    view(const view &other)
+    view(int id, int source, int deal) : id(id), source(source), deal(deal) {}
+
+    view(const view& other)
         : id(other.id), source(other.source), deal(other.deal) {}
 
-    view &operator=(const view &rhs) {
+    view& operator=(const view& rhs) {
         if (this != std::addressof(rhs)) {
             id = rhs.id;
             source = rhs.source;
@@ -43,7 +45,10 @@ template <>
 struct type_conversion<view> {
     using base_type = values;
 
-    static void from_base(values const &v, indicator ind, view &l) {
+    static void from_base(values const& v, indicator ind, view& l) {
+        /*
+         * Конвертация из данных в структуру
+         */
         if (ind == i_null) {
             return;
         }
@@ -51,12 +56,15 @@ struct type_conversion<view> {
             l.id = v.get<int>("id");
             l.source = v.get<int>("source");
             l.deal = v.get<int>("deal");
-        } catch (const std::exception &l) {
+        } catch (const std::exception& l) {
             // Logging
         }
     }
 
-    static void to_base(view const &l, values &v, indicator &ind) {
+    static void to_base(view const& l, values& v, indicator& ind) {
+        /*
+         * Конвертация из структуры в данные
+         */
         try {
             v.set("id", l.id);
             v.set("source", l.source);
@@ -64,7 +72,7 @@ struct type_conversion<view> {
 
             ind = i_ok;
             return;
-        } catch (const std::exception &l) {
+        } catch (const std::exception& l) {
             // Logging
         }
         ind = i_null;

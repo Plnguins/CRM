@@ -17,7 +17,6 @@
 #include <memory>
 
 #include "../db_pool.h"
-#include "boost/date_time/gregorian/gregorian.hpp"
 
 struct comment {
     int id;                       // ID комментария
@@ -26,6 +25,9 @@ struct comment {
     std::string content;          // Содержимое комментария
 
     comment() = default;
+
+    comment(int id, int deal, boost::gregorian::date date, std::string content)
+        : id(id), deal(deal), date(date), content(content) {}
 
     comment(const comment& other)
         : id(other.id),
@@ -50,6 +52,9 @@ struct type_conversion<comment> {
     using base_type = values;
 
     static void from_base(values const& v, indicator ind, comment& c) {
+        /*
+         * Конвертация из данных в структуру
+         */
         if (ind == i_null) {
             return;
         }
@@ -65,6 +70,9 @@ struct type_conversion<comment> {
     }
 
     static void to_base(const comment& p, values& v, indicator& ind) {
+        /*
+         * Конвертация из структуры в данные
+         */
         try {
             v.set("id", p.id);
             v.set("deal", p.deal);

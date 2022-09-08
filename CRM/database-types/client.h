@@ -25,10 +25,22 @@ struct client {
     std::string patronymic;  // Отчество клиента
     std::string email;       // Email клиента
     std::string phone;       // Телефон клиента
-    std::string sex;         //Пол клиента
-    std::string city;        //Город клиента
+    std::string sex;         // Пол клиента
+    std::string city;        // Город клиента
 
     client() = default;
+
+    client(int id, std::string surname, std::string name,
+           std::string patronymic, std::string email, std::string phone,
+           std::string sex, std::string city)
+        : id(id),
+          name(name),
+          surname(surname),
+          patronymic(patronymic),
+          email(email),
+          phone(phone),
+          sex(sex),
+          city(city) {}
 
     client(const client& other)
         : id(other.id),
@@ -62,6 +74,9 @@ struct type_conversion<client> {
     using base_type = values;
 
     static void from_base(values const& v, indicator ind, client& c) {
+        /*
+         * Конвертация из данных в структуру
+         */
         if (ind == i_null) {
             return;
         }
@@ -80,6 +95,9 @@ struct type_conversion<client> {
     }
 
     static void to_base(const client& c, values& v, indicator& ind) {
+        /*
+         * Конвертация из структуры в данные
+         */
         try {
             v.set("id", c.id);
             v.set("surname", c.surname);

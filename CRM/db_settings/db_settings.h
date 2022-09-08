@@ -1,4 +1,4 @@
-// Manager window header for CRM application
+// Login window header for CRM application
 // Copyright(C) 2022 Plnguins
 
 // This program is free software : you can redistribute it and / or modify
@@ -15,27 +15,24 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #pragma once
 
-#include "../interface/interfaceWidget.h"
+#include "../mainwindow.h"
+#include "ui_db_settings.h"
 
 namespace Ui {
-class managerUi;
+class db_settingsUi;
 }
 
-class managerWidget : public interfaceWidget {
+class db_settings : public QWidget {
     Q_OBJECT
 
    public:
-    explicit managerWidget(QMainWindow* parent = nullptr, std::string name = "",
-                           std::string surname = "")
-        : interfaceWidget(parent, name, surname) {
-        // Скрываем ненужные элементы интерфейса
-        ui->Client->hide();
-        ui->Ads->hide();
-        ui->Employee->hide();
-    }
-    ~managerWidget() = default;
+    explicit db_settings(QMainWindow* parent = nullptr);
+    ~db_settings() { delete ui; }
 
-    // void on_Provider_clicked();
-    // void on_Deal_clicked();
-    // void on_Stock_clicked();
+   private slots:
+    void on_ApplyButton_clicked();
+
+   private:
+    Ui::db_settingsUi* ui;
+    MainWindow* parent;
 };

@@ -22,17 +22,14 @@
 struct advertisement {
     int id;                // ID рекламы
     std::string source;    // Источник рекламы
-    long long budget;      // Бюджет рекламы
+    int budget;            // Бюджет рекламы
     std::string comments;  // Комментарий к рекламе
 
     advertisement() = default;
 
-    void clear() {
-        id = 0;
-        source.clear();
-        budget = 0;
-        comments.clear();
-    }
+    advertisement(int id, std::string source, long long budget,
+                  std::string comments)
+        : id(id), source(source), budget(budget), comments(comments) {}
 
     advertisement(const advertisement& other)
         : id(other.id),
@@ -58,13 +55,16 @@ struct type_conversion<advertisement> {
     using base_type = values;
 
     static void from_base(values const& v, indicator ind, advertisement& ad) {
+        /*
+         * Конвертация из данных в структуру
+         */
         if (ind == i_null) {
             return;
         }
         try {
             ad.id = v.get<int>("id", 0);
             ad.source = v.get<std::string>("source", "");
-            ad.budget = v.get<long long>("budget", 0);
+            ad.budget = v.get<int>("budget", 0);
             ad.comments = v.get<std::string>("comments", "");
         } catch (std::exception const& e) {
             // Logging
@@ -72,6 +72,9 @@ struct type_conversion<advertisement> {
     }
 
     static void to_base(const advertisement& p, values& v, indicator& ind) {
+        /*
+         * Конвертация из структуры в данные
+         */
         try {
             v.set("id", p.id);
             v.set("source", p.source);

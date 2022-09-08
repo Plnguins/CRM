@@ -55,27 +55,16 @@ jobs:
     steps:
       - name: Change to Release if tag
         if: startsWith(github.ref, 'refs/tags/')
-        run: echo "BUILD_TYPE=Release" >> $GITHUB_ENV
+        run: echo "BUILD_TYPE=Release" >> $env:GITHUB_ENV
       - uses: actions/checkout@v3
         name: Clone
         with:
           submodules: recursive
-      - name: Cache Qt
-        id: cache-qt
-        uses: actions/cache@v3
-        with:
-          path: ${{ env.QT_DIR }}/Qt
-          key: ${{ runner.os }}-Qt-${{ env.QT_VERSION }}-${{ env.QT_DIR }}-${{ env.QT_ARCH }}-${{ env.QT_TOOLS }}
-      - name: Cache Boost
-        id: cache-boost
-        uses: actions/cache@v3
-        with:
-          path: ${{ env.BOOST_DIR }}/boost/boost
-          key: ${{ runner.os }}-Boost-${{ env.BOOST_VERSION }}-${{ env.BOOST_DIR }}-${{ env.BOOST_PLATFORM }}
       - name: Install Qt
-        uses: jurplel/install-qt-action@c04feedfdfd6dbe64db62deda57fb0971a1bf440
+        uses: jurplel/install-qt-action@43ec12788e42f375acfcb2cec059edfb9572fbaa
         with:
-          cached: ${{ steps.cache-qt.outputs.cache-hit }}
+          cache: true
+          cache-key-prefix: ${{ runner.os }}-Qt-${{ env.QT_VERSION }}-${{ env.QT_DIR }}-${{ env.QT_ARCH }}-${{ env.QT_TOOLS }}
           version: ${{ env.QT_VERSION }}
           dir: ${{ env.QT_DIR }}
           host: "windows"
@@ -83,17 +72,15 @@ jobs:
           target: "desktop"
           setup-python: "false"
           tools: ${{ env.QT_TOOLS }}
-          aqtversion: "==2.1.*"
-          py7zrversion: ">=0.18.9"
       - name: Install boost
         id: install-boost
-        if: steps.cache-boost.outputs.cache-hit != 'true'
-        uses: MarkusJx/install-boost@v2.3.1
+        uses: MarkusJx/install-boost@v2.4.0
         with:
           boost_version: ${{ env.BOOST_VERSION }}
           platform_version: ${{ env.BOOST_PLATFORM }}
           toolset: msvc
           boost_install_dir: ${{ env.BOOST_DIR }}
+          cache: true
       - name: Setup PATH
         run: echo 'C:\Program Files\PostgreSQL\14\bin;C:\Program Files\PostgreSQL\14;C:\Program Files\PostgreSQL\14\include;${{ env.BOOST_DIR}}/boost/boost' | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
       - name: Configure CMake
@@ -118,8 +105,6 @@ jobs:
         with:
           name: Windows
           path: ${{ github.workspace }}/Windows
-      - name: Get branch name
-        uses: EthanSK/git-branch-name-action@v1
       - name: Create Release
         id: create_release
         uses: ncipollo/release-action@v1.10.0
@@ -129,4 +114,4 @@ jobs:
           artifacts: "${{ github.workspace }}/Windows/Windows-Setup.exe"
           name: ${{ github.event.head_commit.message }}
           draft: false
-          prerelease: ${{ env.GIT_BRANCH_NAME == 'master' }}
+          prerelease: startsWith(github.ref, 'refs/tags/')

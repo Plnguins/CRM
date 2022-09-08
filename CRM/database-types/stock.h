@@ -28,7 +28,15 @@ struct stock {
 
     stock() = default;
 
-    stock(const stock &other)
+    stock(int id, int laptop, int price, int count, int available, int source)
+        : id(id),
+          laptop(laptop),
+          price(price),
+          count(count),
+          available(available),
+          source(source) {}
+
+    stock(const stock& other)
         : id(other.id),
           laptop(other.laptop),
           price(other.price),
@@ -36,7 +44,7 @@ struct stock {
           available(other.available),
           source(other.source) {}
 
-    stock &operator=(const stock &rhs) {
+    stock& operator=(const stock& rhs) {
         if (this != &rhs) {
             id = rhs.id;
             laptop = rhs.laptop;
@@ -54,7 +62,10 @@ template <>
 struct type_conversion<stock> {
     using base_type = values;
 
-    static void from_base(values const &v, indicator ind, stock &d) {
+    static void from_base(values const& v, indicator ind, stock& d) {
+        /*
+         * Конвертация из данных в структуру
+         */
         if (ind == i_null) {
             return;
         }
@@ -65,12 +76,15 @@ struct type_conversion<stock> {
             d.count = v.get<int>("count");
             d.available = v.get<int>("available");
             d.source = v.get<int>("source");
-        } catch (std::exception const &e) {
+        } catch (std::exception const& e) {
             // Logging
         }
     }
 
-    static void to_base(stock const &d, values &v, indicator &ind) {
+    static void to_base(stock const& d, values& v, indicator& ind) {
+        /*
+         * Конвертация из структуры в данные
+         */
         try {
             v.set("id", d.id);
             v.set("laptop", d.laptop);
@@ -81,7 +95,7 @@ struct type_conversion<stock> {
 
             ind = i_ok;
             return;
-        } catch (std::exception const &e) {
+        } catch (std::exception const& e) {
             // Logging
         }
         ind = i_null;

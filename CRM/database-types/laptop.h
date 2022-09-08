@@ -21,7 +21,7 @@
 struct laptop {
     int id;            // ID ноутбука
     std::string name;  // Название ноутбука
-    double income;     //Желаемая прибыль
+    double income;     // Желаемая прибыль
     std::string type;  // Тип ноутбука
     std::string cpu;   // Процессор ноутбука
     std::string gpu;   // Видеокарта ноутбука
@@ -31,7 +31,20 @@ struct laptop {
 
     laptop() = default;
 
-    laptop(const laptop &other)
+    laptop(int id, std::string name, double income, std::string type,
+           std::string cpu, std::string gpu, int ram, int rom,
+           std::string color)
+        : id(id),
+          name(name),
+          income(income),
+          type(type),
+          cpu(cpu),
+          gpu(gpu),
+          ram(ram),
+          rom(rom),
+          color(color) {}
+
+    laptop(const laptop& other)
         : id(other.id),
           name(other.name),
           income(other.income),
@@ -42,7 +55,7 @@ struct laptop {
           rom(other.rom),
           color(other.color) {}
 
-    laptop &operator=(const laptop &rhs) {
+    laptop& operator=(const laptop& rhs) {
         if (this != std::addressof(rhs)) {
             id = rhs.id;
             name = rhs.name;
@@ -63,7 +76,10 @@ template <>
 struct type_conversion<laptop> {
     using base_type = values;
 
-    static void from_base(values const &v, indicator ind, laptop &l) {
+    static void from_base(values const& v, indicator ind, laptop& l) {
+        /*
+         * Конвертация из данных в структуру
+         */
         if (ind == i_null) {
             return;
         }
@@ -77,12 +93,15 @@ struct type_conversion<laptop> {
             l.ram = v.get<int>("ram");
             l.rom = v.get<int>("rom");
             l.color = v.get<std::string>("color");
-        } catch (const std::exception &l) {
+        } catch (const std::exception& l) {
             // Logging
         }
     }
 
-    static void to_base(laptop const &l, values &v, indicator &ind) {
+    static void to_base(laptop const& l, values& v, indicator& ind) {
+        /*
+         * Конвертация из структуры в данные
+         */
         try {
             v.set("id", l.id);
             v.set("name", l.name);
@@ -96,7 +115,7 @@ struct type_conversion<laptop> {
 
             ind = i_ok;
             return;
-        } catch (const std::exception &l) {
+        } catch (const std::exception& l) {
             // Logging
         }
         ind = i_null;

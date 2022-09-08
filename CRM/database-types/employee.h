@@ -28,7 +28,16 @@ struct employee {
 
     employee() = default;
 
-    employee(const employee &other)
+    employee(int id, std::string surname, std::string name,
+             std::string patronymic, std::string login, std::string password)
+        : id(id),
+          name(name),
+          surname(surname),
+          patronymic(patronymic),
+          login(login),
+          password(password) {}
+
+    employee(const employee& other)
         : id(other.id),
           surname(other.surname),
           name(other.name),
@@ -36,7 +45,7 @@ struct employee {
           login(other.login),
           password(other.password) {}
 
-    employee &operator=(const employee &rhs) {
+    employee& operator=(const employee& rhs) {
         if (this != std::addressof(rhs)) {
             id = rhs.id;
             surname = rhs.surname;
@@ -54,7 +63,10 @@ template <>
 struct type_conversion<employee> {
     using base_type = values;
 
-    static void from_base(values const &v, indicator ind, employee &e) {
+    static void from_base(values const& v, indicator ind, employee& e) {
+        /*
+         * Конвертация из данных в структуру
+         */
         if (ind == i_null) {
             return;
         }
@@ -65,12 +77,15 @@ struct type_conversion<employee> {
             e.patronymic = v.get<std::string>("patronymic");
             e.login = v.get<std::string>("login");
             e.password = v.get<std::string>("password");
-        } catch (const std::exception &e) {
+        } catch (const std::exception& e) {
             // Logging
         }
     }
 
-    static void to_base(employee const &e, values &v, indicator &ind) {
+    static void to_base(employee const& e, values& v, indicator& ind) {
+        /*
+         * Конвертация из структуры в данные
+         */
         try {
             v.set("id", e.id);
             v.set("surname", e.surname);
@@ -81,7 +96,7 @@ struct type_conversion<employee> {
 
             ind = i_ok;
             return;
-        } catch (const std::exception &e) {
+        } catch (const std::exception& e) {
             // Logging
         }
         ind = i_null;

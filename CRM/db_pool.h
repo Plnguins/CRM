@@ -16,10 +16,12 @@
 #pragma once
 #include <soci/boost-gregorian-date.h>
 #include <soci/boost-optional.h>
+#include <soci/boost-tuple.h>
 #include <soci/connection-pool.h>
+#include <soci/postgresql/soci-postgresql.h>
 #include <soci/soci.h>
 
-#include <boost/optional.hpp>
+#include <boost/smart_ptr.hpp>  // Умные указатели
 #include <boost/smart_ptr.hpp>
 
 class db_pool {

@@ -21,6 +21,7 @@
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QWidget>
+#include <iomanip>
 #include <sstream>
 
 #include "../database-types/employee.h"
@@ -41,15 +42,16 @@ class login : public QWidget {
     Q_OBJECT
 
    public:
-    explicit login(QMainWindow *parent = nullptr);
-    ~login();
-    QPushButton *getLoginButton();
+    explicit login(QMainWindow* parent = nullptr);
+    ~login() { delete ui; }
 
    private slots:
     void on_LoginButton_clicked();
     void on_ShowPassword_clicked(bool checked);
 
+    void on_Settings_clicked() { parent->setSettingsInterface(); }
+
    private:
-    MainWindow *parent;
-    Ui::loginUi *ui;
+    MainWindow* parent;
+    Ui::loginUi* ui;
 };
