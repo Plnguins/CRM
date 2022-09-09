@@ -56,7 +56,7 @@ class interfaceWidget : public QWidget {
     MainWindow* parent;
     // get from table
     int numberOfPages = 20;
-    // pages starts from 1
+    // pages start from 1
     std::vector<short> pages = {1, 2, 3, 4, 5};
 
     void updateProvider(const int& = 0, const int& = 10);
