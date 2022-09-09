@@ -26,17 +26,17 @@ interfaceWidget::interfaceWidget(QMainWindow* parent, std::string name,
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(
         QHeaderView::ResizeToContents);
 
-    ui->pushButton->hide();
-    ui->pushButton_2->hide();
-    ui->pushButton_3->hide();
-    ui->pushButton_4->hide();
-    ui->pushButton_5->hide();
+    ui->Page_1->hide();
+    ui->Page_2->hide();
+    ui->Page_3->hide();
+    ui->Page_4->hide();
+    ui->Page_5->hide();
 
-    ui->pushButton->setText(QString::number(pages[0]));
-    ui->pushButton_2->setText(QString::number(pages[1]));
-    ui->pushButton_3->setText(QString::number(pages[2]));
-    ui->pushButton_4->setText(QString::number(pages[3]));
-    ui->pushButton_5->setText(QString::number(pages[4]));
+    ui->Page_1->setText(QString::number(pages[0]));
+    ui->Page_2->setText(QString::number(pages[1]));
+    ui->Page_3->setText(QString::number(pages[2]));
+    ui->Page_4->setText(QString::number(pages[3]));
+    ui->Page_5->setText(QString::number(pages[4]));
 }
 
 void interfaceWidget::on_Provider_clicked() {
@@ -49,25 +49,25 @@ void interfaceWidget::on_Provider_clicked() {
     (this->*updateTable)(0, 10);
 
     if (numberOfPages >= 5) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-        ui->pushButton_4->show();
-        ui->pushButton_5->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
+        ui->Page_3->show();
+        ui->Page_4->show();
+        ui->Page_5->show();
     } else if (numberOfPages == 4) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-        ui->pushButton_4->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
+        ui->Page_3->show();
+        ui->Page_4->show();
     } else if (numberOfPages == 3) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
+        ui->Page_3->show();
     } else if (numberOfPages == 2) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
     } else if (numberOfPages == 1) {
-        ui->pushButton->show();
+        ui->Page_1->show();
     }
 }
 
@@ -81,25 +81,25 @@ void interfaceWidget::on_Deal_clicked() {
     (this->*updateTable)(0, 10);
 
     if (numberOfPages >= 5) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-        ui->pushButton_4->show();
-        ui->pushButton_5->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
+        ui->Page_3->show();
+        ui->Page_4->show();
+        ui->Page_5->show();
     } else if (numberOfPages == 4) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-        ui->pushButton_4->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
+        ui->Page_3->show();
+        ui->Page_4->show();
     } else if (numberOfPages == 3) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
+        ui->Page_3->show();
     } else if (numberOfPages == 2) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
     } else if (numberOfPages == 1) {
-        ui->pushButton->show();
+        ui->Page_1->show();
     }
 }
 
@@ -113,25 +113,25 @@ void interfaceWidget::on_Stock_clicked() {
     (this->*updateTable)(0, 10);
 
     if (numberOfPages >= 5) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-        ui->pushButton_4->show();
-        ui->pushButton_5->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
+        ui->Page_3->show();
+        ui->Page_4->show();
+        ui->Page_5->show();
     } else if (numberOfPages == 4) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-        ui->pushButton_4->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
+        ui->Page_3->show();
+        ui->Page_4->show();
     } else if (numberOfPages == 3) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
+        ui->Page_3->show();
     } else if (numberOfPages == 2) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
     } else if (numberOfPages == 1) {
-        ui->pushButton->show();
+        ui->Page_1->show();
     }
 }
 
@@ -145,25 +145,25 @@ void interfaceWidget::on_Ads_clicked() {
     (this->*updateTable)(0, 10);
 
     if (numberOfPages >= 5) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-        ui->pushButton_4->show();
-        ui->pushButton_5->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
+        ui->Page_3->show();
+        ui->Page_4->show();
+        ui->Page_5->show();
     } else if (numberOfPages == 4) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-        ui->pushButton_4->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
+        ui->Page_3->show();
+        ui->Page_4->show();
     } else if (numberOfPages == 3) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
+        ui->Page_3->show();
     } else if (numberOfPages == 2) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
     } else if (numberOfPages == 1) {
-        ui->pushButton->show();
+        ui->Page_1->show();
     }
 }
 
@@ -177,25 +177,25 @@ void interfaceWidget::on_Employee_clicked() {
     (this->*updateTable)(0, 10);
 
     if (numberOfPages >= 5) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-        ui->pushButton_4->show();
-        ui->pushButton_5->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
+        ui->Page_3->show();
+        ui->Page_4->show();
+        ui->Page_5->show();
     } else if (numberOfPages == 4) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-        ui->pushButton_4->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
+        ui->Page_3->show();
+        ui->Page_4->show();
     } else if (numberOfPages == 3) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
+        ui->Page_3->show();
     } else if (numberOfPages == 2) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
     } else if (numberOfPages == 1) {
-        ui->pushButton->show();
+        ui->Page_1->show();
     }
 }
 
@@ -209,25 +209,25 @@ void interfaceWidget::on_Client_clicked() {
     (this->*updateTable)(0, 10);
 
     if (numberOfPages >= 5) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-        ui->pushButton_4->show();
-        ui->pushButton_5->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
+        ui->Page_3->show();
+        ui->Page_4->show();
+        ui->Page_5->show();
     } else if (numberOfPages == 4) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
-        ui->pushButton_4->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
+        ui->Page_3->show();
+        ui->Page_4->show();
     } else if (numberOfPages == 3) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
-        ui->pushButton_3->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
+        ui->Page_3->show();
     } else if (numberOfPages == 2) {
-        ui->pushButton->show();
-        ui->pushButton_2->show();
+        ui->Page_1->show();
+        ui->Page_2->show();
     } else if (numberOfPages == 1) {
-        ui->pushButton->show();
+        ui->Page_1->show();
     }
 }
 
@@ -487,14 +487,14 @@ void interfaceWidget::updateClient(const int& page, const int& limit) {
 }
 
 void interfaceWidget::changeButtonsText() {
-    ui->pushButton->setText(QString::number(pages[0]));
-    ui->pushButton_2->setText(QString::number(pages[1]));
-    ui->pushButton_3->setText(QString::number(pages[2]));
-    ui->pushButton_4->setText(QString::number(pages[3]));
-    ui->pushButton_5->setText(QString::number(pages[4]));
+    ui->Page_1->setText(QString::number(pages[0]));
+    ui->Page_2->setText(QString::number(pages[1]));
+    ui->Page_3->setText(QString::number(pages[2]));
+    ui->Page_4->setText(QString::number(pages[3]));
+    ui->Page_5->setText(QString::number(pages[4]));
 }
 
-void interfaceWidget::on_pushButton_clicked() {
+void interfaceWidget::on_Page_1_clicked() {
     int cur_left_number = pages[0];
     if (cur_left_number > 2) {
         for (auto& tmp : pages) tmp -= 2;
@@ -506,19 +506,19 @@ void interfaceWidget::on_pushButton_clicked() {
     // go to pages[pages[0]]
 }
 
-void interfaceWidget::on_pushButton_2_clicked() {
+void interfaceWidget::on_Page_2_clicked() {
     // go to pages[pages[1]]
 }
 
-void interfaceWidget::on_pushButton_3_clicked() {
+void interfaceWidget::on_Page_3_clicked() {
     // go to pages[pages[2]]
 }
 
-void interfaceWidget::on_pushButton_4_clicked() {
+void interfaceWidget::on_Page_4_clicked() {
     // go to pages[pages[3]]
 }
 
-void interfaceWidget::on_pushButton_5_clicked() {
+void interfaceWidget::on_Page_5_clicked() {
     int cur_right_number = pages[4];
     if (numberOfPages - cur_right_number > 1) {
         for (auto& tmp : pages) tmp += 2;

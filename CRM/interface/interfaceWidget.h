@@ -43,11 +43,11 @@ class interfaceWidget : public QWidget {
     void changeButtonsText();
     void goToPage(int pageNumber) { (this->*updateTable)(pageNumber, 10); }
 
-    void on_pushButton_clicked();
-    void on_pushButton_2_clicked();
-    void on_pushButton_3_clicked();
-    void on_pushButton_4_clicked();
-    void on_pushButton_5_clicked();
+    void on_Page_1_clicked();
+    void on_Page_2_clicked();
+    void on_Page_3_clicked();
+    void on_Page_4_clicked();
+    void on_Page_5_clicked();
 
    protected:
     Ui::interfaceUi* ui;
@@ -56,7 +56,7 @@ class interfaceWidget : public QWidget {
     MainWindow* parent;
     // get from table
     int numberOfPages = 20;
-    // pages starts from 1
+    // pages start from 1
     std::vector<short> pages = {1, 2, 3, 4, 5};
 
     void updateProvider(const int& = 0, const int& = 10);
