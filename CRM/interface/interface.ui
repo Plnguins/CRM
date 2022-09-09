@@ -888,7 +888,7 @@ background-color: rgb(56, 84, 102);</string>
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="Page_1">
    <property name="geometry">
     <rect>
      <x>310</x>
@@ -951,7 +951,7 @@ QPushButton#pushButton:pressed {
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="Page_2">
    <property name="geometry">
     <rect>
      <x>350</x>
@@ -1014,7 +1014,7 @@ QPushButton#pushButton_2:pressed {
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="Page_3">
    <property name="geometry">
     <rect>
      <x>390</x>
@@ -1077,7 +1077,7 @@ QPushButton#pushButton_3:pressed {
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="Page_4">
    <property name="geometry">
     <rect>
      <x>430</x>
@@ -1140,7 +1140,7 @@ QPushButton#pushButton_4:pressed {
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_5">
+  <widget class="QPushButton" name="Page_5">
    <property name="geometry">
     <rect>
      <x>470</x>
@@ -1230,11 +1230,11 @@ QPushButton#pushButton_5:pressed {
   <zorder>Delete</zorder>
   <zorder>Title</zorder>
   <zorder>LeftButtons</zorder>
-  <zorder>pushButton</zorder>
-  <zorder>pushButton_2</zorder>
-  <zorder>pushButton_3</zorder>
-  <zorder>pushButton_4</zorder>
-  <zorder>pushButton_5</zorder>
+  <zorder>Page_1</zorder>
+  <zorder>Page_2</zorder>
+  <zorder>Page_3</zorder>
+  <zorder>Page_4</zorder>
+  <zorder>Page_5</zorder>
   <zorder>RoundedBlue</zorder>
   <zorder>tableWidget</zorder>
  </widget>
