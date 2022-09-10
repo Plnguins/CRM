@@ -50,4 +50,6 @@ class db_methods {
     static std::vector<client> getClient(
         soci::session&, const int&,
         const int&);  // Функция получения данных о клиентах
+
+    static int row_count;
 };
