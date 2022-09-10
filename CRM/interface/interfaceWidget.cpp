@@ -29,11 +29,7 @@ interfaceWidget::interfaceWidget(QMainWindow* parent, std::string name,
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(
         QHeaderView::ResizeToContents);
 
-    ui->Page_1->setText(QString::number(pages[0]));
-    ui->Page_2->setText(QString::number(pages[1]));
-    ui->Page_3->setText(QString::number(pages[2]));
-    ui->Page_4->setText(QString::number(pages[3]));
-    ui->Page_5->setText(QString::number(pages[4]));
+    changeButtonsText();
 }
 
 void interfaceWidget::on_Provider_clicked() {
@@ -361,11 +357,9 @@ void interfaceWidget::updateClient(const int& page, const int& limit) {
 }
 
 void interfaceWidget::changeButtonsText() {
-    ui->Page_1->setText(QString::number(pages[0]));
-    ui->Page_2->setText(QString::number(pages[1]));
-    ui->Page_3->setText(QString::number(pages[2]));
-    ui->Page_4->setText(QString::number(pages[3]));
-    ui->Page_5->setText(QString::number(pages[4]));
+    for (size_t current = 0; current < pageButtons.size(); current++) {
+        pageButtons[current]->setText(QString::number(pages[current]));
+    }
 }
 
 void interfaceWidget::on_Page_1_clicked() {
