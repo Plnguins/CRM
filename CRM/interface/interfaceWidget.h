@@ -46,9 +46,9 @@ class interfaceWidget : public QWidget {
     }
 
     void on_Page_1_clicked();
-    void on_Page_2_clicked();
-    void on_Page_3_clicked();
-    void on_Page_4_clicked();
+    void on_Page_2_clicked() { goToPage(pages[1]); }
+    void on_Page_3_clicked() { goToPage(pages[2]); }
+    void on_Page_4_clicked() { goToPage(pages[3]); }
     void on_Page_5_clicked();
 
    protected:

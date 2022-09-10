@@ -386,12 +386,6 @@ void interfaceWidget::on_Page_1_clicked() {
     goToPage(pages[0]);
 }
 
-void interfaceWidget::on_Page_2_clicked() { goToPage(pages[1]); }
-
-void interfaceWidget::on_Page_3_clicked() { goToPage(pages[2]); }
-
-void interfaceWidget::on_Page_4_clicked() { goToPage(pages[3]); }
-
 void interfaceWidget::on_Page_5_clicked() {
     int cur_right_number = pages[4];
     if (numberOfPages - cur_right_number > 1) {
