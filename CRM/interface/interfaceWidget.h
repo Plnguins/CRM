@@ -40,11 +40,6 @@ class interfaceWidget : public QWidget {
     void on_Client_clicked();
     void on_Logout_clicked() { parent->setLoginInterface(); }
 
-    void changeButtonsText();
-    void goToPage(int pageNumber) {
-        (this->*updateTable)(pageNumber - 1, limit);
-    }
-
     void on_Page_1_clicked();
     void on_Page_2_clicked() { goToPage(pages[1]); }
     void on_Page_3_clicked() { goToPage(pages[2]); }
@@ -71,5 +66,8 @@ class interfaceWidget : public QWidget {
     void (interfaceWidget::*updateTable)(const int&, const int&) = nullptr;
 
     void hideGreeting();
-    void showPageButtons();
+    void updatePageButtons();
+    void goToPage(int pageNumber) {
+        (this->*updateTable)(pageNumber - 1, limit);
+    }
 };

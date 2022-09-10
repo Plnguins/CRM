@@ -29,7 +29,7 @@ interfaceWidget::interfaceWidget(QMainWindow* parent, std::string name,
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(
         QHeaderView::ResizeToContents);
 
-    changeButtonsText();
+    updatePageButtons();
 }
 
 void interfaceWidget::on_Provider_clicked() {
@@ -39,7 +39,7 @@ void interfaceWidget::on_Provider_clicked() {
     hideGreeting();
     updateTable = &interfaceWidget::updateProvider;
     goToPage(1);
-    showPageButtons();
+    updatePageButtons();
 }
 
 void interfaceWidget::on_Deal_clicked() {
@@ -49,7 +49,7 @@ void interfaceWidget::on_Deal_clicked() {
     hideGreeting();
     updateTable = &interfaceWidget::updateDeal;
     goToPage(1);
-    showPageButtons();
+    updatePageButtons();
 }
 
 void interfaceWidget::on_Stock_clicked() {
@@ -59,7 +59,7 @@ void interfaceWidget::on_Stock_clicked() {
     hideGreeting();
     updateTable = &interfaceWidget::updateStock;
     goToPage(1);
-    showPageButtons();
+    updatePageButtons();
 }
 
 void interfaceWidget::on_Ads_clicked() {
@@ -69,7 +69,7 @@ void interfaceWidget::on_Ads_clicked() {
     hideGreeting();
     updateTable = &interfaceWidget::updateAds;
     goToPage(1);
-    showPageButtons();
+    updatePageButtons();
 }
 
 void interfaceWidget::on_Employee_clicked() {
@@ -79,7 +79,7 @@ void interfaceWidget::on_Employee_clicked() {
     hideGreeting();
     updateTable = &interfaceWidget::updateEmployee;
     goToPage(1);
-    showPageButtons();
+    updatePageButtons();
 }
 
 void interfaceWidget::on_Client_clicked() {
@@ -89,7 +89,7 @@ void interfaceWidget::on_Client_clicked() {
     hideGreeting();
     updateTable = &interfaceWidget::updateClient;
     goToPage(1);
-    showPageButtons();
+    updatePageButtons();
 }
 
 void interfaceWidget::hideGreeting() {
@@ -106,12 +106,6 @@ void interfaceWidget::hideGreeting() {
     ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
-}
-
-void interfaceWidget::showPageButtons() {
-    for (size_t current = 0; current < std::min(numberOfPages, 5); current++) {
-        pageButtons[current]->show();
-    }
 }
 
 void interfaceWidget::updateProvider(const int& page, const int& limit) {
@@ -368,9 +362,15 @@ void interfaceWidget::updateClient(const int& page, const int& limit) {
     }
 }
 
-void interfaceWidget::changeButtonsText() {
+void interfaceWidget::updatePageButtons() {
     for (size_t current = 0; current < pageButtons.size(); current++) {
         pageButtons[current]->setText(QString::number(pages[current]));
+    }
+    for (const auto& button : pageButtons) {
+        button->hide();
+    }
+    for (size_t current = 0; current < std::min(numberOfPages, 5); current++) {
+        pageButtons[current]->show();
     }
 }
 
@@ -378,10 +378,10 @@ void interfaceWidget::on_Page_1_clicked() {
     int cur_left_number = pages[0];
     if (cur_left_number > 2) {
         for (auto& tmp : pages) tmp -= 2;
-        changeButtonsText();
+        updatePageButtons();
     } else if (cur_left_number > 1) {
         for (auto& tmp : pages) tmp -= 1;
-        changeButtonsText();
+        updatePageButtons();
     }
     goToPage(pages[0]);
 }
@@ -390,10 +390,10 @@ void interfaceWidget::on_Page_5_clicked() {
     int cur_right_number = pages[4];
     if (numberOfPages - cur_right_number > 1) {
         for (auto& tmp : pages) tmp += 2;
-        changeButtonsText();
+        updatePageButtons();
     } else if (numberOfPages - cur_right_number == 1) {
         for (auto& tmp : pages) tmp += 1;
-        changeButtonsText();
+        updatePageButtons();
     }
     goToPage(pages[4]);
 }
