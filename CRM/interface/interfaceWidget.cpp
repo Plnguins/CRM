@@ -109,6 +109,9 @@ void interfaceWidget::hideGreeting() {
 }
 
 void interfaceWidget::updateProvider(const int& page, const int& limit) {
+    /*
+     * Функция получает данные о поставщиках и отображает в таблице
+     */
     ui->Title->setText(tr("Поставщики"));
 
     ui->tableWidget->clear();
@@ -140,6 +143,9 @@ void interfaceWidget::updateProvider(const int& page, const int& limit) {
 }
 
 void interfaceWidget::updateDeal(const int& page, const int& limit) {
+    /*
+     * Функция получает данные о сделках и отображает в таблице
+     */
     ui->Title->setText(tr("Сделки"));
 
     ui->tableWidget->clear();
@@ -198,6 +204,9 @@ void interfaceWidget::updateDeal(const int& page, const int& limit) {
 }
 
 void interfaceWidget::updateStock(const int& page, const int& limit) {
+    /*
+     * Функция получает данные о складе и отображает в таблице
+     */
     ui->Title->setText(tr("Склад"));
     const QStringList Labels = {tr("ID"),       tr("Ноутбук"),
                                 tr("Цена"),     tr("Количество"),
@@ -274,6 +283,9 @@ void interfaceWidget::updateAds(const int& page, const int& limit) {
 }
 
 void interfaceWidget::updateEmployee(const int& page, const int& limit) {
+    /*
+     * Функция получает данные о сотрудниках и отображает в таблице
+     */
     ui->Title->setText(tr("Работники"));
 
     const QStringList Labels = {tr("ID"), tr("Фамилия"), tr("Имя"),
@@ -311,6 +323,9 @@ void interfaceWidget::updateEmployee(const int& page, const int& limit) {
 }
 
 void interfaceWidget::updateClient(const int& page, const int& limit) {
+    /*
+     * Функция получает данные о клиентах и отображает в таблице
+     */
     ui->Title->setText(tr("Клиенты"));
 
     const QStringList Labels = {tr("ID"),       tr("Фамилия"), tr("Имя"),
@@ -363,6 +378,9 @@ void interfaceWidget::updateClient(const int& page, const int& limit) {
 }
 
 void interfaceWidget::updatePageButtons() {
+    /*
+     * Функция обновляет текст кнопок, отображает нужные
+     */
     for (size_t current = 0; current < pageButtons.size(); current++) {
         pageButtons[current]->setText(QString::number(pages[current]));
     }
