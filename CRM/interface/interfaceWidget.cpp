@@ -46,7 +46,7 @@ void interfaceWidget::on_Provider_clicked() {
     hideGreeting();
 
     updateTable = &interfaceWidget::updateProvider;
-    (this->*updateTable)(0, 10);
+    goToPage(0);
 
     if (numberOfPages >= 5) {
         ui->Page_1->show();
@@ -78,7 +78,7 @@ void interfaceWidget::on_Deal_clicked() {
     hideGreeting();
 
     updateTable = &interfaceWidget::updateDeal;
-    (this->*updateTable)(0, 10);
+    goToPage(0);
 
     if (numberOfPages >= 5) {
         ui->Page_1->show();
@@ -110,7 +110,7 @@ void interfaceWidget::on_Stock_clicked() {
     hideGreeting();
 
     updateTable = &interfaceWidget::updateStock;
-    (this->*updateTable)(0, 10);
+    goToPage(0);
 
     if (numberOfPages >= 5) {
         ui->Page_1->show();
@@ -142,7 +142,7 @@ void interfaceWidget::on_Ads_clicked() {
     hideGreeting();
 
     updateTable = &interfaceWidget::updateAds;
-    (this->*updateTable)(0, 10);
+    goToPage(0);
 
     if (numberOfPages >= 5) {
         ui->Page_1->show();
@@ -174,7 +174,7 @@ void interfaceWidget::on_Employee_clicked() {
     hideGreeting();
 
     updateTable = &interfaceWidget::updateEmployee;
-    (this->*updateTable)(0, 10);
+    goToPage(0);
 
     if (numberOfPages >= 5) {
         ui->Page_1->show();
@@ -206,7 +206,7 @@ void interfaceWidget::on_Client_clicked() {
     hideGreeting();
 
     updateTable = &interfaceWidget::updateClient;
-    (this->*updateTable)(0, 10);
+    goToPage(0);
 
     if (numberOfPages >= 5) {
         ui->Page_1->show();
