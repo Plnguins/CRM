@@ -25,26 +25,29 @@
 #include "database-types/stock.h"
 #include "db_pool.h"
 
-std::vector<boost::tuple<stock, laptop, provider>> getStock(
-    soci::session&, const int&,
-    const int&);  // Функция получения данных о товарах на складе
+class db_methods {
+   public:
+    static std::vector<boost::tuple<stock, laptop, provider>> getStock(
+        soci::session&, const int&,
+        const int&);  // Функция получения данных о товарах на складе
 
-std::vector<provider> getProvider(
-    soci::session&, const int&,
-    const int&);  // Функция получения данных о поставщиках
+    static std::vector<provider> getProvider(
+        soci::session&, const int&,
+        const int&);  // Функция получения данных о поставщиках
 
-std::vector<boost::tuple<deal, laptop, client, employee>> getDeal(
-    soci::session&, const int&,
-    const int&);  // Функция получения данных о сделках
+    static std::vector<boost::tuple<deal, laptop, client, employee>> getDeal(
+        soci::session&, const int&,
+        const int&);  // Функция получения данных о сделках
 
-std::vector<employee> getEmployee(
-    soci::session&, const int&,
-    const int&);  // Функция получения данных о сотрудниках
+    static std::vector<employee> getEmployee(
+        soci::session&, const int&,
+        const int&);  // Функция получения данных о сотрудниках
 
-std::vector<advertisement> getAdvertisement(
-    soci::session&, const int&,
-    const int&);  // Функция получения данных о рекламе
+    static std::vector<advertisement> getAdvertisement(
+        soci::session&, const int&,
+        const int&);  // Функция получения данных о рекламе
 
-std::vector<client> getClient(
-    soci::session&, const int&,
-    const int&);  // Функция получения данных о клиентах
+    static std::vector<client> getClient(
+        soci::session&, const int&,
+        const int&);  // Функция получения данных о клиентах
+};

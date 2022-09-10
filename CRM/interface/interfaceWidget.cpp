@@ -241,7 +241,8 @@ void interfaceWidget::updateProvider(const int& page, const int& limit) {
 
     try {
         soci::session session(*parent->database.get_pool().lock());
-        std::vector<provider> providers = getProvider(session, page, limit);
+        std::vector<provider> providers =
+            db_methods::getProvider(session, page, limit);
         ui->tableWidget->setRowCount(providers.size());
 
         size_t current_row = 0;
@@ -289,7 +290,7 @@ void interfaceWidget::updateDeal(const int& page, const int& limit) {
     try {
         soci::session session(*parent->database.get_pool().lock());
         std::vector<boost::tuple<deal, laptop, client, employee>> deals =
-            getDeal(session, page, limit);
+            db_methods::getDeal(session, page, limit);
         ui->tableWidget->setRowCount(deals.size());
 
         size_t current_row = 0;
@@ -342,7 +343,7 @@ void interfaceWidget::updateStock(const int& page, const int& limit) {
     try {
         soci::session session(*parent->database.get_pool().lock());
         std::vector<boost::tuple<stock, laptop, provider>> result =
-            getStock(session, page, limit);
+            db_methods::getStock(session, page, limit);
         ui->tableWidget->setRowCount(result.size());
         size_t current_row = 0;
         for (const auto& [stock, laptop, provider] : result) {
@@ -381,7 +382,7 @@ void interfaceWidget::updateAds(const int& page, const int& limit) {
     try {
         soci::session session(*parent->database.get_pool().lock());
         std::vector<advertisement> result =
-            getAdvertisement(session, page, limit);
+            db_methods::getAdvertisement(session, page, limit);
         ui->tableWidget->setRowCount(result.size());
 
         size_t current_row = 0;
@@ -413,7 +414,8 @@ void interfaceWidget::updateEmployee(const int& page, const int& limit) {
 
     try {
         soci::session session(*parent->database.get_pool().lock());
-        std::vector<employee> result = getEmployee(session, page, limit);
+        std::vector<employee> result =
+            db_methods::getEmployee(session, page, limit);
 
         size_t current_row = 0;
         for (const auto& employee : result) {
@@ -448,7 +450,8 @@ void interfaceWidget::updateClient(const int& page, const int& limit) {
 
     try {
         soci::session session(*parent->database.get_pool().lock());
-        std::vector<client> clients = getClient(session, page, limit);
+        std::vector<client> clients =
+            db_methods::getClient(session, page, limit);
         ui->tableWidget->setRowCount(clients.size());
 
         size_t current_row = 0;

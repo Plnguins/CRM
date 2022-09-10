@@ -18,9 +18,8 @@
  */
 #include "db_methods.h"
 
-std::vector<boost::tuple<stock, laptop, provider>> getStock(soci::session& sql,
-                                                            const int& offset,
-                                                            const int& limit) {
+std::vector<boost::tuple<stock, laptop, provider>> db_methods::getStock(
+    soci::session& sql, const int& offset, const int& limit) {
     std::vector<boost::tuple<stock, laptop, provider>> result;
     std::string query =
         "SELECT stock.*, laptop.*, provider.* FROM stock JOIN laptop "
@@ -45,8 +44,9 @@ std::vector<boost::tuple<stock, laptop, provider>> getStock(soci::session& sql,
     return result;  // Возвращаем результат
 }
 
-std::vector<provider> getProvider(soci::session& sql, const int& offset,
-                                  const int& limit) {
+std::vector<provider> db_methods::getProvider(soci::session& sql,
+                                              const int& offset,
+                                              const int& limit) {
     std::vector<provider> result;
     std::string query =
         "SELECT * FROM provider LIMIT " + std::to_string(limit) + " OFFSET " +
@@ -59,7 +59,7 @@ std::vector<provider> getProvider(soci::session& sql, const int& offset,
     return result;  // Возвращаем результат
 }
 
-std::vector<boost::tuple<deal, laptop, client, employee>> getDeal(
+std::vector<boost::tuple<deal, laptop, client, employee>> db_methods::getDeal(
     soci::session& sql, const int& offset, const int& limit) {
     std::vector<boost::tuple<deal, laptop, client, employee>> result;
     std::string query =
@@ -94,8 +94,9 @@ std::vector<boost::tuple<deal, laptop, client, employee>> getDeal(
     return result;  // Возвращаем результат
 }
 
-std::vector<employee> getEmployee(soci::session& sql, const int& offset,
-                                  const int& limit) {
+std::vector<employee> db_methods::getEmployee(soci::session& sql,
+                                              const int& offset,
+                                              const int& limit) {
     std::vector<employee> result;
     std::string query =
         "SELECT * FROM employee LIMIT " + std::to_string(limit) + " OFFSET " +
@@ -108,9 +109,9 @@ std::vector<employee> getEmployee(soci::session& sql, const int& offset,
     return result;  // Возвращаем результат
 }
 
-std::vector<advertisement> getAdvertisement(soci::session& sql,
-                                            const int& offset,
-                                            const int& limit) {
+std::vector<advertisement> db_methods::getAdvertisement(soci::session& sql,
+                                                        const int& offset,
+                                                        const int& limit) {
     std::vector<advertisement> result;
     std::string query =
         "SELECT * FROM advertisement LIMIT " + std::to_string(limit) +
@@ -124,8 +125,8 @@ std::vector<advertisement> getAdvertisement(soci::session& sql,
     return result;  // Возвращаем результат
 }
 
-std::vector<client> getClient(soci::session& sql, const int& offset,
-                              const int& limit) {
+std::vector<client> db_methods::getClient(soci::session& sql, const int& offset,
+                                          const int& limit) {
     std::vector<client> result;
     std::string query =
         "SELECT * FROM client LIMIT " + std::to_string(limit) + " OFFSET " +
