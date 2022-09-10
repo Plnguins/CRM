@@ -54,9 +54,7 @@ class interfaceWidget : public QWidget {
 
    private:
     MainWindow* parent;
-    // get from table
-    int numberOfPages = 20;
-    // pages start from 1
+    int numberOfPages = 0;
     std::vector<short> pages = {1, 2, 3, 4, 5};
     std::vector<QPushButton*> pageButtons;
     int limit = 10;

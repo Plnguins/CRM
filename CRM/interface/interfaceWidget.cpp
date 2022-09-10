@@ -115,6 +115,8 @@ void interfaceWidget::updateProvider(const int& page, const int& limit) {
                 current_row, 1, new QTableWidgetItem(current.name.c_str()));
             current_row++;
         }
+        numberOfPages = ceil(static_cast<double>(db_methods::row_count) /
+                             static_cast<double>(limit));
     } catch (const std::exception& e) {
         QMessageBox::critical(this, tr("Ошибка"), e.what());
         return;
@@ -193,6 +195,8 @@ void interfaceWidget::updateDeal(const int& page, const int& limit) {
                         .c_str()));
             current_row++;
         }
+        numberOfPages = ceil(static_cast<double>(db_methods::row_count) /
+                             static_cast<double>(limit));
     } catch (const std::exception& e) {
         QMessageBox::critical(this, tr("Ошибка"), e.what());
         return;
@@ -232,6 +236,8 @@ void interfaceWidget::updateStock(const int& page, const int& limit) {
                 current_row, 5, new QTableWidgetItem(provider.name.c_str()));
             current_row++;
         }
+        numberOfPages = ceil(static_cast<double>(db_methods::row_count) /
+                             static_cast<double>(limit));
     } catch (const std::exception& e) {
         QMessageBox::critical(this, tr("Ошибка"), e.what());
         return;
@@ -265,6 +271,8 @@ void interfaceWidget::updateAds(const int& page, const int& limit) {
                                      new QTableWidgetItem(ad.comments.c_str()));
             current_row++;
         }
+        numberOfPages = ceil(static_cast<double>(db_methods::row_count) /
+                             static_cast<double>(limit));
     } catch (const std::exception& e) {
         QMessageBox::critical(this, tr("Ошибка"), e.what());
         return;
@@ -300,6 +308,8 @@ void interfaceWidget::updateEmployee(const int& page, const int& limit) {
                 current_row, 4, new QTableWidgetItem(employee.login.c_str()));
             current_row++;
         }
+        numberOfPages = ceil(static_cast<double>(db_methods::row_count) /
+                             static_cast<double>(limit));
     } catch (const std::exception& e) {
         QMessageBox::critical(this, tr("Ошибка"), e.what());
         return;
@@ -350,6 +360,8 @@ void interfaceWidget::updateClient(const int& page, const int& limit) {
                 new QTableWidgetItem(QString::fromStdString(client.phone)));
             current_row++;
         }
+        numberOfPages = ceil(static_cast<double>(db_methods::row_count) /
+                             static_cast<double>(limit));
     } catch (const std::exception& e) {
         QMessageBox::critical(this, tr("Ошибка"), e.what());
         return;
