@@ -897,6 +897,9 @@ background-color: rgb(56, 84, 102);</string>
      <height>41</height>
     </rect>
    </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
     <string notr="true">QPushButton#Page_1:!pressed {
     font: 12pt &quot;Comfortaa&quot;;
@@ -959,6 +962,9 @@ QPushButton#Page_1:pressed {
      <width>41</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton#Page_2:!pressed {
@@ -1023,6 +1029,9 @@ QPushButton#Page_2:pressed {
      <height>41</height>
     </rect>
    </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
     <string notr="true">QPushButton#Page_3:!pressed {
     font: 12pt &quot;Comfortaa&quot;;
@@ -1086,6 +1095,9 @@ QPushButton#Page_3:pressed {
      <height>41</height>
     </rect>
    </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
     <string notr="true">QPushButton#Page_4:!pressed {
     font: 12pt &quot;Comfortaa&quot;;
@@ -1148,6 +1160,9 @@ QPushButton#Page_4:pressed {
      <width>41</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton#Page_5:!pressed {

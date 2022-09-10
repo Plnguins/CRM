@@ -58,6 +58,7 @@ class interfaceWidget : public QWidget {
     int numberOfPages = 20;
     // pages start from 1
     std::vector<short> pages = {1, 2, 3, 4, 5};
+    std::vector<QPushButton*> pageButtons;
     int limit = 10;
 
     void updateProvider(const int& = 0, const int& = 10);
@@ -70,4 +71,5 @@ class interfaceWidget : public QWidget {
     void (interfaceWidget::*updateTable)(const int&, const int&) = nullptr;
 
     void hideGreeting();
+    void showPageButtons();
 };

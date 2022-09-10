@@ -20,17 +20,14 @@ interfaceWidget::interfaceWidget(QMainWindow* parent, std::string name,
     : parent(dynamic_cast<MainWindow*>(parent)), ui(new Ui::interfaceUi) {
     ui->setupUi(this);
 
+    pageButtons = std::vector<QPushButton*>(
+        {ui->Page_1, ui->Page_2, ui->Page_3, ui->Page_4, ui->Page_5});
+
     ui->Greeting->setText(tr("Добро пожаловать, ") +
                           QString::fromStdString(name + " " + surname + "!"));
 
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(
         QHeaderView::ResizeToContents);
-
-    ui->Page_1->hide();
-    ui->Page_2->hide();
-    ui->Page_3->hide();
-    ui->Page_4->hide();
-    ui->Page_5->hide();
 
     ui->Page_1->setText(QString::number(pages[0]));
     ui->Page_2->setText(QString::number(pages[1]));
@@ -44,31 +41,9 @@ void interfaceWidget::on_Provider_clicked() {
      * Функция отображает клиентов
      */
     hideGreeting();
-
     updateTable = &interfaceWidget::updateProvider;
     goToPage(0);
-
-    if (numberOfPages >= 5) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-        ui->Page_3->show();
-        ui->Page_4->show();
-        ui->Page_5->show();
-    } else if (numberOfPages == 4) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-        ui->Page_3->show();
-        ui->Page_4->show();
-    } else if (numberOfPages == 3) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-        ui->Page_3->show();
-    } else if (numberOfPages == 2) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-    } else if (numberOfPages == 1) {
-        ui->Page_1->show();
-    }
+    showPageButtons();
 }
 
 void interfaceWidget::on_Deal_clicked() {
@@ -76,31 +51,9 @@ void interfaceWidget::on_Deal_clicked() {
      * Функция отображает клиентов
      */
     hideGreeting();
-
     updateTable = &interfaceWidget::updateDeal;
     goToPage(0);
-
-    if (numberOfPages >= 5) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-        ui->Page_3->show();
-        ui->Page_4->show();
-        ui->Page_5->show();
-    } else if (numberOfPages == 4) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-        ui->Page_3->show();
-        ui->Page_4->show();
-    } else if (numberOfPages == 3) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-        ui->Page_3->show();
-    } else if (numberOfPages == 2) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-    } else if (numberOfPages == 1) {
-        ui->Page_1->show();
-    }
+    showPageButtons();
 }
 
 void interfaceWidget::on_Stock_clicked() {
@@ -108,31 +61,9 @@ void interfaceWidget::on_Stock_clicked() {
      * Функция отображает клиентов
      */
     hideGreeting();
-
     updateTable = &interfaceWidget::updateStock;
     goToPage(0);
-
-    if (numberOfPages >= 5) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-        ui->Page_3->show();
-        ui->Page_4->show();
-        ui->Page_5->show();
-    } else if (numberOfPages == 4) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-        ui->Page_3->show();
-        ui->Page_4->show();
-    } else if (numberOfPages == 3) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-        ui->Page_3->show();
-    } else if (numberOfPages == 2) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-    } else if (numberOfPages == 1) {
-        ui->Page_1->show();
-    }
+    showPageButtons();
 }
 
 void interfaceWidget::on_Ads_clicked() {
@@ -140,31 +71,9 @@ void interfaceWidget::on_Ads_clicked() {
      * Функция отображает клиентов
      */
     hideGreeting();
-
     updateTable = &interfaceWidget::updateAds;
     goToPage(0);
-
-    if (numberOfPages >= 5) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-        ui->Page_3->show();
-        ui->Page_4->show();
-        ui->Page_5->show();
-    } else if (numberOfPages == 4) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-        ui->Page_3->show();
-        ui->Page_4->show();
-    } else if (numberOfPages == 3) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-        ui->Page_3->show();
-    } else if (numberOfPages == 2) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-    } else if (numberOfPages == 1) {
-        ui->Page_1->show();
-    }
+    showPageButtons();
 }
 
 void interfaceWidget::on_Employee_clicked() {
@@ -172,31 +81,9 @@ void interfaceWidget::on_Employee_clicked() {
      * Функция отображает клиентов
      */
     hideGreeting();
-
     updateTable = &interfaceWidget::updateEmployee;
     goToPage(0);
-
-    if (numberOfPages >= 5) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-        ui->Page_3->show();
-        ui->Page_4->show();
-        ui->Page_5->show();
-    } else if (numberOfPages == 4) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-        ui->Page_3->show();
-        ui->Page_4->show();
-    } else if (numberOfPages == 3) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-        ui->Page_3->show();
-    } else if (numberOfPages == 2) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-    } else if (numberOfPages == 1) {
-        ui->Page_1->show();
-    }
+    showPageButtons();
 }
 
 void interfaceWidget::on_Client_clicked() {
@@ -204,31 +91,9 @@ void interfaceWidget::on_Client_clicked() {
      * Функция отображает клиентов
      */
     hideGreeting();
-
     updateTable = &interfaceWidget::updateClient;
     goToPage(0);
-
-    if (numberOfPages >= 5) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-        ui->Page_3->show();
-        ui->Page_4->show();
-        ui->Page_5->show();
-    } else if (numberOfPages == 4) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-        ui->Page_3->show();
-        ui->Page_4->show();
-    } else if (numberOfPages == 3) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-        ui->Page_3->show();
-    } else if (numberOfPages == 2) {
-        ui->Page_1->show();
-        ui->Page_2->show();
-    } else if (numberOfPages == 1) {
-        ui->Page_1->show();
-    }
+    showPageButtons();
 }
 
 void interfaceWidget::updateProvider(const int& page, const int& limit) {
@@ -274,6 +139,12 @@ void interfaceWidget::hideGreeting() {
     ui->Name->hide();
     ui->Company->hide();
     ui->Greeting->hide();
+}
+
+void interfaceWidget::showPageButtons() {
+    for (size_t current = 0; current < std::min(numberOfPages, 5); current++) {
+        pageButtons[current]->show();
+    }
 }
 
 void interfaceWidget::updateDeal(const int& page, const int& limit) {
