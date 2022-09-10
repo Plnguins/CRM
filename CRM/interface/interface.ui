@@ -765,7 +765,7 @@ QPushButton#Client:hover:!pressed {
 	border-radius:10px;
  }
 
-QPushButton#pushButton:pressed {
+QPushButton#Page_1:pressed {
      background-color: rgb(54, 69, 80);
 	font: 12pt &quot;Comfortaa&quot;;
 	color: rgb(222, 222, 222);
@@ -898,7 +898,7 @@ background-color: rgb(56, 84, 102);</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton#pushButton:!pressed {
+    <string notr="true">QPushButton#Page_1:!pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -910,7 +910,7 @@ background-color: rgb(56, 84, 102);</string>
 	border-radius:5px;
  }
 
-QPushButton#pushButton {
+QPushButton#Page_1 {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -922,7 +922,7 @@ QPushButton#pushButton {
 	border-radius:5px;
  }
 
-QPushButton#pushButton:hover {
+QPushButton#Page_1:hover {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -935,7 +935,7 @@ QPushButton#pushButton:hover {
  }
 
 
-QPushButton#pushButton:pressed {
+QPushButton#Page_1:pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -961,7 +961,7 @@ QPushButton#pushButton:pressed {
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton#pushButton_2:!pressed {
+    <string notr="true">QPushButton#Page_2:!pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -973,7 +973,7 @@ QPushButton#pushButton:pressed {
 	border-radius:5px;
  }
 
-QPushButton#pushButton_2 {
+QPushButton#Page_2 {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -985,7 +985,7 @@ QPushButton#pushButton_2 {
 	border-radius:5px;
  }
 
-QPushButton#pushButton_2:hover {
+QPushButton#Page_2:hover {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -998,7 +998,7 @@ QPushButton#pushButton_2:hover {
  }
 
 
-QPushButton#pushButton_2:pressed {
+QPushButton#Page_2:pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -1024,7 +1024,7 @@ QPushButton#pushButton_2:pressed {
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton#pushButton_3:!pressed {
+    <string notr="true">QPushButton#Page_3:!pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -1036,7 +1036,7 @@ QPushButton#pushButton_2:pressed {
 	border-radius:5px;
  }
 
-QPushButton#pushButton_3 {
+QPushButton#Page_3 {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -1048,7 +1048,7 @@ QPushButton#pushButton_3 {
 	border-radius:5px;
  }
 
-QPushButton#pushButton_3:hover {
+QPushButton#Page_3:hover {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -1061,7 +1061,7 @@ QPushButton#pushButton_3:hover {
  }
 
 
-QPushButton#pushButton_3:pressed {
+QPushButton#Page_3:pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -1087,7 +1087,7 @@ QPushButton#pushButton_3:pressed {
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton#pushButton_4:!pressed {
+    <string notr="true">QPushButton#Page_4:!pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -1099,7 +1099,7 @@ QPushButton#pushButton_3:pressed {
 	border-radius:5px;
  }
 
-QPushButton#pushButton_4 {
+QPushButton#Page_4 {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -1111,7 +1111,7 @@ QPushButton#pushButton_4 {
 	border-radius:5px;
  }
 
-QPushButton#pushButton_4:hover {
+QPushButton#Page_4:hover {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -1124,7 +1124,7 @@ QPushButton#pushButton_4:hover {
  }
 
 
-QPushButton#pushButton_4:pressed {
+QPushButton#Page_4:pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -1150,7 +1150,7 @@ QPushButton#pushButton_4:pressed {
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton#pushButton_5:!pressed {
+    <string notr="true">QPushButton#Page_5:!pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -1162,7 +1162,7 @@ QPushButton#pushButton_4:pressed {
 	border-radius:5px;
  }
 
-QPushButton#pushButton_5 {
+QPushButton#Page_5 {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -1174,7 +1174,7 @@ QPushButton#pushButton_5 {
 	border-radius:5px;
  }
 
-QPushButton#pushButton_5:hover {
+QPushButton#Page_5:hover {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -1187,7 +1187,7 @@ QPushButton#pushButton_5:hover {
  }
 
 
-QPushButton#pushButton_5:pressed {
+QPushButton#Page_5:pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
