@@ -38,6 +38,11 @@ class interfaceWidget : public QWidget {
     void on_Ads_clicked();
     void on_Deal_clicked();
     void on_Client_clicked();
+
+    void on_Add_clicked();
+    void on_Edit_clicked();
+    void on_Delete_clicked();
+
     void on_Logout_clicked() { parent->setLoginInterface(); }
 
     void on_Page_1_clicked();

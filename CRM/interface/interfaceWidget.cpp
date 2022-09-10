@@ -92,6 +92,12 @@ void interfaceWidget::on_Client_clicked() {
     updatePageButtons();
 }
 
+void interfaceWidget::on_Add_clicked() {}
+
+void interfaceWidget::on_Edit_clicked() {}
+
+void interfaceWidget::on_Delete_clicked() {}
+
 void interfaceWidget::hideGreeting() {
     /*
      * Функция скрывает приветствие и показывает таблицу
