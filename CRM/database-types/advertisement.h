@@ -27,8 +27,7 @@ struct advertisement {
 
     advertisement() = default;
 
-    advertisement(int id, std::string source, long long budget,
-                  std::string comments)
+    advertisement(int id, std::string source, int budget, std::string comments)
         : id(id), source(source), budget(budget), comments(comments) {}
 
     advertisement(const advertisement& other)
