@@ -445,6 +445,9 @@ border-bottom-left-radius: 5px;
    <property name="title">
     <string/>
    </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
      <widget class="QPushButton" name="Ads">
@@ -888,20 +891,42 @@ background-color: rgb(56, 84, 102);</string>
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="Page_1">
+  <widget class="QLabel" name="BackGround">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>821</width>
+     <height>492</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(221, 235, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
      <x>310</x>
      <y>440</y>
-     <width>41</width>
+     <width>205</width>
      <height>41</height>
     </rect>
    </property>
-   <property name="visible">
-    <bool>false</bool>
+   <property name="title">
+    <string/>
    </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton#Page_1:!pressed {
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="Page_1">
+      <property name="visible">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#Page_1:!pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -949,25 +974,19 @@ QPushButton#Page_1:pressed {
 	border-bottom: 2px solid #BBD6FF;
 	border-radius:5px;
  }</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="Page_2">
-   <property name="geometry">
-    <rect>
-     <x>350</x>
-     <y>440</y>
-     <width>41</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton#Page_2:!pressed {
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="Page_2">
+      <property name="visible">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#Page_2:!pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -1015,25 +1034,19 @@ QPushButton#Page_2:pressed {
 	border-bottom: 2px solid #BBD6FF;
 	border-radius:5px;
  }</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="Page_3">
-   <property name="geometry">
-    <rect>
-     <x>390</x>
-     <y>440</y>
-     <width>41</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton#Page_3:!pressed {
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="Page_3">
+      <property name="visible">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#Page_3:!pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -1081,25 +1094,19 @@ QPushButton#Page_3:pressed {
 	border-bottom: 2px solid #BBD6FF;
 	border-radius:5px;
  }</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="Page_4">
-   <property name="geometry">
-    <rect>
-     <x>430</x>
-     <y>440</y>
-     <width>41</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton#Page_4:!pressed {
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="Page_4">
+      <property name="visible">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#Page_4:!pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -1147,25 +1154,19 @@ QPushButton#Page_4:pressed {
 	border-bottom: 2px solid #BBD6FF;
 	border-radius:5px;
  }</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="Page_5">
-   <property name="geometry">
-    <rect>
-     <x>470</x>
-     <y>440</y>
-     <width>41</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="visible">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton#Page_5:!pressed {
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="Page_5">
+      <property name="visible">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#Page_5:!pressed {
     font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
@@ -1213,26 +1214,13 @@ QPushButton#Page_5:pressed {
 	border-bottom: 2px solid #BBD6FF;
 	border-radius:5px;
  }</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="BackGround">
-   <property name="geometry">
-    <rect>
-     <x>-92</x>
-     <y>-25</y>
-     <width>1081</width>
-     <height>781</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(221, 235, 255);</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <zorder>BackGround</zorder>
   <zorder>RoundedBackground</zorder>
@@ -1245,13 +1233,9 @@ QPushButton#Page_5:pressed {
   <zorder>Delete</zorder>
   <zorder>Title</zorder>
   <zorder>LeftButtons</zorder>
-  <zorder>Page_1</zorder>
-  <zorder>Page_2</zorder>
-  <zorder>Page_3</zorder>
-  <zorder>Page_4</zorder>
-  <zorder>Page_5</zorder>
   <zorder>RoundedBlue</zorder>
   <zorder>tableWidget</zorder>
+  <zorder>groupBox</zorder>
  </widget>
  <resources>
   <include location="../../resources/resources.qrc"/>
