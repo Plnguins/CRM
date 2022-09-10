@@ -92,6 +92,28 @@ void interfaceWidget::on_Client_clicked() {
     showPageButtons();
 }
 
+void interfaceWidget::hideGreeting() {
+    /*
+     * Функция скрывает приветствие и показывает таблицу
+     */
+    ui->tableWidget->show();
+    ui->Edit->show();
+    ui->Add->show();
+    ui->Delete->show();
+    ui->RoundedBlue->show();
+    ui->Title->show();
+    ui->Icon->hide();
+    ui->Name->hide();
+    ui->Company->hide();
+    ui->Greeting->hide();
+}
+
+void interfaceWidget::showPageButtons() {
+    for (size_t current = 0; current < std::min(numberOfPages, 5); current++) {
+        pageButtons[current]->show();
+    }
+}
+
 void interfaceWidget::updateProvider(const int& page, const int& limit) {
     ui->Title->setText(tr("Поставщики"));
 
@@ -120,28 +142,6 @@ void interfaceWidget::updateProvider(const int& page, const int& limit) {
     } catch (const std::exception& e) {
         QMessageBox::critical(this, tr("Ошибка"), e.what());
         return;
-    }
-}
-
-void interfaceWidget::hideGreeting() {
-    /*
-     * Функция скрывает приветствие и показывает таблицу
-     */
-    ui->tableWidget->show();
-    ui->Edit->show();
-    ui->Add->show();
-    ui->Delete->show();
-    ui->RoundedBlue->show();
-    ui->Title->show();
-    ui->Icon->hide();
-    ui->Name->hide();
-    ui->Company->hide();
-    ui->Greeting->hide();
-}
-
-void interfaceWidget::showPageButtons() {
-    for (size_t current = 0; current < std::min(numberOfPages, 5); current++) {
-        pageButtons[current]->show();
     }
 }
 
