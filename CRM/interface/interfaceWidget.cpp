@@ -38,7 +38,7 @@ void interfaceWidget::on_Provider_clicked() {
      */
     hideGreeting();
     updateTable = &interfaceWidget::updateProvider;
-    goToPage(0);
+    goToPage(1);
     showPageButtons();
 }
 
@@ -48,7 +48,7 @@ void interfaceWidget::on_Deal_clicked() {
      */
     hideGreeting();
     updateTable = &interfaceWidget::updateDeal;
-    goToPage(0);
+    goToPage(1);
     showPageButtons();
 }
 
@@ -58,7 +58,7 @@ void interfaceWidget::on_Stock_clicked() {
      */
     hideGreeting();
     updateTable = &interfaceWidget::updateStock;
-    goToPage(0);
+    goToPage(1);
     showPageButtons();
 }
 
@@ -68,7 +68,7 @@ void interfaceWidget::on_Ads_clicked() {
      */
     hideGreeting();
     updateTable = &interfaceWidget::updateAds;
-    goToPage(0);
+    goToPage(1);
     showPageButtons();
 }
 
@@ -78,7 +78,7 @@ void interfaceWidget::on_Employee_clicked() {
      */
     hideGreeting();
     updateTable = &interfaceWidget::updateEmployee;
-    goToPage(0);
+    goToPage(1);
     showPageButtons();
 }
 
@@ -88,7 +88,7 @@ void interfaceWidget::on_Client_clicked() {
      */
     hideGreeting();
     updateTable = &interfaceWidget::updateClient;
-    goToPage(0);
+    goToPage(1);
     showPageButtons();
 }
 
@@ -383,20 +383,14 @@ void interfaceWidget::on_Page_1_clicked() {
         for (auto& tmp : pages) tmp -= 1;
         changeButtonsText();
     }
-    // go to pages[pages[0]]
+    goToPage(pages[0]);
 }
 
-void interfaceWidget::on_Page_2_clicked() {
-    // go to pages[pages[1]]
-}
+void interfaceWidget::on_Page_2_clicked() { goToPage(pages[1]); }
 
-void interfaceWidget::on_Page_3_clicked() {
-    // go to pages[pages[2]]
-}
+void interfaceWidget::on_Page_3_clicked() { goToPage(pages[2]); }
 
-void interfaceWidget::on_Page_4_clicked() {
-    // go to pages[pages[3]]
-}
+void interfaceWidget::on_Page_4_clicked() { goToPage(pages[3]); }
 
 void interfaceWidget::on_Page_5_clicked() {
     int cur_right_number = pages[4];
@@ -407,5 +401,5 @@ void interfaceWidget::on_Page_5_clicked() {
         for (auto& tmp : pages) tmp += 1;
         changeButtonsText();
     }
-    // go to pages[pages[4]]
+    goToPage(pages[4]);
 }

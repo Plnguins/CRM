@@ -41,7 +41,9 @@ class interfaceWidget : public QWidget {
     void on_Logout_clicked() { parent->setLoginInterface(); }
 
     void changeButtonsText();
-    void goToPage(int pageNumber) { (this->*updateTable)(pageNumber, limit); }
+    void goToPage(int pageNumber) {
+        (this->*updateTable)(pageNumber - 1, limit);
+    }
 
     void on_Page_1_clicked();
     void on_Page_2_clicked();
