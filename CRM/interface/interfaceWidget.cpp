@@ -214,6 +214,8 @@ void interfaceWidget::updateStock(const int& page, const int& limit) {
      * Функция получает данные о складе и отображает в таблице
      */
     ui->Title->setText(tr("Склад"));
+
+    ui->tableWidget->clear();
     const QStringList Labels = {tr("ID"),       tr("Ноутбук"),
                                 tr("Цена"),     tr("Количество"),
                                 tr("Доступно"), tr("Поставщик")};
@@ -256,6 +258,7 @@ void interfaceWidget::updateStock(const int& page, const int& limit) {
 void interfaceWidget::updateAds(const int& page, const int& limit) {
     ui->Title->setText(tr("Реклама"));
 
+    ui->tableWidget->clear();
     const QStringList Labels = {tr("ID"), tr("Платформа"), tr("Бюджет"),
                                 tr("Комментарии")};
     ui->tableWidget->setColumnCount(Labels.size());
@@ -294,6 +297,7 @@ void interfaceWidget::updateEmployee(const int& page, const int& limit) {
      */
     ui->Title->setText(tr("Работники"));
 
+    ui->tableWidget->clear();
     const QStringList Labels = {tr("ID"), tr("Фамилия"), tr("Имя"),
                                 tr("Отчество"), tr("Логин")};
     ui->tableWidget->setColumnCount(Labels.size());
@@ -334,6 +338,7 @@ void interfaceWidget::updateClient(const int& page, const int& limit) {
      */
     ui->Title->setText(tr("Клиенты"));
 
+    ui->tableWidget->clear();
     const QStringList Labels = {tr("ID"),       tr("Фамилия"), tr("Имя"),
                                 tr("Отчество"), tr("Город"),   tr("Пол"),
                                 tr("email"),    tr("Телефон")};
