@@ -121,6 +121,9 @@ border-radius: 10px;</string>
    <property name="text">
     <string/>
    </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
    <property name="placeholderText">
     <string>Пароль</string>
    </property>
@@ -345,6 +348,40 @@ border-radius: 10px;</string>
     <string>Название БД</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="ShowPassword">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>173</y>
+     <width>24</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <activeoff>:/images/openEye.png</activeoff>
+     <activeon>:/images/closeEye.png</activeon>
+    </iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="autoDefault">
+    <bool>true</bool>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
   <zorder>label_4</zorder>
   <zorder>label_6</zorder>
   <zorder>DataBasePasswordEnter</zorder>
@@ -360,7 +397,10 @@ border-radius: 10px;</string>
   <zorder>DataBasePort</zorder>
   <zorder>Company</zorder>
   <zorder>Title</zorder>
+  <zorder>ShowPassword</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../resources/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
