@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>581</width>
+    <height>221</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="BackgroundRounded">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>581</width>
+     <height>221</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color :rgb(255, 255, 255);
+border-radius: 20px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="IDEnter">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>100</y>
+     <width>101</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border: 5px solid #BBD6FF ;
+	border-top-left-radius: 20px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="tableName">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>10</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);
+	border: 5px solid #BBD6FF ;
+	border-top: transparent;
+	border-left: transparent;
+	border-right: transparent;</string>
+   </property>
+   <property name="text">
+    <string>Edit Ads</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Comments">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>60</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);
+	border: 5px solid #BBD6FF ;
+	border-top: transparent;
+	border-left: transparent;
+	border-right: transparent;</string>
+   </property>
+   <property name="text">
+    <string>Комментарии</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="BudgetEnter">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>100</y>
+     <width>111</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border: 5px solid #BBD6FF ;</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="CommentsEnter">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>100</y>
+     <width>201</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border: 5px solid #BBD6FF ;
+	border-bottom-right-radius:20px;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Budget">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>60</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);
+	border: 5px solid #BBD6FF ;
+	border-top: transparent;
+	border-left: transparent;
+	border-right: transparent;</string>
+   </property>
+   <property name="text">
+    <string>Бюджет</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Background">
+   <property name="geometry">
+    <rect>
+     <x>-100</x>
+     <y>-50</y>
+     <width>1141</width>
+     <height>311</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(221, 235, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Platform">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>60</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);
+	border: 5px solid #BBD6FF ;
+	border-top: transparent;
+	border-left: transparent;
+	border-right: transparent;</string>
+   </property>
+   <property name="text">
+    <string>Платформа</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="ID">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>60</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);
+	border: 5px solid #BBD6FF ;
+	border-top: transparent;
+	border-left: transparent;
+	border-right: transparent;</string>
+   </property>
+   <property name="text">
+    <string>ID</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Apply">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>170</y>
+     <width>131</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#Apply:!pressed {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border: 5px solid #BBD6FF ;
+	border-radius:20px;
+ }
+
+QPushButton#Apply {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border: 5px solid #BBD6FF ;
+	border-radius:20px;;
+ }
+
+QPushButton#Apply:hover {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(165, 199, 250);
+	border: 5px solid #75ACFF;
+	border-radius:20px;
+ }
+
+
+QPushButton#Apply:pressed {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(165, 199, 250);
+	border: 5px solid #75ACFF;
+	border-radius:20px;
+ }</string>
+   </property>
+   <property name="text">
+    <string>Apply</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="PlatfromEnter">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>100</y>
+     <width>131</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border: 5px solid #BBD6FF ;</string>
+   </property>
+  </widget>
+  <zorder>Background</zorder>
+  <zorder>BackgroundRounded</zorder>
+  <zorder>tableName</zorder>
+  <zorder>Apply</zorder>
+  <zorder>ID</zorder>
+  <zorder>Platform</zorder>
+  <zorder>IDEnter</zorder>
+  <zorder>Budget</zorder>
+  <zorder>Comments</zorder>
+  <zorder>PlatfromEnter</zorder>
+  <zorder>BudgetEnter</zorder>
+  <zorder>CommentsEnter</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
