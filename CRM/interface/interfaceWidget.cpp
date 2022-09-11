@@ -307,6 +307,7 @@ void interfaceWidget::updateEmployee(const int& page, const int& limit) {
         soci::session session(*parent->database.get_pool().lock());
         std::vector<employee> result =
             db_methods::getEmployee(session, page, limit);
+        ui->tableWidget->setRowCount(result.size());
 
         size_t current_row = 0;
         for (const auto& employee : result) {
