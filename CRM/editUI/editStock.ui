@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- MainWindow UI code for CRM application
+<!-- Edit Stock UI code for CRM application
 Copyright(C) 2022 Plnguins
 
 This program is free software : you can redistribute it and / or modify
@@ -15,8 +15,8 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>editStock</class>
+ <widget class="QWidget" name="editStock">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -26,7 +26,7 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Склад</string>
   </property>
   <widget class="QPushButton" name="Apply">
    <property name="geometry">
