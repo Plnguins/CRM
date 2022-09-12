@@ -448,7 +448,7 @@ QPushButton#Apply:pressed {
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="CityEnter_2">
+  <widget class="QLineEdit" name="SexEnter">
    <property name="geometry">
     <rect>
      <x>680</x>
@@ -486,7 +486,7 @@ QPushButton#Apply:pressed {
   <zorder>NameEnter</zorder>
   <zorder>Apply</zorder>
   <zorder>SurnameEnter</zorder>
-  <zorder>CityEnter_2</zorder>
+  <zorder>SexEnter</zorder>
  </widget>
  <resources/>
  <connections/>

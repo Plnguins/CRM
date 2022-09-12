@@ -359,11 +359,11 @@ QComboBox::drop-down {
 }
 
 QComboBox::down-arrow:!on {
-    image: url(&quot;C:/Users/SeMsei/Documents/downArrow.png&quot;);
+    image: url(&quot;:/images/downArrow.png&quot;);
 }
 
 QComboBox::down-arrow:on { 
-    image: url(&quot;C:/Users/SeMsei/Documents/upArrow.png&quot;);
+    image: url(&quot;:/images/upArrow.png&quot;);
 }
 
 
@@ -410,11 +410,11 @@ QComboBox::drop-down {
 }
 
 QComboBox::down-arrow:!on {
-    image: url(&quot;C:/Users/SeMsei/Documents/downArrow.png&quot;);
+    image: url(&quot;:/images/downArrow.png&quot;);
 }
 
 QComboBox::down-arrow:on { 
-    image: url(&quot;C:/Users/SeMsei/Documents/upArrow.png&quot;);
+    image: url(&quot;:/images/upArrow.png&quot;);
 }
 
 
@@ -461,11 +461,11 @@ QComboBox::drop-down {
 }
 
 QComboBox::down-arrow:!on {
-    image: url(&quot;C:/Users/SeMsei/Documents/downArrow.png&quot;);
+    image: url(&quot;:/images/downArrow.png&quot;);
 }
 
 QComboBox::down-arrow:on { 
-    image: url(&quot;C:/Users/SeMsei/Documents/upArrow.png&quot;);
+    image: url(&quot;:/images/upArrow.png&quot;);
 }
 
 
@@ -515,11 +515,11 @@ QComboBox::drop-down {
 }
 
 QComboBox::down-arrow:!on {
-    image: url(&quot;C:/Users/SeMsei/Documents/downArrow.png&quot;);
+    image: url(&quot;:/images/downArrow.png&quot;);
 }
 
 QComboBox::down-arrow:on { 
-    image: url(&quot;C:/Users/SeMsei/Documents/upArrow.png&quot;);
+    image: url(&quot;:/images/upArrow.png&quot;);
 }
 
 

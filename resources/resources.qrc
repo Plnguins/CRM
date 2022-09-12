@@ -71,4 +71,16 @@
     <qresource prefix="/">
         <file>images/settings.png</file>
     </qresource>
+    <qresource>
+        <file>images/catalog.png</file>
+    </qresource>
+    <qresource>
+        <file>images/downArrow.png</file>
+    </qresource>
+    <qresource>
+        <file>images/laptop.png</file>
+    </qresource>
+    <qresource>
+        <file>images/upArrow.png</file>
+    </qresource>
 </RCC>
