@@ -99,7 +99,7 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="Source">
+  <widget class="QLabel" name="Password">
    <property name="geometry">
     <rect>
      <x>600</x>
@@ -118,7 +118,7 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
 	border-right: transparent;</string>
    </property>
    <property name="text">
-    <string>Source</string>
+    <string>Пароль</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -291,7 +291,7 @@ QPushButton#Apply:pressed {
  }</string>
    </property>
    <property name="text">
-    <string>Apply</string>
+    <string>Готово</string>
    </property>
   </widget>
   <widget class="QLabel" name="Background">
@@ -313,9 +313,9 @@ QPushButton#Apply:pressed {
   <widget class="QLabel" name="TableName">
    <property name="geometry">
     <rect>
-     <x>290</x>
+     <x>0</x>
      <y>10</y>
-     <width>121</width>
+     <width>711</width>
      <height>31</height>
     </rect>
    </property>
@@ -329,7 +329,7 @@ QPushButton#Apply:pressed {
 	border-right: transparent;</string>
    </property>
    <property name="text">
-    <string>Edit Employee</string>
+    <string>Сотрудник</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -396,7 +396,7 @@ QPushButton#Apply:pressed {
   </widget>
   <zorder>Background</zorder>
   <zorder>BackgroundEnter</zorder>
-  <zorder>Source</zorder>
+  <zorder>Password</zorder>
   <zorder>ID</zorder>
   <zorder>Surname</zorder>
   <zorder>IDEnter</zorder>

@@ -119,7 +119,7 @@ QPushButton#Apply:pressed {
  }</string>
    </property>
    <property name="text">
-    <string>Apply</string>
+    <string>Готово</string>
    </property>
   </widget>
   <widget class="QLabel" name="IDEnter">
@@ -188,9 +188,9 @@ border-radius: 20px;</string>
   <widget class="QLabel" name="tableName">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>0</x>
      <y>10</y>
-     <width>71</width>
+     <width>341</width>
      <height>31</height>
     </rect>
    </property>
@@ -204,7 +204,7 @@ border-radius: 20px;</string>
 	border-right: transparent;</string>
    </property>
    <property name="text">
-    <string>Edit Ads</string>
+    <string>Поставщики</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

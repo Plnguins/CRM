@@ -76,7 +76,7 @@ QPushButton#Apply:pressed {
  }</string>
    </property>
    <property name="text">
-    <string>Apply</string>
+    <string>Готово</string>
    </property>
   </widget>
   <widget class="QLabel" name="Background">
@@ -98,9 +98,9 @@ QPushButton#Apply:pressed {
   <widget class="QLabel" name="tableName">
    <property name="geometry">
     <rect>
-     <x>390</x>
+     <x>0</x>
      <y>10</y>
-     <width>91</width>
+     <width>901</width>
      <height>31</height>
     </rect>
    </property>
@@ -114,7 +114,7 @@ QPushButton#Apply:pressed {
 	border-right: transparent;</string>
    </property>
    <property name="text">
-    <string>Edit Stock</string>
+    <string>Склад</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

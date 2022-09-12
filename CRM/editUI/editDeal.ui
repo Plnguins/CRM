@@ -21,7 +21,7 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1361</width>
+    <width>990</width>
     <height>221</height>
    </rect>
   </property>
@@ -250,30 +250,12 @@ border-radius: 20px;</string>
 	border: 5px solid #BBD6FF ;</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="LastUpdateEnter">
-   <property name="geometry">
-    <rect>
-     <x>1120</x>
-     <y>100</y>
-     <width>221</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(221, 235, 255);
-	border: 5px solid #BBD6FF ;
-	border-bottom-right-radius:20px;</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="tableName">
    <property name="geometry">
     <rect>
-     <x>620</x>
+     <x>0</x>
      <y>10</y>
-     <width>91</width>
+     <width>991</width>
      <height>31</height>
     </rect>
    </property>
@@ -287,7 +269,7 @@ border-radius: 20px;</string>
 	border-right: transparent;</string>
    </property>
    <property name="text">
-    <string>Edit Deal</string>
+    <string>Сделка</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -369,52 +351,10 @@ QPushButton#Apply:pressed {
     <string>Apply</string>
    </property>
   </widget>
-  <widget class="QLabel" name="CreateDate">
-   <property name="geometry">
-    <rect>
-     <x>710</x>
-     <y>60</y>
-     <width>131</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);
-	border: 5px solid #BBD6FF ;
-	border-top: transparent;
-	border-left: transparent;
-	border-right: transparent;</string>
-   </property>
-   <property name="text">
-    <string>Дата создания</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="CreateDateEnter">
-   <property name="geometry">
-    <rect>
-     <x>700</x>
-     <y>100</y>
-     <width>151</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(221, 235, 255);
-	border: 5px solid #BBD6FF ;</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="Seller">
    <property name="geometry">
     <rect>
-     <x>880</x>
+     <x>720</x>
      <y>60</y>
      <width>91</width>
      <height>31</height>
@@ -439,7 +379,7 @@ QPushButton#Apply:pressed {
   <widget class="QLineEdit" name="SellerEnter">
    <property name="geometry">
     <rect>
-     <x>850</x>
+     <x>700</x>
      <y>100</y>
      <width>151</width>
      <height>51</height>
@@ -456,7 +396,7 @@ QPushButton#Apply:pressed {
   <widget class="QLabel" name="Mark">
    <property name="geometry">
     <rect>
-     <x>1020</x>
+     <x>880</x>
      <y>60</y>
      <width>71</width>
      <height>31</height>
@@ -481,7 +421,7 @@ QPushButton#Apply:pressed {
   <widget class="QLineEdit" name="MarkEnter">
    <property name="geometry">
     <rect>
-     <x>1000</x>
+     <x>850</x>
      <y>100</y>
      <width>121</width>
      <height>51</height>
@@ -493,31 +433,6 @@ QPushButton#Apply:pressed {
 	color:  rgb(56, 84, 102);	
 	background-color: rgb(221, 235, 255);
 	border: 5px solid #BBD6FF ;</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="LastUpdate">
-   <property name="geometry">
-    <rect>
-     <x>1130</x>
-     <y>60</y>
-     <width>201</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);
-	border: 5px solid #BBD6FF ;
-	border-top: transparent;
-	border-left: transparent;
-	border-right: transparent;</string>
-   </property>
-   <property name="text">
-    <string>Последнее обновление</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <zorder>Background</zorder>
@@ -533,15 +448,11 @@ QPushButton#Apply:pressed {
   <zorder>CustomerEnter</zorder>
   <zorder>Price</zorder>
   <zorder>PriceEnter</zorder>
-  <zorder>LastUpdateEnter</zorder>
   <zorder>tableName</zorder>
-  <zorder>CreateDate</zorder>
-  <zorder>CreateDateEnter</zorder>
   <zorder>Seller</zorder>
   <zorder>SellerEnter</zorder>
   <zorder>Mark</zorder>
   <zorder>MarkEnter</zorder>
-  <zorder>LastUpdate</zorder>
  </widget>
  <resources/>
  <connections/>
