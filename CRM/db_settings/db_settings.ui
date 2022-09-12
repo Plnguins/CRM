@@ -85,7 +85,7 @@ color:  rgb(56, 84, 102);</string>
     <string>IP адрес:</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_6">
+  <widget class="QLabel" name="BlueBackground">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -128,7 +128,7 @@ border-radius: 10px;</string>
     <string>Пароль</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="RoundedBackground">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -382,8 +382,8 @@ border-radius: 10px;</string>
     <bool>true</bool>
    </property>
   </widget>
-  <zorder>label_4</zorder>
-  <zorder>label_6</zorder>
+  <zorder>RoundedBackground</zorder>
+  <zorder>BlueBackground</zorder>
   <zorder>DataBasePasswordEnter</zorder>
   <zorder>ApplyButton</zorder>
   <zorder>DataBaseNameEnter</zorder>
@@ -399,6 +399,15 @@ border-radius: 10px;</string>
   <zorder>Title</zorder>
   <zorder>ShowPassword</zorder>
  </widget>
+ <tabstops>
+  <tabstop>DataBaseIPEnter</tabstop>
+  <tabstop>DataBasePortEnter</tabstop>
+  <tabstop>DataBaseLoginEnter</tabstop>
+  <tabstop>DataBasePasswordEnter</tabstop>
+  <tabstop>ShowPassword</tabstop>
+  <tabstop>DataBaseNameEnter</tabstop>
+  <tabstop>ApplyButton</tabstop>
+ </tabstops>
  <resources>
   <include location="../../resources/resources.qrc"/>
  </resources>
