@@ -53,6 +53,10 @@ class db_methods {
         soci::session&, const int&,
         const int&);  // Функция получения данных о клиентах
 
+    static std::vector<laptop> getLaptop(
+        soci::session&, const int&,
+        const int&);  // Функция получение данных о ноутбуках
+
     static void deleteClient(
         soci::session&,
         const std::vector<int>&);  // Функция удаления клиентов по ID

@@ -167,6 +167,27 @@ std::vector<client> db_methods::getClient(soci::session& sql, const int& offset,
     return result;  // Возвращаем результат
 }
 
+std::vector<laptop> db_methods::getLaptop(soci::session& sql, const int& offset,
+                                          const int& limit) {
+    std::vector<laptop> result;
+    std::string query =
+        "SELECT *, COUNT(*) OVER() FROM laptop ORDER BY id LIMIT " +
+        std::to_string(limit) + " OFFSET " +
+        std::to_string(offset * limit);  // Формируем запрос к СУБД
+    soci::rowset<soci::row> rs = (sql.prepare << query);  // Подготавливаем его
+    for (auto it = rs.begin(); it != rs.end(); it++) {  // Выполняем построчно
+        const auto& row = *it;  // Текущая строка
+        result.push_back(
+            laptop(row.get<int>(0), row.get<std::string>(1), row.get<double>(2),
+                   row.get<std::string>(3), row.get<std::string>(4),
+                   row.get<std::string>(5), row.get<int>(6), row.get<int>(7),
+                   row.get<std::string>(8)));  // Добавляем в результат
+        db_methods::row_count =
+            row.get<long long>(9);  // Запоминаем количество строк
+    }
+    return result;  // Возвращаем результат
+}
+
 void db_methods::deleteClient(soci::session& sql, const std::vector<int>& ids) {
     soci::transaction tr(sql);  // Открываем транзакцию
     std::string query =
