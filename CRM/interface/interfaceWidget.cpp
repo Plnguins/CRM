@@ -38,6 +38,9 @@ void interfaceWidget::on_Provider_clicked() {
      */
     hideGreeting();
     updateTable = &interfaceWidget::updateProvider;
+    editElement = &interfaceWidget::editProvider;
+    deleteElement = &interfaceWidget::deleteProvider;
+    addElement = &interfaceWidget::addProvider;
     goToPage(1);
     updatePageButtons();
 }
@@ -48,6 +51,9 @@ void interfaceWidget::on_Deal_clicked() {
      */
     hideGreeting();
     updateTable = &interfaceWidget::updateDeal;
+    editElement = &interfaceWidget::editDeal;
+    deleteElement = &interfaceWidget::deleteDeal;
+    addElement = &interfaceWidget::addDeal;
     goToPage(1);
     updatePageButtons();
 }
@@ -58,6 +64,9 @@ void interfaceWidget::on_Stock_clicked() {
      */
     hideGreeting();
     updateTable = &interfaceWidget::updateStock;
+    editElement = &interfaceWidget::editStock;
+    deleteElement = &interfaceWidget::deleteStock;
+    addElement = &interfaceWidget::addStock;
     goToPage(1);
     updatePageButtons();
 }
@@ -68,6 +77,9 @@ void interfaceWidget::on_Ads_clicked() {
      */
     hideGreeting();
     updateTable = &interfaceWidget::updateAds;
+    editElement = &interfaceWidget::editAd;
+    deleteElement = &interfaceWidget::deleteAd;
+    addElement = &interfaceWidget::addAd;
     goToPage(1);
     updatePageButtons();
 }
@@ -78,6 +90,9 @@ void interfaceWidget::on_Employee_clicked() {
      */
     hideGreeting();
     updateTable = &interfaceWidget::updateEmployee;
+    editElement = &interfaceWidget::editEmployee;
+    deleteElement = &interfaceWidget::deleteEmployee;
+    addElement = &interfaceWidget::addEmployee;
     goToPage(1);
     updatePageButtons();
 }
@@ -88,6 +103,9 @@ void interfaceWidget::on_Client_clicked() {
      */
     hideGreeting();
     updateTable = &interfaceWidget::updateClient;
+    editElement = &interfaceWidget::editClient;
+    deleteElement = &interfaceWidget::deleteClient;
+    addElement = &interfaceWidget::addClient;
     goToPage(1);
     updatePageButtons();
 }
@@ -95,142 +113,31 @@ void interfaceWidget::on_Client_clicked() {
 void interfaceWidget::on_Add_clicked() {
     try {
         soci::session session(*parent->database.get_pool().lock());
-        QDialog* dialog = new QDialog(this);
-        Ui::editClient edit_client;
-        edit_client.setupUi(dialog);
-        connect(edit_client.Apply, &QPushButton::clicked, dialog, [=]() {
-            std::string surname =
-                            edit_client.SurnameEnter->text().toStdString(),
-                        name = edit_client.NameEnter->text().toStdString(),
-                        patronymic =
-                            edit_client.PatronymicEnter->text().toStdString(),
-                        phone =
-                            edit_client.PhoneNumberEnter->text().toStdString(),
-                        email = edit_client.EmailEnter->text().toStdString(),
-                        sex = edit_client.SexEnter->text().toStdString(),
-                        city = edit_client.CityEnter->text().toStdString();
-            if (surname.empty() || name.empty() || patronymic.empty() ||
-                phone.empty() || email.empty() || sex.empty() || city.empty()) {
-                QMessageBox::warning(this, tr("Ошибка"),
-                                     tr("Заполните все поля!"));
-                return;
-            }
-            client new_client(0, surname, name, patronymic, email, phone, sex,
-                              city);
-            try {
-                soci::session session(*parent->database.get_pool().lock());
-                db_methods::newClient(session, new_client);
-            } catch (const std::exception& e) {
-                QMessageBox::warning(this, tr("Ошибка"),
-                                     tr("Ошибка при добавлении клиента: ") +
-                                         QString::fromStdString(e.what()));
-                return;
-            }
-            dialog->accept();
-            goToPage(1);
-        });
-        dialog->exec();
+        (this->*addElement)(session);
     } catch (const std::exception& e) {
         QMessageBox::critical(this, tr("Ошибка"), e.what());
-        return;
     }
 }
 
 void interfaceWidget::on_Edit_clicked() {
-    QItemSelectionModel* select = ui->tableWidget->selectionModel();
-    if (!select->hasSelection()) {
-        QMessageBox::warning(this, "Внимание", "Выберете один элемент");
-        return;
-    }
-    auto elements = select->selectedIndexes();
-    int column = elements[0].column();
-    std::vector<int> ids;
-    for (const auto& element : elements) {
-        if (element.column() != column) {
-            continue;
-        }
-        ids.push_back(ui->tableWidget->item(element.row(), 0)->text().toInt());
-    }
-    if (ids.size() > 1) {
-        QMessageBox::warning(this, "Внимание", "Выберете один элемент");
-        return;
-    }
     try {
         soci::session session(*parent->database.get_pool().lock());
-        client current = db_methods::getClient(session, ids[0]);
-        QDialog* dialog = new QDialog(this);
-        Ui::editClient edit_client;
-        edit_client.setupUi(dialog);
-        connect(edit_client.Apply, &QPushButton::clicked, dialog,
-                &QDialog::accept);
-        edit_client.SurnameEnter->setText(current.surname.c_str());
-        edit_client.NameEnter->setText(current.name.c_str());
-        edit_client.PatronymicEnter->setText(current.patronymic.c_str());
-        edit_client.PhoneNumberEnter->setText(current.phone.c_str());
-        edit_client.CityEnter->setText(current.city.c_str());
-        edit_client.SexEnter->setText(current.sex.c_str());
-        edit_client.EmailEnter->setText(current.email.c_str());
-        connect(edit_client.Apply, &QPushButton::clicked, dialog, [=]() {
-            std::string surname =
-                            edit_client.SurnameEnter->text().toStdString(),
-                        name = edit_client.NameEnter->text().toStdString(),
-                        patronymic =
-                            edit_client.PatronymicEnter->text().toStdString(),
-                        phone =
-                            edit_client.PhoneNumberEnter->text().toStdString(),
-                        email = edit_client.EmailEnter->text().toStdString(),
-                        sex = edit_client.SexEnter->text().toStdString(),
-                        city = edit_client.CityEnter->text().toStdString();
-            client updated(current.id, surname, name, patronymic, phone, email,
-                           sex, city);
-            if (surname.empty() || name.empty() || patronymic.empty() ||
-                phone.empty() || email.empty() || sex.empty() || city.empty()) {
-                QMessageBox::warning(this, tr("Ошибка"),
-                                     tr("Заполните все поля!"));
-                return;
-            }
-            try {
-                soci::session session(*parent->database.get_pool().lock());
-                db_methods::updateClient(session, updated);
-            } catch (const std::exception& e) {
-                QMessageBox::warning(this, tr("Ошибка"),
-                                     tr("Ошибка при изменении клиента: ") +
-                                         QString::fromStdString(e.what()));
-                return;
-            }
-            dialog->accept();
-            goToPage(1);
-        });
-        dialog->exec();
+        if (editElement) {
+            (this->*editElement)(session);
+        }
     } catch (const std::exception& e) {
         QMessageBox::critical(this, tr("Ошибка"), e.what());
-        return;
     }
 }
 
 void interfaceWidget::on_Delete_clicked() {
-    QItemSelectionModel* select = ui->tableWidget->selectionModel();
-    if (!select->hasSelection()) {
-        QMessageBox::warning(this, "Внимание", "Выберете элемент/элементы");
-        return;
-    }
-    auto elements = select->selectedIndexes();
-    int column = elements[0].column();
-    std::vector<int> ids;
-    for (const auto& element : elements) {
-        if (element.column() != column) {
-            continue;
-        }
-        ids.push_back(ui->tableWidget->item(element.row(), 0)->text().toInt());
-    }
     try {
         soci::session session(*parent->database.get_pool().lock());
-        db_methods::deleteClient(session, ids);
-        goToPage(1);
-        QMessageBox::information(this, tr("Успех"), tr("Успешное удаление"));
+        if (deleteElement) {
+            (this->*deleteElement)(session);
+        }
     } catch (const std::exception& e) {
         QMessageBox::critical(this, tr("Ошибка"), e.what());
-        return;
     }
 }
 
@@ -523,6 +430,153 @@ void interfaceWidget::updateClient(const int& page, const int& limit) {
         QMessageBox::critical(this, tr("Ошибка"), e.what());
         return;
     }
+}
+
+void interfaceWidget::editProvider(soci::session& session) {}
+
+void interfaceWidget::editEmployee(soci::session& session) {}
+
+void interfaceWidget::editStock(soci::session& session) {}
+
+void interfaceWidget::editAd(soci::session& session) {}
+
+void interfaceWidget::editDeal(soci::session& session) {}
+
+void interfaceWidget::editClient(soci::session& session) {
+    QItemSelectionModel* select = ui->tableWidget->selectionModel();
+    if (!select->hasSelection()) {
+        QMessageBox::warning(this, "Внимание", "Выберете один элемент");
+        return;
+    }
+    auto elements = select->selectedIndexes();
+    int column = elements[0].column();
+    std::vector<int> ids;
+    for (const auto& element : elements) {
+        if (element.column() != column) {
+            continue;
+        }
+        ids.push_back(ui->tableWidget->item(element.row(), 0)->text().toInt());
+    }
+    if (ids.size() > 1) {
+        QMessageBox::warning(this, "Внимание", "Выберете один элемент");
+        return;
+    }
+    client current = db_methods::getClient(session, ids[0]);
+    QDialog* dialog = new QDialog(this);
+    Ui::editClient edit_client;
+    edit_client.setupUi(dialog);
+    connect(edit_client.Apply, &QPushButton::clicked, dialog, &QDialog::accept);
+    edit_client.SurnameEnter->setText(current.surname.c_str());
+    edit_client.NameEnter->setText(current.name.c_str());
+    edit_client.PatronymicEnter->setText(current.patronymic.c_str());
+    edit_client.PhoneNumberEnter->setText(current.phone.c_str());
+    edit_client.CityEnter->setText(current.city.c_str());
+    edit_client.SexEnter->setText(current.sex.c_str());
+    edit_client.EmailEnter->setText(current.email.c_str());
+    connect(edit_client.Apply, &QPushButton::clicked, dialog, [=]() {
+        std::string surname = edit_client.SurnameEnter->text().toStdString(),
+                    name = edit_client.NameEnter->text().toStdString(),
+                    patronymic =
+                        edit_client.PatronymicEnter->text().toStdString(),
+                    phone = edit_client.PhoneNumberEnter->text().toStdString(),
+                    email = edit_client.EmailEnter->text().toStdString(),
+                    sex = edit_client.SexEnter->text().toStdString(),
+                    city = edit_client.CityEnter->text().toStdString();
+        client updated(current.id, surname, name, patronymic, phone, email, sex,
+                       city);
+        if (surname.empty() || name.empty() || patronymic.empty() ||
+            phone.empty() || email.empty() || sex.empty() || city.empty()) {
+            QMessageBox::warning(this, tr("Ошибка"), tr("Заполните все поля!"));
+            return;
+        }
+        try {
+            soci::session session(*parent->database.get_pool().lock());
+            db_methods::updateClient(session, updated);
+        } catch (const std::exception& e) {
+            QMessageBox::warning(this, tr("Ошибка"),
+                                 tr("Ошибка при изменении клиента: ") +
+                                     QString::fromStdString(e.what()));
+            return;
+        }
+        dialog->accept();
+        goToPage(1);
+    });
+    dialog->exec();
+}
+
+void interfaceWidget::deleteProvider(soci::session& session) {}
+
+void interfaceWidget::deleteEmployee(soci::session& session) {}
+
+void interfaceWidget::deleteStock(soci::session& session) {}
+
+void interfaceWidget::deleteAd(soci::session& session) {}
+
+void interfaceWidget::deleteDeal(soci::session& session) {}
+
+void interfaceWidget::deleteClient(soci::session& session) {
+    QItemSelectionModel* select = ui->tableWidget->selectionModel();
+    if (!select->hasSelection()) {
+        QMessageBox::warning(this, "Внимание", "Выберете элемент/элементы");
+        return;
+    }
+    auto elements = select->selectedIndexes();
+    int column = elements[0].column();
+    std::vector<int> ids;
+    for (const auto& element : elements) {
+        if (element.column() != column) {
+            continue;
+        }
+        ids.push_back(ui->tableWidget->item(element.row(), 0)->text().toInt());
+    }
+    db_methods::deleteClient(session, ids);
+    goToPage(1);
+    QMessageBox::information(this, tr("Успех"), tr("Успешное удаление"));
+}
+
+void interfaceWidget::addProvider(soci::session& session) {}
+
+void interfaceWidget::addEmployee(soci::session& session) {}
+
+void interfaceWidget::addStock(soci::session& session) {}
+
+void interfaceWidget::addAd(soci::session& session) {}
+
+void interfaceWidget::addDeal(soci::session& session) {}
+
+void interfaceWidget::addClient(soci::session& session) {
+    QDialog* dialog = new QDialog(this);
+    Ui::editClient edit_client;
+    edit_client.setupUi(dialog);
+    soci::session* session_ptr = std::addressof(session);
+    connect(edit_client.Apply, &QPushButton::clicked, dialog, [=]() {
+        std::string surname = edit_client.SurnameEnter->text().toStdString(),
+                    name = edit_client.NameEnter->text().toStdString(),
+                    patronymic =
+                        edit_client.PatronymicEnter->text().toStdString(),
+                    phone = edit_client.PhoneNumberEnter->text().toStdString(),
+                    email = edit_client.EmailEnter->text().toStdString(),
+                    sex = edit_client.SexEnter->text().toStdString(),
+                    city = edit_client.CityEnter->text().toStdString();
+        if (surname.empty() || name.empty() || patronymic.empty() ||
+            phone.empty() || email.empty() || sex.empty() || city.empty()) {
+            QMessageBox::warning(this, tr("Ошибка"), tr("Заполните все поля!"));
+            return;
+        }
+        client new_client(0, surname, name, patronymic, email, phone, sex,
+                          city);
+        try {
+            db_methods::newClient(*session_ptr, new_client);
+        } catch (const std::exception& e) {
+            QMessageBox::warning(this, tr("Ошибка"),
+                                 tr("Ошибка при добавлении клиента: ") +
+                                     QString::fromStdString(e.what()));
+            return;
+        }
+        dialog->accept();
+        goToPage(1);
+    });
+    dialog->exec();
 }
 
 void interfaceWidget::updatePageButtons() {

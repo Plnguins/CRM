@@ -16,8 +16,8 @@
 #pragma once
 
 #include "../db_methods.h"
-#include "../editUI/ui_editClient.h"
 #include "../editUI/ui_editAd.h"
+#include "../editUI/ui_editClient.h"
 #include "../editUI/ui_editDeal.h"
 #include "../editUI/ui_editEmployee.h"
 #include "../editUI/ui_editProvider.h"
@@ -79,7 +79,31 @@ class interfaceWidget : public QWidget {
     void updateDeal(const int& = 0, const int& = 10);
     void updateClient(const int& = 0, const int& = 10);
 
+    void editProvider(soci::session&);
+    void editEmployee(soci::session&);
+    void editStock(soci::session&);
+    void editAd(soci::session&);
+    void editDeal(soci::session&);
+    void editClient(soci::session&);
+
+    void deleteProvider(soci::session&);
+    void deleteEmployee(soci::session&);
+    void deleteStock(soci::session&);
+    void deleteAd(soci::session&);
+    void deleteDeal(soci::session&);
+    void deleteClient(soci::session&);
+
+    void addProvider(soci::session&);
+    void addEmployee(soci::session&);
+    void addStock(soci::session&);
+    void addAd(soci::session&);
+    void addDeal(soci::session&);
+    void addClient(soci::session&);
+
     void (interfaceWidget::*updateTable)(const int&, const int&) = nullptr;
+    void (interfaceWidget::*editElement)(soci::session&) = nullptr;
+    void (interfaceWidget::*deleteElement)(soci::session&) = nullptr;
+    void (interfaceWidget::*addElement)(soci::session&) = nullptr;
 
     void hideGreeting();
     void updatePageButtons();
