@@ -62,7 +62,9 @@ class interfaceWidget : public QWidget {
     void on_Page_4_clicked() { goToPage(pages[3]); }
     void on_Page_5_clicked();
 
-   protected:
+    void on_Catalog_clicked();
+
+protected:
     Ui::interfaceUi* ui;
 
    private:
@@ -78,6 +80,7 @@ class interfaceWidget : public QWidget {
     void updateAds(const int& = 0, const int& = 10);
     void updateDeal(const int& = 0, const int& = 10);
     void updateClient(const int& = 0, const int& = 10);
+    void updateLaptop(const int& = 0, const int& = 10);
 
     void (interfaceWidget::*updateTable)(const int&, const int&) = nullptr;
 
