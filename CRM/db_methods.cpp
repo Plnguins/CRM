@@ -26,7 +26,7 @@ std::vector<boost::tuple<stock, laptop, provider>> db_methods::getStock(
     std::string query =
         "SELECT stock.*, laptop.*, provider.*, COUNT(*) OVER() FROM stock JOIN "
         "laptop ON laptop.id = stock.laptop JOIN provider ON provider.id = "
-        "stock.source LIMIT " +
+        "stock.source ORDER BY stock.id LIMIT " +
         std::to_string(limit) + " OFFSET " +
         std::to_string(offset * limit);  // Формируем запрос к СУБД
     soci::rowset<soci::row> rs = (sql.prepare << query);  // Подготавливаем его
@@ -53,7 +53,7 @@ std::vector<provider> db_methods::getProvider(soci::session& sql,
                                               const int& limit) {
     std::vector<provider> result;
     std::string query =
-        "SELECT *, COUNT(*) OVER() FROM provider LIMIT " +
+        "SELECT *, COUNT(*) OVER() FROM provider ORDER BY id LIMIT " +
         std::to_string(limit) + " OFFSET " +
         std::to_string(offset * limit);  // Формируем запрос к СУБД
     soci::rowset<soci::row> rs = (sql.prepare << query);  // Подготавливаем его
@@ -74,7 +74,8 @@ std::vector<boost::tuple<deal, laptop, client, employee>> db_methods::getDeal(
     std::string query =
         "SELECT deal.*, laptop.*, client.*, employee.*, COUNT(*) OVER() FROM "
         "deal JOIN laptop ON laptop.id = deal.laptop JOIN client ON client.id "
-        "= deal.client JOIN employee ON employee.id = deal.seller LIMIT " +
+        "= deal.client JOIN employee ON employee.id = deal.seller ORDER BY "
+        "deal.id LIMIT " +
         std::to_string(limit) + " OFFSET " +
         std::to_string(offset * limit);  // Формируем запрос к СУБД
     soci::rowset<soci::row> rs = (sql.prepare << query);  // Подготавливаем его
@@ -109,7 +110,7 @@ std::vector<employee> db_methods::getEmployee(soci::session& sql,
                                               const int& limit) {
     std::vector<employee> result;
     std::string query =
-        "SELECT *, COUNT(*) OVER() FROM employee LIMIT " +
+        "SELECT *, COUNT(*) OVER() FROM employee ORDER BY id LIMIT " +
         std::to_string(limit) + " OFFSET " +
         std::to_string(offset * limit);  // Формируем запрос к СУБД
     soci::rowset<soci::row> rs = (sql.prepare << query);  // Подготавливаем его
@@ -130,7 +131,7 @@ std::vector<advertisement> db_methods::getAdvertisement(soci::session& sql,
                                                         const int& limit) {
     std::vector<advertisement> result;
     std::string query =
-        "SELECT *, COUNT(*) OVER() FROM advertisement LIMIT " +
+        "SELECT *, COUNT(*) OVER() FROM advertisement ORDER BY id LIMIT " +
         std::to_string(limit) + " OFFSET " +
         std::to_string(offset * limit);  // Формируем запрос к СУБД
     soci::rowset<soci::row> rs = (sql.prepare << query);  // Подготавливаем его
@@ -149,8 +150,9 @@ std::vector<client> db_methods::getClient(soci::session& sql, const int& offset,
                                           const int& limit) {
     std::vector<client> result;
     std::string query =
-        "SELECT *, COUNT(*) OVER() FROM client LIMIT " + std::to_string(limit) +
-        " OFFSET " + std::to_string(offset * limit);  // Формируем запрос к СУБД
+        "SELECT *, COUNT(*) OVER() FROM client ORDER BY id LIMIT " +
+        std::to_string(limit) + " OFFSET " +
+        std::to_string(offset * limit);  // Формируем запрос к СУБД
     soci::rowset<soci::row> rs = (sql.prepare << query);  // Подготавливаем его
     for (auto it = rs.begin(); it != rs.end(); it++) {  // Выполняем построчно
         const auto& row = *it;  // Текущая строка
