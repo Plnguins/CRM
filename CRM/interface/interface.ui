@@ -1222,11 +1222,9 @@ QPushButton#Page_5:pressed {
     </item>
    </layout>
   </widget>
-  <zorder>groupBox</zorder>
   <zorder>BackGround</zorder>
   <zorder>RoundedBackground</zorder>
   <zorder>Name</zorder>
-  <zorder>Company</zorder>
   <zorder>Greeting</zorder>
   <zorder>Icon</zorder>
   <zorder>Edit</zorder>
@@ -1236,6 +1234,8 @@ QPushButton#Page_5:pressed {
   <zorder>LeftButtons</zorder>
   <zorder>RoundedBlue</zorder>
   <zorder>tableWidget</zorder>
+  <zorder>groupBox</zorder>
+  <zorder>Company</zorder>
  </widget>
  <resources>
   <include location="../../resources/resources.qrc"/>
