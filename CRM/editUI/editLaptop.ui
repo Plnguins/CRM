@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Edit Laptop UI code for CRM application
+<!-- Edit Ad UI code for CRM application
 Copyright(C) 2022 Plnguins
 
 This program is free software : you can redistribute it and / or modify
@@ -28,7 +28,7 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="Email">
+  <widget class="QLabel" name="RAM">
    <property name="geometry">
     <rect>
      <x>860</x>
@@ -53,7 +53,7 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="NameEnter">
+  <widget class="QLineEdit" name="IncomeEnter">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -74,7 +74,7 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="PhoneNumberEnter">
+  <widget class="QLineEdit" name="ColorEnter">
    <property name="geometry">
     <rect>
      <x>1110</x>
@@ -98,7 +98,7 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="Name">
+  <widget class="QLabel" name="Income">
    <property name="geometry">
     <rect>
      <x>220</x>
@@ -190,7 +190,7 @@ QPushButton#Apply:pressed {
     <string>Готово</string>
    </property>
   </widget>
-  <widget class="QLabel" name="Patronymic">
+  <widget class="QLabel" name="Type">
    <property name="geometry">
     <rect>
      <x>400</x>
@@ -215,7 +215,7 @@ QPushButton#Apply:pressed {
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="SexEnter">
+  <widget class="QLineEdit" name="GPUEnter">
    <property name="geometry">
     <rect>
      <x>680</x>
@@ -236,7 +236,7 @@ QPushButton#Apply:pressed {
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="SurnameEnter">
+  <widget class="QLineEdit" name="NameEnter">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -264,7 +264,7 @@ QPushButton#Apply:pressed {
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="EmailEnter">
+  <widget class="QLineEdit" name="RAMEnter">
    <property name="geometry">
     <rect>
      <x>810</x>
@@ -285,7 +285,7 @@ QPushButton#Apply:pressed {
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="PhoneNumber">
+  <widget class="QLabel" name="ROM">
    <property name="geometry">
     <rect>
      <x>1020</x>
@@ -310,7 +310,7 @@ QPushButton#Apply:pressed {
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="Surname">
+  <widget class="QLabel" name="Name">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -335,7 +335,7 @@ QPushButton#Apply:pressed {
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="CityEnter">
+  <widget class="QLineEdit" name="CPUEnter">
    <property name="geometry">
     <rect>
      <x>500</x>
@@ -381,7 +381,7 @@ QPushButton#Apply:pressed {
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="City">
+  <widget class="QLabel" name="CPU">
    <property name="geometry">
     <rect>
      <x>540</x>
@@ -406,7 +406,7 @@ QPushButton#Apply:pressed {
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="Sex">
+  <widget class="QLabel" name="GPU">
    <property name="geometry">
     <rect>
      <x>720</x>
@@ -448,7 +448,7 @@ border-radius: 20px;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLineEdit" name="EmailEnter_2">
+  <widget class="QLineEdit" name="ROMEnter">
    <property name="geometry">
     <rect>
      <x>960</x>
@@ -469,7 +469,7 @@ border-radius: 20px;</string>
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="PhoneNumber_2">
+  <widget class="QLabel" name="Color">
    <property name="geometry">
     <rect>
      <x>1160</x>
@@ -494,7 +494,7 @@ border-radius: 20px;</string>
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBox">
+  <widget class="QComboBox" name="TypeChange">
    <property name="geometry">
     <rect>
      <x>330</x>
@@ -549,23 +549,23 @@ QComboBox QAbstractItemView {
   </widget>
   <zorder>Background</zorder>
   <zorder>BackgroundRounded</zorder>
-  <zorder>Email</zorder>
-  <zorder>PhoneNumberEnter</zorder>
+  <zorder>RAM</zorder>
+  <zorder>ColorEnter</zorder>
   <zorder>tableName</zorder>
-  <zorder>CityEnter</zorder>
-  <zorder>Surname</zorder>
-  <zorder>Patronymic</zorder>
-  <zorder>NameEnter</zorder>
-  <zorder>EmailEnter</zorder>
-  <zorder>Sex</zorder>
+  <zorder>CPUEnter</zorder>
   <zorder>Name</zorder>
-  <zorder>SexEnter</zorder>
-  <zorder>PhoneNumber</zorder>
-  <zorder>SurnameEnter</zorder>
-  <zorder>City</zorder>
-  <zorder>EmailEnter_2</zorder>
-  <zorder>PhoneNumber_2</zorder>
-  <zorder>comboBox</zorder>
+  <zorder>Type</zorder>
+  <zorder>IncomeEnter</zorder>
+  <zorder>RAMEnter</zorder>
+  <zorder>GPU</zorder>
+  <zorder>Income</zorder>
+  <zorder>GPUEnter</zorder>
+  <zorder>ROM</zorder>
+  <zorder>NameEnter</zorder>
+  <zorder>CPU</zorder>
+  <zorder>ROMEnter</zorder>
+  <zorder>Color</zorder>
+  <zorder>TypeChange</zorder>
   <zorder>Apply</zorder>
  </widget>
  <resources/>
