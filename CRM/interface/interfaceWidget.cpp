@@ -649,7 +649,49 @@ void interfaceWidget::editClient(soci::session& session, const int& id) {
     dialog->exec();
 }
 
-void interfaceWidget::editLaptop(soci::session& session, const int& id) {}
+void interfaceWidget::editLaptop(soci::session& session, const int& id) {
+    laptop current = db_methods::getLaptop(session, id);
+    QDialog* dialog = new QDialog(this);
+    Ui::editLaptop edit_laptop;
+    edit_laptop.setupUi(dialog);
+    edit_laptop.NameEnter->setText(current.name.c_str());
+    edit_laptop.IncomeEnter->setText(QString::number(current.income));
+    edit_laptop.TypeEnter->setText(current.type.c_str());
+    edit_laptop.CPUEnter->setText(current.cpu.c_str());
+    edit_laptop.GPUEnter->setText(current.gpu.c_str());
+    edit_laptop.RAMEnter->setText(QString::number(current.ram));
+    edit_laptop.ROMEnter->setText(QString::number(current.rom));
+    edit_laptop.ColorEnter->setText(current.color.c_str());
+    soci::session* session_ptr = std::addressof(session);
+    connect(edit_laptop.Apply, &QPushButton::clicked, dialog, [=]() {
+        std::string name = edit_laptop.NameEnter->text().toStdString(),
+                    type = edit_laptop.TypeEnter->text().toStdString(),
+                    cpu = edit_laptop.CPUEnter->text().toStdString(),
+                    gpu = edit_laptop.GPUEnter->text().toStdString(),
+                    color = edit_laptop.ColorEnter->text().toStdString();
+        int income = edit_laptop.IncomeEnter->text().toInt(),
+            ram = edit_laptop.RAMEnter->text().toInt(),
+            rom = edit_laptop.ROMEnter->text().toInt();
+        if (name.empty() || type.empty() || cpu.empty() || gpu.empty() ||
+            color.empty() || income == 0 || ram == 0 || rom == 0) {
+            QMessageBox::warning(this, tr("Ошибка"), tr("Заполните все поля!"));
+            return;
+        }
+        laptop new_laptop(current.id, name, income, type, cpu, gpu, ram, rom,
+                          color);
+        try {
+            db_methods::updateLaptop(*session_ptr, new_laptop);
+        } catch (const std::exception& e) {
+            QMessageBox::warning(this, tr("Ошибка"),
+                                 tr("Ошибка при добавлении клиента: ") +
+                                     QString::fromStdString(e.what()));
+            return;
+        }
+        dialog->accept();
+        goToPage(1);
+    });
+    dialog->exec();
+}
 
 void interfaceWidget::deleteProvider(soci::session& session,
                                      const std::vector<int>& ids) {
@@ -795,7 +837,39 @@ void interfaceWidget::addClient(soci::session& session) {
     dialog->exec();
 }
 
-void interfaceWidget::addLaptop(soci::session& session) {}
+void interfaceWidget::addLaptop(soci::session& session) {
+    QDialog* dialog = new QDialog(this);
+    Ui::editLaptop edit_laptop;
+    edit_laptop.setupUi(dialog);
+    soci::session* session_ptr = std::addressof(session);
+    connect(edit_laptop.Apply, &QPushButton::clicked, dialog, [=]() {
+        std::string name = edit_laptop.NameEnter->text().toStdString(),
+                    type = edit_laptop.TypeEnter->text().toStdString(),
+                    cpu = edit_laptop.CPUEnter->text().toStdString(),
+                    gpu = edit_laptop.GPUEnter->text().toStdString(),
+                    color = edit_laptop.ColorEnter->text().toStdString();
+        int income = edit_laptop.IncomeEnter->text().toInt(),
+            ram = edit_laptop.RAMEnter->text().toInt(),
+            rom = edit_laptop.ROMEnter->text().toInt();
+        if (name.empty() || type.empty() || cpu.empty() || gpu.empty() ||
+            color.empty() || income == 0 || ram == 0 || rom == 0) {
+            QMessageBox::warning(this, tr("Ошибка"), tr("Заполните все поля!"));
+            return;
+        }
+        laptop new_laptop(0, name, income, type, cpu, gpu, ram, rom, color);
+        try {
+            db_methods::newLaptop(*session_ptr, new_laptop);
+        } catch (const std::exception& e) {
+            QMessageBox::warning(this, tr("Ошибка"),
+                                 tr("Ошибка при добавлении клиента: ") +
+                                     QString::fromStdString(e.what()));
+            return;
+        }
+        dialog->accept();
+        goToPage(1);
+    });
+    dialog->exec();
+}
 
 void interfaceWidget::updatePageButtons() {
     /*

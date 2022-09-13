@@ -20,6 +20,7 @@
 #include "../editUI/ui_editClient.h"
 #include "../editUI/ui_editDeal.h"
 #include "../editUI/ui_editEmployee.h"
+#include "../editUI/ui_editLaptop.h"
 #include "../editUI/ui_editProvider.h"
 #include "../editUI/ui_editStock.h"
 #include "../mainwindow.h"
@@ -32,6 +33,7 @@ class editDeal;
 class editEmployee;
 class editProvider;
 class editStock;
+class editLaptop;
 }  // namespace Ui
 
 class interfaceWidget : public QWidget {

@@ -117,5 +117,14 @@ class db_methods {
         soci::session&,
         const std::vector<int>&);  // Функция удаления ноутбуков по ID
 
+    static laptop getLaptop(soci::session&,
+                            const int&);  // Функций получения ноутбука по ID
+
+    static void updateLaptop(
+        soci::session&, const laptop&);  // Функция обновления данных о ноутбуке
+
+    static void newLaptop(soci::session&,
+                          const laptop&);  // Функция добавления ноутбука
+
     static int row_count;
 };

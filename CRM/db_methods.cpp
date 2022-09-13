@@ -373,3 +373,40 @@ void db_methods::deleteLaptop(soci::session& sql, const std::vector<int>& ids) {
         throw e;
     }
 }
+
+laptop db_methods::getLaptop(soci::session& sql, const int& id) {
+    boost::optional<laptop> result;
+    std::string query = "SELECT * FROM laptop WHERE id = :id";  // Формируем
+                                                                // запрос к СУБД
+    sql << query, soci::into(result), soci::use(id, "id");  // Выполняем запрос
+    if (result) {
+        return result.get();
+    }
+    throw std::runtime_error(
+        QObject::tr("База данных не вернула значение").toStdString());
+}
+
+void db_methods::updateLaptop(soci::session& sql, const laptop& laptop) {
+    std::string query =
+        "UPDATE laptop SET name = :name, income = :income, type = :type, cpu = "
+        ":cpu, gpu = :gpu, ram = :ram, rom = :rom, color = :color WHERE id = "
+        ":id ";  // Формируем запрос к СУБД
+    sql << query, soci::use(laptop.name, "name"),
+        soci::use(laptop.income, "income"), soci::use(laptop.type, "type"),
+        soci::use(laptop.cpu, "cpu"), soci::use(laptop.gpu, "gpu"),
+        soci::use(laptop.ram, "ram"), soci::use(laptop.rom, "rom"),
+        soci::use(laptop.color, "color"), soci::use(laptop.id, "id");
+}
+
+void db_methods::newLaptop(soci::session& sql, const laptop& laptop) {
+    std::string query =
+        "INSERT INTO laptop(name, income, type, cpu, gpu, ram, rom, "
+        "color) VALUES (:name, :income, :type, :cpu, "
+        ":gpu, :ram, :rom, :color)";  // Формируем
+                                      // запрос к СУБД
+    sql << query, soci::use(laptop.name, "name"),
+        soci::use(laptop.income, "income"), soci::use(laptop.type, "type"),
+        soci::use(laptop.cpu, "cpu"), soci::use(laptop.gpu, "gpu"),
+        soci::use(laptop.ram, "ram"), soci::use(laptop.rom, "rom"),
+        soci::use(laptop.color, "color");
+}
