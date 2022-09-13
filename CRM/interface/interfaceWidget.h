@@ -81,19 +81,19 @@ class interfaceWidget : public QWidget {
     void updateClient(const int& = 0, const int& = 10);
     void updateLaptop(const int& = 0, const int& = 10);
 
-    void editProvider(soci::session&);
-    void editEmployee(soci::session&);
-    void editStock(soci::session&);
-    void editAd(soci::session&);
-    void editDeal(soci::session&);
-    void editClient(soci::session&);
+    void editProvider(soci::session&, const int&);
+    void editEmployee(soci::session&, const int&);
+    void editStock(soci::session&, const int&);
+    void editAd(soci::session&, const int&);
+    void editDeal(soci::session&, const int&);
+    void editClient(soci::session&, const int&);
 
-    void deleteProvider(soci::session&);
-    void deleteEmployee(soci::session&);
-    void deleteStock(soci::session&);
-    void deleteAd(soci::session&);
-    void deleteDeal(soci::session&);
-    void deleteClient(soci::session&);
+    void deleteProvider(soci::session&, const std::vector<int>&);
+    void deleteEmployee(soci::session&, const std::vector<int>&);
+    void deleteStock(soci::session&, const std::vector<int>&);
+    void deleteAd(soci::session&, const std::vector<int>&);
+    void deleteDeal(soci::session&, const std::vector<int>&);
+    void deleteClient(soci::session&, const std::vector<int>&);
 
     void addProvider(soci::session&);
     void addEmployee(soci::session&);
@@ -103,8 +103,9 @@ class interfaceWidget : public QWidget {
     void addClient(soci::session&);
 
     void (interfaceWidget::*updateTable)(const int&, const int&) = nullptr;
-    void (interfaceWidget::*editElement)(soci::session&) = nullptr;
-    void (interfaceWidget::*deleteElement)(soci::session&) = nullptr;
+    void (interfaceWidget::*editElement)(soci::session&, const int&) = nullptr;
+    void (interfaceWidget::*deleteElement)(soci::session&,
+                                           const std::vector<int>&) = nullptr;
     void (interfaceWidget::*addElement)(soci::session&) = nullptr;
 
     void hideGreeting();

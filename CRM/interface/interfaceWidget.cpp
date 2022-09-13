@@ -127,10 +127,28 @@ void interfaceWidget::on_Add_clicked() {
 }
 
 void interfaceWidget::on_Edit_clicked() {
+    QItemSelectionModel* select = ui->tableWidget->selectionModel();
+    if (!select->hasSelection()) {
+        QMessageBox::warning(this, "Внимание", "Выберете один элемент");
+        return;
+    }
+    auto elements = select->selectedIndexes();
+    int column = elements[0].column();
+    std::vector<int> ids;
+    for (const auto& element : elements) {
+        if (element.column() != column) {
+            continue;
+        }
+        ids.push_back(ui->tableWidget->item(element.row(), 0)->text().toInt());
+    }
+    if (ids.size() > 1) {
+        QMessageBox::warning(this, "Внимание", "Выберете один элемент");
+        return;
+    }
     try {
         soci::session session(*parent->database.get_pool().lock());
         if (editElement) {
-            (this->*editElement)(session);
+            (this->*editElement)(session, ids[0]);
         }
     } catch (const std::exception& e) {
         QMessageBox::critical(this, tr("Ошибка"), e.what());
@@ -138,10 +156,24 @@ void interfaceWidget::on_Edit_clicked() {
 }
 
 void interfaceWidget::on_Delete_clicked() {
+    QItemSelectionModel* select = ui->tableWidget->selectionModel();
+    if (!select->hasSelection()) {
+        QMessageBox::warning(this, "Внимание", "Выберете элемент/элементы");
+        return;
+    }
+    auto elements = select->selectedIndexes();
+    int column = elements[0].column();
+    std::vector<int> ids;
+    for (const auto& element : elements) {
+        if (element.column() != column) {
+            continue;
+        }
+        ids.push_back(ui->tableWidget->item(element.row(), 0)->text().toInt());
+    }
     try {
         soci::session session(*parent->database.get_pool().lock());
         if (deleteElement) {
-            (this->*deleteElement)(session);
+            (this->*deleteElement)(session, ids);
         }
     } catch (const std::exception& e) {
         QMessageBox::critical(this, tr("Ошибка"), e.what());
@@ -439,36 +471,18 @@ void interfaceWidget::updateClient(const int& page, const int& limit) {
     }
 }
 
-void interfaceWidget::editProvider(soci::session& session) {}
+void interfaceWidget::editProvider(soci::session& session, const int& id) {}
 
-void interfaceWidget::editEmployee(soci::session& session) {}
+void interfaceWidget::editEmployee(soci::session& session, const int& id) {}
 
-void interfaceWidget::editStock(soci::session& session) {}
+void interfaceWidget::editStock(soci::session& session, const int& id) {}
 
-void interfaceWidget::editAd(soci::session& session) {}
+void interfaceWidget::editAd(soci::session& session, const int& id) {}
 
-void interfaceWidget::editDeal(soci::session& session) {}
+void interfaceWidget::editDeal(soci::session& session, const int& id) {}
 
-void interfaceWidget::editClient(soci::session& session) {
-    QItemSelectionModel* select = ui->tableWidget->selectionModel();
-    if (!select->hasSelection()) {
-        QMessageBox::warning(this, "Внимание", "Выберете один элемент");
-        return;
-    }
-    auto elements = select->selectedIndexes();
-    int column = elements[0].column();
-    std::vector<int> ids;
-    for (const auto& element : elements) {
-        if (element.column() != column) {
-            continue;
-        }
-        ids.push_back(ui->tableWidget->item(element.row(), 0)->text().toInt());
-    }
-    if (ids.size() > 1) {
-        QMessageBox::warning(this, "Внимание", "Выберете один элемент");
-        return;
-    }
-    client current = db_methods::getClient(session, ids[0]);
+void interfaceWidget::editClient(soci::session& session, const int& id) {
+    client current = db_methods::getClient(session, id);
     QDialog* dialog = new QDialog(this);
     Ui::editClient edit_client;
     edit_client.setupUi(dialog);
@@ -511,31 +525,27 @@ void interfaceWidget::editClient(soci::session& session) {
     dialog->exec();
 }
 
-void interfaceWidget::deleteProvider(soci::session& session) {}
+void interfaceWidget::deleteProvider(soci::session& session,
+                                     const std::vector<int>& ids) {
+    db_methods::deleteProvider(session, ids);
+    goToPage(1);
+    QMessageBox::information(this, tr("Успех"), tr("Успешное удаление"));
+}
 
-void interfaceWidget::deleteEmployee(soci::session& session) {}
+void interfaceWidget::deleteEmployee(soci::session& session,
+                                     const std::vector<int>& ids) {}
 
-void interfaceWidget::deleteStock(soci::session& session) {}
+void interfaceWidget::deleteStock(soci::session& session,
+                                  const std::vector<int>& ids) {}
 
-void interfaceWidget::deleteAd(soci::session& session) {}
+void interfaceWidget::deleteAd(soci::session& session,
+                               const std::vector<int>& ids) {}
 
-void interfaceWidget::deleteDeal(soci::session& session) {}
+void interfaceWidget::deleteDeal(soci::session& session,
+                                 const std::vector<int>& ids) {}
 
-void interfaceWidget::deleteClient(soci::session& session) {
-    QItemSelectionModel* select = ui->tableWidget->selectionModel();
-    if (!select->hasSelection()) {
-        QMessageBox::warning(this, "Внимание", "Выберете элемент/элементы");
-        return;
-    }
-    auto elements = select->selectedIndexes();
-    int column = elements[0].column();
-    std::vector<int> ids;
-    for (const auto& element : elements) {
-        if (element.column() != column) {
-            continue;
-        }
-        ids.push_back(ui->tableWidget->item(element.row(), 0)->text().toInt());
-    }
+void interfaceWidget::deleteClient(soci::session& session,
+                                   const std::vector<int>& ids) {
     db_methods::deleteClient(session, ids);
     goToPage(1);
     QMessageBox::information(this, tr("Успех"), tr("Успешное удаление"));
