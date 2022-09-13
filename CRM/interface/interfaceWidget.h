@@ -87,6 +87,7 @@ class interfaceWidget : public QWidget {
     void editAd(soci::session&, const int&);
     void editDeal(soci::session&, const int&);
     void editClient(soci::session&, const int&);
+    void editLaptop(soci::session&, const int&);
 
     void deleteProvider(soci::session&, const std::vector<int>&);
     void deleteEmployee(soci::session&, const std::vector<int>&);
@@ -94,6 +95,7 @@ class interfaceWidget : public QWidget {
     void deleteAd(soci::session&, const std::vector<int>&);
     void deleteDeal(soci::session&, const std::vector<int>&);
     void deleteClient(soci::session&, const std::vector<int>&);
+    void deleteLaptop(soci::session&, const std::vector<int>&);
 
     void addProvider(soci::session&);
     void addEmployee(soci::session&);
@@ -101,6 +103,7 @@ class interfaceWidget : public QWidget {
     void addAd(soci::session&);
     void addDeal(soci::session&);
     void addClient(soci::session&);
+    void addLaptop(soci::session&);
 
     void (interfaceWidget::*updateTable)(const int&, const int&) = nullptr;
     void (interfaceWidget::*editElement)(soci::session&, const int&) = nullptr;

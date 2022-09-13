@@ -113,6 +113,9 @@ void interfaceWidget::on_Client_clicked() {
 void interfaceWidget::on_Catalog_clicked() {
     hideGreeting();
     updateTable = &interfaceWidget::updateLaptop;
+    editElement = &interfaceWidget::editLaptop;
+    deleteElement = &interfaceWidget::deleteLaptop;
+    addElement = &interfaceWidget::addLaptop;
     goToPage(1);
     updatePageButtons();
 }
@@ -471,6 +474,65 @@ void interfaceWidget::updateClient(const int& page, const int& limit) {
     }
 }
 
+void interfaceWidget::updateLaptop(const int& page, const int& limit) {
+    /*
+     * Функция получает данные о клиентах и отображает в таблице
+     */
+    ui->Title->setText(tr("Ноутбуки"));
+
+    ui->tableWidget->clear();
+    const QStringList Labels = {tr("ID"),  tr("Название"),  tr("Прибыль"),
+                                tr("Тип"), tr("Процессор"), tr("ГПУ"),
+                                tr("ОЗУ"), tr("ПЗУ"),       tr("Цвет")};
+    ui->tableWidget->setColumnCount(Labels.size());
+    ui->tableWidget->setHorizontalHeaderLabels(Labels);
+
+    try {
+        soci::session session(*parent->database.get_pool().lock());
+        std::vector<laptop> laptops =
+            db_methods::getLaptop(session, page, limit);
+        ui->tableWidget->setRowCount(laptops.size());
+
+        size_t current_row = 0;
+        for (const auto& laptop : laptops) {
+            ui->tableWidget->setItem(
+                current_row, 0,
+                new QTableWidgetItem(QString::number(laptop.id)));
+            ui->tableWidget->setItem(
+                current_row, 1,
+                new QTableWidgetItem(QString::fromStdString(laptop.name)));
+            ui->tableWidget->setItem(
+                current_row, 2,
+                new QTableWidgetItem(QString::number(laptop.income)));
+            ui->tableWidget->setItem(
+                current_row, 3,
+                new QTableWidgetItem(QString::fromStdString(laptop.type)));
+            ui->tableWidget->setItem(
+                current_row, 4,
+                new QTableWidgetItem(QString::fromStdString(laptop.cpu)));
+            ui->tableWidget->setItem(
+                current_row, 5,
+                new QTableWidgetItem(QString::fromStdString(laptop.gpu)));
+            ui->tableWidget->setItem(
+                current_row, 6,
+                new QTableWidgetItem(QString::number(laptop.ram)));
+            ui->tableWidget->setItem(
+                current_row, 7,
+                new QTableWidgetItem(QString::number(laptop.rom)));
+            ui->tableWidget->setItem(
+                current_row, 8,
+                new QTableWidgetItem(QString::fromStdString(laptop.color)));
+
+            current_row++;
+        }
+        numberOfPages = ceil(static_cast<double>(db_methods::row_count) /
+                             static_cast<double>(limit));
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this, tr("Ошибка"), e.what());
+        return;
+    }
+}
+
 void interfaceWidget::editProvider(soci::session& session, const int& id) {}
 
 void interfaceWidget::editEmployee(soci::session& session, const int& id) {}
@@ -525,6 +587,8 @@ void interfaceWidget::editClient(soci::session& session, const int& id) {
     dialog->exec();
 }
 
+void interfaceWidget::editLaptop(soci::session& session, const int& id) {}
+
 void interfaceWidget::deleteProvider(soci::session& session,
                                      const std::vector<int>& ids) {
     db_methods::deleteProvider(session, ids);
@@ -550,6 +614,9 @@ void interfaceWidget::deleteClient(soci::session& session,
     goToPage(1);
     QMessageBox::information(this, tr("Успех"), tr("Успешное удаление"));
 }
+
+void interfaceWidget::deleteLaptop(soci::session& session,
+                                   const std::vector<int>& ids) {}
 
 void interfaceWidget::addProvider(soci::session& session) {}
 
@@ -596,65 +663,7 @@ void interfaceWidget::addClient(soci::session& session) {
     dialog->exec();
 }
 
-void interfaceWidget::updateLaptop(const int& page, const int& limit) {
-    /*
-     * Функция получает данные о клиентах и отображает в таблице
-     */
-    ui->Title->setText(tr("Клиенты"));
-
-    ui->tableWidget->clear();
-    const QStringList Labels = {tr("ID"),  tr("Название"),  tr("Прибыль"),
-                                tr("Тип"), tr("Процессор"), tr("ГПУ"),
-                                tr("ОЗУ"), tr("ПЗУ"),       tr("Цвет")};
-    ui->tableWidget->setColumnCount(Labels.size());
-    ui->tableWidget->setHorizontalHeaderLabels(Labels);
-
-    try {
-        soci::session session(*parent->database.get_pool().lock());
-        std::vector<client> clients =
-            db_methods::getClient(session, page, limit);
-        ui->tableWidget->setRowCount(clients.size());
-
-        size_t current_row = 0;
-        for (const auto& client : clients) {
-            ui->tableWidget->setItem(
-                current_row, 0,
-                new QTableWidgetItem(QString::number(client.id))); //laptop.ID
-            ui->tableWidget->setItem(
-                current_row, 1,
-                new QTableWidgetItem(QString::fromStdString(client.name))); //laptop.name
-            ui->tableWidget->setItem(
-                current_row, 2,
-                new QTableWidgetItem(QString::fromStdString(client.surname))); //laptop.income
-            ui->tableWidget->setItem(
-                current_row, 3,
-                new QTableWidgetItem(
-                    QString::fromStdString(client.patronymic))); //laptop.type
-            ui->tableWidget->setItem(
-                current_row, 4,
-                new QTableWidgetItem(QString::fromStdString(client.city))); //laptop.cpu
-            ui->tableWidget->setItem(
-                current_row, 5,
-                new QTableWidgetItem(QString::fromStdString(client.sex))); //laptop.gpu
-            ui->tableWidget->setItem(
-                current_row, 6,
-                new QTableWidgetItem(QString::fromStdString(client.email))); //laptop.ram
-            ui->tableWidget->setItem(
-                current_row, 7,
-                new QTableWidgetItem(QString::fromStdString(client.phone))); //laptop.rom
-            ui->tableWidget->setItem(
-                current_row, 8,
-                new QTableWidgetItem(QString::fromStdString(client.phone))); //laptop.color
-
-            current_row++;
-        }
-        numberOfPages = ceil(static_cast<double>(db_methods::row_count) /
-                             static_cast<double>(limit));
-    } catch (const std::exception& e) {
-        QMessageBox::critical(this, tr("Ошибка"), e.what());
-        return;
-    }
-}
+void interfaceWidget::addLaptop(soci::session& session) {}
 
 void interfaceWidget::updatePageButtons() {
     /*
