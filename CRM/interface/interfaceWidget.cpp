@@ -603,9 +603,9 @@ void interfaceWidget::updateLaptop(const int& page, const int& limit) {
     ui->Title->setText(tr("Клиенты"));
 
     ui->tableWidget->clear();
-    const QStringList Labels = {tr("ID"),       tr("Название"), tr("Маржа"),
-                                tr("Тип"), tr("Процессор"),   tr("ГПУ"),
-                                tr("ОЗУ"),    tr("ПЗУ"), tr("Цвет")};
+    const QStringList Labels = {tr("ID"),  tr("Название"),  tr("Прибыль"),
+                                tr("Тип"), tr("Процессор"), tr("ГПУ"),
+                                tr("ОЗУ"), tr("ПЗУ"),       tr("Цвет")};
     ui->tableWidget->setColumnCount(Labels.size());
     ui->tableWidget->setHorizontalHeaderLabels(Labels);
 
