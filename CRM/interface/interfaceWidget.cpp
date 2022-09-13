@@ -533,7 +533,35 @@ void interfaceWidget::updateLaptop(const int& page, const int& limit) {
     }
 }
 
-void interfaceWidget::editProvider(soci::session& session, const int& id) {}
+void interfaceWidget::editProvider(soci::session& session, const int& id) {
+    provider current = db_methods::getProvider(session, id);
+    QDialog* dialog = new QDialog(this);
+    Ui::editProvider edit_provider;
+    edit_provider.setupUi(dialog);
+    connect(edit_provider.Apply, &QPushButton::clicked, dialog,
+            &QDialog::accept);
+    edit_provider.NameEnter->setText(current.name.c_str());
+    connect(edit_provider.Apply, &QPushButton::clicked, dialog, [=]() {
+        std::string name = edit_provider.NameEnter->text().toStdString();
+        provider updated(current.id, name);
+        if (name.empty()) {
+            QMessageBox::warning(this, tr("Ошибка"), tr("Заполните все поля!"));
+            return;
+        }
+        try {
+            soci::session session(*parent->database.get_pool().lock());
+            db_methods::updateProvider(session, updated);
+        } catch (const std::exception& e) {
+            QMessageBox::warning(this, tr("Ошибка"),
+                                 tr("Ошибка при изменении клиента: ") +
+                                     QString::fromStdString(e.what()));
+            return;
+        }
+        dialog->accept();
+        goToPage(1);
+    });
+    dialog->exec();
+}
 
 void interfaceWidget::editEmployee(soci::session& session, const int& id) {}
 
@@ -638,7 +666,31 @@ void interfaceWidget::deleteLaptop(soci::session& session,
     QMessageBox::information(this, tr("Успех"), tr("Успешное удаление"));
 }
 
-void interfaceWidget::addProvider(soci::session& session) {}
+void interfaceWidget::addProvider(soci::session& session) {
+    QDialog* dialog = new QDialog(this);
+    Ui::editProvider edit_provider;
+    edit_provider.setupUi(dialog);
+    soci::session* session_ptr = std::addressof(session);
+    connect(edit_provider.Apply, &QPushButton::clicked, dialog, [=]() {
+        std::string name = edit_provider.NameEnter->text().toStdString();
+        if (name.empty()) {
+            QMessageBox::warning(this, tr("Ошибка"), tr("Заполните все поля!"));
+            return;
+        }
+        provider new_provider(0, name);
+        try {
+            db_methods::newProvider(*session_ptr, new_provider);
+        } catch (const std::exception& e) {
+            QMessageBox::warning(this, tr("Ошибка"),
+                                 tr("Ошибка при добавлении поставщика: ") +
+                                     QString::fromStdString(e.what()));
+            return;
+        }
+        dialog->accept();
+        goToPage(1);
+    });
+    dialog->exec();
+}
 
 void interfaceWidget::addEmployee(soci::session& session) {}
 
