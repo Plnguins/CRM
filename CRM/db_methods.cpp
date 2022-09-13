@@ -216,3 +216,43 @@ void db_methods::newClient(soci::session& sql, const client& client) {
         soci::use(client.email, "email"), soci::use(client.phone, "phone"),
         soci::use(client.sex, "sex"), soci::use(client.city, "city");
 }
+
+void db_methods::deleteProvider(soci::session& sql,
+                                const std::vector<int>& ids) {
+    soci::transaction tr(sql);  // Открываем транзакцию
+    std::string query =
+        "DELETE FROM provider WHERE id = :id";  // Формируем запрос к СУБД
+    try {
+        sql << query, soci::use(ids);
+        tr.commit();
+    } catch (soci::soci_error const& e) {
+        tr.rollback();  // При исключении откатываем изменения
+        throw e;
+    }
+}
+
+provider db_methods::getProvider(soci::session& sql, const int& id) {
+    boost::optional<provider> result;
+    std::string query =
+        "SELECT * FROM provider WHERE id = :id";  // Формируем запрос к СУБД
+    sql << query, soci::into(result), soci::use(id, "id");  // Выполняем запрос
+    if (result) {
+        return result.get();
+    }
+    throw std::runtime_error(
+        QObject::tr("База данных не вернула значение").toStdString());
+}
+
+void db_methods::updateProvider(soci::session& sql, const provider& provider) {
+    std::string query =
+        "UPDATE provider SET name = :name WHERE id = :id";  // Формируем запрос
+                                                            // к СУБД
+    sql << query, soci::use(provider.name, "name"),
+        soci::use(provider.id, "id");
+}
+
+void db_methods::newProvider(soci::session& sql, const provider& provider) {
+    std::string query =
+        "INSERT INTO provider(name) VALUES (:name)";  // Формируем запрос к СУБД
+    sql << query, soci::use(provider.name, "name");
+}

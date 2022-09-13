@@ -67,5 +67,20 @@ class db_methods {
     static void newClient(soci::session&,
                           const client&);  // Функция добавления клиента
 
+    static void deleteProvider(
+        soci::session&,
+        const std::vector<int>&);  // Функция удаления поставщиков по ID
+
+    static provider getProvider(
+        soci::session&,
+        const int&);  // Функция получения данных о поставщике по ID
+
+    static void updateProvider(
+        soci::session&,
+        const provider&);  // Функция обновления данных о поставщике
+
+    static void newProvider(soci::session&,
+                            const provider&);  // Функция добавления поставщика
+
     static int row_count;
 };
