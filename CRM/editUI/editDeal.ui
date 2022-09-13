@@ -21,7 +21,7 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>881</width>
+    <width>750</width>
     <height>221</height>
    </rect>
   </property>
@@ -33,7 +33,7 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>881</width>
+     <width>751</width>
      <height>221</height>
     </rect>
    </property>
@@ -153,8 +153,11 @@ border-radius: 20px;</string>
 	border: 5px solid #BBD6FF ;
 	border-radius:0px;</string>
    </property>
+   <property name="inputMask">
+    <string>000000000</string>
+   </property>
    <property name="maxLength">
-    <number>30</number>
+    <number>9</number>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -163,7 +166,7 @@ border-radius: 20px;</string>
   <widget class="QLabel" name="tableName">
    <property name="geometry">
     <rect>
-     <x>390</x>
+     <x>320</x>
      <y>10</y>
      <width>91</width>
      <height>31</height>
@@ -213,7 +216,7 @@ border-radius: 20px;</string>
   <widget class="QPushButton" name="Apply">
    <property name="geometry">
     <rect>
-     <x>370</x>
+     <x>300</x>
      <y>170</y>
      <width>131</width>
      <height>41</height>
@@ -281,58 +284,6 @@ QPushButton#Apply:pressed {
    </property>
    <property name="text">
     <string>Продавец</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="Mark">
-   <property name="geometry">
-    <rect>
-     <x>770</x>
-     <y>60</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);
-	border: 5px solid #BBD6FF ;
-	border-top: transparent;
-	border-left: transparent;
-	border-right: transparent;</string>
-   </property>
-   <property name="text">
-    <string>Оценка</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="MarkEnter">
-   <property name="geometry">
-    <rect>
-     <x>740</x>
-     <y>100</y>
-     <width>121</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
-	font: bold;
-	color:  rgb(56, 84, 102);	
-	background-color: rgb(221, 235, 255);
-	border: 5px solid #BBD6FF ;
-	border-top-left-radius: 0px;
-	border-top-right-radius:0px;
-	border-bottom-left-radius:0px;
-	border-bottom-right-radius:20px;</string>
-   </property>
-   <property name="maxLength">
-    <number>30</number>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -407,7 +358,11 @@ font: 12pt &quot;Comfortaa&quot;;
 	color:  rgb(56, 84, 102);	
 	background-color: rgb(221, 235, 255);
 	border: 5px solid #BBD6FF ;
-border-radius:0px;
+	border-radius:0px;
+	border-top-left-radius: 0px;
+	border-top-right-radius:0px;
+	border-bottom-left-radius:0px;
+	border-bottom-right-radius:20px;
 }
 
 QComboBox::drop-down {
@@ -435,11 +390,6 @@ QComboBox QAbstractItemView {
 	border-top-left-radius:0px;
 	border-top-right-radius:0px;
 }
-
-
-
-
-
 
 </string>
    </property>
@@ -563,8 +513,6 @@ QComboBox QAbstractItemView {
   <zorder>PriceEnter</zorder>
   <zorder>tableName</zorder>
   <zorder>Seller</zorder>
-  <zorder>Mark</zorder>
-  <zorder>MarkEnter</zorder>
   <zorder>CustomerChange</zorder>
   <zorder>SellerChange</zorder>
   <zorder>StatusChange</zorder>
@@ -576,7 +524,6 @@ QComboBox QAbstractItemView {
   <tabstop>CustomerChange</tabstop>
   <tabstop>StatusChange</tabstop>
   <tabstop>SellerChange</tabstop>
-  <tabstop>MarkEnter</tabstop>
   <tabstop>Apply</tabstop>
  </tabstops>
  <resources/>

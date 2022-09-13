@@ -21,7 +21,7 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1281</width>
+    <width>1282</width>
     <height>221</height>
    </rect>
   </property>
@@ -70,8 +70,11 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
 	border: 5px solid #BBD6FF ;
 	border-radius:0px;</string>
    </property>
+   <property name="inputMask">
+    <string>000</string>
+   </property>
    <property name="maxLength">
-    <number>30</number>
+    <number>3</number>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -134,7 +137,7 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1551</width>
+     <width>1281</width>
      <height>311</height>
     </rect>
    </property>
@@ -293,8 +296,11 @@ QPushButton#Apply:pressed {
 	border: 5px solid #BBD6FF ;
 	border-radius:0px;</string>
    </property>
+   <property name="inputMask">
+    <string>000000000</string>
+   </property>
    <property name="maxLength">
-    <number>30</number>
+    <number>9</number>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -483,8 +489,11 @@ border-radius: 20px;</string>
 	border: 5px solid #BBD6FF ;
 	border-radius:0px;</string>
    </property>
+   <property name="inputMask">
+    <string>000000000</string>
+   </property>
    <property name="maxLength">
-    <number>30</number>
+    <number>9</number>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -515,7 +524,7 @@ border-radius: 20px;</string>
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QComboBox" name="TypeChange">
+  <widget class="QLineEdit" name="TypeEnter">
    <property name="geometry">
     <rect>
      <x>330</x>
@@ -525,47 +534,18 @@ border-radius: 20px;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QComboBox{
-font: 12pt &quot;Comfortaa&quot;;
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
 	background-color: rgb(221, 235, 255);
 	border: 5px solid #BBD6FF ;
-	border-radius:0px;
-}
-
-QComboBox::drop-down {
-
-    border-left: 3px solid #BBD6FF ;
-    border-top-left-radius: 3px; /* same radius as the QComboBox */
-    border-bottom-left-radius: 3px;
-}
-
-QComboBox::down-arrow:!on {
-    image: url(&quot;:/images/downArrow.png&quot;);
-}
-
-QComboBox::down-arrow:on { 
-    image: url(&quot;:/images/upArrow.png&quot;);
-}
-
-
-
-QComboBox QAbstractItemView {
-    border: 5px solid #BBD6FF ;
-	background-color: rgb(221, 235, 255);
-	border-bottom-left-radius:5px;
-	border-bottom-right-radius:5px;
-	border-top-left-radius:0px;
-	border-top-right-radius:0px;
-}
-
-
-
-
-
-
-</string>
+	border-radius:0px;</string>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <zorder>Background</zorder>
@@ -586,9 +566,20 @@ QComboBox QAbstractItemView {
   <zorder>CPU</zorder>
   <zorder>ROMEnter</zorder>
   <zorder>Color</zorder>
-  <zorder>TypeChange</zorder>
   <zorder>Apply</zorder>
+  <zorder>TypeEnter</zorder>
  </widget>
+ <tabstops>
+  <tabstop>NameEnter</tabstop>
+  <tabstop>IncomeEnter</tabstop>
+  <tabstop>TypeEnter</tabstop>
+  <tabstop>CPUEnter</tabstop>
+  <tabstop>GPUEnter</tabstop>
+  <tabstop>RAMEnter</tabstop>
+  <tabstop>ROMEnter</tabstop>
+  <tabstop>ColorEnter</tabstop>
+  <tabstop>Apply</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
