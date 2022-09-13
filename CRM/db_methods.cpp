@@ -277,3 +277,69 @@ void db_methods::newProvider(soci::session& sql, const provider& provider) {
         "INSERT INTO provider(name) VALUES (:name)";  // Формируем запрос к СУБД
     sql << query, soci::use(provider.name, "name");
 }
+
+void db_methods::deleteEmployee(soci::session& sql,
+                                const std::vector<int>& ids) {
+    soci::transaction tr(sql);  // Открываем транзакцию
+    std::string query =
+        "DELETE FROM employee WHERE id = :id";  // Формируем запрос к СУБД
+    try {
+        sql << query, soci::use(ids);
+        tr.commit();
+    } catch (soci::soci_error const& e) {
+        tr.rollback();  // При исключении откатываем изменения
+        throw e;
+    }
+}
+
+void db_methods::deleteStock(soci::session& sql, const std::vector<int>& ids) {
+    soci::transaction tr(sql);  // Открываем транзакцию
+    std::string query =
+        "DELETE FROM stock WHERE id = :id";  // Формируем запрос к СУБД
+    try {
+        sql << query, soci::use(ids);
+        tr.commit();
+    } catch (soci::soci_error const& e) {
+        tr.rollback();  // При исключении откатываем изменения
+        throw e;
+    }
+}
+
+void db_methods::deleteAd(soci::session& sql, const std::vector<int>& ids) {
+    soci::transaction tr(sql);  // Открываем транзакцию
+    std::string query =
+        "DELETE FROM ad WHERE id = :id";  // Формируем запрос к СУБД
+    try {
+        sql << query, soci::use(ids);
+        tr.commit();
+    } catch (soci::soci_error const& e) {
+        tr.rollback();  // При исключении откатываем изменения
+        throw e;
+    }
+}
+
+void db_methods::deleteDeal(soci::session& sql, const std::vector<int>& ids) {
+    soci::transaction tr(sql);  // Открываем транзакцию
+    std::string query =
+        "DELETE FROM deal WHERE id = :id";  // Формируем запрос к СУБД
+    try {
+        sql << query, soci::use(ids);
+        tr.commit();
+    } catch (soci::soci_error const& e) {
+        tr.rollback();  // При исключении откатываем изменения
+        throw e;
+    }
+}
+
+void db_methods::deleteLaptop(soci::session& sql, const std::vector<int>& ids) {
+    soci::transaction tr(sql);  // Открываем транзакцию
+    std::string query =
+        "DELETE FROM laptop WHERE id = :id";  // Формируем запрос к СУБД
+    try {
+        sql << query, soci::use(ids);
+        tr.commit();
+    } catch (soci::soci_error const& e) {
+        tr.rollback();  // При исключении откатываем изменения
+        throw e;
+    }
+}

@@ -86,5 +86,25 @@ class db_methods {
     static void newProvider(soci::session&,
                             const provider&);  // Функция добавления поставщика
 
+    static void deleteEmployee(
+        soci::session&,
+        const std::vector<int>&);  // Функция удаления сотрудников по ID
+
+    static void deleteStock(
+        soci::session&,
+        const std::vector<int>&);  // Функция удаления товаров на складе по ID
+
+    static void deleteAd(
+        soci::session&,
+        const std::vector<int>&);  // Функция удаления рекламы по ID
+
+    static void deleteDeal(
+        soci::session&,
+        const std::vector<int>&);  // Функция удаления сделок по ID
+
+    static void deleteLaptop(
+        soci::session&,
+        const std::vector<int>&);  // Функция удаления ноутбуков по ID
+
     static int row_count;
 };

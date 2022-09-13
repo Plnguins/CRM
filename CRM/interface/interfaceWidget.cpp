@@ -597,16 +597,32 @@ void interfaceWidget::deleteProvider(soci::session& session,
 }
 
 void interfaceWidget::deleteEmployee(soci::session& session,
-                                     const std::vector<int>& ids) {}
+                                     const std::vector<int>& ids) {
+    db_methods::deleteEmployee(session, ids);
+    goToPage(1);
+    QMessageBox::information(this, tr("Успех"), tr("Успешное удаление"));
+}
 
 void interfaceWidget::deleteStock(soci::session& session,
-                                  const std::vector<int>& ids) {}
+                                  const std::vector<int>& ids) {
+    db_methods::deleteStock(session, ids);
+    goToPage(1);
+    QMessageBox::information(this, tr("Успех"), tr("Успешное удаление"));
+}
 
 void interfaceWidget::deleteAd(soci::session& session,
-                               const std::vector<int>& ids) {}
+                               const std::vector<int>& ids) {
+    db_methods::deleteAd(session, ids);
+    goToPage(1);
+    QMessageBox::information(this, tr("Успех"), tr("Успешное удаление"));
+}
 
 void interfaceWidget::deleteDeal(soci::session& session,
-                                 const std::vector<int>& ids) {}
+                                 const std::vector<int>& ids) {
+    db_methods::deleteDeal(session, ids);
+    goToPage(1);
+    QMessageBox::information(this, tr("Успех"), tr("Успешное удаление"));
+}
 
 void interfaceWidget::deleteClient(soci::session& session,
                                    const std::vector<int>& ids) {
@@ -616,7 +632,11 @@ void interfaceWidget::deleteClient(soci::session& session,
 }
 
 void interfaceWidget::deleteLaptop(soci::session& session,
-                                   const std::vector<int>& ids) {}
+                                   const std::vector<int>& ids) {
+    db_methods::deleteLaptop(session, ids);
+    goToPage(1);
+    QMessageBox::information(this, tr("Успех"), tr("Успешное удаление"));
+}
 
 void interfaceWidget::addProvider(soci::session& session) {}
 
