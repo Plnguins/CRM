@@ -55,5 +55,7 @@ class db_methods {
         soci::session&,
         const std::vector<int>&);  // Функция удаления клиентов по ID
 
+    static void newClient(soci::session&, const client&);  // Функция добавления клиента
+
     static int row_count;
 };

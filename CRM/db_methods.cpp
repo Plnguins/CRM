@@ -177,3 +177,14 @@ void db_methods::deleteClient(soci::session& sql, const std::vector<int>& ids) {
         throw e;
     }
 }
+void db_methods::newClient(soci::session& sql, const client& client) {
+    std::string query =
+        "INSERT INTO client(surname, name, patronymic, email, phone, sex, "
+        "city) VALUES (:surname, :name, :patronymic, :email, :phone, :sex, "
+        ":city)";  // Формируем запрос к СУБД
+    sql << query, soci::use(client.surname, "surname"),
+        soci::use(client.name, "name"),
+        soci::use(client.patronymic, "patronymic"),
+        soci::use(client.email, "email"), soci::use(client.phone, "phone"),
+        soci::use(client.sex, "sex"), soci::use(client.city, "city");
+}

@@ -92,7 +92,49 @@ void interfaceWidget::on_Client_clicked() {
     updatePageButtons();
 }
 
-void interfaceWidget::on_Add_clicked() {}
+void interfaceWidget::on_Add_clicked() {
+    try {
+        soci::session session(*parent->database.get_pool().lock());
+        QDialog* dialog = new QDialog(this);
+        Ui::editClient edit_client;
+        edit_client.setupUi(dialog);
+        connect(edit_client.Apply, &QPushButton::clicked, dialog, [=]() {
+            std::string surname =
+                            edit_client.SurnameEnter->text().toStdString(),
+                        name = edit_client.NameEnter->text().toStdString(),
+                        patronymic =
+                            edit_client.PatronymicEnter->text().toStdString(),
+                        phone =
+                            edit_client.PhoneNumberEnter->text().toStdString(),
+                        email = edit_client.EmailEnter->text().toStdString(),
+                        sex = edit_client.SexEnter->text().toStdString(),
+                        city = edit_client.CityEnter->text().toStdString();
+            if (surname.empty() || name.empty() || patronymic.empty() ||
+                phone.empty() || email.empty() || sex.empty() || city.empty()) {
+                QMessageBox::warning(this, tr("Ошибка"),
+                                     tr("Заполните все поля!"));
+                return;
+            }
+            client new_client(0, surname, name, patronymic, email, phone, sex,
+                              city);
+            try {
+                soci::session session(*parent->database.get_pool().lock());
+                db_methods::newClient(session, new_client);
+            } catch (const std::exception& e) {
+                QMessageBox::warning(this, tr("Ошибка"),
+                                     tr("Ошибка при добавлении клиента: ") +
+                                         QString::fromStdString(e.what()));
+                return;
+            }
+            dialog->accept();
+            goToPage(1);
+        });
+        dialog->exec();
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this, tr("Ошибка"), e.what());
+        return;
+    }
+}
 
 void interfaceWidget::on_Edit_clicked() {}
 
