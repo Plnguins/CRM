@@ -15,20 +15,11 @@
 // along with this program.If not, see < https:  // www.gnu.org/licenses/>.
 #pragma once
 
-#include <openssl/evp.h>
-#include <openssl/sha.h>
-
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QWidget>
-#include <iomanip>
-#include <sstream>
 
-#include "../database-types/employee.h"
-#include "../database-types/leader.h"
-#include "../database-types/marketer.h"
-#include "../database-types/seller.h"
-#include "../database-types/stock_manager.h"
+#include "../db_methods.h"
 #include "../mainwindow.h"
 #include "ui_login.h"
 

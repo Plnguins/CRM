@@ -16,7 +16,14 @@
 /*
  * Функции работы с СУБД
  */
+#pragma once
+
+#include <openssl/evp.h>
+#include <openssl/sha.h>
+
 #include <QObject>
+#include <iomanip>
+#include <sstream>
 
 #include "database-types/advertisement.h"
 #include "database-types/client.h"
@@ -29,6 +36,8 @@
 
 class db_methods {
    public:
+    static std::string hashPassword(const std::string& password);
+
     static std::vector<boost::tuple<stock, laptop, provider>> getStock(
         soci::session&, const int&,
         const int&);  // Функция получения данных о товарах на складе
