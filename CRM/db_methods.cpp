@@ -308,7 +308,7 @@ void db_methods::deleteStock(soci::session& sql, const std::vector<int>& ids) {
 void db_methods::deleteAd(soci::session& sql, const std::vector<int>& ids) {
     soci::transaction tr(sql);  // Открываем транзакцию
     std::string query =
-        "DELETE FROM ad WHERE id = :id";  // Формируем запрос к СУБД
+        "DELETE FROM advertisement WHERE id = :id";  // Формируем запрос к СУБД
     try {
         sql << query, soci::use(ids);
         tr.commit();
@@ -316,6 +316,36 @@ void db_methods::deleteAd(soci::session& sql, const std::vector<int>& ids) {
         tr.rollback();  // При исключении откатываем изменения
         throw e;
     }
+}
+
+advertisement db_methods::getAd(soci::session& sql, const int& id) {
+    boost::optional<advertisement> result;
+    std::string query =
+        "SELECT * FROM advertisement WHERE id = :id";  // Формируем запрос к
+                                                       // СУБД
+    sql << query, soci::into(result), soci::use(id, "id");  // Выполняем запрос
+    if (result) {
+        return result.get();
+    }
+    throw std::runtime_error(
+        QObject::tr("База данных не вернула значение").toStdString());
+}
+
+void db_methods::updateAd(soci::session& sql, const advertisement& ad) {
+    std::string query =
+        "UPDATE advertisement SET source = :source, budget = :budget, "
+        "comments = :comments WHERE id = :id";  // Формируем запрос к СУБД
+    sql << query, soci::use(ad.source, "source"),
+        soci::use(ad.budget, "budget"), soci::use(ad.comments, "comments"),
+        soci::use(ad.id, "id");
+}
+
+void db_methods::newAd(soci::session& sql, const advertisement& ad) {
+    std::string query =
+        "INSERT INTO advertisement(source, budget, comments) VALUES "
+        "(:source, :budget, :comments)";  // Формируем запрос к СУБД
+    sql << query, soci::use(ad.source, "source"),
+        soci::use(ad.budget, "budget"), soci::use(ad.comments, "comments");
 }
 
 void db_methods::deleteDeal(soci::session& sql, const std::vector<int>& ids) {

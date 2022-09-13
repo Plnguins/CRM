@@ -553,7 +553,7 @@ void interfaceWidget::editProvider(soci::session& session, const int& id) {
             db_methods::updateProvider(session, updated);
         } catch (const std::exception& e) {
             QMessageBox::warning(this, tr("Ошибка"),
-                                 tr("Ошибка при изменении клиента: ") +
+                                 tr("Ошибка при изменении поставщика: ") +
                                      QString::fromStdString(e.what()));
             return;
         }
@@ -567,7 +567,38 @@ void interfaceWidget::editEmployee(soci::session& session, const int& id) {}
 
 void interfaceWidget::editStock(soci::session& session, const int& id) {}
 
-void interfaceWidget::editAd(soci::session& session, const int& id) {}
+void interfaceWidget::editAd(soci::session& session, const int& id) {
+    advertisement current = db_methods::getAd(session, id);
+    QDialog* dialog = new QDialog(this);
+    Ui::editAd edit_ad;
+    edit_ad.setupUi(dialog);
+    connect(edit_ad.Apply, &QPushButton::clicked, dialog, &QDialog::accept);
+    edit_ad.PlatformEnter->setText(current.source.c_str());
+    edit_ad.BudgetEnter->setText(QString::number(current.budget));
+    edit_ad.CommentsEnter->setText(current.comments.c_str());
+    connect(edit_ad.Apply, &QPushButton::clicked, dialog, [=]() {
+        std::string source = edit_ad.PlatformEnter->text().toStdString(),
+                    comments = edit_ad.CommentsEnter->text().toStdString();
+        int budget = edit_ad.BudgetEnter->text().toInt();
+        advertisement updated(current.id, source, budget, comments);
+        if (source.empty() || comments.empty() || budget == 0) {
+            QMessageBox::warning(this, tr("Ошибка"), tr("Заполните все поля!"));
+            return;
+        }
+        try {
+            soci::session session(*parent->database.get_pool().lock());
+            db_methods::updateAd(session, updated);
+        } catch (const std::exception& e) {
+            QMessageBox::warning(this, tr("Ошибка"),
+                                 tr("Ошибка при изменении рекламы: ") +
+                                     QString::fromStdString(e.what()));
+            return;
+        }
+        dialog->accept();
+        goToPage(1);
+    });
+    dialog->exec();
+}
 
 void interfaceWidget::editDeal(soci::session& session, const int& id) {}
 
@@ -696,7 +727,33 @@ void interfaceWidget::addEmployee(soci::session& session) {}
 
 void interfaceWidget::addStock(soci::session& session) {}
 
-void interfaceWidget::addAd(soci::session& session) {}
+void interfaceWidget::addAd(soci::session& session) {
+    QDialog* dialog = new QDialog(this);
+    Ui::editAd edit_ad;
+    edit_ad.setupUi(dialog);
+    soci::session* session_ptr = std::addressof(session);
+    connect(edit_ad.Apply, &QPushButton::clicked, dialog, [=]() {
+        std::string source = edit_ad.PlatformEnter->text().toStdString(),
+                    comments = edit_ad.CommentsEnter->text().toStdString();
+        int budget = edit_ad.BudgetEnter->text().toInt();
+        if (source.empty() || comments.empty() || budget == 0) {
+            QMessageBox::warning(this, tr("Ошибка"), tr("Заполните все поля!"));
+            return;
+        }
+        advertisement new_ad(0, source, budget, comments);
+        try {
+            db_methods::newAd(*session_ptr, new_ad);
+        } catch (const std::exception& e) {
+            QMessageBox::warning(this, tr("Ошибка"),
+                                 tr("Ошибка при добавлении поставщика: ") +
+                                     QString::fromStdString(e.what()));
+            return;
+        }
+        dialog->accept();
+        goToPage(1);
+    });
+    dialog->exec();
+}
 
 void interfaceWidget::addDeal(soci::session& session) {}
 

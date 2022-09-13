@@ -73,9 +73,9 @@ border-radius: 20px;</string>
   <widget class="QLabel" name="Comments">
    <property name="geometry">
     <rect>
-     <x>290</x>
+     <x>270</x>
      <y>60</y>
-     <width>121</width>
+     <width>161</width>
      <height>31</height>
     </rect>
    </property>
@@ -112,8 +112,11 @@ border-radius: 20px;</string>
 	border: 5px solid #BBD6FF ;
 	border-radius:0px;</string>
    </property>
+   <property name="inputMask">
+    <string>00000000</string>
+   </property>
    <property name="maxLength">
-    <number>30</number>
+    <number>8</number>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -192,7 +195,7 @@ border-radius: 20px;</string>
     <rect>
      <x>20</x>
      <y>60</y>
-     <width>101</width>
+     <width>111</width>
      <height>31</height>
     </rect>
    </property>
@@ -302,6 +305,7 @@ QPushButton#Apply:pressed {
   <zorder>PlatformEnter</zorder>
  </widget>
  <tabstops>
+  <tabstop>PlatformEnter</tabstop>
   <tabstop>BudgetEnter</tabstop>
   <tabstop>CommentsEnter</tabstop>
   <tabstop>Apply</tabstop>

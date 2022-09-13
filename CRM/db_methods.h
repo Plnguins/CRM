@@ -98,6 +98,17 @@ class db_methods {
         soci::session&,
         const std::vector<int>&);  // Функция удаления рекламы по ID
 
+    static advertisement getAd(
+        soci::session&,
+        const int&);  // Функция получения данны о рекламе по ID
+
+    static void updateAd(
+        soci::session&,
+        const advertisement&);  // Функция обновления данны орекламы
+
+    static void newAd(soci::session&,
+                      const advertisement&);  // Функция добавления рекламы
+
     static void deleteDeal(
         soci::session&,
         const std::vector<int>&);  // Функция удаления сделок по ID
