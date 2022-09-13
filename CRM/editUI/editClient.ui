@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Edit Client UI code for CRM application
 Copyright(C) 2022 Plnguins
-
 This program is free software : you can redistribute it and / or modify
 it under the terms of the GNU Affero General Public License as published
 by the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 GNU Affero General Public License for more details.
-
 You should have received a copy of the GNU Affero General Public License
 along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
 <ui version="4.0">
@@ -45,6 +42,9 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
 	border: 5px solid #BBD6FF ;
 	border-radius:0px;</string>
    </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
@@ -66,6 +66,9 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
 	border: 5px solid #BBD6FF ;
 	border-radius:0px;</string>
    </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
@@ -86,6 +89,9 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
 	background-color: rgb(221, 235, 255);
 	border: 5px solid #BBD6FF ;
 	border-radius:0px;</string>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -150,6 +156,9 @@ border-radius: 20px;</string>
 	border: 5px solid #BBD6FF ;
 	border-radius:0px;</string>
    </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
@@ -173,6 +182,9 @@ border-radius: 20px;</string>
 	border-top-right-radius:0px;
 	border-bottom-left-radius:0px;
 	border-bottom-right-radius:20px;</string>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -226,6 +238,9 @@ border-radius: 20px;</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -464,6 +479,9 @@ QPushButton#Apply:pressed {
 	background-color: rgb(221, 235, 255);
 	border: 5px solid #BBD6FF ;
 	border-radius:0px;</string>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

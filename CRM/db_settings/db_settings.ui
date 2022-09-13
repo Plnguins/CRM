@@ -121,6 +121,9 @@ border-radius: 10px;</string>
    <property name="text">
     <string/>
    </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
    <property name="echoMode">
     <enum>QLineEdit::Password</enum>
    </property>
@@ -162,6 +165,9 @@ border-radius: 10px;</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
    </property>
    <property name="placeholderText">
     <string>IP</string>
@@ -226,6 +232,9 @@ border-radius: 10px;</string>
    <property name="text">
     <string/>
    </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
    <property name="placeholderText">
     <string>Порт</string>
    </property>
@@ -266,6 +275,9 @@ border-radius: 10px;</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
    </property>
    <property name="placeholderText">
     <string>Логин</string>
@@ -344,6 +356,9 @@ border-radius: 10px;</string>
    <property name="text">
     <string/>
    </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
    <property name="placeholderText">
     <string>Название БД</string>
    </property>
@@ -408,8 +423,6 @@ border-radius: 10px;</string>
   <tabstop>DataBaseNameEnter</tabstop>
   <tabstop>ApplyButton</tabstop>
  </tabstops>
- <resources>
-  <include location="../../resources/resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
