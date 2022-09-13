@@ -15,8 +15,8 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>editLaptop</class>
+ <widget class="QWidget" name="editLaptop">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -26,7 +26,7 @@ along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Ноутбук</string>
   </property>
   <widget class="QLabel" name="RAM">
    <property name="geometry">

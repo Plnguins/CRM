@@ -49,7 +49,7 @@ class interfaceWidget : public QWidget {
     void on_Ads_clicked();
     void on_Deal_clicked();
     void on_Client_clicked();
-    void on_Catalog_clicked();
+    void on_Laptop_clicked();
 
     void on_Add_clicked();
     void on_Edit_clicked();

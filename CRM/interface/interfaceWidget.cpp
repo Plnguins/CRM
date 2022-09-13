@@ -110,7 +110,7 @@ void interfaceWidget::on_Client_clicked() {
     updatePageButtons();
 }
 
-void interfaceWidget::on_Catalog_clicked() {
+void interfaceWidget::on_Laptop_clicked() {
     hideGreeting();
     updateTable = &interfaceWidget::updateLaptop;
     editElement = &interfaceWidget::editLaptop;
