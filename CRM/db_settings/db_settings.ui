@@ -1,19 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Seller UI code for CRM application
-Copyright(C) 2022 Plnguins
-
-This program is free software : you can redistribute it and / or modify
-it under the terms of the GNU Affero General Public License as published
-by the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
 <ui version="4.0">
  <class>db_settingsUi</class>
  <widget class="QWidget" name="db_settingsUi">
@@ -121,6 +106,9 @@ border-radius: 10px;</string>
    <property name="text">
     <string/>
    </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
    <property name="echoMode">
     <enum>QLineEdit::Password</enum>
    </property>
@@ -162,6 +150,9 @@ border-radius: 10px;</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
    </property>
    <property name="placeholderText">
     <string>IP</string>
@@ -226,6 +217,9 @@ border-radius: 10px;</string>
    <property name="text">
     <string/>
    </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
    <property name="placeholderText">
     <string>Порт</string>
    </property>
@@ -266,6 +260,9 @@ border-radius: 10px;</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
    </property>
    <property name="placeholderText">
     <string>Логин</string>
@@ -344,6 +341,9 @@ border-radius: 10px;</string>
    <property name="text">
     <string/>
    </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
    <property name="placeholderText">
     <string>Название БД</string>
    </property>
@@ -408,8 +408,6 @@ border-radius: 10px;</string>
   <tabstop>DataBaseNameEnter</tabstop>
   <tabstop>ApplyButton</tabstop>
  </tabstops>
- <resources>
-  <include location="../../resources/resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

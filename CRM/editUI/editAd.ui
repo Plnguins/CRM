@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Edit Ad UI code for CRM application
 Copyright(C) 2022 Plnguins
-
 This program is free software : you can redistribute it and / or modify
 it under the terms of the GNU Affero General Public License as published
 by the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 GNU Affero General Public License for more details.
-
 You should have received a copy of the GNU Affero General Public License
 along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
 <ui version="4.0">
@@ -112,6 +109,9 @@ border-radius: 20px;</string>
 	border: 5px solid #BBD6FF ;
 	border-radius:0px;</string>
    </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
@@ -135,6 +135,9 @@ border-radius: 20px;</string>
 	border-top-right-radius:0px;
 	border-bottom-left-radius:0px;
 	border-bottom-right-radius:20px;</string>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -257,7 +260,7 @@ QPushButton#Apply:pressed {
     <string>Готово</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="PlatfromChange">
+  <widget class="QLineEdit" name="PlatformEnter">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -267,8 +270,7 @@ QPushButton#Apply:pressed {
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QComboBox{
-font: 12pt &quot;Comfortaa&quot;;
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
 	font: bold;
 	color:  rgb(56, 84, 102);	
 	background-color: rgb(221, 235, 255);
@@ -276,41 +278,13 @@ font: 12pt &quot;Comfortaa&quot;;
 	border-top-left-radius: 20px;
 	border-top-right-radius:0px;
 	border-bottom-left-radius:0px;
-	border-bottom-right-radius:0px;
-}
-
-QComboBox::drop-down {
-
-    border-left: 3px solid #BBD6FF ;
-    border-top-left-radius: 3px; /* same radius as the QComboBox */
-    border-bottom-left-radius: 3px;
-}
-
-QComboBox::down-arrow:!on {
-    image: url(&quot;:/images/downArrow.png&quot;);
-}
-
-QComboBox::down-arrow:on { 
-    image: url(&quot;:/images/upArrow.png&quot;);
-}
-
-
-
-QComboBox QAbstractItemView {
-    border: 5px solid #BBD6FF ;
-	background-color: rgb(221, 235, 255);
-	border-bottom-left-radius:5px;
-	border-bottom-right-radius:5px;
-	border-top-left-radius:0px;
-	border-top-right-radius:0px;
-}
-
-
-
-
-
-
-</string>
+	border-bottom-right-radius:0px;</string>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <zorder>Background</zorder>
@@ -322,10 +296,9 @@ QComboBox QAbstractItemView {
   <zorder>Comments</zorder>
   <zorder>BudgetEnter</zorder>
   <zorder>CommentsEnter</zorder>
-  <zorder>PlatfromChange</zorder>
+  <zorder>PlatformEnter</zorder>
  </widget>
  <tabstops>
-  <tabstop>PlatfromChange</tabstop>
   <tabstop>BudgetEnter</tabstop>
   <tabstop>CommentsEnter</tabstop>
   <tabstop>Apply</tabstop>
