@@ -110,6 +110,13 @@ void interfaceWidget::on_Client_clicked() {
     updatePageButtons();
 }
 
+void interfaceWidget::on_Catalog_clicked() {
+    hideGreeting();
+    updateTable = &interfaceWidget::updateLaptop;
+    goToPage(1);
+    updatePageButtons();
+}
+
 void interfaceWidget::on_Add_clicked() {
     try {
         soci::session session(*parent->database.get_pool().lock());
@@ -677,11 +684,3 @@ void interfaceWidget::on_Page_5_clicked() {
     }
     goToPage(pages[4]);
 }
-
-void interfaceWidget::on_Catalog_clicked(){
-    hideGreeting();
-    updateTable = &interfaceWidget::updateLaptop;
-    goToPage(1);
-    updatePageButtons();
-}
-

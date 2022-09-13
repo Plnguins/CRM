@@ -49,6 +49,7 @@ class interfaceWidget : public QWidget {
     void on_Ads_clicked();
     void on_Deal_clicked();
     void on_Client_clicked();
+    void on_Catalog_clicked();
 
     void on_Add_clicked();
     void on_Edit_clicked();
@@ -62,9 +63,7 @@ class interfaceWidget : public QWidget {
     void on_Page_4_clicked() { goToPage(pages[3]); }
     void on_Page_5_clicked();
 
-    void on_Catalog_clicked();
-
-protected:
+   protected:
     Ui::interfaceUi* ui;
 
    private:
