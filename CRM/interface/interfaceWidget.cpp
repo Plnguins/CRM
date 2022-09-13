@@ -566,7 +566,78 @@ void interfaceWidget::editProvider(soci::session& session, const int& id) {
     dialog->exec();
 }
 
-void interfaceWidget::editEmployee(soci::session& session, const int& id) {}
+void interfaceWidget::editEmployee(soci::session& session, const int& id) {
+    employee current = db_methods::getEmployee(session, id);
+    QDialog* dialog = new QDialog(this);
+    Ui::editEmployee edit_employee;
+    edit_employee.setupUi(dialog);
+    edit_employee.SurnameEnter->setText(current.surname.c_str());
+    edit_employee.NameEnter->setText(current.name.c_str());
+    edit_employee.PatronymicEnter->setText(current.patronymic.c_str());
+    edit_employee.LoginEnter->setText(current.login.c_str());
+    soci::session* session_ptr = std::addressof(session);
+    connect(edit_employee.Apply, &QPushButton::clicked, dialog, [=]() {
+        std::string name = edit_employee.NameEnter->text().toStdString(),
+                    surname = edit_employee.SurnameEnter->text().toStdString(),
+                    patronymic =
+                        edit_employee.PatronymicEnter->text().toStdString(),
+                    login = edit_employee.LoginEnter->text().toStdString(),
+                    password =
+                        edit_employee.PasswordEnter->text().toStdString();
+        if (name.empty() || surname.empty() || patronymic.empty() ||
+            login.empty() || password.empty()) {
+            QMessageBox::warning(this, tr("Ошибка"), tr("Заполните все поля!"));
+            return;
+        }
+        employee new_employee(current.id, name, surname, patronymic, login,
+                              db_methods::hashPassword(password));
+        try {
+            db_methods::updateEmployee(*session_ptr, new_employee);
+            int id = current.id;
+            soci::transaction tr(*session_ptr);
+            (*session_ptr) << "DELETE FROM leader WHERE employee = :id",
+                soci::use(id);
+            (*session_ptr) << "DELETE FROM seller WHERE employee = :id",
+                soci::use(id);
+            (*session_ptr) << "DELETE FROM marketer WHERE employee = :id",
+                soci::use(id);
+            (*session_ptr) << "DELETE FROM stock_manager WHERE employee = :id",
+                soci::use(id);
+            if (edit_employee.RoleChange->currentText() ==
+                this->tr("Руководитель")) {
+                (*session_ptr) << "INSERT INTO leader(employee) VALUES (:id)",
+                    soci::use(id, "id");
+            } else if (edit_employee.RoleChange->currentText() ==
+                       this->tr("Продавец")) {
+                (*session_ptr) << "INSERT INTO seller(employee) VALUES (:id)",
+                    soci::use(id, "id");
+            } else if (edit_employee.RoleChange->currentText() ==
+                       this->tr("Маркетолог")) {
+                (*session_ptr) << "INSERT INTO marketer(employee) VALUES (:id)",
+                    soci::use(id, "id");
+            } else if (edit_employee.RoleChange->currentText() ==
+                       this->tr("Менеджер")) {
+                (*session_ptr)
+                    << "INSERT INTO stock_manager(employee) VALUES (:id)",
+                    soci::use(id, "id");
+            } else {
+                tr.rollback();
+                throw std::runtime_error(
+                    this->tr("Не получилось добавить сотрудника")
+                        .toStdString());
+            }
+            tr.commit();
+        } catch (const std::exception& e) {
+            QMessageBox::warning(this, tr("Ошибка"),
+                                 tr("Ошибка при добавлении поставщика: ") +
+                                     QString::fromStdString(e.what()));
+            return;
+        }
+        dialog->accept();
+        goToPage(1);
+    });
+    dialog->exec();
+}
 
 void interfaceWidget::editStock(soci::session& session, const int& id) {}
 
@@ -768,7 +839,64 @@ void interfaceWidget::addProvider(soci::session& session) {
     dialog->exec();
 }
 
-void interfaceWidget::addEmployee(soci::session& session) {}
+void interfaceWidget::addEmployee(soci::session& session) {
+    QDialog* dialog = new QDialog(this);
+    Ui::editEmployee edit_employee;
+    edit_employee.setupUi(dialog);
+    soci::session* session_ptr = std::addressof(session);
+    connect(edit_employee.Apply, &QPushButton::clicked, dialog, [=]() {
+        std::string name = edit_employee.NameEnter->text().toStdString(),
+                    surname = edit_employee.SurnameEnter->text().toStdString(),
+                    patronymic =
+                        edit_employee.PatronymicEnter->text().toStdString(),
+                    login = edit_employee.LoginEnter->text().toStdString(),
+                    password =
+                        edit_employee.PasswordEnter->text().toStdString();
+        if (name.empty() || surname.empty() || patronymic.empty() ||
+            login.empty() || password.empty()) {
+            QMessageBox::warning(this, tr("Ошибка"), tr("Заполните все поля!"));
+            return;
+        }
+        employee new_employee(0, name, surname, patronymic, login,
+                              db_methods::hashPassword(password));
+        try {
+            int id = db_methods::newEmployee(*session_ptr, new_employee);
+            soci::transaction tr(*session_ptr);
+            if (edit_employee.RoleChange->currentText() ==
+                this->tr("Руководитель")) {
+                (*session_ptr) << "INSERT INTO leader(employee) VALUES (:id)",
+                    soci::use(id, "id");
+            } else if (edit_employee.RoleChange->currentText() ==
+                       this->tr("Продавец")) {
+                (*session_ptr) << "INSERT INTO seller(employee) VALUES (:id)",
+                    soci::use(id, "id");
+            } else if (edit_employee.RoleChange->currentText() ==
+                       this->tr("Маркетолог")) {
+                (*session_ptr) << "INSERT INTO marketer(employee) VALUES (:id)",
+                    soci::use(id, "id");
+            } else if (edit_employee.RoleChange->currentText() ==
+                       this->tr("Менеджер")) {
+                (*session_ptr)
+                    << "INSERT INTO stock_manager(employee) VALUES (:id)",
+                    soci::use(id, "id");
+            } else {
+                tr.rollback();
+                throw std::runtime_error(
+                    this->tr("Не получилось добавить сотрудника")
+                        .toStdString());
+            }
+            tr.commit();
+        } catch (const std::exception& e) {
+            QMessageBox::warning(this, tr("Ошибка"),
+                                 tr("Ошибка при добавлении поставщика: ") +
+                                     QString::fromStdString(e.what()));
+            return;
+        }
+        dialog->accept();
+        goToPage(1);
+    });
+    dialog->exec();
+}
 
 void interfaceWidget::addStock(soci::session& session) {}
 

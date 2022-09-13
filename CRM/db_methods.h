@@ -99,6 +99,17 @@ class db_methods {
         soci::session&,
         const std::vector<int>&);  // Функция удаления сотрудников по ID
 
+    static employee getEmployee(
+        soci::session&,
+        const int&);  // Функция получения данных о сотруднике по ID
+
+    static void updateEmployee(
+        soci::session&,
+        const employee&);  // Функция обновления данных о сотруднике
+
+    static int newEmployee(soci::session&,
+                           const employee&);  // Функция добавления сотрудника
+
     static void deleteStock(
         soci::session&,
         const std::vector<int>&);  // Функция удаления товаров на складе по ID

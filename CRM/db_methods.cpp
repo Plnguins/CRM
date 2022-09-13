@@ -310,6 +310,53 @@ void db_methods::deleteEmployee(soci::session& sql,
     }
 }
 
+employee db_methods::getEmployee(soci::session& sql, const int& id) {
+    boost::optional<employee> result;
+    std::string query =
+        "SELECT * FROM employee WHERE id = :id";  // Формируем запрос к СУБД
+    sql << query, soci::into(result), soci::use(id, "id");  // Выполняем запрос
+    if (result) {
+        return result.get();
+    }
+    throw std::runtime_error(
+        QObject::tr("База данных не вернула значение").toStdString());
+}
+
+void db_methods::updateEmployee(soci::session& sql, const employee& employee) {
+    std::string query =
+        "UPDATE employee SET name = :name, surname = :surname, patronymic "
+        "= :patronymic, login = :login, password = :password WHERE id = "
+        ":id";  // Формируем запрос к СУБД
+    sql << query, soci::use(employee.name, "name"),
+        soci::use(employee.surname, "surname"),
+        soci::use(employee.patronymic, "patronymic"),
+        soci::use(employee.login, "login"),
+        soci::use(employee.password, "password"), soci::use(employee.id, "id");
+}
+
+int db_methods::newEmployee(soci::session& sql, const employee& employee) {
+    soci::transaction tr(sql);
+    std::string query =
+        "INSERT INTO employee(name, surname, patronymic, login, "
+        "password) VALUES (:name, :surname, :patronymic, "
+        ":login, :password)";  // Формируем запрос к СУБД
+    sql << query, soci::use(employee.name, "name"),
+        soci::use(employee.surname, "surname"),
+        soci::use(employee.patronymic, "patronymic"),
+        soci::use(employee.login, "login"),
+        soci::use(employee.password, "password");
+    query = "SELECT id FROM employee WHERE login = :login";
+    boost::optional<int> id;
+    sql << query, soci::use(employee.login, "login"), soci::into(id);
+    if (id) {
+        tr.commit();
+        return id.get();
+    }
+    throw std::runtime_error(
+        QObject::tr("Не получилось добавить сотрудника").toStdString());
+    tr.rollback();
+}
+
 void db_methods::deleteStock(soci::session& sql, const std::vector<int>& ids) {
     soci::transaction tr(sql);  // Открываем транзакцию
     std::string query =
