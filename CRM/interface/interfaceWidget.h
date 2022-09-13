@@ -16,12 +16,23 @@
 #pragma once
 
 #include "../db_methods.h"
+#include "../editUI/ui_editClient.h"
+#include "../editUI/ui_editAd.h"
+#include "../editUI/ui_editDeal.h"
+#include "../editUI/ui_editEmployee.h"
+#include "../editUI/ui_editProvider.h"
+#include "../editUI/ui_editStock.h"
 #include "../mainwindow.h"
 #include "ui_interface.h"
 
 namespace Ui {
 class interfaceUi;
-}
+class editAd;
+class editDeal;
+class editEmployee;
+class editProvider;
+class editStock;
+}  // namespace Ui
 
 class interfaceWidget : public QWidget {
     Q_OBJECT

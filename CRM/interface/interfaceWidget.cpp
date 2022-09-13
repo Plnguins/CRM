@@ -96,7 +96,31 @@ void interfaceWidget::on_Add_clicked() {}
 
 void interfaceWidget::on_Edit_clicked() {}
 
-void interfaceWidget::on_Delete_clicked() {}
+void interfaceWidget::on_Delete_clicked() {
+    QItemSelectionModel* select = ui->tableWidget->selectionModel();
+    if (!select->hasSelection()) {
+        QMessageBox::warning(this, "Внимание", "Выберете элемент/элементы");
+        return;
+    }
+    auto elements = select->selectedIndexes();
+    int column = elements[0].column();
+    std::vector<int> ids;
+    for (const auto& element : elements) {
+        if (element.column() != column) {
+            continue;
+        }
+        ids.push_back(ui->tableWidget->item(element.row(), 0)->text().toInt());
+    }
+    try {
+        soci::session session(*parent->database.get_pool().lock());
+        db_methods::deleteClient(session, ids);
+        goToPage(1);
+        QMessageBox::information(this, tr("Успех"), tr("Успешное удаление"));
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this, tr("Ошибка"), e.what());
+        return;
+    }
+}
 
 void interfaceWidget::hideGreeting() {
     /*

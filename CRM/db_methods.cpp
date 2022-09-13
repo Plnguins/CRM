@@ -164,3 +164,16 @@ std::vector<client> db_methods::getClient(soci::session& sql, const int& offset,
     }
     return result;  // Возвращаем результат
 }
+
+void db_methods::deleteClient(soci::session& sql, const std::vector<int>& ids) {
+    soci::transaction tr(sql);  // Открываем транзакцию
+    std::string query =
+        "DELETE FROM client WHERE id = :id";  // Формируем запрос к СУБД
+    try {
+        sql << query, soci::use(ids);
+        tr.commit();
+    } catch (soci::soci_error const& e) {
+        tr.rollback();  // При исключении откатываем изменения
+        throw e;
+    }
+}
