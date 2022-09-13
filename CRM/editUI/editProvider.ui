@@ -162,10 +162,10 @@ border-radius: 20px;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="NameEnter">
+  <widget class="QLineEdit" name="NameEnter">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>50</x>
      <y>100</y>
      <width>201</width>
      <height>51</height>
@@ -182,12 +182,6 @@ border-radius: 20px;</string>
 	border-bottom-left-radius:0px;
 	border-bottom-right-radius:20px;</string>
    </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
   </widget>
   <zorder>Background</zorder>
   <zorder>BackgroundRounded</zorder>
@@ -196,6 +190,10 @@ border-radius: 20px;</string>
   <zorder>Apply</zorder>
   <zorder>NameEnter</zorder>
  </widget>
+ <tabstops>
+  <tabstop>NameEnter</tabstop>
+  <tabstop>Apply</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

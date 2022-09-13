@@ -448,6 +448,14 @@ QComboBox QAbstractItemView {
   <zorder>LaptopChange</zorder>
   <zorder>VendorChange</zorder>
  </widget>
+ <tabstops>
+  <tabstop>LaptopChange</tabstop>
+  <tabstop>PriceEnter</tabstop>
+  <tabstop>NumberEnter</tabstop>
+  <tabstop>VendorChange</tabstop>
+  <tabstop>AvailableEnter</tabstop>
+  <tabstop>Apply</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

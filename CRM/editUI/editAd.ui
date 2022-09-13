@@ -322,6 +322,12 @@ QComboBox QAbstractItemView {
   <zorder>CommentsEnter</zorder>
   <zorder>PlatfromChange</zorder>
  </widget>
+ <tabstops>
+  <tabstop>PlatfromChange</tabstop>
+  <tabstop>BudgetEnter</tabstop>
+  <tabstop>CommentsEnter</tabstop>
+  <tabstop>Apply</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

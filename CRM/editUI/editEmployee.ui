@@ -388,6 +388,14 @@ border-top-left-radius: 20px;
   <zorder>SorceEnter</zorder>
   <zorder>Apply</zorder>
  </widget>
+ <tabstops>
+  <tabstop>SurnameEnter</tabstop>
+  <tabstop>NameEnter</tabstop>
+  <tabstop>PatronymicEnter</tabstop>
+  <tabstop>LoginEnter</tabstop>
+  <tabstop>SorceEnter</tabstop>
+  <tabstop>Apply</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

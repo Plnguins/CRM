@@ -488,6 +488,16 @@ QPushButton#Apply:pressed {
   <zorder>SurnameEnter</zorder>
   <zorder>SexEnter</zorder>
  </widget>
+ <tabstops>
+  <tabstop>SurnameEnter</tabstop>
+  <tabstop>NameEnter</tabstop>
+  <tabstop>PatronymicEnter</tabstop>
+  <tabstop>CityEnter</tabstop>
+  <tabstop>SexEnter</tabstop>
+  <tabstop>EmailEnter</tabstop>
+  <tabstop>PhoneNumberEnter</tabstop>
+  <tabstop>Apply</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
