@@ -179,6 +179,32 @@ void db_methods::deleteClient(soci::session& sql, const std::vector<int>& ids) {
         throw e;
     }
 }
+
+client db_methods::getClient(soci::session& sql, const int& id) {
+    boost::optional<client> result;
+    std::string query =
+        "SELECT * FROM client WHERE id = :id";  // Формируем запрос к СУБД
+    sql << query, soci::into(result), soci::use(id, "id");  // Выполняем запрос
+    if (result) {
+        return result.get();
+    }
+    throw std::runtime_error(
+        QObject::tr("База данных не вернула значение").toStdString());
+}
+
+void db_methods::updateClient(soci::session& sql, const client& client) {
+    std::string query =
+        "UPDATE client SET name = :name, surname = :surname, patronymic = "
+        ":patronymic, phone = :phone, email = :email, sex = :sex, city = :city "
+        "WHERE id = :id";  // Формируем запрос к СУБД
+    sql << query, soci::use(client.name, "name"),
+        soci::use(client.surname, "surname"),
+        soci::use(client.patronymic, "patronymic"),
+        soci::use(client.phone, "phone"), soci::use(client.email, "email"),
+        soci::use(client.sex, "sex"), soci::use(client.city, "city"),
+        soci::use(client.id, "id");
+}
+
 void db_methods::newClient(soci::session& sql, const client& client) {
     std::string query =
         "INSERT INTO client(surname, name, patronymic, email, phone, sex, "

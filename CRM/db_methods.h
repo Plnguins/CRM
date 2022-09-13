@@ -16,6 +16,8 @@
 /*
  * Функции работы с СУБД
  */
+#include <QObject>
+
 #include "database-types/advertisement.h"
 #include "database-types/client.h"
 #include "database-types/deal.h"
@@ -55,7 +57,15 @@ class db_methods {
         soci::session&,
         const std::vector<int>&);  // Функция удаления клиентов по ID
 
-    static void newClient(soci::session&, const client&);  // Функция добавления клиента
+    static client getClient(
+        soci::session&,
+        const int&);  // Функция получения данных о клиенте по ID
+
+    static void updateClient(
+        soci::session&, const client&);  // Функция обновления данных о клиенте
+
+    static void newClient(soci::session&,
+                          const client&);  // Функция добавления клиента
 
     static int row_count;
 };
