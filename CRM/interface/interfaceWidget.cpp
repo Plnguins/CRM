@@ -34,7 +34,7 @@ interfaceWidget::interfaceWidget(QMainWindow* parent, std::string name,
 
 void interfaceWidget::on_Provider_clicked() {
     /*
-     * Функция отображает клиентов
+     * Функция отображает поставщиков
      */
     hideGreeting();
     updateTable = &interfaceWidget::updateProvider;
@@ -47,7 +47,7 @@ void interfaceWidget::on_Provider_clicked() {
 
 void interfaceWidget::on_Deal_clicked() {
     /*
-     * Функция отображает клиентов
+     * Функция отображает сделки
      */
     hideGreeting();
     updateTable = &interfaceWidget::updateDeal;
@@ -60,7 +60,7 @@ void interfaceWidget::on_Deal_clicked() {
 
 void interfaceWidget::on_Stock_clicked() {
     /*
-     * Функция отображает клиентов
+     * Функция отображает склад
      */
     hideGreeting();
     updateTable = &interfaceWidget::updateStock;
@@ -73,7 +73,7 @@ void interfaceWidget::on_Stock_clicked() {
 
 void interfaceWidget::on_Ads_clicked() {
     /*
-     * Функция отображает клиентов
+     * Функция отображает рекламные компании
      */
     hideGreeting();
     updateTable = &interfaceWidget::updateAds;
@@ -86,7 +86,7 @@ void interfaceWidget::on_Ads_clicked() {
 
 void interfaceWidget::on_Employee_clicked() {
     /*
-     * Функция отображает клиентов
+     * Функция отображает сотрудников
      */
     hideGreeting();
     updateTable = &interfaceWidget::updateEmployee;
@@ -111,6 +111,9 @@ void interfaceWidget::on_Client_clicked() {
 }
 
 void interfaceWidget::on_Laptop_clicked() {
+    /*
+     * Функция отображает ноутбуки
+     */
     hideGreeting();
     updateTable = &interfaceWidget::updateLaptop;
     editElement = &interfaceWidget::editLaptop;
