@@ -639,7 +639,10 @@ void interfaceWidget::editEmployee(soci::session& session, const int& id) {
     dialog->exec();
 }
 
-void interfaceWidget::editStock(soci::session& session, const int& id) {}
+void interfaceWidget::editStock(soci::session& session, const int& id) {
+    QMessageBox::warning(this, tr("Внимание"),
+                         tr("Нельзя изменить данные в этой таблице"));
+}
 
 void interfaceWidget::editAd(soci::session& session, const int& id) {
     advertisement current = db_methods::getAd(session, id);
@@ -898,7 +901,57 @@ void interfaceWidget::addEmployee(soci::session& session) {
     dialog->exec();
 }
 
-void interfaceWidget::addStock(soci::session& session) {}
+void interfaceWidget::addStock(soci::session& session) {
+    QDialog* dialog = new QDialog(this);
+    Ui::editStock edit_stock;
+    edit_stock.setupUi(dialog);
+    soci::session* session_ptr = std::addressof(session);
+    std::vector<laptop> laptops = db_methods::getLaptop(session, 0, 10);
+    std::vector<provider> providers = db_methods::getProvider(session, 0, 10);
+    for (const auto& laptop : laptops) {
+        edit_stock.LaptopChange->addItem(laptop.name.c_str());
+    }
+    for (const auto& provider : providers) {
+        edit_stock.VendorChange->addItem(provider.name.c_str());
+    }
+    connect(edit_stock.Apply, &QPushButton::clicked, dialog, [=]() {
+        std::string laptop_name =
+                        edit_stock.LaptopChange->currentText().toStdString(),
+                    provider_name =
+                        edit_stock.VendorChange->currentText().toStdString();
+        int price = edit_stock.PriceEnter->text().toInt(),
+            count = edit_stock.NumberEnter->text().toInt();
+        if (price == 0) {
+            QMessageBox::warning(this, tr("Ошибка"), tr("Заполните все поля!"));
+            return;
+        }
+        int laptop_id, provider_id;
+        for (const auto& laptop : laptops) {
+            if (laptop.name == laptop_name) {
+                laptop_id = laptop.id;
+                break;
+            }
+        }
+        for (const auto& provider : providers) {
+            if (provider.name == provider_name) {
+                provider_id = provider.id;
+                break;
+            }
+        }
+        stock new_stock(0, laptop_id, price, count, count, provider_id);
+        try {
+            db_methods::newStock(*session_ptr, new_stock);
+        } catch (const std::exception& e) {
+            QMessageBox::warning(this, tr("Ошибка"),
+                                 tr("Ошибка при добавлении поставщика: ") +
+                                     QString::fromStdString(e.what()));
+            return;
+        }
+        dialog->accept();
+        goToPage(1);
+    });
+    dialog->exec();
+}
 
 void interfaceWidget::addAd(soci::session& session) {
     QDialog* dialog = new QDialog(this);

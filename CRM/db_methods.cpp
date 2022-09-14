@@ -370,6 +370,18 @@ void db_methods::deleteStock(soci::session& sql, const std::vector<int>& ids) {
     }
 }
 
+void db_methods::newStock(soci::session& sql, const stock& stock) {
+    std::string query =
+        "INSERT INTO stock(laptop, price, count, available, source) "
+        "VALUES "
+        "(:laptop, :price, :count, :available, :provider)";  // Формируем запрос
+                                                             // к СУБД
+    sql << query, soci::use(stock.laptop, "laptop"),
+        soci::use(stock.price, "price"), soci::use(stock.count, "count"),
+        soci::use(stock.available, "available"),
+        soci::use(stock.source, "provider");
+}
+
 void db_methods::deleteAd(soci::session& sql, const std::vector<int>& ids) {
     soci::transaction tr(sql);  // Открываем транзакцию
     std::string query =

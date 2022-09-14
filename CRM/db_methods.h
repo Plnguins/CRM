@@ -114,6 +114,9 @@ class db_methods {
         soci::session&,
         const std::vector<int>&);  // Функция удаления товаров на складе по ID
 
+    static void newStock(soci::session&,
+                         const stock&);  // Функция добавления на склад
+
     static void deleteAd(
         soci::session&,
         const std::vector<int>&);  // Функция удаления рекламы по ID
