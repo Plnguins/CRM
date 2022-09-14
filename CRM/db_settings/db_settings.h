@@ -31,6 +31,7 @@ class db_settings : public QWidget {
 
    private slots:
     void on_ApplyButton_clicked();
+    void on_ShowPassword_clicked(bool checked);
 
    private:
     Ui::db_settingsUi* ui;

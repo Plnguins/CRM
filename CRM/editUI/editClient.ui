@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Edit Client UI code for CRM application
+Copyright(C) 2022 Plnguins
+
+This program is free software : you can redistribute it and / or modify
+it under the terms of the GNU Affero General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
+<ui version="4.0">
+ <class>editClient</class>
+ <widget class="QWidget" name="editClient">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1272</width>
+    <height>221</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Клиент</string>
+  </property>
+  <widget class="QLineEdit" name="CityEnter">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>100</y>
+     <width>151</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border: 5px solid #BBD6FF ;
+	border-radius:0px;</string>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="NameEnter">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>100</y>
+     <width>181</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border: 5px solid #BBD6FF ;
+	border-radius:0px;</string>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="PatronymicEnter">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>100</y>
+     <width>181</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border: 5px solid #BBD6FF ;
+	border-radius:0px;</string>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="BackgroundRounded">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1271</width>
+     <height>221</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color :rgb(255, 255, 255);
+border-radius: 20px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Patronymic">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>60</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);
+	border: 5px solid #BBD6FF ;
+	border-top: transparent;
+	border-left: transparent;
+	border-right: transparent;</string>
+   </property>
+   <property name="text">
+    <string>Отчество</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="EmailEnter">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>100</y>
+     <width>261</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border: 5px solid #BBD6FF ;
+	border-radius:0px;</string>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="PhoneNumberEnter">
+   <property name="geometry">
+    <rect>
+     <x>1070</x>
+     <y>100</y>
+     <width>191</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border: 5px solid #BBD6FF ;
+	border-top-left-radius: 0px;
+	border-top-right-radius:0px;
+	border-bottom-left-radius:0px;
+	border-bottom-right-radius:20px;</string>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Sex">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>60</y>
+     <width>51</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);
+	border: 5px solid #BBD6FF ;
+	border-top: transparent;
+	border-left: transparent;
+	border-right: transparent;</string>
+   </property>
+   <property name="text">
+    <string>Пол</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="SurnameEnter">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>100</y>
+     <width>161</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border: 5px solid #BBD6FF ;
+	border-top-left-radius: 20px;
+	border-top-right-radius:0px;
+	border-bottom-left-radius:0px;
+	border-bottom-right-radius:0px;
+	</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Surname">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>60</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);
+	border: 5px solid #BBD6FF ;
+	border-top: transparent;
+	border-left: transparent;
+	border-right: transparent;</string>
+   </property>
+   <property name="text">
+    <string>Фамилия</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Apply">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>170</y>
+     <width>131</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#Apply:!pressed {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border: 5px solid #BBD6FF ;
+	border-radius:20px;
+ }
+
+QPushButton#Apple {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border: 5px solid #BBD6FF ;
+	border-radius:20px;;
+ }
+
+QPushButton#Apply:hover {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(165, 199, 250);
+	border: 5px solid #75ACFF;
+	border-radius:20px;
+ }
+
+
+QPushButton#Apply:pressed {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(165, 199, 250);
+	border: 5px solid #75ACFF;
+	border-radius:20px;
+ }</string>
+   </property>
+   <property name="text">
+    <string>Готово</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="City">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>60</y>
+     <width>61</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);
+	border: 5px solid #BBD6FF ;
+	border-top: transparent;
+	border-left: transparent;
+	border-right: transparent;</string>
+   </property>
+   <property name="text">
+    <string>Город</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="tableName">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>10</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);
+	border: 5px solid #BBD6FF ;
+	border-top: transparent;
+	border-left: transparent;
+	border-right: transparent;</string>
+   </property>
+   <property name="text">
+    <string>Клиент</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Name">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>60</y>
+     <width>51</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);
+	border: 5px solid #BBD6FF ;
+	border-top: transparent;
+	border-left: transparent;
+	border-right: transparent;</string>
+   </property>
+   <property name="text">
+    <string>Имя</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Email">
+   <property name="geometry">
+    <rect>
+     <x>930</x>
+     <y>60</y>
+     <width>51</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);
+	border: 5px solid #BBD6FF ;
+	border-top: transparent;
+	border-left: transparent;
+	border-right: transparent;</string>
+   </property>
+   <property name="text">
+    <string>email</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Background">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1551</width>
+     <height>311</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(221, 235, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="PhoneNumber">
+   <property name="geometry">
+    <rect>
+     <x>1130</x>
+     <y>60</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);
+	border: 5px solid #BBD6FF ;
+	border-top: transparent;
+	border-left: transparent;
+	border-right: transparent;</string>
+   </property>
+   <property name="text">
+    <string>Телефон</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="SexEnter">
+   <property name="geometry">
+    <rect>
+     <x>680</x>
+     <y>100</y>
+     <width>131</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border: 5px solid #BBD6FF ;
+	border-radius:0px;</string>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <zorder>Background</zorder>
+  <zorder>BackgroundRounded</zorder>
+  <zorder>CityEnter</zorder>
+  <zorder>Patronymic</zorder>
+  <zorder>Surname</zorder>
+  <zorder>Name</zorder>
+  <zorder>PhoneNumber</zorder>
+  <zorder>tableName</zorder>
+  <zorder>Sex</zorder>
+  <zorder>Email</zorder>
+  <zorder>City</zorder>
+  <zorder>PhoneNumberEnter</zorder>
+  <zorder>EmailEnter</zorder>
+  <zorder>PatronymicEnter</zorder>
+  <zorder>NameEnter</zorder>
+  <zorder>Apply</zorder>
+  <zorder>SurnameEnter</zorder>
+  <zorder>SexEnter</zorder>
+ </widget>
+ <tabstops>
+  <tabstop>SurnameEnter</tabstop>
+  <tabstop>NameEnter</tabstop>
+  <tabstop>PatronymicEnter</tabstop>
+  <tabstop>CityEnter</tabstop>
+  <tabstop>SexEnter</tabstop>
+  <tabstop>EmailEnter</tabstop>
+  <tabstop>PhoneNumberEnter</tabstop>
+  <tabstop>Apply</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

@@ -47,3 +47,11 @@ void db_settings::on_ApplyButton_clicked() {
         parent->setLoginInterface();
     }
 }
+
+void db_settings::on_ShowPassword_clicked(bool checked) {
+    if (checked) {
+        ui->DataBasePasswordEnter->setEchoMode(QLineEdit::Normal);
+    } else {
+        ui->DataBasePasswordEnter->setEchoMode(QLineEdit::Password);
+    }
+}

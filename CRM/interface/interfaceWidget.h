@@ -16,12 +16,25 @@
 #pragma once
 
 #include "../db_methods.h"
+#include "../editUI/ui_editAd.h"
+#include "../editUI/ui_editClient.h"
+#include "../editUI/ui_editDeal.h"
+#include "../editUI/ui_editEmployee.h"
+#include "../editUI/ui_editLaptop.h"
+#include "../editUI/ui_editProvider.h"
+#include "../editUI/ui_editStock.h"
 #include "../mainwindow.h"
 #include "ui_interface.h"
 
 namespace Ui {
 class interfaceUi;
-}
+class editAd;
+class editDeal;
+class editEmployee;
+class editProvider;
+class editStock;
+class editLaptop;
+}  // namespace Ui
 
 class interfaceWidget : public QWidget {
     Q_OBJECT
@@ -38,6 +51,12 @@ class interfaceWidget : public QWidget {
     void on_Ads_clicked();
     void on_Deal_clicked();
     void on_Client_clicked();
+    void on_Laptop_clicked();
+
+    void on_Add_clicked();
+    void on_Edit_clicked();
+    void on_Delete_clicked();
+
     void on_Logout_clicked() { parent->setLoginInterface(); }
 
     void on_Page_1_clicked();
@@ -62,8 +81,37 @@ class interfaceWidget : public QWidget {
     void updateAds(const int& = 0, const int& = 10);
     void updateDeal(const int& = 0, const int& = 10);
     void updateClient(const int& = 0, const int& = 10);
+    void updateLaptop(const int& = 0, const int& = 10);
+
+    void editProvider(soci::session&, const int&);
+    void editEmployee(soci::session&, const int&);
+    void editStock(soci::session&, const int&);
+    void editAd(soci::session&, const int&);
+    void editDeal(soci::session&, const int&);
+    void editClient(soci::session&, const int&);
+    void editLaptop(soci::session&, const int&);
+
+    void deleteProvider(soci::session&, const std::vector<int>&);
+    void deleteEmployee(soci::session&, const std::vector<int>&);
+    void deleteStock(soci::session&, const std::vector<int>&);
+    void deleteAd(soci::session&, const std::vector<int>&);
+    void deleteDeal(soci::session&, const std::vector<int>&);
+    void deleteClient(soci::session&, const std::vector<int>&);
+    void deleteLaptop(soci::session&, const std::vector<int>&);
+
+    void addProvider(soci::session&);
+    void addEmployee(soci::session&);
+    void addStock(soci::session&);
+    void addAd(soci::session&);
+    void addDeal(soci::session&);
+    void addClient(soci::session&);
+    void addLaptop(soci::session&);
 
     void (interfaceWidget::*updateTable)(const int&, const int&) = nullptr;
+    void (interfaceWidget::*editElement)(soci::session&, const int&) = nullptr;
+    void (interfaceWidget::*deleteElement)(soci::session&,
+                                           const std::vector<int>&) = nullptr;
+    void (interfaceWidget::*addElement)(soci::session&) = nullptr;
 
     void hideGreeting();
     void updatePageButtons();

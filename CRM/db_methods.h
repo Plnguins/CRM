@@ -16,6 +16,15 @@
 /*
  * Функции работы с СУБД
  */
+#pragma once
+
+#include <openssl/evp.h>
+#include <openssl/sha.h>
+
+#include <QObject>
+#include <iomanip>
+#include <sstream>
+
 #include "database-types/advertisement.h"
 #include "database-types/client.h"
 #include "database-types/deal.h"
@@ -27,6 +36,8 @@
 
 class db_methods {
    public:
+    static std::string hashPassword(const std::string& password);
+
     static std::vector<boost::tuple<stock, laptop, provider>> getStock(
         soci::session&, const int&,
         const int&);  // Функция получения данных о товарах на складе
@@ -50,6 +61,105 @@ class db_methods {
     static std::vector<client> getClient(
         soci::session&, const int&,
         const int&);  // Функция получения данных о клиентах
+
+    static std::vector<laptop> getLaptop(
+        soci::session&, const int&,
+        const int&);  // Функция получение данных о ноутбуках
+
+    static void deleteClient(
+        soci::session&,
+        const std::vector<int>&);  // Функция удаления клиентов по ID
+
+    static client getClient(
+        soci::session&,
+        const int&);  // Функция получения данных о клиенте по ID
+
+    static void updateClient(
+        soci::session&, const client&);  // Функция обновления данных о клиенте
+
+    static void newClient(soci::session&,
+                          const client&);  // Функция добавления клиента
+
+    static void deleteProvider(
+        soci::session&,
+        const std::vector<int>&);  // Функция удаления поставщиков по ID
+
+    static provider getProvider(
+        soci::session&,
+        const int&);  // Функция получения данных о поставщике по ID
+
+    static void updateProvider(
+        soci::session&,
+        const provider&);  // Функция обновления данных о поставщике
+
+    static void newProvider(soci::session&,
+                            const provider&);  // Функция добавления поставщика
+
+    static void deleteEmployee(
+        soci::session&,
+        const std::vector<int>&);  // Функция удаления сотрудников по ID
+
+    static employee getEmployee(
+        soci::session&,
+        const int&);  // Функция получения данных о сотруднике по ID
+
+    static void updateEmployee(
+        soci::session&,
+        const employee&);  // Функция обновления данных о сотруднике
+
+    static int newEmployee(soci::session&,
+                           const employee&);  // Функция добавления сотрудника
+
+    static void deleteStock(
+        soci::session&,
+        const std::vector<int>&);  // Функция удаления товаров на складе по ID
+
+    static void newStock(soci::session&,
+                         const stock&);  // Функция добавления на склад
+
+    static void deleteAd(
+        soci::session&,
+        const std::vector<int>&);  // Функция удаления рекламы по ID
+
+    static advertisement getAd(
+        soci::session&,
+        const int&);  // Функция получения данны о рекламе по ID
+
+    static void updateAd(
+        soci::session&,
+        const advertisement&);  // Функция обновления данных о рекламы
+
+    static void newAd(soci::session&,
+                      const advertisement&);  // Функция добавления рекламы
+
+    static void deleteDeal(
+        soci::session&,
+        const std::vector<int>&);  // Функция удаления сделок по ID
+
+    static deal getDeal(soci::session&,
+                        const int&);  // Функция получения сделки по ID
+
+    static void updateDeal(soci::session&,
+                           const deal&);  // Функция обновления сделки
+
+    static void newDeal(soci::session&,
+                        const deal&);  // Функция добавления сделки
+
+    static void deleteLaptop(
+        soci::session&,
+        const std::vector<int>&);  // Функция удаления ноутбуков по ID
+
+    static laptop getLaptop(soci::session&,
+                            const int&);  // Функций получения ноутбука по ID
+
+    static void updateLaptop(
+        soci::session&, const laptop&);  // Функция обновления данных о ноутбуке
+
+    static void newLaptop(soci::session&,
+                          const laptop&);  // Функция добавления ноутбука
+
+    static std::vector<employee> getSeller(
+        soci::session&);  // Функция получения сотрудников продавцов
 
     static int row_count;
 };

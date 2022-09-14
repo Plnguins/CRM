@@ -123,6 +123,9 @@ color:  rgb(56, 84, 102);
 border:3px solid #DDEBFF;
 border-radius: 10px;</string>
    </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
    <property name="echoMode">
     <enum>QLineEdit::Password</enum>
    </property>
@@ -145,6 +148,9 @@ font: bold;
 color:  rgb(56, 84, 102);
 border:3px solid #DDEBFF;
 border-radius: 10px;</string>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
    </property>
    <property name="placeholderText">
     <string>Логин</string>

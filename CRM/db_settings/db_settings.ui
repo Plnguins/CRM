@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Seller UI code for CRM application
+<!-- Database settings UI code for CRM application
 Copyright(C) 2022 Plnguins
 
 This program is free software : you can redistribute it and / or modify
@@ -85,7 +85,7 @@ color:  rgb(56, 84, 102);</string>
     <string>IP адрес:</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_6">
+  <widget class="QLabel" name="BlueBackground">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -121,11 +121,17 @@ border-radius: 10px;</string>
    <property name="text">
     <string/>
    </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
    <property name="placeholderText">
     <string>Пароль</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="RoundedBackground">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -159,6 +165,9 @@ border-radius: 10px;</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
    </property>
    <property name="placeholderText">
     <string>IP</string>
@@ -223,6 +232,9 @@ border-radius: 10px;</string>
    <property name="text">
     <string/>
    </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
    <property name="placeholderText">
     <string>Порт</string>
    </property>
@@ -263,6 +275,9 @@ border-radius: 10px;</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
    </property>
    <property name="placeholderText">
     <string>Логин</string>
@@ -341,12 +356,49 @@ border-radius: 10px;</string>
    <property name="text">
     <string/>
    </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
    <property name="placeholderText">
     <string>Название БД</string>
    </property>
   </widget>
-  <zorder>label_4</zorder>
-  <zorder>label_6</zorder>
+  <widget class="QPushButton" name="ShowPassword">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>173</y>
+     <width>24</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <activeoff>:/images/openEye.png</activeoff>
+     <activeon>:/images/closeEye.png</activeon>
+    </iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="autoDefault">
+    <bool>true</bool>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <zorder>RoundedBackground</zorder>
+  <zorder>BlueBackground</zorder>
   <zorder>DataBasePasswordEnter</zorder>
   <zorder>ApplyButton</zorder>
   <zorder>DataBaseNameEnter</zorder>
@@ -360,7 +412,17 @@ border-radius: 10px;</string>
   <zorder>DataBasePort</zorder>
   <zorder>Company</zorder>
   <zorder>Title</zorder>
+  <zorder>ShowPassword</zorder>
  </widget>
+ <tabstops>
+  <tabstop>DataBaseIPEnter</tabstop>
+  <tabstop>DataBasePortEnter</tabstop>
+  <tabstop>DataBaseLoginEnter</tabstop>
+  <tabstop>DataBasePasswordEnter</tabstop>
+  <tabstop>ShowPassword</tabstop>
+  <tabstop>DataBaseNameEnter</tabstop>
+  <tabstop>ApplyButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

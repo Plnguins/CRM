@@ -30,6 +30,7 @@ class marketerWidget : public interfaceWidget {
         ui->Provider->hide();
         ui->Deal->hide();
         ui->Stock->hide();
+        ui->Laptop->hide();
     }
     ~marketerWidget() = default;
 };

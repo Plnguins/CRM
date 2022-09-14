@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Edit Ad UI code for CRM application
+Copyright(C) 2022 Plnguins
+
+This program is free software : you can redistribute it and / or modify
+it under the terms of the GNU Affero General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.If not, see < https:  // www.gnu.org/licenses/>. -->
+<ui version="4.0">
+ <class>editAd</class>
+ <widget class="QWidget" name="editAd">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>471</width>
+    <height>221</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Реклама</string>
+  </property>
+  <widget class="QLabel" name="BackgroundRounded">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>471</width>
+     <height>221</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color :rgb(255, 255, 255);
+border-radius: 20px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="tableName">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>10</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);
+	border: 5px solid #BBD6FF ;
+	border-top: transparent;
+	border-left: transparent;
+	border-right: transparent;</string>
+   </property>
+   <property name="text">
+    <string>Реклама</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Comments">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>60</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);
+	border: 5px solid #BBD6FF ;
+	border-top: transparent;
+	border-left: transparent;
+	border-right: transparent;</string>
+   </property>
+   <property name="text">
+    <string>Комментарии</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="BudgetEnter">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>100</y>
+     <width>111</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border: 5px solid #BBD6FF ;
+	border-radius:0px;</string>
+   </property>
+   <property name="inputMask">
+    <string>00000000</string>
+   </property>
+   <property name="maxLength">
+    <number>8</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="CommentsEnter">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>100</y>
+     <width>201</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border: 5px solid #BBD6FF ;
+	border-top-left-radius: 0px;
+	border-top-right-radius:0px;
+	border-bottom-left-radius:0px;
+	border-bottom-right-radius:20px;</string>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Budget">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>60</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);
+	border: 5px solid #BBD6FF ;
+	border-top: transparent;
+	border-left: transparent;
+	border-right: transparent;</string>
+   </property>
+   <property name="text">
+    <string>Бюджет</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Background">
+   <property name="geometry">
+    <rect>
+     <x>-100</x>
+     <y>-50</y>
+     <width>1141</width>
+     <height>311</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(221, 235, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Platform">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>60</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);
+	border: 5px solid #BBD6FF ;
+	border-top: transparent;
+	border-left: transparent;
+	border-right: transparent;</string>
+   </property>
+   <property name="text">
+    <string>Платформа</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Apply">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>170</y>
+     <width>131</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton#Apply:!pressed {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border: 5px solid #BBD6FF ;
+	border-radius:20px;
+ }
+
+QPushButton#Apply {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border: 5px solid #BBD6FF ;
+	border-radius:20px;;
+ }
+
+QPushButton#Apply:hover {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(165, 199, 250);
+	border: 5px solid #75ACFF;
+	border-radius:20px;
+ }
+
+
+QPushButton#Apply:pressed {
+    font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(165, 199, 250);
+	border: 5px solid #75ACFF;
+	border-radius:20px;
+ }</string>
+   </property>
+   <property name="text">
+    <string>Готово</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="PlatformEnter">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>100</y>
+     <width>131</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	font: 12pt &quot;Comfortaa&quot;;
+	font: bold;
+	color:  rgb(56, 84, 102);	
+	background-color: rgb(221, 235, 255);
+	border: 5px solid #BBD6FF ;
+	border-top-left-radius: 20px;
+	border-top-right-radius:0px;
+	border-bottom-left-radius:0px;
+	border-bottom-right-radius:0px;</string>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <zorder>Background</zorder>
+  <zorder>BackgroundRounded</zorder>
+  <zorder>tableName</zorder>
+  <zorder>Apply</zorder>
+  <zorder>Platform</zorder>
+  <zorder>Budget</zorder>
+  <zorder>Comments</zorder>
+  <zorder>BudgetEnter</zorder>
+  <zorder>CommentsEnter</zorder>
+  <zorder>PlatformEnter</zorder>
+ </widget>
+ <tabstops>
+  <tabstop>PlatformEnter</tabstop>
+  <tabstop>BudgetEnter</tabstop>
+  <tabstop>CommentsEnter</tabstop>
+  <tabstop>Apply</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

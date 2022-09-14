@@ -768,7 +768,7 @@ QPushButton#Client:hover:!pressed {
 	border-radius:10px;
  }
 
-QPushButton#Page_1:pressed {
+QPushButton#Catalog:pressed {
      background-color: rgb(54, 69, 80);
 	font: 12pt &quot;Comfortaa&quot;;
 	color: rgb(222, 222, 222);
@@ -802,6 +802,60 @@ QPushButton#Client:checked {
       </property>
       <property name="flat">
        <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="Laptop">
+      <property name="styleSheet">
+       <string notr="true">QPushButton#Laptop {
+    font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	background-color: rgb(56, 84, 102);
+	border-radius:10px;
+ }
+
+QPushButton#Laptop:hover:!pressed {
+     background-color: rgb(54, 69, 80);
+	font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	border-radius:10px;
+ }
+
+QPushButton#Laptop:pressed {
+     background-color: rgb(54, 69, 80);
+	font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	border-radius:10px;
+ }
+
+QPushButton#Laptop:checked {
+     background-color: rgb(54, 69, 80);
+	font: 12pt &quot;Comfortaa&quot;;
+	color: rgb(222, 222, 222);
+	font: bold;
+	border: none;
+	border-radius:10px;
+ }</string>
+      </property>
+      <property name="text">
+       <string>Каталог</string>
+      </property>
+      <property name="icon">
+       <iconset resource="../../resources/resources.qrc">
+        <normaloff>:/images/laptop.png</normaloff>:/images/laptop.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
       </property>
      </widget>
     </item>
@@ -1225,7 +1279,6 @@ QPushButton#Page_5:pressed {
   <zorder>BackGround</zorder>
   <zorder>RoundedBackground</zorder>
   <zorder>Name</zorder>
-  <zorder>Company</zorder>
   <zorder>Greeting</zorder>
   <zorder>Icon</zorder>
   <zorder>Edit</zorder>
@@ -1236,6 +1289,7 @@ QPushButton#Page_5:pressed {
   <zorder>RoundedBlue</zorder>
   <zorder>tableWidget</zorder>
   <zorder>groupBox</zorder>
+  <zorder>Company</zorder>
  </widget>
  <resources>
   <include location="../../resources/resources.qrc"/>
