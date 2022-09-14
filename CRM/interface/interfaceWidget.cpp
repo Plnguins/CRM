@@ -677,7 +677,102 @@ void interfaceWidget::editAd(soci::session& session, const int& id) {
     dialog->exec();
 }
 
-void interfaceWidget::editDeal(soci::session& session, const int& id) {}
+void interfaceWidget::editDeal(soci::session& session, const int& id) {
+    deal current = db_methods::getDeal(session, id);
+    QDialog* dialog = new QDialog(this);
+    Ui::editDeal edit_deal;
+    edit_deal.setupUi(dialog);
+    soci::session* session_ptr = std::addressof(session);
+    std::vector<laptop> laptops = db_methods::getLaptop(session, 0, 100);
+    std::vector<client> clients = db_methods::getClient(session, 0, 100);
+    std::vector<employee> sellers = db_methods::getSeller(session);
+    for (const auto& laptop : laptops) {
+        edit_deal.LaptopChange->addItem(laptop.name.c_str());
+        if (laptop.id == current.laptop) {
+            edit_deal.LaptopChange->setCurrentIndex(
+                edit_deal.LaptopChange->count() - 1);
+        }
+    }
+    for (const auto& client : clients) {
+        edit_deal.CustomerChange->addItem(client.surname.c_str());
+        if (client.id == current.client) {
+            edit_deal.CustomerChange->setCurrentIndex(
+                edit_deal.CustomerChange->count() - 1);
+        }
+    }
+    for (const auto& seller : sellers) {
+        edit_deal.SellerChange->addItem(seller.surname.c_str());
+        if (seller.id == current.seller) {
+            edit_deal.SellerChange->setCurrentIndex(
+                edit_deal.SellerChange->count() - 1);
+        }
+    }
+    if (current.status == "Создан") {
+        edit_deal.StatusChange->setCurrentIndex(0);
+    }
+    if (current.status == "Доставлен") {
+        edit_deal.StatusChange->setCurrentIndex(1);
+    }
+    edit_deal.PriceEnter->setText(QString::number(current.cost));
+    connect(edit_deal.Apply, &QPushButton::clicked, dialog, [=]() {
+        std::string laptop_name =
+                        edit_deal.LaptopChange->currentText().toStdString(),
+                    seller_surname =
+                        edit_deal.SellerChange->currentText().toStdString(),
+                    client_surname =
+                        edit_deal.CustomerChange->currentText().toStdString(),
+                    status =
+                        edit_deal.StatusChange->currentText().toStdString();
+        int cost = edit_deal.PriceEnter->text().toInt();
+        if (cost == 0) {
+            QMessageBox::warning(this, tr("Ошибка"), tr("Заполните все поля!"));
+            return;
+        }
+        int laptop_id, seller_id, client_id;
+        for (const auto& laptop : laptops) {
+            if (laptop.name == laptop_name) {
+                laptop_id = laptop.id;
+                break;
+            }
+        }
+        for (const auto& client : clients) {
+            if (client.surname == client_surname) {
+                client_id = client.id;
+                break;
+            }
+        }
+        for (const auto& seller : sellers) {
+            if (seller.surname == seller.surname) {
+                seller_id = seller.id;
+                break;
+            }
+        }
+        deal new_deal(0, laptop_id, cost, client_id, status,
+                      boost::gregorian::date(), seller_id, 0,
+                      boost::gregorian::date(0));
+        soci::transaction tr(*session_ptr);
+        try {
+            db_methods::newDeal(*session_ptr, new_deal);
+            if (current.status == "Создан" && new_deal.status == "Доставлен") {
+                std::string query =
+                    "UPDATE stock SET amount = amount - 1 WHERE laptop = "
+                    ":laptop";
+                (*session_ptr) << query, soci::use(laptop_id);
+            }
+            tr.commit();
+        } catch (const std::exception& e) {
+            QMessageBox::warning(
+                this, this->tr("Ошибка"),
+                this->tr("Ошибка при добавлении поставщика: ") +
+                    QString::fromStdString(e.what()));
+            tr.rollback();
+            return;
+        }
+        dialog->accept();
+        goToPage(1);
+    });
+    dialog->exec();
+}
 
 void interfaceWidget::editClient(soci::session& session, const int& id) {
     client current = db_methods::getClient(session, id);
@@ -906,8 +1001,8 @@ void interfaceWidget::addStock(soci::session& session) {
     Ui::editStock edit_stock;
     edit_stock.setupUi(dialog);
     soci::session* session_ptr = std::addressof(session);
-    std::vector<laptop> laptops = db_methods::getLaptop(session, 0, 10);
-    std::vector<provider> providers = db_methods::getProvider(session, 0, 10);
+    std::vector<laptop> laptops = db_methods::getLaptop(session, 0, 100);
+    std::vector<provider> providers = db_methods::getProvider(session, 0, 100);
     for (const auto& laptop : laptops) {
         edit_stock.LaptopChange->addItem(laptop.name.c_str());
     }
@@ -981,7 +1076,72 @@ void interfaceWidget::addAd(soci::session& session) {
     dialog->exec();
 }
 
-void interfaceWidget::addDeal(soci::session& session) {}
+void interfaceWidget::addDeal(soci::session& session) {
+    QDialog* dialog = new QDialog(this);
+    Ui::editDeal edit_deal;
+    edit_deal.setupUi(dialog);
+    soci::session* session_ptr = std::addressof(session);
+    std::vector<laptop> laptops = db_methods::getLaptop(session, 0, 100);
+    std::vector<client> clients = db_methods::getClient(session, 0, 100);
+    std::vector<employee> sellers = db_methods::getSeller(session);
+    for (const auto& laptop : laptops) {
+        edit_deal.LaptopChange->addItem(laptop.name.c_str());
+    }
+    for (const auto& client : clients) {
+        edit_deal.CustomerChange->addItem(client.surname.c_str());
+    }
+    for (const auto& seller : sellers) {
+        edit_deal.SellerChange->addItem(seller.surname.c_str());
+    }
+    connect(edit_deal.Apply, &QPushButton::clicked, dialog, [=]() {
+        std::string laptop_name =
+                        edit_deal.LaptopChange->currentText().toStdString(),
+                    seller_surname =
+                        edit_deal.SellerChange->currentText().toStdString(),
+                    client_surname =
+                        edit_deal.CustomerChange->currentText().toStdString(),
+                    status =
+                        edit_deal.StatusChange->currentText().toStdString();
+        int cost = edit_deal.PriceEnter->text().toInt();
+        if (cost == 0) {
+            QMessageBox::warning(this, tr("Ошибка"), tr("Заполните все поля!"));
+            return;
+        }
+        int laptop_id, seller_id, client_id;
+        for (const auto& laptop : laptops) {
+            if (laptop.name == laptop_name) {
+                laptop_id = laptop.id;
+                break;
+            }
+        }
+        for (const auto& client : clients) {
+            if (client.surname == client_surname) {
+                client_id = client.id;
+                break;
+            }
+        }
+        for (const auto& seller : sellers) {
+            if (seller.surname == seller.surname) {
+                seller_id = seller.id;
+                break;
+            }
+        }
+        deal new_deal(0, laptop_id, cost, client_id, status,
+                      boost::gregorian::date(), seller_id, 0,
+                      boost::gregorian::date(0));
+        try {
+            db_methods::newDeal(*session_ptr, new_deal);
+        } catch (const std::exception& e) {
+            QMessageBox::warning(this, tr("Ошибка"),
+                                 tr("Ошибка при добавлении поставщика: ") +
+                                     QString::fromStdString(e.what()));
+            return;
+        }
+        dialog->accept();
+        goToPage(1);
+    });
+    dialog->exec();
+}
 
 void interfaceWidget::addClient(soci::session& session) {
     QDialog* dialog = new QDialog(this);

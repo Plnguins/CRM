@@ -127,7 +127,7 @@ class db_methods {
 
     static void updateAd(
         soci::session&,
-        const advertisement&);  // Функция обновления данны орекламы
+        const advertisement&);  // Функция обновления данных о рекламы
 
     static void newAd(soci::session&,
                       const advertisement&);  // Функция добавления рекламы
@@ -135,6 +135,15 @@ class db_methods {
     static void deleteDeal(
         soci::session&,
         const std::vector<int>&);  // Функция удаления сделок по ID
+
+    static deal getDeal(soci::session&,
+                        const int&);  // Функция получения сделки по ID
+
+    static void updateDeal(soci::session&,
+                           const deal&);  // Функция обновления сделки
+
+    static void newDeal(soci::session&,
+                        const deal&);  // Функция добавления сделки
 
     static void deleteLaptop(
         soci::session&,
@@ -148,6 +157,9 @@ class db_methods {
 
     static void newLaptop(soci::session&,
                           const laptop&);  // Функция добавления ноутбука
+
+    static std::vector<employee> getSeller(
+        soci::session&);  // Функция получения сотрудников продавцов
 
     static int row_count;
 };

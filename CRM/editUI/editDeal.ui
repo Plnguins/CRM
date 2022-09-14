@@ -73,9 +73,9 @@ border-radius: 20px;</string>
   <widget class="QLabel" name="Customer">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>310</x>
      <y>60</y>
-     <width>101</width>
+     <width>121</width>
      <height>31</height>
     </rect>
    </property>
@@ -446,6 +446,16 @@ QComboBox QAbstractItemView {
 
 </string>
    </property>
+   <item>
+    <property name="text">
+     <string>Создан</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Доставлен</string>
+    </property>
+   </item>
   </widget>
   <widget class="QComboBox" name="LaptopChange">
    <property name="geometry">

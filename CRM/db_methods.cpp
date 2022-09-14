@@ -438,6 +438,38 @@ void db_methods::deleteDeal(soci::session& sql, const std::vector<int>& ids) {
     }
 }
 
+deal db_methods::getDeal(soci::session& sql, const int& id) {
+    boost::optional<deal> result;
+    std::string query = "SELECT * FROM deal WHERE id = :id";  // Формируем
+                                                              // запрос к СУБД
+    sql << query, soci::into(result), soci::use(id, "id");  // Выполняем запрос
+    if (result) {
+        return result.get();
+    }
+    throw std::runtime_error(
+        QObject::tr("База данных не вернула значение").toStdString());
+}
+
+void db_methods::updateDeal(soci::session& sql, const deal& deal) {
+    std::string query =
+        "UPDATE deal SET laptop = :laptop, cost = :cost, client = :client, "
+        "status = :status, seller = :seller WHERE id = :id";  // Формируем
+                                                              // запрос к СУБД
+    sql << query, soci::use(deal.laptop, "laptop"),
+        soci::use(deal.cost, "cost"), soci::use(deal.client, "client"),
+        soci::use(deal.status, "status"), soci::use(deal.seller, "seller"),
+        soci::use(deal.id, "id");
+}
+
+void db_methods::newDeal(soci::session& sql, const deal& deal) {
+    std::string query =
+        "INSERT INTO deal(laptop, cost, client, status, seller) VALUES "
+        "(:laptop, :cost, :client, :status, :seller)";
+    sql << query, soci::use(deal.laptop, "laptop"),
+        soci::use(deal.cost, "cost"), soci::use(deal.client, "client"),
+        soci::use(deal.status, "status"), soci::use(deal.seller, "seller");
+}
+
 void db_methods::deleteLaptop(soci::session& sql, const std::vector<int>& ids) {
     soci::transaction tr(sql);  // Открываем транзакцию
     std::string query =
@@ -486,4 +518,18 @@ void db_methods::newLaptop(soci::session& sql, const laptop& laptop) {
         soci::use(laptop.cpu, "cpu"), soci::use(laptop.gpu, "gpu"),
         soci::use(laptop.ram, "ram"), soci::use(laptop.rom, "rom"),
         soci::use(laptop.color, "color");
+}
+
+std::vector<employee> db_methods::getSeller(soci::session& sql) {
+    std::vector<employee> result;
+    std::string query =
+        "SELECT employee.* FROM employee JOIN seller ON employee.id = "
+        "seller.employee";  // Формируем
+                            // запрос к СУБД
+    soci::rowset<employee> rs = (sql.prepare << query);  // Подготавливаем его
+    for (auto it = rs.begin(); it != rs.end(); it++) {  // Выполняем построчно
+        const auto& row = *it;  // Текущая строка
+        result.push_back(row);  // Добавляем в результат
+    }
+    return result;  // Возвращаем результат
 }
