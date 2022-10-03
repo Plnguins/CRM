@@ -114,7 +114,7 @@ jobs:
           path: ${{ github.workspace }}/MacOS
       - name: Create Release
         id: create_release
-        uses: ncipollo/release-action@v1.10.0
+        uses: ncipollo/release-action@v1.11.0
         with:
           allowUpdates: true
           artifactErrorsFailBuild: true
