@@ -88,7 +88,7 @@ jobs:
       - name: Build
         run: cmake --build ${{ github.workspace }}/build --parallel --config ${{ env.BUILD_TYPE }}
       - name: Create Setup
-        run: ${{ env.IQTA_TOOLS }}\QtInstallerFramework\4.4\bin\binarycreator.exe -c config\config.xml -p packages Windows-Setup.exe -v
+        run: ${{ env.IQTA_TOOLS }}\QtInstallerFramework\4.5\bin\binarycreator.exe -c config\config.xml -p packages Windows-Setup.exe -v
       - uses: actions/upload-artifact@v3
         name: Upload builded app
         with:
