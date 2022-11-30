@@ -113,7 +113,7 @@ set_target_properties(CRM PROPERTIES AUTOMOC TRUE AUTOUIC TRUE AUTORCC TRUE)
 # Линковка всех библиотек к цели сборки
 target_link_libraries(CRM ${Boost_LIBRARIES})
 target_include_directories(CRM PRIVATE ${SOCI_BINARY_DIR}/include)
-target_link_libraries(CRM PRIVATE soci_core soci_postgresql)
+target_link_libraries(CRM PRIVATE Soci::core Soci::postgresql)
 target_link_libraries(CRM PRIVATE Qt6::Core Qt6::Widgets Qt::Gui)
 target_link_libraries(CRM PRIVATE OpenSSL::SSL)
 
