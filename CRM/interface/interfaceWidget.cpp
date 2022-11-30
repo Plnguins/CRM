@@ -864,9 +864,15 @@ void interfaceWidget::editLaptop(soci::session& session, const int& id) {
 
 void interfaceWidget::deleteProvider(soci::session& session,
                                      const std::vector<int>& ids) {
-    db_methods::deleteProvider(session, ids);
-    goToPage(1);
-    QMessageBox::information(this, tr("Успех"), tr("Успешное удаление"));
+    try {
+        db_methods::deleteProvider(session, ids);
+        goToPage(1);
+        QMessageBox::information(this, tr("Успех"), tr("Успешное удаление"));
+    } catch (const soci::soci_error& error) {
+        QMessageBox::critical(this, tr("Ошибка"),
+                              tr("Один или несколько поставщиков участвуют в "
+                                 "сделке, нельзя удалить"));
+    }
 }
 
 void interfaceWidget::deleteEmployee(soci::session& session,
@@ -899,16 +905,28 @@ void interfaceWidget::deleteDeal(soci::session& session,
 
 void interfaceWidget::deleteClient(soci::session& session,
                                    const std::vector<int>& ids) {
-    db_methods::deleteClient(session, ids);
-    goToPage(1);
-    QMessageBox::information(this, tr("Успех"), tr("Успешное удаление"));
+    try {
+        db_methods::deleteClient(session, ids);
+        goToPage(1);
+        QMessageBox::information(this, tr("Успех"), tr("Успешное удаление"));
+    } catch (const soci::soci_error& error) {
+        QMessageBox::critical(this, tr("Ошибка"),
+                              tr("Один или несколько пользователей участвуют в "
+                                 "сделке, нельзя удалить"));
+    }
 }
 
 void interfaceWidget::deleteLaptop(soci::session& session,
                                    const std::vector<int>& ids) {
-    db_methods::deleteLaptop(session, ids);
-    goToPage(1);
-    QMessageBox::information(this, tr("Успех"), tr("Успешное удаление"));
+    try {
+        db_methods::deleteLaptop(session, ids);
+        goToPage(1);
+        QMessageBox::information(this, tr("Успех"), tr("Успешное удаление"));
+    } catch (const soci::soci_error& error) {
+        QMessageBox::critical(this, tr("Ошибка"),
+                              tr("Один или несколько ноутбуков "
+                                 "участвуют в сделке, нельзя удалить"));
+    }
 }
 
 void interfaceWidget::addProvider(soci::session& session) {
