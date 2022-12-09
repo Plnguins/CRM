@@ -73,7 +73,7 @@ jobs:
           tools: ${{ env.QT_TOOLS }}
       - name: Install boost
         id: install-boost
-        uses: MarkusJx/install-boost@v2.4.2
+        uses: MarkusJx/install-boost@v2.4.3
         with:
           boost_version: ${{ env.BOOST_VERSION }}
           platform_version: ${{ env.BOOST_PLATFORM }}
