@@ -107,7 +107,7 @@ jobs:
           path: ${{ github.workspace }}/Windows
       - name: Create Release
         id: create_release
-        uses: ncipollo/release-action@v1.11.2
+        uses: ncipollo/release-action@v1.12.0
         with:
           allowUpdates: true
           artifactErrorsFailBuild: true
