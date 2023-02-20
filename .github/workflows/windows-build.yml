@@ -61,7 +61,7 @@ jobs:
         with:
           submodules: recursive
       - name: Install Qt
-        uses: jurplel/install-qt-action@43ec12788e42f375acfcb2cec059edfb9572fbaa
+        uses: jurplel/install-qt-action@37e649dae477dba3481cbec4788e5b3ca9d6e170
         with:
           cache: true
           cache-key-prefix: ${{ runner.os }}-Qt-${{ env.QT_VERSION }}-${{ env.QT_DIR }}-${{ env.QT_ARCH }}-${{ env.QT_TOOLS }}
